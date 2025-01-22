@@ -1,0 +1,88 @@
+1
+00:00:00,000 --> 00:00:12,000
+Hi, I'm Jaegang Kim from Sunggyunkan University.
+
+2
+00:00:12,000 --> 00:00:16,000
+From now on, we'll talk about the basic concept of machine learning.
+
+3
+00:00:16,000 --> 00:00:21,000
+This is my first time, so I want to talk about just two things.
+
+4
+00:00:21,000 --> 00:00:28,000
+One is what is machine learning, and the other is the three types of machine learning.
+
+5
+00:00:28,000 --> 00:00:31,000
+So, shall we start?
+
+6
+00:00:34,000 --> 00:00:37,000
+And this is the whole content of today.
+
+7
+00:00:37,000 --> 00:00:42,000
+So, I want to first talk about what is machine learning,
+
+8
+00:00:42,000 --> 00:00:47,000
+and then I will share about three types of machine learning,
+
+9
+00:00:47,000 --> 00:00:53,000
+such as supervised learning, unsupervised learning, and reinforcement learning.
+
+10
+00:00:53,000 --> 00:00:58,000
+So, what is machine learning?
+
+11
+00:00:58,000 --> 00:01:02,000
+Let's first talk about the artificial intelligence.
+
+12
+00:01:02,000 --> 00:01:08,000
+It's the science and engineering of making intelligence machines.
+
+13
+00:01:08,000 --> 00:01:14,000
+And the machine learning is a branch of artificial intelligence,
+
+14
+00:01:14,000 --> 00:01:18,000
+so it's a sort of subset of artificial intelligence.
+
+15
+00:01:20,000 --> 00:01:23,000
+And deep learning is also famous concept,
+
+16
+00:01:23,000 --> 00:01:26,000
+and it's also the subset of machine learning.
+
+17
+00:01:26,000 --> 00:01:29,000
+Actually, it is based on the neural network,
+
+18
+00:01:29,000 --> 00:01:33,000
+which is one of the machine learning algorithm.
+
+19
+00:01:33,000 --> 00:01:39,000
+So, I want to talk about what is machine learning.
+
+20
+00:01:39,000 --> 00:01:47,000
+I can tell you the machine learning is to improve the performance of programs
+
+21
+00:01:47,000 --> 00:01:52,000
+based on given data, previous results, or experiences.
+
+22
+00:01:52,000 --> 00:02:04,000
+The main difference with the traditional programming is this.
+

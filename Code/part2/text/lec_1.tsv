@@ -1,0 +1,23 @@
+start	end	text
+0	12000	Hi, I'm Jaegang Kim from Sunggyunkan University.
+12000	16000	From now on, we'll talk about the basic concept of machine learning.
+16000	21000	This is my first time, so I want to talk about just two things.
+21000	28000	One is what is machine learning, and the other is the three types of machine learning.
+28000	31000	So, shall we start?
+34000	37000	And this is the whole content of today.
+37000	42000	So, I want to first talk about what is machine learning,
+42000	47000	and then I will share about three types of machine learning,
+47000	53000	such as supervised learning, unsupervised learning, and reinforcement learning.
+53000	58000	So, what is machine learning?
+58000	62000	Let's first talk about the artificial intelligence.
+62000	68000	It's the science and engineering of making intelligence machines.
+68000	74000	And the machine learning is a branch of artificial intelligence,
+74000	78000	so it's a sort of subset of artificial intelligence.
+80000	83000	And deep learning is also famous concept,
+83000	86000	and it's also the subset of machine learning.
+86000	89000	Actually, it is based on the neural network,
+89000	93000	which is one of the machine learning algorithm.
+93000	99000	So, I want to talk about what is machine learning.
+99000	107000	I can tell you the machine learning is to improve the performance of programs
+107000	112000	based on given data, previous results, or experiences.
+112000	124000	The main difference with the traditional programming is this.
