@@ -1,4 +1,5 @@
 # VAD Algorithm
+## Silero VAD
 we will use the **Silero Voice Activity Detection (VAD) model** to extract speech from an audio file, removing silent portions.
 
 1. Install Silero VAD:
@@ -9,3 +10,14 @@ we will use the **Silero Voice Activity Detection (VAD) model** to extract speec
     * **Sox:** For audio processing and manipulation.
         * `pip install sox`
 3. Run `silero-vad.ipynb` file and the generated output will be `only_speech.wav` 
+
+
+## WebRTC Algorithm
+we will use **PyWebRTC model**.
+1. Install Py-WebRTC
+    `pip install webrtcvad`
+2. Run
+    `python3 webrtc.py <aggressiveness> <path to wav file>`
+
+* set its aggressiveness mode, which is an integer between 0 and 3. 0 is the least aggressive about filtering out non-speech, 3 is the most aggressive.
+* Give it a short segment ("frame") of audio. The WebRTC VAD only accepts 16-bit mono PCM audio, sampled at 8000, 16000, 32000 or 48000 Hz. A frame must be either 10, 20, or 30 ms in duration.
