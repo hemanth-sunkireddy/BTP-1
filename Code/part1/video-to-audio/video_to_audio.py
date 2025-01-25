@@ -4,7 +4,7 @@ import ffmpeg
 input_file = input("Please enter the path to the video file (e.g., 'index.mp4'): ")
 
 # Set the desired sample rate (32000 Hz or 48000 Hz)
-sample_rate = '48000'  # You can change this to '32000' if you prefer that sample rate
+sample_rate = '16000'  # You can change this to '32000' if you prefer that sample rate
 
 # Input the video file
 input_video = ffmpeg.input(input_file)
