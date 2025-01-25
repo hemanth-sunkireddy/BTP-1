@@ -15,3 +15,6 @@ pip install ffmpeg-python
     `python3 video_to_audio.py`
 2. When prompted, enter the full path of the video file (e.g., path/to/video.mp4).
 3. The audio will be extracted and saved as output_audio.wav in the same directory where the script is located.
+4. The output audio file has 1 channel (Mono) and a sample rate of 48000 Hz.
+
+* Documentation of FFMPEG-Python: https://kkroening.github.io/ffmpeg-python/
