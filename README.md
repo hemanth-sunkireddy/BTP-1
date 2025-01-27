@@ -17,12 +17,10 @@ This work involves synthesizing a video from a set of video lectures that answer
 ## Guide
 Chiranjeevi Yarra
 
-## Meeting Schedule
-* Short Meet - Every Wednesday 2PM
-* Long Meet - Every Saturday 2PM
+## Report (PPT)
+`https://www.canva.com/design/DAGdXJG88EA/zs8v3wr5Ru36qYcWTp-EGA/view?utm_content=DAGdXJG88EA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb2892354ed
+`
 
-## Timeline
-* 27 Jan - Deadline for BTP 1 Report Submission
 
 ### Team
 * Gopendra Singh

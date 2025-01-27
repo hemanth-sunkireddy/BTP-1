@@ -3,7 +3,8 @@ import contextlib
 import sys
 import wave
 import webrtcvad
-
+import numpy as np
+import matplotlib.pyplot as plt
 
 def read_wave(path):
     """Reads a .wav file.
@@ -137,6 +138,46 @@ def vad_collector(sample_rate, frame_duration_ms,
         yield b''.join([f.bytes for f in voiced_frames])
 
 
+def plot_vad(audio, sample_rate, frames, vad):
+    # Convert audio to numpy array for plotting
+    audio_int = np.frombuffer(audio, dtype=np.int16)
+    time = np.linspace(0, len(audio_int) / sample_rate, num=len(audio_int))
+
+    # Create a list for the VAD output (1 for speech, 0 for silence)
+    vad_output = []
+    timestamps = []  # To track timestamps for X-axis
+
+    # Process each frame with the VAD
+    for frame in frames:
+        is_speech = vad.is_speech(frame.bytes, sample_rate)
+        num_samples_in_frame = len(frame.bytes) // 2  # Convert from bytes to samples (16-bit audio)
+        
+        # Repeat the is_speech value for each sample in the frame
+        vad_output.extend([is_speech] * num_samples_in_frame)
+        timestamps.extend([frame.timestamp] * num_samples_in_frame)
+
+    # Plotting the VAD output
+    plt.figure(figsize=(12, 6))
+    
+    # Plot the waveform for context
+    plt.subplot(2, 1, 1)
+    plt.plot(time, audio_int, lw=0.5)
+    plt.title('Waveform')
+    plt.xlabel('Time [s]')
+    plt.ylabel('Amplitude')
+
+    # VAD output plot (1 = Speech, 0 = Silence)
+    plt.subplot(2, 1, 2)
+    plt.plot(timestamps, vad_output, label="VAD (Speech: 1, Silence: 0)", color='r', lw=1)
+    plt.title('VAD Output (1 = Speech, 0 = Silence)')
+    plt.xlabel('Time [s]')
+    plt.ylabel('VAD')
+    plt.ylim([-0.1, 1.1])  # Set Y axis limits to ensure the plot is clean
+    plt.tight_layout()
+
+    plt.show()
+
+
 def main(args):
     if len(args) != 2:
         sys.stderr.write(
@@ -146,6 +187,8 @@ def main(args):
     vad = webrtcvad.Vad(int(args[0]))
     frames = frame_generator(30, audio, sample_rate)
     frames = list(frames)
+    # Plotting the Graph (X Axis is Frames in ms and Y Axis is Speech or Not)
+    plot_vad(audio, sample_rate, frames, vad)
     segments = vad_collector(sample_rate, 30, 300, vad, frames)
     
     # Combine all voiced segments into a single audio file
