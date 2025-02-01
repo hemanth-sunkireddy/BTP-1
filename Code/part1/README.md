@@ -2,22 +2,14 @@
 * Extraction of Audios from Videos and Run the VAD algorithm. [Implemented Silero and WebRTC algorithms]
 * Run the VAD algorithm on our extracted audios and plot those with VAD decisions.
 
-## Helpful Content
-* A mono audio file has 1 channel, while a stereo audio file has 2 channels.
-* We are using sample rate of 16000 Hz for our project and 1 channel `.wav` file.
+## Dividing Large Audio files into smaller chunks
+1. Speech boundaries (Sentence structure along with punctuation or Pause-based)
+    * If the speech contains noticeable pauses (silent gaps between sentences), we'll set a threshold for the duration of the pause that qualifies as a sentence boundary.
+    * Then combine smaller chunks into their nearest chunks with monitoring max and min durations of the audio file.
 
-### Frame:
-* A frame is a small window or block of audio data that you process at a time. 
-* It typically represents a slice of audio data, usually around 20-30 milliseconds in duration.
-* frame_duration_ms = 30 in `webrtc.py`.
-
-* The frame_generator function slices the raw audio data into frames of equal length (in this case, 30ms), and each frame is passed to the VAD to check if speech is detected.
-Frame Duration: The duration of each frame is crucial because too short or too long frames can affect VAD performance. For speech detection, typically, frames of 10-30ms are used.
-
-### Chunk:
-* A chunk refers to a sequence of frames that are grouped together. In the context of your code, after speech is detected, a chunk is essentially the collection of frames that are continuously classified as containing speech.
-* A chunk can vary in length depending on the audio being processed and the settings of the VAD. You can think of chunks as "continuous sections of speech" between silences.
-
-### Segment:
-* A segment is a longer portion of the audio that represents a piece of speech, with chunks of speech data that have been detected together.
-* A segment can consist of multiple chunks, where chunks are continuous frames of detected speech. After collecting the chunks, you combine them to form a segment.
+### Tomorrow task
+1. In the Plotted graph identify silence part of threshold value and Display total count of silence values and which parts and the remaining everything in the graphs on atleast 10 videos.
+2. If 90% of frames in the sliding window are speech, it accumulates them; if 90% are silence, it yields the accumulated speech as a chunk.
+3. If there is a pause then remove in between the sentences. And add small padding silence at both ends of the audio.
+4. Continous silence parts vs Continous non-silence parts.
+5. Instead of just check for frames where Voiced frames sum upto 10sec.
