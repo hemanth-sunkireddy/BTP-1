@@ -15,11 +15,10 @@ This work involves synthesizing a video from a set of video lectures that answer
 8. Stitch the summary video segments to obtain natural like video.
 
 ## Guide
-Chiranjeevi Yarra
+Chiranjeevi Yarra (Spoken Language Forensics & Informatics (SLFI) group - LTRC)
 
 ## Report (PPT)
-`https://www.canva.com/design/DAGdXJG88EA/zs8v3wr5Ru36qYcWTp-EGA/view?utm_content=DAGdXJG88EA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb2892354ed
-`
+**Presentation:** [Canva Link](https://www.canva.com/design/DAGdXJG88EA/zs8v3wr5Ru36qYcWTp-EGA/viewutm_content=DAGdXJG88EA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb2892354ed)
 
 
 ### Team

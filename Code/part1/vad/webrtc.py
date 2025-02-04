@@ -4,7 +4,9 @@ import wave
 import webrtcvad
 import numpy as np
 import matplotlib.pyplot as plt
-from tabulate import tabulate  
+from tabulate import tabulate
+
+from definitions import silence_threshold, chunk_min_dur, chunk_max_dur, sample_rate
 
 def read_wave(path):
     """Reads a .wav file. Takes the path, and returns (PCM audio data, sample rate)."""
@@ -18,7 +20,6 @@ def read_wave(path):
         pcm_data = wf.readframes(wf.getnframes())
         return pcm_data, sample_rate
 
-
 def write_wave(path, audio, sample_rate):
     """Writes a .wav file. Takes path, PCM audio data, and sample rate."""
     with contextlib.closing(wave.open(path, 'wb')) as wf:
@@ -27,14 +28,12 @@ def write_wave(path, audio, sample_rate):
         wf.setframerate(sample_rate)
         wf.writeframes(audio)
 
-
 class Frame(object):
     """Represents a "frame" of audio data."""
     def __init__(self, bytes, timestamp, duration):
         self.bytes = bytes
         self.timestamp = timestamp
         self.duration = duration
-
 
 def frame_generator(frame_duration_ms, audio, sample_rate):
     """Generates audio frames from PCM audio data."""
@@ -46,6 +45,107 @@ def frame_generator(frame_duration_ms, audio, sample_rate):
         yield Frame(audio[offset:offset + n], timestamp, duration)
         timestamp += duration
         offset += n
+
+def silent_periods_collector(sample_rate, vad, frames, silence_threshold_seconds=silence_threshold):
+    """Filters out voiced audio frames and collects continuous silence chunks of more than `silence_threshold_seconds`."""
+    silent_frames = []
+    total_silence_duration = 0
+    chunk_count = 0
+    start_time = None
+    end_time = None
+    table = []
+
+    last_silence_timestamp = None
+
+    for frame in frames:
+        is_speech = vad.is_speech(frame.bytes, sample_rate)
+
+        if is_speech:
+            if last_silence_timestamp is not None:
+                end_time = frame.timestamp
+                duration = end_time - start_time
+                if duration >= silence_threshold_seconds:
+                    chunk_count += 1
+                    start_min, start_sec = divmod(start_time, 60)
+                    end_min, end_sec = divmod(end_time, 60)
+                    table.append([
+                        chunk_count,
+                        f"{int(start_min):02}:{int(start_sec):02}",
+                        f"{int(end_min):02}:{int(end_sec):02}",
+                        f"{duration:.2f} seconds"
+                    ])
+                    last_silence_timestamp = None
+                    start_time = None
+                    end_time = None
+                else:
+                    last_silence_timestamp = None
+                    start_time = None
+                    end_time = None
+            total_silence_duration = 0
+
+        else:
+            if last_silence_timestamp == None:
+                start_time = frame.timestamp
+                last_silence_timestamp = start_time
+            else:
+                end_time = frame.timestamp
+                duration = end_time - start_time
+                if duration >= silence_threshold_seconds:
+                    chunk_count += 1
+                    start_min, start_sec = divmod(start_time, 60)
+                    end_min, end_sec = divmod(end_time, 60)
+                    table.append([
+                        chunk_count,
+                        f"{int(start_min):02}:{int(start_sec):02}",
+                        f"{int(end_min):02}:{int(end_sec):02}",
+                        f"{duration:.2f} seconds"
+                    ])
+                    last_silence_timestamp = None
+                    start_time = None
+                    end_time = None
+            total_silence_duration += frame.duration
+            silent_frames.append(frame)
+
+    headers = ["Chunk Num", "Start Time (min)", "End Time (min)", "Duration"]
+    print(tabulate(table, headers=headers, tablefmt="rounded_grid"))
+    print("Total Chunks Which are Continous Silent:", chunk_count)
+    return silent_frames
+
+def plot_vad(sample_rate, frames, vad):
+    vad_output = []
+    timestamps = []
+    
+    for frame in frames:
+        is_speech = vad.is_speech(frame.bytes, sample_rate)
+        num_samples_in_frame = len(frame.bytes) // 2
+        vad_output.extend([is_speech] * num_samples_in_frame)
+        timestamps.extend([frame.timestamp] * num_samples_in_frame)
+    
+    plt.figure(figsize=(16, 8))
+    plt.plot(timestamps, vad_output, label="VAD (Speech: 1, Silence: 0)", color='blue', lw=0.5)
+    plt.title('VAD Output (1 = Speech, 0 = Silence)')
+    plt.xlabel('Time [s]')
+    plt.ylabel('VAD')
+    plt.ylim([-0.1, 1.1])
+    plt.tight_layout()
+    step_size = 100
+    x_ticks = np.arange(min(timestamps), max(timestamps), step_size)
+    plt.xticks(x_ticks)
+    plt.show()
+
+def main(args):
+    if len(args) != 2:
+        sys.stderr.write('Command Structure:python3 webrtc.py <aggressiveness> <path to wav file>\n')
+        sys.exit(1)
+    
+    audio, sample_rate = read_wave(args[1])
+    vad = webrtcvad.Vad(int(args[0]))
+    frames = frame_generator(30, audio, sample_rate)
+    frames = list(frames)
+
+    # plot_vad( sample_rate, frames, vad)
+    print("Continous silence frames which are more than silence threshold")
+    silent_periods_collector(sample_rate, vad, frames)
 
 def vad_collector(sample_rate, frame_duration_ms,padding_duration_ms, vad, frames, speech_threshold_seconds=30):
     """Filters out non-voiced audio frames and collects continuous speech chunks of speech with silence removed."""
@@ -115,63 +215,6 @@ def vad_collector(sample_rate, frame_duration_ms,padding_duration_ms, vad, frame
     headers = ["Chunk Num", "Start Time (min)", "End Time (min)", "Duration"]
     print(tabulate(table, headers=headers, tablefmt="rounded_grid"))
 
-def plot_vad(audio, sample_rate, frames, vad):
-    # Convert audio to numpy array for plotting
-    audio_int = np.frombuffer(audio, dtype=np.int16)
-    
-    # Create a list for the VAD output (1 for speech, 0 for silence)
-    vad_output = []
-    timestamps = []  # To track timestamps for X-axis
-    
-    # Process each frame with the VAD
-    for frame in frames:
-        is_speech = vad.is_speech(frame.bytes, sample_rate)
-        num_samples_in_frame = len(frame.bytes) // 2  # Convert from bytes to samples (16-bit audio)
-        
-        # Repeat the is_speech value for each sample in the frame
-        vad_output.extend([is_speech] * num_samples_in_frame)
-        timestamps.extend([frame.timestamp] * num_samples_in_frame)
-    
-    # Plotting the VAD output using scatter plot (dots instead of line)
-    plt.figure(figsize=(16, 8))  # Adjust these values as needed for your screen resolution
-    plt.plot(timestamps, vad_output, label="VAD (Speech: 1, Silence: 0)", color='blue', lw=0.5)  # lw controls line width
-    plt.title('VAD Output (1 = Speech, 0 = Silence)')
-    plt.xlabel('Time [s]')
-    plt.ylabel('VAD')
-    plt.ylim([-0.1, 1.1])
-    plt.tight_layout()
-    step_size = 100
-    x_ticks = np.arange(min(timestamps), max(timestamps), step_size)
-    
-    plt.xticks(x_ticks)
-    plt.show()
-
-
-def main(args):
-    if len(args) != 2:
-        sys.stderr.write(
-            'Usage: example.py <aggressiveness> <path to wav file>\n')
-        sys.exit(1)
-    audio, sample_rate = read_wave(args[1])
-    vad = webrtcvad.Vad(int(args[0]))
-    frames = frame_generator(30, audio, sample_rate)
-    frames = list(frames)
-    # Plotting the Graph (X Axis is Frames in ms and Y Axis is Speech or Not)
-    # plot_vad(audio, sample_rate, frames, vad)
-    segments = vad_collector(sample_rate, 30, 300, vad, frames)
-    
-    # Combine all voiced segments into a single audio file
-    combined_audio = b""
-    for i, segment in enumerate(segments):
-        path = 'chunk-%002d.wav' % (i,)
-        # print(' Writing %s' % (path,))
-        write_wave(path, segment, sample_rate)
-        combined_audio += segment  # Combine the segments
-
-    # # Write the combined audio to a new file
-    # print('Writing combined audio to silence_remove.wav')
-    # write_wave('silence_remove.wav', combined_audio, sample_rate)
-    
 
 if __name__ == '__main__':
     main(sys.argv[1:])
