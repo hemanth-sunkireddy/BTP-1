@@ -34,3 +34,9 @@ we will use **PyWebRTC model**.
 ## Observations:
 1. WebRTC algorithm removes Silence Part but includes speech and noise parts.
 2. Silero-VAD Algorithm removes Both Silence and Noise Parts.
+
+## Dividing Large Audio files into smaller chunks
+1. Speech boundaries (Sentence structure along with punctuation or Pause-based)
+    * If the speech contains noticeable pauses (silent gaps between sentences), we'll set a threshold for the duration of the pause that qualifies as a sentence boundary.
+    * Then combine smaller chunks into their nearest chunks with monitoring max and min durations of the audio file.
+    * If there is a pause then remove in between the sentences. And add small padding silence at both ends of the remaining audio at that window.
