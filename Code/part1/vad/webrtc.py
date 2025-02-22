@@ -118,10 +118,10 @@ def silent_periods_collector(sample_rate, vad, frames, silence_threshold_seconds
 
 
 
-def plot_vad(sample_rate, frames, vad):
+def plot_vad(sample_rate, frames, vad, chunk_details):
     vad_output = []
     timestamps = []
-    
+    print(chunk_details[1][2])
     for frame in frames:
         is_speech = vad.is_speech(frame.bytes, sample_rate)
         num_samples_in_frame = len(frame.bytes) // 2
@@ -133,6 +133,13 @@ def plot_vad(sample_rate, frames, vad):
     plt.title('VAD Output (1 = Speech, 0 = Silence)')
     plt.xlabel('Time [s]')
     plt.ylabel('VAD')
+    for chunk in chunk_details:
+        minutes, seconds = map(int, chunk[2].split(":"))
+        time_in_seconds = minutes * 60 + seconds
+        plt.scatter(time_in_seconds, -0.001, color='red', marker='.', s=20)  # Mark on x-axis below VAD plot
+        # plt.text(time_in_seconds, 0, f"{time_in_seconds:.0f}s", color='red', ha='center', fontsize=10)
+
+
     plt.ylim([-0.1, 1.1])
     plt.tight_layout()
     step_size = 100
@@ -151,6 +158,7 @@ def vad_collector(sample_rate, vad, frames, silence_timings, chunk_min_dur=chunk
     end_time = None
     current_frames = []
     segments = []
+
     chunk_details = []  # This will store chunk info for printing in tabular format
     continous_silence = 0
 
@@ -239,7 +247,7 @@ def vad_collector(sample_rate, vad, frames, silence_timings, chunk_min_dur=chunk
     print("\nChunks Details:")
     print(tabulate(chunk_details, headers=headers, tablefmt="rounded_grid"))
 
-    return segments
+    return segments, chunk_details
 
 
 
@@ -253,11 +261,12 @@ def main(args):
     frames = frame_generator(30, audio, sample_rate)
     frames = list(frames)
 
-    # plot_vad( sample_rate, frames, vad)
+    
     print("Continous silence frames which are more than silence threshold")
     silence_timings = silent_periods_collector(sample_rate, vad, frames)
     
-    segments = vad_collector(sample_rate, vad, frames, silence_timings)
+    segments, chunk_details = vad_collector(sample_rate, vad, frames, silence_timings)
+    plot_vad( sample_rate, frames, vad, chunk_details)
     for i, segment in enumerate(segments):
         path = 'chunk-%002d.wav' % (i,)
         # print(' Writing %s' % (path,))

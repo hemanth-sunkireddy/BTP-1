@@ -1,7 +1,7 @@
-**/*.wav
+# **/*.wav
 **/*.mp4
 
 **/*.DS_Store
 **/*pycache*
-**/*.vtt
+# **/*.vtt
 **/*.zip
