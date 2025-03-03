@@ -1,0 +1,79 @@
+1
+00:00:09,119 --> 00:00:11,480
+ Hi, I'm Jaekang Kim from Sungkyungan University.
+
+2
+00:00:12,500 --> 00:00:16,039
+ From now on, we'll talk about the basic concept of machine learning.
+
+3
+00:00:17,000 --> 00:00:20,960
+ This is my first time, so I want to talk about just two things.
+
+4
+00:00:21,660 --> 00:00:27,820
+ One is what is machine learning, and the other is the three types of machine learning.
+
+5
+00:00:28,320 --> 00:00:29,699
+ So, shall we start?
+
+6
+00:00:34,899 --> 00:00:37,079
+ And this is the whole content of today.
+
+7
+00:00:37,920 --> 00:00:45,100
+ So I want to first talk about what is machine learning, and then I will share about three
+
+8
+00:00:45,159 --> 00:00:52,320
+ types of machine learning, such as supervised learning, unsupervised learning, and reinforcement
+
+9
+00:00:52,320 --> 00:00:53,020
+ learning.
+
+10
+00:00:55,820 --> 00:00:57,579
+ So, what is machine learning?
+
+11
+00:00:59,100 --> 00:01:02,280
+ Let's first talk about artificial intelligence.
+
+12
+00:01:03,960 --> 00:01:07,859
+ It's the science and engineering of making intelligence machines.
+
+13
+00:01:10,439 --> 00:01:16,780
+ And machine learning is a branch of artificial intelligence, so it's a sort of subset of
+
+14
+00:01:16,780 --> 00:01:18,000
+ artificial intelligence.
+
+15
+00:01:20,519 --> 00:01:26,180
+ And deep learning is also a famous concept, and it's also the subset of machine learning.
+
+16
+00:01:26,579 --> 00:01:33,159
+ Actually, it is based on the neural network, which is one of the machine learning algorithms.
+
+17
+00:01:36,439 --> 00:01:39,640
+ So, I want to talk about what is machine learning.
+
+18
+00:01:41,079 --> 00:01:47,980
+ I can tell you that machine learning is to improve the performance of programs based
+
+19
+00:01:48,120 --> 00:01:52,000
+ on given data, previous results, or experiences.
+
+20
+00:01:56,819 --> 00:02:00,920
+ The main difference with the traditional programming is the

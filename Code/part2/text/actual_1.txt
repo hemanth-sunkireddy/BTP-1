@@ -1,0 +1,71 @@
+Hi, I'm Jaekwang Kim from
+Sungkyunkwan University. From now on, we'll talk about
+the basic concept of machine learning. This is my first time, so
+I want to talk about just the two things. One is what is machine learning? And the other is the three types of
+machine learning, so share with that. And this is the whole content of today, so I want to first talk about
+what is machine learning? And then I will share about
+three types of machine learning such as supervised learning, unsupervised learning and
+reinforcement learning. So what is machine learning? Let's just talk about
+the artificial intelligence. It's the science and engineering
+of making intelligence machines, and machine learning is a branch
+of artificial intelligence, so it's a sort of subset
+of artificial intelligence. And deep learning it was a famous concept,
+and it's also the subset of machine learning. Actually it is based
+on the neural network, which is one of the machine
+learning algorithm. So I want to talk about
+what is emotional learning. I can tell you the machine learning
+is to improve the performance or programs based on given data,
+previous regional or experiences. The main difference with
+the traditional programming is this in traditional programming data. And rules are used as input and it is used
+the input to the computer program and it makes the results as
+an output in motion learning. On the other hand,
+the result and data is huge, their input to the computer program and
+it makes the rules as the output. So why we should learn or
+concerned about motion learning? First, because machine learning is
+a tool to reduce programming time. And second,
+machine learning personalize your product to provide what's better for
+specific group of users. So it provides a solution
+when on algorithm to solve a problem is not available or difficult left but not the list. It allows people to think at a higher
+level rather than focus on simple task. Here are the three types of machine
+learning, it's supervised learning, unsupervised learning, and
+reinforcement learning. Supervised learning uses the label
+data and has a direct feedback, and the purpose of the supervised
+learning is predict outcome and futures. Unsupervised learning had no rabels,
+no direct feedback. The purpose overrules provide
+learning is find hidden structures, how about the reinforcement learning? It's a decision process and
+it has a reward system and the aim of it is long fridge of actions. And here are the big pictures
+of the machine learning and three types of machine learning and
+all of which problems. First of all, in the supervised learning
+there is two representative problems, classification and regression. And there are many specify then and the problems like here and
+in also provide learning. There are two main problems such
+as dimensional reduction and clustering and meaningful compression and structure discovery belongs
+to dimensional key reduction. And we can also use the clustering for recommended system,
+targeted marketing, and so on. How about the reinforcement learning? It is constant with the game AI and skills acquisition and
+something like that. And first of all, let's deep dive
+into the supervised learning. And I can say supervised learning
+is how to train a capital program with labor data that is given
+explicit correct answers. And it's about how to proceed with learning in the form with data and labor and in superbad learning. Let's take our amnesty
+data set as an example. It's 28 times 28 images which is like this the training set conscious
+of the following. And there are 10 labors from 0 to 9 for example we have a 20 by 20
+images representing Gerald. And it also had the label Gerald, and we also have about 20 times 28 images representing seven, and
+it had the label seven, and we also get some the other data. If we we input the image 4 to
+the trend model with amnesty dataset, we can finally get
+the predictor label as of 4. In an inspired by the learning,
+I can say it's no label for data. That is a methodology that trend or comp
+it'll without the explicit correct answer. So it's a method of running form like with only data we can
+simply say with these figures in case of supervised learning. The proposal of classification is
+making a decision boundary like this, and how about the unsupervised learning? The representative method
+is clustering like this, so we want grouping these two groups. The less the thing is
+reinforced much learning reinforcement learning is
+not supervised learning. It's not all supervised
+learning in reinforcement learning agent to learn
+to maximize reorder. And it's an algorithm that
+includes the process of collecting data in kind
+of dynamic environment. So if the agent make
+some action at a time t, and the environments returned reward and state at a time step t plus 1. So agent makes you want to make the
+maximize the reward with this environment. So I just say about three types
+of machine learning like this which of the best time method
+algorithm of emotionally. I don't want to say the best algorithm for
+the every problems, but I believe that you can
+choose the best algorithm for your case of problems, so
+that you may make the right decision. Thank you.

@@ -1,0 +1,95 @@
+1
+00:00:00,160 --> 00:00:05,599
+ In this lesson, we're going to be talking about finance.
+
+2
+00:00:06,500 --> 00:00:09,660
+ And one of the most important aspects of finance is interest.
+
+3
+00:00:10,419 --> 00:00:15,880
+ When I go to a bank or some other lending institution to borrow money, the bank is happy
+
+4
+00:00:15,919 --> 00:00:20,079
+ to give me that money, but then I'm going to be paying the bank for the privilege of
+
+5
+00:00:20,100 --> 00:00:20,980
+ using their money.
+
+6
+00:00:21,460 --> 00:00:24,399
+ And that amount of money that I pay the bank is called interest.
+
+7
+00:00:25,460 --> 00:00:30,739
+ Likewise, if I put money in a savings account or I purchase a certificate of deposit, the
+
+8
+00:00:30,739 --> 00:00:34,640
+ bank just doesn't put my money in a little box and leave it there until later.
+
+9
+00:00:35,140 --> 00:00:37,659
+ They take my money and lend it to someone else.
+
+10
+00:00:38,399 --> 00:00:40,140
+ So they are using my money.
+
+11
+00:00:40,600 --> 00:00:44,340
+ The bank has to pay me for the privilege of using my money.
+
+12
+00:00:45,259 --> 00:00:50,880
+ Now what makes banks profitable is the rate that they charge people to use the bank's
+
+13
+00:00:50,880 --> 00:00:56,240
+ money is higher than the rate that they pay people like me to use my money.
+
+14
+00:00:57,780 --> 00:01:02,799
+ The amount of interest that a person pays or earns is dependent on three things.
+
+15
+00:01:03,020 --> 00:01:05,819
+ It's dependent on how much money is involved.
+
+16
+00:01:06,739 --> 00:01:11,739
+ It's dependent upon the rate of interest being paid or the rate of interest being charged.
+
+17
+00:01:12,379 --> 00:01:15,799
+ And it's also dependent upon how much time is involved.
+
+18
+00:01:17,560 --> 00:01:22,000
+ If I have a loan and I want to decrease the amount of interest that I'm going to pay,
+
+19
+00:01:22,500 --> 00:01:25,739
+ then I'm either going to have to decrease how much money I borrow.
+
+20
+00:01:26,579 --> 00:01:31,459
+ I'm going to have to borrow the money over a shorter period of time, or I'm going to
+
+21
+00:01:31,459 --> 00:01:34,959
+ have to find a lending institution that charges a lower interest rate.
+
+22
+00:01:35,819 --> 00:01:40,530
+ On the other hand, if I want to earn more interest on my investment, I'm going to have
+
+23
+00:01:40,530 --> 00:01:47,159
+ to invest more money, leave the money in the account for a longer period of time, or find
+
+24
+00:01:47,239 --> 00:01:49,900
+ an institution that will pay me a higher interest rate.

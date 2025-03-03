@@ -1,0 +1,644 @@
+[
+    {
+        "text": "Hiring",
+        "start": 1.3,
+        "end": 1.68,
+        "confidence": 0.851
+    },
+    {
+        "text": "a",
+        "start": 1.68,
+        "end": 1.92,
+        "confidence": 0.997
+    },
+    {
+        "text": "transcriber",
+        "start": 1.92,
+        "end": 2.66,
+        "confidence": 0.939
+    },
+    {
+        "text": "saves",
+        "start": 2.66,
+        "end": 3.0,
+        "confidence": 0.986
+    },
+    {
+        "text": "time",
+        "start": 3.0,
+        "end": 3.4,
+        "confidence": 0.997
+    },
+    {
+        "text": "and",
+        "start": 3.4,
+        "end": 3.88,
+        "confidence": 0.975
+    },
+    {
+        "text": "resources.",
+        "start": 3.88,
+        "end": 4.5,
+        "confidence": 0.993
+    },
+    {
+        "text": "Professional",
+        "start": 5.14,
+        "end": 6.0,
+        "confidence": 0.509
+    },
+    {
+        "text": "transcribers",
+        "start": 6.0,
+        "end": 6.82,
+        "confidence": 0.993
+    },
+    {
+        "text": "will",
+        "start": 6.82,
+        "end": 7.34,
+        "confidence": 0.9
+    },
+    {
+        "text": "ensure",
+        "start": 7.34,
+        "end": 7.86,
+        "confidence": 0.885
+    },
+    {
+        "text": "that",
+        "start": 7.86,
+        "end": 8.48,
+        "confidence": 0.914
+    },
+    {
+        "text": "your",
+        "start": 8.52,
+        "end": 8.76,
+        "confidence": 0.994
+    },
+    {
+        "text": "audio",
+        "start": 8.76,
+        "end": 9.14,
+        "confidence": 0.843
+    },
+    {
+        "text": "file",
+        "start": 9.14,
+        "end": 9.48,
+        "confidence": 0.995
+    },
+    {
+        "text": "is",
+        "start": 9.48,
+        "end": 9.88,
+        "confidence": 0.998
+    },
+    {
+        "text": "translated",
+        "start": 9.88,
+        "end": 10.54,
+        "confidence": 0.998
+    },
+    {
+        "text": "into",
+        "start": 10.54,
+        "end": 11.0,
+        "confidence": 0.991
+    },
+    {
+        "text": "text",
+        "start": 11.0,
+        "end": 11.38,
+        "confidence": 0.99
+    },
+    {
+        "text": "accurately",
+        "start": 11.38,
+        "end": 12.16,
+        "confidence": 0.991
+    },
+    {
+        "text": "and",
+        "start": 12.16,
+        "end": 12.82,
+        "confidence": 0.982
+    },
+    {
+        "text": "efficiently.",
+        "start": 12.82,
+        "end": 13.4,
+        "confidence": 0.995
+    },
+    {
+        "text": "Transcribers",
+        "start": 13.92,
+        "end": 14.88,
+        "confidence": 0.946
+    },
+    {
+        "text": "are",
+        "start": 14.88,
+        "end": 15.06,
+        "confidence": 0.823
+    },
+    {
+        "text": "trained",
+        "start": 15.06,
+        "end": 15.4,
+        "confidence": 0.95
+    },
+    {
+        "text": "and",
+        "start": 15.4,
+        "end": 15.64,
+        "confidence": 0.733
+    },
+    {
+        "text": "tested",
+        "start": 15.64,
+        "end": 16.16,
+        "confidence": 0.998
+    },
+    {
+        "text": "in",
+        "start": 16.16,
+        "end": 16.48,
+        "confidence": 0.997
+    },
+    {
+        "text": "certain",
+        "start": 16.48,
+        "end": 16.76,
+        "confidence": 0.997
+    },
+    {
+        "text": "niches,",
+        "start": 16.76,
+        "end": 17.36,
+        "confidence": 0.99
+    },
+    {
+        "text": "from",
+        "start": 17.76,
+        "end": 17.92,
+        "confidence": 0.995
+    },
+    {
+        "text": "legal",
+        "start": 17.92,
+        "end": 18.32,
+        "confidence": 0.982
+    },
+    {
+        "text": "and",
+        "start": 18.32,
+        "end": 18.88,
+        "confidence": 0.942
+    },
+    {
+        "text": "medical",
+        "start": 18.88,
+        "end": 19.26,
+        "confidence": 0.994
+    },
+    {
+        "text": "to",
+        "start": 19.26,
+        "end": 19.76,
+        "confidence": 0.864
+    },
+    {
+        "text": "academic.",
+        "start": 19.76,
+        "end": 20.42,
+        "confidence": 0.996
+    },
+    {
+        "text": "Here's",
+        "start": 20.98,
+        "end": 21.3,
+        "confidence": 0.915
+    },
+    {
+        "text": "how",
+        "start": 21.3,
+        "end": 21.42,
+        "confidence": 0.997
+    },
+    {
+        "text": "it",
+        "start": 21.42,
+        "end": 21.54,
+        "confidence": 0.993
+    },
+    {
+        "text": "works.",
+        "start": 21.54,
+        "end": 21.78,
+        "confidence": 0.991
+    },
+    {
+        "text": "First,",
+        "start": 22.16,
+        "end": 22.5,
+        "confidence": 0.802
+    },
+    {
+        "text": "an",
+        "start": 22.9,
+        "end": 23.08,
+        "confidence": 0.638
+    },
+    {
+        "text": "audio",
+        "start": 23.08,
+        "end": 23.36,
+        "confidence": 0.634
+    },
+    {
+        "text": "file",
+        "start": 23.94,
+        "end": 23.96,
+        "confidence": 0.452
+    },
+    {
+        "text": "is",
+        "start": 23.96,
+        "end": 23.98,
+        "confidence": 0.991
+    },
+    {
+        "text": "received.",
+        "start": 23.98,
+        "end": 24.3,
+        "confidence": 0.927
+    },
+    {
+        "text": "Next,",
+        "start": 25.08,
+        "end": 25.54,
+        "confidence": 0.945
+    },
+    {
+        "text": "the",
+        "start": 25.94,
+        "end": 26.12,
+        "confidence": 0.992
+    },
+    {
+        "text": "file",
+        "start": 26.12,
+        "end": 26.44,
+        "confidence": 0.998
+    },
+    {
+        "text": "is",
+        "start": 26.44,
+        "end": 26.68,
+        "confidence": 0.997
+    },
+    {
+        "text": "pre-screened",
+        "start": 26.68,
+        "end": 27.7,
+        "confidence": 0.951
+    },
+    {
+        "text": "to",
+        "start": 27.7,
+        "end": 28.0,
+        "confidence": 0.931
+    },
+    {
+        "text": "be",
+        "start": 28.0,
+        "end": 28.16,
+        "confidence": 0.986
+    },
+    {
+        "text": "matched",
+        "start": 28.16,
+        "end": 28.52,
+        "confidence": 0.993
+    },
+    {
+        "text": "with",
+        "start": 28.52,
+        "end": 28.82,
+        "confidence": 0.981
+    },
+    {
+        "text": "the",
+        "start": 28.82,
+        "end": 28.98,
+        "confidence": 0.964
+    },
+    {
+        "text": "perfect",
+        "start": 28.98,
+        "end": 29.38,
+        "confidence": 0.917
+    },
+    {
+        "text": "transcriber",
+        "start": 29.38,
+        "end": 30.22,
+        "confidence": 0.993
+    },
+    {
+        "text": "who",
+        "start": 30.22,
+        "end": 30.45,
+        "confidence": 0.517
+    },
+    {
+        "text": "is",
+        "start": 30.45,
+        "end": 30.62,
+        "confidence": 0.496
+    },
+    {
+        "text": "then",
+        "start": 30.62,
+        "end": 30.88,
+        "confidence": 0.994
+    },
+    {
+        "text": "assigned",
+        "start": 30.88,
+        "end": 31.48,
+        "confidence": 0.998
+    },
+    {
+        "text": "the",
+        "start": 31.48,
+        "end": 31.68,
+        "confidence": 0.996
+    },
+    {
+        "text": "task",
+        "start": 31.68,
+        "end": 32.08,
+        "confidence": 0.996
+    },
+    {
+        "text": "of",
+        "start": 32.08,
+        "end": 32.42,
+        "confidence": 0.996
+    },
+    {
+        "text": "creating",
+        "start": 32.42,
+        "end": 32.8,
+        "confidence": 0.998
+    },
+    {
+        "text": "the",
+        "start": 32.8,
+        "end": 33.08,
+        "confidence": 0.998
+    },
+    {
+        "text": "transcript.",
+        "start": 33.08,
+        "end": 33.58,
+        "confidence": 0.991
+    },
+    {
+        "text": "Once",
+        "start": 33.98,
+        "end": 34.34,
+        "confidence": 0.954
+    },
+    {
+        "text": "the",
+        "start": 34.34,
+        "end": 34.56,
+        "confidence": 0.996
+    },
+    {
+        "text": "transcript",
+        "start": 34.56,
+        "end": 34.96,
+        "confidence": 0.996
+    },
+    {
+        "text": "is",
+        "start": 34.96,
+        "end": 35.3,
+        "confidence": 0.997
+    },
+    {
+        "text": "created,",
+        "start": 35.3,
+        "end": 35.68,
+        "confidence": 0.996
+    },
+    {
+        "text": "the",
+        "start": 36.24,
+        "end": 36.34,
+        "confidence": 0.565
+    },
+    {
+        "text": "document",
+        "start": 36.34,
+        "end": 36.84,
+        "confidence": 0.676
+    },
+    {
+        "text": "goes",
+        "start": 37.14,
+        "end": 37.3,
+        "confidence": 0.996
+    },
+    {
+        "text": "through",
+        "start": 37.3,
+        "end": 37.56,
+        "confidence": 0.998
+    },
+    {
+        "text": "rigorous",
+        "start": 37.56,
+        "end": 38.14,
+        "confidence": 0.997
+    },
+    {
+        "text": "quality",
+        "start": 38.14,
+        "end": 38.64,
+        "confidence": 0.973
+    },
+    {
+        "text": "control",
+        "start": 38.64,
+        "end": 39.02,
+        "confidence": 0.97
+    },
+    {
+        "text": "channels",
+        "start": 39.02,
+        "end": 39.5,
+        "confidence": 0.998
+    },
+    {
+        "text": "before",
+        "start": 39.5,
+        "end": 40.24,
+        "confidence": 0.933
+    },
+    {
+        "text": "being",
+        "start": 40.24,
+        "end": 40.76,
+        "confidence": 0.992
+    },
+    {
+        "text": "submitted",
+        "start": 40.76,
+        "end": 41.14,
+        "confidence": 0.995
+    },
+    {
+        "text": "to",
+        "start": 41.14,
+        "end": 41.38,
+        "confidence": 0.997
+    },
+    {
+        "text": "the",
+        "start": 41.38,
+        "end": 41.5,
+        "confidence": 0.998
+    },
+    {
+        "text": "client.",
+        "start": 41.5,
+        "end": 41.86,
+        "confidence": 0.998
+    },
+    {
+        "text": "We",
+        "start": 42.54,
+        "end": 42.64,
+        "confidence": 0.952
+    },
+    {
+        "text": "provide",
+        "start": 42.64,
+        "end": 42.96,
+        "confidence": 0.854
+    },
+    {
+        "text": "uncompromising",
+        "start": 43.48,
+        "end": 44.42,
+        "confidence": 0.995
+    },
+    {
+        "text": "quality.",
+        "start": 44.42,
+        "end": 44.92,
+        "confidence": 0.995
+    },
+    {
+        "text": "Rates",
+        "start": 45.26,
+        "end": 46.16,
+        "confidence": 0.908
+    },
+    {
+        "text": "within",
+        "start": 46.16,
+        "end": 46.54,
+        "confidence": 0.986
+    },
+    {
+        "text": "your",
+        "start": 46.54,
+        "end": 46.74,
+        "confidence": 0.996
+    },
+    {
+        "text": "budget,",
+        "start": 46.74,
+        "end": 47.08,
+        "confidence": 0.996
+    },
+    {
+        "text": "timely",
+        "start": 47.4,
+        "end": 47.72,
+        "confidence": 0.993
+    },
+    {
+        "text": "and",
+        "start": 47.72,
+        "end": 48.12,
+        "confidence": 0.945
+    },
+    {
+        "text": "convenient",
+        "start": 48.12,
+        "end": 48.58,
+        "confidence": 0.994
+    },
+    {
+        "text": "delivery.",
+        "start": 48.58,
+        "end": 49.08,
+        "confidence": 0.962
+    },
+    {
+        "text": "Upload",
+        "start": 49.56,
+        "end": 49.92,
+        "confidence": 0.966
+    },
+    {
+        "text": "your",
+        "start": 49.94,
+        "end": 50.08,
+        "confidence": 0.997
+    },
+    {
+        "text": "file",
+        "start": 50.08,
+        "end": 50.36,
+        "confidence": 0.999
+    },
+    {
+        "text": "now.",
+        "start": 50.36,
+        "end": 50.68,
+        "confidence": 0.992
+    },
+    {
+        "text": "We",
+        "start": 51.22,
+        "end": 51.48,
+        "confidence": 0.995
+    },
+    {
+        "text": "do",
+        "start": 51.48,
+        "end": 51.92,
+        "confidence": 0.947
+    },
+    {
+        "text": "the",
+        "start": 51.92,
+        "end": 52.06,
+        "confidence": 0.999
+    },
+    {
+        "text": "rest.",
+        "start": 52.06,
+        "end": 52.4,
+        "confidence": 0.998
+    }
+]

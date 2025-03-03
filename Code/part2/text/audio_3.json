@@ -1,0 +1,2745 @@
+{
+  "text": " In this lesson, we're going to be talking about finance. And one of the most important aspects of finance is interest. When I go to a bank or some other lending institution to borrow money, the bank is happy to give me that money, but then I'm going to be paying the bank for the privilege of using their money. And that amount of money that I pay the bank is called interest. Likewise, if I put money in a savings account or I purchase a certificate of deposit, the bank just doesn't put my money in a little box and leave it there until later. They take my money and lend it to someone else. So they are using my money. The bank has to pay me for the privilege of using my money. Now what makes banks profitable is the rate that they charge people to use the bank's money is higher than the rate that they pay people like me to use my money. The amount of interest that a person pays or earns is dependent on three things. It's dependent on how much money is involved. It's dependent upon the rate of interest being paid or the rate of interest being charged. And it's also dependent upon how much time is involved. If I have a loan and I want to decrease the amount of interest that I'm going to pay, then I'm either going to have to decrease how much money I borrow. I'm going to have to borrow the money over a shorter period of time, or I'm going to have to find a lending institution that charges a lower interest rate. On the other hand, if I want to earn more interest on my investment, I'm going to have to invest more money, leave the money in the account for a longer period of time, or find an institution that will pay me a higher interest rate.",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0.16,
+      "end": 5.6,
+      "text": " In this lesson, we're going to be talking about finance.",
+      "tokens": [
+        50364,
+        682,
+        341,
+        6898,
+        11,
+        321,
+        434,
+        516,
+        281,
+        312,
+        1417,
+        466,
+        10719,
+        13,
+        50694
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1194440225760142,
+      "compression_ratio": 1.7407407407407407,
+      "no_speech_prob": 0.2235855758190155,
+      "confidence": 0.962,
+      "words": [
+        {
+          "text": "In",
+          "start": 0.16,
+          "end": 3.42,
+          "confidence": 0.81
+        },
+        {
+          "text": "this",
+          "start": 3.42,
+          "end": 3.62,
+          "confidence": 0.995
+        },
+        {
+          "text": "lesson,",
+          "start": 3.62,
+          "end": 3.98,
+          "confidence": 0.996
+        },
+        {
+          "text": "we're",
+          "start": 4.08,
+          "end": 4.2,
+          "confidence": 0.945
+        },
+        {
+          "text": "going",
+          "start": 4.2,
+          "end": 4.3,
+          "confidence": 0.96
+        },
+        {
+          "text": "to",
+          "start": 4.3,
+          "end": 4.34,
+          "confidence": 0.997
+        },
+        {
+          "text": "be",
+          "start": 4.34,
+          "end": 4.44,
+          "confidence": 0.987
+        },
+        {
+          "text": "talking",
+          "start": 4.44,
+          "end": 4.74,
+          "confidence": 0.989
+        },
+        {
+          "text": "about",
+          "start": 4.74,
+          "end": 5.06,
+          "confidence": 0.993
+        },
+        {
+          "text": "finance.",
+          "start": 5.06,
+          "end": 5.6,
+          "confidence": 0.979
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "seek": 0,
+      "start": 6.5,
+      "end": 9.66,
+      "text": " And one of the most important aspects of finance is interest.",
+      "tokens": [
+        50694,
+        400,
+        472,
+        295,
+        264,
+        881,
+        1021,
+        7270,
+        295,
+        10719,
+        307,
+        1179,
+        13,
+        50892
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1194440225760142,
+      "compression_ratio": 1.7407407407407407,
+      "no_speech_prob": 0.2235855758190155,
+      "confidence": 0.993,
+      "words": [
+        {
+          "text": "And",
+          "start": 6.5,
+          "end": 6.62,
+          "confidence": 0.969
+        },
+        {
+          "text": "one",
+          "start": 6.62,
+          "end": 6.7,
+          "confidence": 0.997
+        },
+        {
+          "text": "of",
+          "start": 6.7,
+          "end": 6.82,
+          "confidence": 0.999
+        },
+        {
+          "text": "the",
+          "start": 6.82,
+          "end": 6.9,
+          "confidence": 0.998
+        },
+        {
+          "text": "most",
+          "start": 6.9,
+          "end": 7.12,
+          "confidence": 0.992
+        },
+        {
+          "text": "important",
+          "start": 7.12,
+          "end": 7.66,
+          "confidence": 0.999
+        },
+        {
+          "text": "aspects",
+          "start": 7.66,
+          "end": 8.22,
+          "confidence": 0.997
+        },
+        {
+          "text": "of",
+          "start": 8.22,
+          "end": 8.52,
+          "confidence": 0.995
+        },
+        {
+          "text": "finance",
+          "start": 8.52,
+          "end": 8.9,
+          "confidence": 0.997
+        },
+        {
+          "text": "is",
+          "start": 8.9,
+          "end": 9.2,
+          "confidence": 0.986
+        },
+        {
+          "text": "interest.",
+          "start": 9.2,
+          "end": 9.66,
+          "confidence": 0.991
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "seek": 0,
+      "start": 10.42,
+      "end": 15.88,
+      "text": " When I go to a bank or some other lending institution to borrow money, the bank is happy",
+      "tokens": [
+        50892,
+        1133,
+        286,
+        352,
+        281,
+        257,
+        3765,
+        420,
+        512,
+        661,
+        29823,
+        7818,
+        281,
+        11172,
+        1460,
+        11,
+        264,
+        3765,
+        307,
+        2055,
+        51159
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1194440225760142,
+      "compression_ratio": 1.7407407407407407,
+      "no_speech_prob": 0.2235855758190155,
+      "confidence": 0.99,
+      "words": [
+        {
+          "text": "When",
+          "start": 10.42,
+          "end": 10.58,
+          "confidence": 0.999
+        },
+        {
+          "text": "I",
+          "start": 10.58,
+          "end": 10.74,
+          "confidence": 0.998
+        },
+        {
+          "text": "go",
+          "start": 10.74,
+          "end": 10.86,
+          "confidence": 0.997
+        },
+        {
+          "text": "to",
+          "start": 10.86,
+          "end": 11.02,
+          "confidence": 0.997
+        },
+        {
+          "text": "a",
+          "start": 11.02,
+          "end": 11.16,
+          "confidence": 0.995
+        },
+        {
+          "text": "bank",
+          "start": 11.16,
+          "end": 11.54,
+          "confidence": 0.999
+        },
+        {
+          "text": "or",
+          "start": 11.54,
+          "end": 11.92,
+          "confidence": 0.913
+        },
+        {
+          "text": "some",
+          "start": 11.92,
+          "end": 12.2,
+          "confidence": 0.989
+        },
+        {
+          "text": "other",
+          "start": 12.2,
+          "end": 12.4,
+          "confidence": 0.999
+        },
+        {
+          "text": "lending",
+          "start": 12.4,
+          "end": 12.72,
+          "confidence": 1.0
+        },
+        {
+          "text": "institution",
+          "start": 12.72,
+          "end": 13.38,
+          "confidence": 0.997
+        },
+        {
+          "text": "to",
+          "start": 13.38,
+          "end": 13.92,
+          "confidence": 0.973
+        },
+        {
+          "text": "borrow",
+          "start": 13.92,
+          "end": 14.22,
+          "confidence": 0.997
+        },
+        {
+          "text": "money,",
+          "start": 14.22,
+          "end": 14.64,
+          "confidence": 0.996
+        },
+        {
+          "text": "the",
+          "start": 15.2,
+          "end": 15.3,
+          "confidence": 0.991
+        },
+        {
+          "text": "bank",
+          "start": 15.3,
+          "end": 15.46,
+          "confidence": 0.997
+        },
+        {
+          "text": "is",
+          "start": 15.46,
+          "end": 15.62,
+          "confidence": 0.997
+        },
+        {
+          "text": "happy",
+          "start": 15.62,
+          "end": 15.88,
+          "confidence": 0.993
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "seek": 0,
+      "start": 15.92,
+      "end": 20.08,
+      "text": " to give me that money, but then I'm going to be paying the bank for the privilege of",
+      "tokens": [
+        51159,
+        281,
+        976,
+        385,
+        300,
+        1460,
+        11,
+        457,
+        550,
+        286,
+        478,
+        516,
+        281,
+        312,
+        6229,
+        264,
+        3765,
+        337,
+        264,
+        12122,
+        295,
+        51365
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1194440225760142,
+      "compression_ratio": 1.7407407407407407,
+      "no_speech_prob": 0.2235855758190155,
+      "confidence": 0.994,
+      "words": [
+        {
+          "text": "to",
+          "start": 15.92,
+          "end": 16.06,
+          "confidence": 1.0
+        },
+        {
+          "text": "give",
+          "start": 16.06,
+          "end": 16.22,
+          "confidence": 0.999
+        },
+        {
+          "text": "me",
+          "start": 16.22,
+          "end": 16.38,
+          "confidence": 0.999
+        },
+        {
+          "text": "that",
+          "start": 16.38,
+          "end": 16.54,
+          "confidence": 0.996
+        },
+        {
+          "text": "money,",
+          "start": 16.54,
+          "end": 16.86,
+          "confidence": 1.0
+        },
+        {
+          "text": "but",
+          "start": 17.42,
+          "end": 17.5,
+          "confidence": 0.998
+        },
+        {
+          "text": "then",
+          "start": 17.5,
+          "end": 17.64,
+          "confidence": 0.988
+        },
+        {
+          "text": "I'm",
+          "start": 17.64,
+          "end": 17.82,
+          "confidence": 0.98
+        },
+        {
+          "text": "going",
+          "start": 17.82,
+          "end": 17.94,
+          "confidence": 0.999
+        },
+        {
+          "text": "to",
+          "start": 17.94,
+          "end": 18.08,
+          "confidence": 0.998
+        },
+        {
+          "text": "be",
+          "start": 18.08,
+          "end": 18.2,
+          "confidence": 0.993
+        },
+        {
+          "text": "paying",
+          "start": 18.2,
+          "end": 18.56,
+          "confidence": 0.999
+        },
+        {
+          "text": "the",
+          "start": 18.56,
+          "end": 18.8,
+          "confidence": 0.99
+        },
+        {
+          "text": "bank",
+          "start": 18.8,
+          "end": 19.08,
+          "confidence": 0.998
+        },
+        {
+          "text": "for",
+          "start": 19.08,
+          "end": 19.28,
+          "confidence": 0.994
+        },
+        {
+          "text": "the",
+          "start": 19.28,
+          "end": 19.42,
+          "confidence": 0.997
+        },
+        {
+          "text": "privilege",
+          "start": 19.42,
+          "end": 19.8,
+          "confidence": 0.997
+        },
+        {
+          "text": "of",
+          "start": 19.8,
+          "end": 20.08,
+          "confidence": 0.987
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "seek": 0,
+      "start": 20.1,
+      "end": 20.98,
+      "text": " using their money.",
+      "tokens": [
+        51365,
+        1228,
+        641,
+        1460,
+        13,
+        51442
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1194440225760142,
+      "compression_ratio": 1.7407407407407407,
+      "no_speech_prob": 0.2235855758190155,
+      "confidence": 0.998,
+      "words": [
+        {
+          "text": "using",
+          "start": 20.1,
+          "end": 20.36,
+          "confidence": 1.0
+        },
+        {
+          "text": "their",
+          "start": 20.36,
+          "end": 20.64,
+          "confidence": 0.995
+        },
+        {
+          "text": "money.",
+          "start": 20.64,
+          "end": 20.98,
+          "confidence": 0.999
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "seek": 0,
+      "start": 21.46,
+      "end": 24.4,
+      "text": " And that amount of money that I pay the bank is called interest.",
+      "tokens": [
+        51442,
+        400,
+        300,
+        2372,
+        295,
+        1460,
+        300,
+        286,
+        1689,
+        264,
+        3765,
+        307,
+        1219,
+        1179,
+        13,
+        51614
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1194440225760142,
+      "compression_ratio": 1.7407407407407407,
+      "no_speech_prob": 0.2235855758190155,
+      "confidence": 0.996,
+      "words": [
+        {
+          "text": "And",
+          "start": 21.46,
+          "end": 21.6,
+          "confidence": 0.999
+        },
+        {
+          "text": "that",
+          "start": 21.6,
+          "end": 21.74,
+          "confidence": 0.998
+        },
+        {
+          "text": "amount",
+          "start": 21.74,
+          "end": 21.92,
+          "confidence": 0.998
+        },
+        {
+          "text": "of",
+          "start": 21.92,
+          "end": 22.14,
+          "confidence": 0.998
+        },
+        {
+          "text": "money",
+          "start": 22.14,
+          "end": 22.46,
+          "confidence": 0.997
+        },
+        {
+          "text": "that",
+          "start": 22.46,
+          "end": 22.66,
+          "confidence": 0.993
+        },
+        {
+          "text": "I",
+          "start": 22.66,
+          "end": 22.78,
+          "confidence": 0.999
+        },
+        {
+          "text": "pay",
+          "start": 22.78,
+          "end": 23.0,
+          "confidence": 0.995
+        },
+        {
+          "text": "the",
+          "start": 23.0,
+          "end": 23.18,
+          "confidence": 0.986
+        },
+        {
+          "text": "bank",
+          "start": 23.18,
+          "end": 23.46,
+          "confidence": 0.999
+        },
+        {
+          "text": "is",
+          "start": 23.46,
+          "end": 23.66,
+          "confidence": 0.994
+        },
+        {
+          "text": "called",
+          "start": 23.66,
+          "end": 23.9,
+          "confidence": 0.998
+        },
+        {
+          "text": "interest.",
+          "start": 23.9,
+          "end": 24.4,
+          "confidence": 0.996
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "seek": 2500,
+      "start": 25.46,
+      "end": 30.74,
+      "text": " Likewise, if I put money in a savings account or I purchase a certificate of deposit, the",
+      "tokens": [
+        50364,
+        30269,
+        11,
+        498,
+        286,
+        829,
+        1460,
+        294,
+        257,
+        13454,
+        2696,
+        420,
+        286,
+        8110,
+        257,
+        15953,
+        295,
+        19107,
+        11,
+        264,
+        50652
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1275661563873291,
+      "compression_ratio": 1.703056768558952,
+      "no_speech_prob": 0.009167901240289211,
+      "confidence": 0.972,
+      "words": [
+        {
+          "text": "Likewise,",
+          "start": 25.46,
+          "end": 25.48,
+          "confidence": 0.994
+        },
+        {
+          "text": "if",
+          "start": 25.72,
+          "end": 25.9,
+          "confidence": 0.996
+        },
+        {
+          "text": "I",
+          "start": 25.9,
+          "end": 26.04,
+          "confidence": 0.999
+        },
+        {
+          "text": "put",
+          "start": 26.04,
+          "end": 26.24,
+          "confidence": 0.999
+        },
+        {
+          "text": "money",
+          "start": 26.24,
+          "end": 26.46,
+          "confidence": 0.998
+        },
+        {
+          "text": "in",
+          "start": 26.46,
+          "end": 26.6,
+          "confidence": 0.994
+        },
+        {
+          "text": "a",
+          "start": 26.6,
+          "end": 26.72,
+          "confidence": 0.997
+        },
+        {
+          "text": "savings",
+          "start": 26.72,
+          "end": 26.98,
+          "confidence": 0.997
+        },
+        {
+          "text": "account",
+          "start": 26.98,
+          "end": 27.42,
+          "confidence": 0.999
+        },
+        {
+          "text": "or",
+          "start": 27.42,
+          "end": 27.94,
+          "confidence": 0.744
+        },
+        {
+          "text": "I",
+          "start": 27.94,
+          "end": 28.08,
+          "confidence": 0.97
+        },
+        {
+          "text": "purchase",
+          "start": 28.08,
+          "end": 28.46,
+          "confidence": 0.936
+        },
+        {
+          "text": "a",
+          "start": 28.46,
+          "end": 28.72,
+          "confidence": 0.998
+        },
+        {
+          "text": "certificate",
+          "start": 28.72,
+          "end": 29.14,
+          "confidence": 0.967
+        },
+        {
+          "text": "of",
+          "start": 29.14,
+          "end": 29.38,
+          "confidence": 0.997
+        },
+        {
+          "text": "deposit,",
+          "start": 29.38,
+          "end": 29.94,
+          "confidence": 0.998
+        },
+        {
+          "text": "the",
+          "start": 30.64,
+          "end": 30.74,
+          "confidence": 0.982
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "seek": 2500,
+      "start": 30.74,
+      "end": 34.64,
+      "text": " bank just doesn't put my money in a little box and leave it there until later.",
+      "tokens": [
+        50652,
+        3765,
+        445,
+        1177,
+        380,
+        829,
+        452,
+        1460,
+        294,
+        257,
+        707,
+        2424,
+        293,
+        1856,
+        309,
+        456,
+        1826,
+        1780,
+        13,
+        50876
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1275661563873291,
+      "compression_ratio": 1.703056768558952,
+      "no_speech_prob": 0.009167901240289211,
+      "confidence": 0.996,
+      "words": [
+        {
+          "text": "bank",
+          "start": 30.74,
+          "end": 31.0,
+          "confidence": 0.998
+        },
+        {
+          "text": "just",
+          "start": 31.0,
+          "end": 31.26,
+          "confidence": 0.991
+        },
+        {
+          "text": "doesn't",
+          "start": 31.26,
+          "end": 31.62,
+          "confidence": 0.999
+        },
+        {
+          "text": "put",
+          "start": 31.62,
+          "end": 31.8,
+          "confidence": 0.997
+        },
+        {
+          "text": "my",
+          "start": 31.8,
+          "end": 32.02,
+          "confidence": 0.988
+        },
+        {
+          "text": "money",
+          "start": 32.02,
+          "end": 32.3,
+          "confidence": 0.999
+        },
+        {
+          "text": "in",
+          "start": 32.3,
+          "end": 32.46,
+          "confidence": 0.997
+        },
+        {
+          "text": "a",
+          "start": 32.46,
+          "end": 32.56,
+          "confidence": 0.994
+        },
+        {
+          "text": "little",
+          "start": 32.56,
+          "end": 32.7,
+          "confidence": 0.992
+        },
+        {
+          "text": "box",
+          "start": 32.7,
+          "end": 33.14,
+          "confidence": 0.999
+        },
+        {
+          "text": "and",
+          "start": 33.14,
+          "end": 33.44,
+          "confidence": 0.993
+        },
+        {
+          "text": "leave",
+          "start": 33.44,
+          "end": 33.66,
+          "confidence": 0.999
+        },
+        {
+          "text": "it",
+          "start": 33.66,
+          "end": 33.84,
+          "confidence": 0.998
+        },
+        {
+          "text": "there",
+          "start": 33.84,
+          "end": 34.02,
+          "confidence": 0.998
+        },
+        {
+          "text": "until",
+          "start": 34.02,
+          "end": 34.28,
+          "confidence": 0.995
+        },
+        {
+          "text": "later.",
+          "start": 34.28,
+          "end": 34.64,
+          "confidence": 0.998
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "seek": 2500,
+      "start": 35.14,
+      "end": 37.66,
+      "text": " They take my money and lend it to someone else.",
+      "tokens": [
+        50876,
+        814,
+        747,
+        452,
+        1460,
+        293,
+        21774,
+        309,
+        281,
+        1580,
+        1646,
+        13,
+        51039
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1275661563873291,
+      "compression_ratio": 1.703056768558952,
+      "no_speech_prob": 0.009167901240289211,
+      "confidence": 0.997,
+      "words": [
+        {
+          "text": "They",
+          "start": 35.14,
+          "end": 35.28,
+          "confidence": 0.999
+        },
+        {
+          "text": "take",
+          "start": 35.28,
+          "end": 35.5,
+          "confidence": 0.998
+        },
+        {
+          "text": "my",
+          "start": 35.5,
+          "end": 35.78,
+          "confidence": 0.998
+        },
+        {
+          "text": "money",
+          "start": 35.78,
+          "end": 36.16,
+          "confidence": 1.0
+        },
+        {
+          "text": "and",
+          "start": 36.16,
+          "end": 36.62,
+          "confidence": 0.993
+        },
+        {
+          "text": "lend",
+          "start": 36.62,
+          "end": 36.76,
+          "confidence": 0.988
+        },
+        {
+          "text": "it",
+          "start": 36.76,
+          "end": 36.9,
+          "confidence": 0.998
+        },
+        {
+          "text": "to",
+          "start": 36.9,
+          "end": 37.02,
+          "confidence": 0.998
+        },
+        {
+          "text": "someone",
+          "start": 37.02,
+          "end": 37.3,
+          "confidence": 0.998
+        },
+        {
+          "text": "else.",
+          "start": 37.3,
+          "end": 37.66,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "seek": 2500,
+      "start": 38.4,
+      "end": 40.14,
+      "text": " So they are using my money.",
+      "tokens": [
+        51039,
+        407,
+        436,
+        366,
+        1228,
+        452,
+        1460,
+        13,
+        51150
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1275661563873291,
+      "compression_ratio": 1.703056768558952,
+      "no_speech_prob": 0.009167901240289211,
+      "confidence": 0.998,
+      "words": [
+        {
+          "text": "So",
+          "start": 38.4,
+          "end": 38.52,
+          "confidence": 0.999
+        },
+        {
+          "text": "they",
+          "start": 38.52,
+          "end": 38.7,
+          "confidence": 0.999
+        },
+        {
+          "text": "are",
+          "start": 38.7,
+          "end": 38.84,
+          "confidence": 0.993
+        },
+        {
+          "text": "using",
+          "start": 38.84,
+          "end": 39.34,
+          "confidence": 1.0
+        },
+        {
+          "text": "my",
+          "start": 39.34,
+          "end": 39.78,
+          "confidence": 0.998
+        },
+        {
+          "text": "money.",
+          "start": 39.78,
+          "end": 40.14,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "seek": 2500,
+      "start": 40.6,
+      "end": 44.34,
+      "text": " The bank has to pay me for the privilege of using my money.",
+      "tokens": [
+        51150,
+        440,
+        3765,
+        575,
+        281,
+        1689,
+        385,
+        337,
+        264,
+        12122,
+        295,
+        1228,
+        452,
+        1460,
+        13,
+        51380
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1275661563873291,
+      "compression_ratio": 1.703056768558952,
+      "no_speech_prob": 0.009167901240289211,
+      "confidence": 0.999,
+      "words": [
+        {
+          "text": "The",
+          "start": 40.6,
+          "end": 40.76,
+          "confidence": 0.999
+        },
+        {
+          "text": "bank",
+          "start": 40.76,
+          "end": 41.02,
+          "confidence": 0.999
+        },
+        {
+          "text": "has",
+          "start": 41.02,
+          "end": 41.3,
+          "confidence": 0.999
+        },
+        {
+          "text": "to",
+          "start": 41.3,
+          "end": 41.5,
+          "confidence": 1.0
+        },
+        {
+          "text": "pay",
+          "start": 41.5,
+          "end": 41.74,
+          "confidence": 1.0
+        },
+        {
+          "text": "me",
+          "start": 41.74,
+          "end": 42.14,
+          "confidence": 0.999
+        },
+        {
+          "text": "for",
+          "start": 42.14,
+          "end": 42.54,
+          "confidence": 0.998
+        },
+        {
+          "text": "the",
+          "start": 42.54,
+          "end": 42.68,
+          "confidence": 0.999
+        },
+        {
+          "text": "privilege",
+          "start": 42.68,
+          "end": 43.1,
+          "confidence": 0.999
+        },
+        {
+          "text": "of",
+          "start": 43.1,
+          "end": 43.48,
+          "confidence": 0.999
+        },
+        {
+          "text": "using",
+          "start": 43.48,
+          "end": 43.7,
+          "confidence": 0.999
+        },
+        {
+          "text": "my",
+          "start": 43.7,
+          "end": 43.98,
+          "confidence": 0.999
+        },
+        {
+          "text": "money.",
+          "start": 43.98,
+          "end": 44.34,
+          "confidence": 0.999
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "seek": 2500,
+      "start": 45.26,
+      "end": 50.88,
+      "text": " Now what makes banks profitable is the rate that they charge people to use the bank's",
+      "tokens": [
+        51380,
+        823,
+        437,
+        1669,
+        10237,
+        21608,
+        307,
+        264,
+        3314,
+        300,
+        436,
+        4602,
+        561,
+        281,
+        764,
+        264,
+        3765,
+        311,
+        51656
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1275661563873291,
+      "compression_ratio": 1.703056768558952,
+      "no_speech_prob": 0.009167901240289211,
+      "confidence": 0.966,
+      "words": [
+        {
+          "text": "Now",
+          "start": 45.26,
+          "end": 45.38,
+          "confidence": 0.996
+        },
+        {
+          "text": "what",
+          "start": 45.38,
+          "end": 45.56,
+          "confidence": 0.98
+        },
+        {
+          "text": "makes",
+          "start": 45.56,
+          "end": 45.78,
+          "confidence": 0.998
+        },
+        {
+          "text": "banks",
+          "start": 45.78,
+          "end": 46.06,
+          "confidence": 0.99
+        },
+        {
+          "text": "profitable",
+          "start": 46.06,
+          "end": 46.72,
+          "confidence": 0.999
+        },
+        {
+          "text": "is",
+          "start": 46.72,
+          "end": 47.82,
+          "confidence": 0.978
+        },
+        {
+          "text": "the",
+          "start": 47.82,
+          "end": 48.28,
+          "confidence": 0.986
+        },
+        {
+          "text": "rate",
+          "start": 48.28,
+          "end": 48.58,
+          "confidence": 0.932
+        },
+        {
+          "text": "that",
+          "start": 48.58,
+          "end": 48.84,
+          "confidence": 0.995
+        },
+        {
+          "text": "they",
+          "start": 48.84,
+          "end": 49.0,
+          "confidence": 0.998
+        },
+        {
+          "text": "charge",
+          "start": 49.0,
+          "end": 49.36,
+          "confidence": 0.984
+        },
+        {
+          "text": "people",
+          "start": 49.36,
+          "end": 49.76,
+          "confidence": 0.999
+        },
+        {
+          "text": "to",
+          "start": 49.76,
+          "end": 50.06,
+          "confidence": 0.999
+        },
+        {
+          "text": "use",
+          "start": 50.06,
+          "end": 50.26,
+          "confidence": 0.999
+        },
+        {
+          "text": "the",
+          "start": 50.26,
+          "end": 50.46,
+          "confidence": 0.675
+        },
+        {
+          "text": "bank's",
+          "start": 50.46,
+          "end": 50.88,
+          "confidence": 0.984
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "seek": 5084,
+      "start": 50.88,
+      "end": 56.24,
+      "text": " money is higher than the rate that they pay people like me to use my money.",
+      "tokens": [
+        50364,
+        1460,
+        307,
+        2946,
+        813,
+        264,
+        3314,
+        300,
+        436,
+        1689,
+        561,
+        411,
+        385,
+        281,
+        764,
+        452,
+        1460,
+        13,
+        50716
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.06715758267570944,
+      "compression_ratio": 1.9388888888888889,
+      "no_speech_prob": 0.02058558352291584,
+      "confidence": 0.996,
+      "words": [
+        {
+          "text": "money",
+          "start": 50.88,
+          "end": 51.2,
+          "confidence": 0.999
+        },
+        {
+          "text": "is",
+          "start": 51.2,
+          "end": 51.78,
+          "confidence": 0.995
+        },
+        {
+          "text": "higher",
+          "start": 51.78,
+          "end": 52.12,
+          "confidence": 0.999
+        },
+        {
+          "text": "than",
+          "start": 52.12,
+          "end": 52.52,
+          "confidence": 0.994
+        },
+        {
+          "text": "the",
+          "start": 52.52,
+          "end": 52.68,
+          "confidence": 0.999
+        },
+        {
+          "text": "rate",
+          "start": 52.68,
+          "end": 52.9,
+          "confidence": 0.998
+        },
+        {
+          "text": "that",
+          "start": 52.9,
+          "end": 53.12,
+          "confidence": 0.991
+        },
+        {
+          "text": "they",
+          "start": 53.12,
+          "end": 53.34,
+          "confidence": 0.998
+        },
+        {
+          "text": "pay",
+          "start": 53.34,
+          "end": 53.84,
+          "confidence": 0.999
+        },
+        {
+          "text": "people",
+          "start": 53.84,
+          "end": 54.3,
+          "confidence": 0.997
+        },
+        {
+          "text": "like",
+          "start": 54.3,
+          "end": 54.62,
+          "confidence": 0.991
+        },
+        {
+          "text": "me",
+          "start": 54.62,
+          "end": 54.98,
+          "confidence": 0.999
+        },
+        {
+          "text": "to",
+          "start": 54.98,
+          "end": 55.48,
+          "confidence": 0.987
+        },
+        {
+          "text": "use",
+          "start": 55.48,
+          "end": 55.66,
+          "confidence": 1.0
+        },
+        {
+          "text": "my",
+          "start": 55.66,
+          "end": 55.92,
+          "confidence": 0.999
+        },
+        {
+          "text": "money.",
+          "start": 55.92,
+          "end": 56.24,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "seek": 5084,
+      "start": 57.78,
+      "end": 62.8,
+      "text": " The amount of interest that a person pays or earns is dependent on three things.",
+      "tokens": [
+        50716,
+        440,
+        2372,
+        295,
+        1179,
+        300,
+        257,
+        954,
+        10604,
+        420,
+        46936,
+        307,
+        12334,
+        322,
+        1045,
+        721,
+        13,
+        50980
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.06715758267570944,
+      "compression_ratio": 1.9388888888888889,
+      "no_speech_prob": 0.02058558352291584,
+      "confidence": 0.991,
+      "words": [
+        {
+          "text": "The",
+          "start": 57.78,
+          "end": 57.92,
+          "confidence": 1.0
+        },
+        {
+          "text": "amount",
+          "start": 57.92,
+          "end": 58.08,
+          "confidence": 1.0
+        },
+        {
+          "text": "of",
+          "start": 58.08,
+          "end": 58.28,
+          "confidence": 0.999
+        },
+        {
+          "text": "interest",
+          "start": 58.28,
+          "end": 58.8,
+          "confidence": 0.998
+        },
+        {
+          "text": "that",
+          "start": 58.8,
+          "end": 59.2,
+          "confidence": 0.995
+        },
+        {
+          "text": "a",
+          "start": 59.2,
+          "end": 59.34,
+          "confidence": 0.997
+        },
+        {
+          "text": "person",
+          "start": 59.34,
+          "end": 59.6,
+          "confidence": 1.0
+        },
+        {
+          "text": "pays",
+          "start": 59.6,
+          "end": 60.02,
+          "confidence": 0.997
+        },
+        {
+          "text": "or",
+          "start": 60.02,
+          "end": 60.7,
+          "confidence": 0.93
+        },
+        {
+          "text": "earns",
+          "start": 60.7,
+          "end": 61.14,
+          "confidence": 0.994
+        },
+        {
+          "text": "is",
+          "start": 61.14,
+          "end": 61.4,
+          "confidence": 0.993
+        },
+        {
+          "text": "dependent",
+          "start": 61.4,
+          "end": 61.8,
+          "confidence": 0.996
+        },
+        {
+          "text": "on",
+          "start": 61.8,
+          "end": 62.14,
+          "confidence": 0.998
+        },
+        {
+          "text": "three",
+          "start": 62.14,
+          "end": 62.42,
+          "confidence": 0.972
+        },
+        {
+          "text": "things.",
+          "start": 62.42,
+          "end": 62.8,
+          "confidence": 0.999
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "seek": 5084,
+      "start": 63.02,
+      "end": 65.82,
+      "text": " It's dependent on how much money is involved.",
+      "tokens": [
+        50980,
+        467,
+        311,
+        12334,
+        322,
+        577,
+        709,
+        1460,
+        307,
+        3288,
+        13,
+        51168
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.06715758267570944,
+      "compression_ratio": 1.9388888888888889,
+      "no_speech_prob": 0.02058558352291584,
+      "confidence": 0.996,
+      "words": [
+        {
+          "text": "It's",
+          "start": 63.02,
+          "end": 63.2,
+          "confidence": 0.991
+        },
+        {
+          "text": "dependent",
+          "start": 63.2,
+          "end": 63.66,
+          "confidence": 0.997
+        },
+        {
+          "text": "on",
+          "start": 63.66,
+          "end": 64.06,
+          "confidence": 0.995
+        },
+        {
+          "text": "how",
+          "start": 64.06,
+          "end": 64.44,
+          "confidence": 0.999
+        },
+        {
+          "text": "much",
+          "start": 64.44,
+          "end": 64.66,
+          "confidence": 1.0
+        },
+        {
+          "text": "money",
+          "start": 64.66,
+          "end": 64.98,
+          "confidence": 0.997
+        },
+        {
+          "text": "is",
+          "start": 64.98,
+          "end": 65.42,
+          "confidence": 0.998
+        },
+        {
+          "text": "involved.",
+          "start": 65.42,
+          "end": 65.82,
+          "confidence": 0.999
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "seek": 5084,
+      "start": 66.74,
+      "end": 71.74,
+      "text": " It's dependent upon the rate of interest being paid or the rate of interest being charged.",
+      "tokens": [
+        51168,
+        467,
+        311,
+        12334,
+        3564,
+        264,
+        3314,
+        295,
+        1179,
+        885,
+        4835,
+        420,
+        264,
+        3314,
+        295,
+        1179,
+        885,
+        11109,
+        13,
+        51448
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.06715758267570944,
+      "compression_ratio": 1.9388888888888889,
+      "no_speech_prob": 0.02058558352291584,
+      "confidence": 0.988,
+      "words": [
+        {
+          "text": "It's",
+          "start": 66.74,
+          "end": 66.92,
+          "confidence": 0.997
+        },
+        {
+          "text": "dependent",
+          "start": 66.92,
+          "end": 67.34,
+          "confidence": 0.991
+        },
+        {
+          "text": "upon",
+          "start": 67.34,
+          "end": 67.78,
+          "confidence": 0.95
+        },
+        {
+          "text": "the",
+          "start": 67.78,
+          "end": 68.22,
+          "confidence": 0.999
+        },
+        {
+          "text": "rate",
+          "start": 68.22,
+          "end": 68.6,
+          "confidence": 0.998
+        },
+        {
+          "text": "of",
+          "start": 68.6,
+          "end": 69.0,
+          "confidence": 0.999
+        },
+        {
+          "text": "interest",
+          "start": 69.0,
+          "end": 69.3,
+          "confidence": 0.996
+        },
+        {
+          "text": "being",
+          "start": 69.3,
+          "end": 69.6,
+          "confidence": 0.997
+        },
+        {
+          "text": "paid",
+          "start": 69.6,
+          "end": 69.96,
+          "confidence": 0.994
+        },
+        {
+          "text": "or",
+          "start": 69.96,
+          "end": 70.18,
+          "confidence": 0.921
+        },
+        {
+          "text": "the",
+          "start": 70.18,
+          "end": 70.32,
+          "confidence": 0.997
+        },
+        {
+          "text": "rate",
+          "start": 70.32,
+          "end": 70.58,
+          "confidence": 0.999
+        },
+        {
+          "text": "of",
+          "start": 70.58,
+          "end": 70.82,
+          "confidence": 0.996
+        },
+        {
+          "text": "interest",
+          "start": 70.82,
+          "end": 71.1,
+          "confidence": 0.998
+        },
+        {
+          "text": "being",
+          "start": 71.1,
+          "end": 71.34,
+          "confidence": 0.997
+        },
+        {
+          "text": "charged.",
+          "start": 71.34,
+          "end": 71.74,
+          "confidence": 0.971
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "seek": 5084,
+      "start": 72.38,
+      "end": 75.8,
+      "text": " And it's also dependent upon how much time is involved.",
+      "tokens": [
+        51448,
+        400,
+        309,
+        311,
+        611,
+        12334,
+        3564,
+        577,
+        709,
+        565,
+        307,
+        3288,
+        13,
+        51700
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.06715758267570944,
+      "compression_ratio": 1.9388888888888889,
+      "no_speech_prob": 0.02058558352291584,
+      "confidence": 0.997,
+      "words": [
+        {
+          "text": "And",
+          "start": 72.38,
+          "end": 72.52,
+          "confidence": 0.997
+        },
+        {
+          "text": "it's",
+          "start": 72.52,
+          "end": 72.68,
+          "confidence": 0.997
+        },
+        {
+          "text": "also",
+          "start": 72.68,
+          "end": 73.08,
+          "confidence": 0.996
+        },
+        {
+          "text": "dependent",
+          "start": 73.08,
+          "end": 73.64,
+          "confidence": 0.998
+        },
+        {
+          "text": "upon",
+          "start": 73.64,
+          "end": 74.08,
+          "confidence": 0.986
+        },
+        {
+          "text": "how",
+          "start": 74.08,
+          "end": 74.4,
+          "confidence": 0.999
+        },
+        {
+          "text": "much",
+          "start": 74.4,
+          "end": 74.6,
+          "confidence": 1.0
+        },
+        {
+          "text": "time",
+          "start": 74.6,
+          "end": 75.12,
+          "confidence": 0.999
+        },
+        {
+          "text": "is",
+          "start": 75.12,
+          "end": 75.42,
+          "confidence": 0.999
+        },
+        {
+          "text": "involved.",
+          "start": 75.42,
+          "end": 75.8,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "seek": 7756,
+      "start": 77.56,
+      "end": 82.0,
+      "text": " If I have a loan and I want to decrease the amount of interest that I'm going to pay,",
+      "tokens": [
+        50364,
+        759,
+        286,
+        362,
+        257,
+        10529,
+        293,
+        286,
+        528,
+        281,
+        11514,
+        264,
+        2372,
+        295,
+        1179,
+        300,
+        286,
+        478,
+        516,
+        281,
+        1689,
+        11,
+        50618
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.09606767272949218,
+      "compression_ratio": 2.0815450643776825,
+      "no_speech_prob": 0.030769841745495796,
+      "confidence": 0.989,
+      "words": [
+        {
+          "text": "If",
+          "start": 77.56,
+          "end": 77.6,
+          "confidence": 0.978
+        },
+        {
+          "text": "I",
+          "start": 77.6,
+          "end": 77.74,
+          "confidence": 0.999
+        },
+        {
+          "text": "have",
+          "start": 77.74,
+          "end": 77.92,
+          "confidence": 0.998
+        },
+        {
+          "text": "a",
+          "start": 77.92,
+          "end": 78.1,
+          "confidence": 0.994
+        },
+        {
+          "text": "loan",
+          "start": 78.1,
+          "end": 78.46,
+          "confidence": 1.0
+        },
+        {
+          "text": "and",
+          "start": 78.46,
+          "end": 79.02,
+          "confidence": 0.914
+        },
+        {
+          "text": "I",
+          "start": 79.02,
+          "end": 79.14,
+          "confidence": 0.995
+        },
+        {
+          "text": "want",
+          "start": 79.14,
+          "end": 79.3,
+          "confidence": 0.998
+        },
+        {
+          "text": "to",
+          "start": 79.3,
+          "end": 79.48,
+          "confidence": 0.998
+        },
+        {
+          "text": "decrease",
+          "start": 79.48,
+          "end": 80.02,
+          "confidence": 0.998
+        },
+        {
+          "text": "the",
+          "start": 80.02,
+          "end": 80.46,
+          "confidence": 0.998
+        },
+        {
+          "text": "amount",
+          "start": 80.46,
+          "end": 80.68,
+          "confidence": 0.998
+        },
+        {
+          "text": "of",
+          "start": 80.68,
+          "end": 80.84,
+          "confidence": 0.998
+        },
+        {
+          "text": "interest",
+          "start": 80.84,
+          "end": 81.1,
+          "confidence": 0.996
+        },
+        {
+          "text": "that",
+          "start": 81.1,
+          "end": 81.3,
+          "confidence": 0.979
+        },
+        {
+          "text": "I'm",
+          "start": 81.3,
+          "end": 81.44,
+          "confidence": 0.973
+        },
+        {
+          "text": "going",
+          "start": 81.44,
+          "end": 81.58,
+          "confidence": 0.998
+        },
+        {
+          "text": "to",
+          "start": 81.58,
+          "end": 81.72,
+          "confidence": 0.997
+        },
+        {
+          "text": "pay,",
+          "start": 81.72,
+          "end": 82.0,
+          "confidence": 0.993
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "seek": 7756,
+      "start": 82.5,
+      "end": 85.74,
+      "text": " then I'm either going to have to decrease how much money I borrow.",
+      "tokens": [
+        50618,
+        550,
+        286,
+        478,
+        2139,
+        516,
+        281,
+        362,
+        281,
+        11514,
+        577,
+        709,
+        1460,
+        286,
+        11172,
+        13,
+        50816
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.09606767272949218,
+      "compression_ratio": 2.0815450643776825,
+      "no_speech_prob": 0.030769841745495796,
+      "confidence": 0.993,
+      "words": [
+        {
+          "text": "then",
+          "start": 82.5,
+          "end": 82.64,
+          "confidence": 0.986
+        },
+        {
+          "text": "I'm",
+          "start": 82.64,
+          "end": 82.82,
+          "confidence": 0.992
+        },
+        {
+          "text": "either",
+          "start": 82.82,
+          "end": 83.04,
+          "confidence": 0.992
+        },
+        {
+          "text": "going",
+          "start": 83.04,
+          "end": 83.24,
+          "confidence": 0.971
+        },
+        {
+          "text": "to",
+          "start": 83.24,
+          "end": 83.32,
+          "confidence": 0.998
+        },
+        {
+          "text": "have",
+          "start": 83.32,
+          "end": 83.46,
+          "confidence": 0.998
+        },
+        {
+          "text": "to",
+          "start": 83.46,
+          "end": 83.64,
+          "confidence": 0.998
+        },
+        {
+          "text": "decrease",
+          "start": 83.64,
+          "end": 84.32,
+          "confidence": 0.998
+        },
+        {
+          "text": "how",
+          "start": 84.32,
+          "end": 84.72,
+          "confidence": 0.999
+        },
+        {
+          "text": "much",
+          "start": 84.72,
+          "end": 84.94,
+          "confidence": 0.999
+        },
+        {
+          "text": "money",
+          "start": 84.94,
+          "end": 85.24,
+          "confidence": 0.99
+        },
+        {
+          "text": "I",
+          "start": 85.24,
+          "end": 85.42,
+          "confidence": 0.996
+        },
+        {
+          "text": "borrow.",
+          "start": 85.42,
+          "end": 85.74,
+          "confidence": 0.996
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "seek": 7756,
+      "start": 86.58,
+      "end": 91.46,
+      "text": " I'm going to have to borrow the money over a shorter period of time, or I'm going to",
+      "tokens": [
+        50816,
+        286,
+        478,
+        516,
+        281,
+        362,
+        281,
+        11172,
+        264,
+        1460,
+        670,
+        257,
+        11639,
+        2896,
+        295,
+        565,
+        11,
+        420,
+        286,
+        478,
+        516,
+        281,
+        51062
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.09606767272949218,
+      "compression_ratio": 2.0815450643776825,
+      "no_speech_prob": 0.030769841745495796,
+      "confidence": 0.994,
+      "words": [
+        {
+          "text": "I'm",
+          "start": 86.58,
+          "end": 86.8,
+          "confidence": 0.999
+        },
+        {
+          "text": "going",
+          "start": 86.8,
+          "end": 87.04,
+          "confidence": 0.999
+        },
+        {
+          "text": "to",
+          "start": 87.04,
+          "end": 87.3,
+          "confidence": 0.999
+        },
+        {
+          "text": "have",
+          "start": 87.3,
+          "end": 87.5,
+          "confidence": 0.999
+        },
+        {
+          "text": "to",
+          "start": 87.5,
+          "end": 87.84,
+          "confidence": 0.999
+        },
+        {
+          "text": "borrow",
+          "start": 87.84,
+          "end": 88.4,
+          "confidence": 0.999
+        },
+        {
+          "text": "the",
+          "start": 88.4,
+          "end": 88.62,
+          "confidence": 0.998
+        },
+        {
+          "text": "money",
+          "start": 88.62,
+          "end": 88.88,
+          "confidence": 1.0
+        },
+        {
+          "text": "over",
+          "start": 88.88,
+          "end": 89.28,
+          "confidence": 0.992
+        },
+        {
+          "text": "a",
+          "start": 89.28,
+          "end": 89.5,
+          "confidence": 0.996
+        },
+        {
+          "text": "shorter",
+          "start": 89.5,
+          "end": 89.74,
+          "confidence": 0.993
+        },
+        {
+          "text": "period",
+          "start": 89.74,
+          "end": 90.06,
+          "confidence": 0.995
+        },
+        {
+          "text": "of",
+          "start": 90.06,
+          "end": 90.22,
+          "confidence": 0.998
+        },
+        {
+          "text": "time,",
+          "start": 90.22,
+          "end": 90.54,
+          "confidence": 1.0
+        },
+        {
+          "text": "or",
+          "start": 91.06,
+          "end": 91.16,
+          "confidence": 0.989
+        },
+        {
+          "text": "I'm",
+          "start": 91.16,
+          "end": 91.26,
+          "confidence": 0.997
+        },
+        {
+          "text": "going",
+          "start": 91.26,
+          "end": 91.44,
+          "confidence": 0.993
+        },
+        {
+          "text": "to",
+          "start": 91.44,
+          "end": 91.46,
+          "confidence": 0.943
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "seek": 7756,
+      "start": 91.46,
+      "end": 94.96,
+      "text": " have to find a lending institution that charges a lower interest rate.",
+      "tokens": [
+        51062,
+        362,
+        281,
+        915,
+        257,
+        29823,
+        7818,
+        300,
+        12235,
+        257,
+        3126,
+        1179,
+        3314,
+        13,
+        51286
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.09606767272949218,
+      "compression_ratio": 2.0815450643776825,
+      "no_speech_prob": 0.030769841745495796,
+      "confidence": 0.998,
+      "words": [
+        {
+          "text": "have",
+          "start": 91.46,
+          "end": 91.66,
+          "confidence": 0.999
+        },
+        {
+          "text": "to",
+          "start": 91.66,
+          "end": 91.8,
+          "confidence": 0.998
+        },
+        {
+          "text": "find",
+          "start": 91.8,
+          "end": 92.02,
+          "confidence": 0.998
+        },
+        {
+          "text": "a",
+          "start": 92.02,
+          "end": 92.2,
+          "confidence": 0.99
+        },
+        {
+          "text": "lending",
+          "start": 92.2,
+          "end": 92.4,
+          "confidence": 1.0
+        },
+        {
+          "text": "institution",
+          "start": 92.4,
+          "end": 92.88,
+          "confidence": 0.998
+        },
+        {
+          "text": "that",
+          "start": 92.88,
+          "end": 93.32,
+          "confidence": 0.998
+        },
+        {
+          "text": "charges",
+          "start": 93.32,
+          "end": 93.64,
+          "confidence": 0.999
+        },
+        {
+          "text": "a",
+          "start": 93.64,
+          "end": 93.88,
+          "confidence": 0.997
+        },
+        {
+          "text": "lower",
+          "start": 93.88,
+          "end": 94.12,
+          "confidence": 0.999
+        },
+        {
+          "text": "interest",
+          "start": 94.12,
+          "end": 94.58,
+          "confidence": 0.999
+        },
+        {
+          "text": "rate.",
+          "start": 94.58,
+          "end": 94.96,
+          "confidence": 0.998
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "seek": 7756,
+      "start": 95.82,
+      "end": 100.53,
+      "text": " On the other hand, if I want to earn more interest on my investment, I'm going to have",
+      "tokens": [
+        51286,
+        1282,
+        264,
+        661,
+        1011,
+        11,
+        498,
+        286,
+        528,
+        281,
+        6012,
+        544,
+        1179,
+        322,
+        452,
+        6078,
+        11,
+        286,
+        478,
+        516,
+        281,
+        362,
+        51520
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.09606767272949218,
+      "compression_ratio": 2.0815450643776825,
+      "no_speech_prob": 0.030769841745495796,
+      "confidence": 0.998,
+      "words": [
+        {
+          "text": "On",
+          "start": 95.82,
+          "end": 96.02,
+          "confidence": 0.999
+        },
+        {
+          "text": "the",
+          "start": 96.02,
+          "end": 96.14,
+          "confidence": 0.999
+        },
+        {
+          "text": "other",
+          "start": 96.14,
+          "end": 96.3,
+          "confidence": 1.0
+        },
+        {
+          "text": "hand,",
+          "start": 96.3,
+          "end": 96.6,
+          "confidence": 0.999
+        },
+        {
+          "text": "if",
+          "start": 96.82,
+          "end": 97.2,
+          "confidence": 0.997
+        },
+        {
+          "text": "I",
+          "start": 97.2,
+          "end": 97.34,
+          "confidence": 0.999
+        },
+        {
+          "text": "want",
+          "start": 97.34,
+          "end": 97.48,
+          "confidence": 0.999
+        },
+        {
+          "text": "to",
+          "start": 97.48,
+          "end": 97.64,
+          "confidence": 0.999
+        },
+        {
+          "text": "earn",
+          "start": 97.64,
+          "end": 97.98,
+          "confidence": 0.998
+        },
+        {
+          "text": "more",
+          "start": 97.98,
+          "end": 98.26,
+          "confidence": 0.999
+        },
+        {
+          "text": "interest",
+          "start": 98.26,
+          "end": 98.7,
+          "confidence": 0.997
+        },
+        {
+          "text": "on",
+          "start": 98.7,
+          "end": 98.96,
+          "confidence": 0.995
+        },
+        {
+          "text": "my",
+          "start": 98.96,
+          "end": 99.12,
+          "confidence": 0.999
+        },
+        {
+          "text": "investment,",
+          "start": 99.12,
+          "end": 99.62,
+          "confidence": 0.999
+        },
+        {
+          "text": "I'm",
+          "start": 100.04,
+          "end": 100.22,
+          "confidence": 0.997
+        },
+        {
+          "text": "going",
+          "start": 100.22,
+          "end": 100.38,
+          "confidence": 1.0
+        },
+        {
+          "text": "to",
+          "start": 100.38,
+          "end": 100.5,
+          "confidence": 0.998
+        },
+        {
+          "text": "have",
+          "start": 100.5,
+          "end": 100.53,
+          "confidence": 0.985
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "seek": 7756,
+      "start": 100.53,
+      "end": 107.16,
+      "text": " to invest more money, leave the money in the account for a longer period of time, or find",
+      "tokens": [
+        51520,
+        281,
+        1963,
+        544,
+        1460,
+        11,
+        1856,
+        264,
+        1460,
+        294,
+        264,
+        2696,
+        337,
+        257,
+        2854,
+        2896,
+        295,
+        565,
+        11,
+        420,
+        915,
+        51848
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.09606767272949218,
+      "compression_ratio": 2.0815450643776825,
+      "no_speech_prob": 0.030769841745495796,
+      "confidence": 0.979,
+      "words": [
+        {
+          "text": "to",
+          "start": 100.53,
+          "end": 100.8,
+          "confidence": 0.873
+        },
+        {
+          "text": "invest",
+          "start": 100.8,
+          "end": 101.3,
+          "confidence": 0.997
+        },
+        {
+          "text": "more",
+          "start": 101.3,
+          "end": 101.64,
+          "confidence": 0.998
+        },
+        {
+          "text": "money,",
+          "start": 101.64,
+          "end": 102.0,
+          "confidence": 0.999
+        },
+        {
+          "text": "leave",
+          "start": 102.9,
+          "end": 103.26,
+          "confidence": 0.998
+        },
+        {
+          "text": "the",
+          "start": 103.26,
+          "end": 103.48,
+          "confidence": 0.999
+        },
+        {
+          "text": "money",
+          "start": 103.48,
+          "end": 103.76,
+          "confidence": 0.999
+        },
+        {
+          "text": "in",
+          "start": 103.76,
+          "end": 104.06,
+          "confidence": 0.999
+        },
+        {
+          "text": "the",
+          "start": 104.06,
+          "end": 104.24,
+          "confidence": 0.995
+        },
+        {
+          "text": "account",
+          "start": 104.24,
+          "end": 104.54,
+          "confidence": 0.885
+        },
+        {
+          "text": "for",
+          "start": 104.54,
+          "end": 104.84,
+          "confidence": 0.998
+        },
+        {
+          "text": "a",
+          "start": 104.84,
+          "end": 104.96,
+          "confidence": 0.998
+        },
+        {
+          "text": "longer",
+          "start": 104.96,
+          "end": 105.22,
+          "confidence": 0.998
+        },
+        {
+          "text": "period",
+          "start": 105.22,
+          "end": 105.52,
+          "confidence": 0.997
+        },
+        {
+          "text": "of",
+          "start": 105.52,
+          "end": 105.68,
+          "confidence": 0.998
+        },
+        {
+          "text": "time,",
+          "start": 105.68,
+          "end": 106.0,
+          "confidence": 1.0
+        },
+        {
+          "text": "or",
+          "start": 106.74,
+          "end": 106.84,
+          "confidence": 0.979
+        },
+        {
+          "text": "find",
+          "start": 106.84,
+          "end": 107.16,
+          "confidence": 0.922
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "seek": 10724,
+      "start": 107.24,
+      "end": 109.9,
+      "text": " an institution that will pay me a higher interest rate.",
+      "tokens": [
+        50364,
+        364,
+        7818,
+        300,
+        486,
+        1689,
+        385,
+        257,
+        2946,
+        1179,
+        3314,
+        13,
+        50502
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.2707087993621826,
+      "compression_ratio": 0.9322033898305084,
+      "no_speech_prob": 0.800907552242279,
+      "confidence": 0.997,
+      "words": [
+        {
+          "text": "an",
+          "start": 107.24,
+          "end": 107.38,
+          "confidence": 0.992
+        },
+        {
+          "text": "institution",
+          "start": 107.38,
+          "end": 107.78,
+          "confidence": 0.997
+        },
+        {
+          "text": "that",
+          "start": 107.78,
+          "end": 108.08,
+          "confidence": 0.998
+        },
+        {
+          "text": "will",
+          "start": 108.08,
+          "end": 108.22,
+          "confidence": 0.996
+        },
+        {
+          "text": "pay",
+          "start": 108.22,
+          "end": 108.46,
+          "confidence": 0.998
+        },
+        {
+          "text": "me",
+          "start": 108.46,
+          "end": 108.72,
+          "confidence": 0.997
+        },
+        {
+          "text": "a",
+          "start": 108.72,
+          "end": 108.94,
+          "confidence": 0.998
+        },
+        {
+          "text": "higher",
+          "start": 108.94,
+          "end": 109.18,
+          "confidence": 0.998
+        },
+        {
+          "text": "interest",
+          "start": 109.18,
+          "end": 109.6,
+          "confidence": 0.999
+        },
+        {
+          "text": "rate.",
+          "start": 109.6,
+          "end": 109.9,
+          "confidence": 0.996
+        }
+      ]
+    }
+  ],
+  "language": "en"
+}
