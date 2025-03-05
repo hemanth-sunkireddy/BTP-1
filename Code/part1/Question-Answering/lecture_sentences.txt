@@ -1,22 +1,40 @@
-Artificial intelligence is revolutionizing education.
-Neural networks are used for natural language processing.
-Question answering systems help extract relevant information.
-Embedding models convert text into numerical representations.
-FAISS is a library for efficient similarity search.
-Lecture videos often include automatic speech recognition.
-Timestamped transcripts allow precise video segment retrieval.
-Semantic search finds contextually relevant information.
-Vector databases store embeddings for fast lookup.
-Machine learning models improve video synthesis.
-Fine-tuning language models enhances question answering accuracy.
-Video synthesis combines relevant clips into a cohesive output.
-Speech recognition models like Whisper transcribe audio.
-Retrieval-augmented generation boosts answer quality.
-Sentence embeddings capture the meaning of text.
-Voice activity detection identifies spoken segments.
-Clustering algorithms group similar sentences together.
-Pre-trained transformers power modern NLP applications.
-Distance metrics like cosine similarity rank search results.
-Natural language processing bridges human and machine communication.
-This is an example sentence.
-Each sentence is converted.
+Hi everyone, welcome to the class.
+This video will talk about introduction to machine learning.
+Before we talk about machine learning, let's talk about a separate password here.
+Or you might have heard about data science, which some of you might be taking other courses in data science.
+Surely you heard about machine learning because this course is going to be about machine learning.
+Many of you might have heard about artificial intelligence, which is another buzzword along with the machine learning and data science these days.
+Maybe you also heard about deep learning, which is another height world.
+Let's briefly talk about what these are.
+For data science, it's really big interdisciplinary field about data.
+You can think about it's actually anything to do with data, including Data Pipelining, even Data Collection and Data Munging and cleaning and Data Analysis, which may include the manual data analysis, including some simple checks or exploratory data analysis.
+Or can also include the machine learning techniques to analyze the data.
+Since the data science that has a really big spectrum, it can oftentimes called the soft and hard data science.
+Soft data science means dealing with the techniques that doesn't require a lot of software engineering skills are a lot of math skills.
+Something like data visualization and reporting, dashboard, those thing.
+As well as simple Data Analysis, can fall into the category of where's the hard data science.
+Those involve more mathematical and more technical skills, such as analyzing data or building systems using machine learning.
+Also, data science can deal with the data that's a small size that can fit into your Excel file or something like that.
+Or it's a big data that sits in the Big Data Warehouse.
+In industry, the job description looks like this.
+The data scientist's the job role can be very, they can do data collection, cleaning and munging data are preparing data for whatever the company needs.
+Or they can build machine learning models and do the testing on those data would build a system as well as they can also do the visualization and stuff.
+Usually data scientists have diverse backgrounds and they require interdisciplinary knowledge.
+Machine learning.
+You mentioned the machine learning several times during the talk about data science.
+Machine learning is part of data science and it is also a sub field of artificial intelligence.
+It focuses on learning algorithm and building models and training them on the data.
+Machine learning consists of different types of loading, such as supervised learning, unsupervised learning, or reinforcement learning.
+Many machine learning models, they are coming from statistical learning.
+Machine learning extends the statistical learning by including more complex algorithm, which deal with more complex data and bigger data and more efficient algorithms.
+Any industry machine learning engineers can develop and test the machine learning models and design machine learning experiments and build machine learning systems.
+Artificial intelligence.
+It has a long history in the CNS, and it is about problem-solving with the intelligence.
+That means an AI agent will make an optimal decision according to its algorithm.
+Whether it has a learning component or not, to maximize the goal as a response to the environment.
+You might think that I feel this very practical because you're seeing a lot of applications these days.
+However, AI also has a lot of theoretical components in it.
+Industry AI engineers and experts.
+They are more or less similar to ML engineers.
+But in broad sets skills including mass and programming skills as well as machine-learning.
+They work on building AI system.

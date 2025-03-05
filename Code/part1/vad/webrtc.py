@@ -182,12 +182,19 @@ def vad_collector(sample_rate, vad, frames, silence_timings, chunk_min_dur=chunk
                 # Store chunk details for tabulation
                 start_min, start_sec = divmod(start_time, 60)
                 end_min, end_sec = divmod(end_time, 60)
+                # chunk_details.append([
+                #     chunk_count,
+                #     f"{int(start_min):02}:{int(start_sec):02}",
+                #     f"{int(end_min):02}:{int(end_sec):02}",
+                #     f"{duration:.2f} seconds"
+                # ])
                 chunk_details.append([
                     chunk_count,
                     f"{int(start_min):02}:{int(start_sec):02}",
                     f"{int(end_min):02}:{int(end_sec):02}",
                     f"{duration:.2f} seconds"
                 ])
+
 
                 # Reinitialize for next chunk
                 current_frames = []

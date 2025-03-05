@@ -1,584 +1,1643 @@
 WEBVTT
+
+1
+00:00:04.610 --> 00:00:07.935
 Hi everyone, welcome
 to the class.
+
+2
+00:00:07.935 --> 00:00:09.555
 This video will talk about
+
+3
+00:00:09.555 --> 00:00:12.160
 introduction to
 machine learning.
+
+4
+00:00:12.710 --> 00:00:15.555
 Before we talk about
 machine learning,
+
+5
+00:00:15.555 --> 00:00:18.285
 Let's talk about a
 separate password here.
+
+6
+00:00:18.285 --> 00:00:20.715
 Or you might have heard
 about data science,
+
+7
+00:00:20.715 --> 00:00:22.365
 which some of you might be
+
+8
+00:00:22.365 --> 00:00:25.140
 taking other courses
 in data science.
+
+9
+00:00:25.140 --> 00:00:27.795
 Surely you heard about
 machine learning
+
+10
+00:00:27.795 --> 00:00:29.295
 because this course is
+
+11
+00:00:29.295 --> 00:00:31.350
 going to be about
 machine learning.
+
+12
+00:00:31.350 --> 00:00:33.150
 Many of you might have
+
+13
+00:00:33.150 --> 00:00:35.595
 heard about artificial
 intelligence,
+
+14
+00:00:35.595 --> 00:00:37.860
 which is another
 buzzword along with
+
+15
+00:00:37.860 --> 00:00:40.495
 the machine learning and
 data science these days.
+
+16
+00:00:40.495 --> 00:00:42.845
 Maybe you also heard
 about deep learning,
+
+17
+00:00:42.845 --> 00:00:44.860
 which is another height world.
+
+18
+00:00:44.860 --> 00:00:47.610
 Let's briefly talk
 about what these are.
+
+19
+00:00:47.610 --> 00:00:49.500
 For data science.
+
+20
+00:00:49.500 --> 00:00:53.630
 It's really big interdisciplinary
 field about data.
+
+21
+00:00:53.630 --> 00:00:55.190
 You can think about it's
+
+22
+00:00:55.190 --> 00:00:56.870
 actually anything
 to do with data,
+
+23
+00:00:56.870 --> 00:00:59.105
 including Data Pipelining,
+
+24
+00:00:59.105 --> 00:01:00.905
 even Data Collection and
+
+25
+00:01:00.905 --> 00:01:03.770
 Data Munging and cleaning
 and Data Analysis,
+
+26
+00:01:03.770 --> 00:01:06.725
 which may include the
 manual data analysis,
+
+27
+00:01:06.725 --> 00:01:08.585
 including some simple checks
+
+28
+00:01:08.585 --> 00:01:11.405
 or exploratory data analysis.
+
+29
+00:01:11.405 --> 00:01:13.760
 Or can also include
+
+30
+00:01:13.760 --> 00:01:16.505
 the machine learning techniques
 to analyze the data.
+
+31
+00:01:16.505 --> 00:01:19.055
 Since the data science that
 has a really big spectrum,
+
+32
+00:01:19.055 --> 00:01:22.970
 it can oftentimes called the
 soft and hard data science.
+
+33
+00:01:22.970 --> 00:01:24.785
 Soft data science means
+
+34
+00:01:24.785 --> 00:01:26.630
 dealing with the
 techniques that doesn't
+
+35
+00:01:26.630 --> 00:01:28.655
 require a lot of software
 engineering skills
+
+36
+00:01:28.655 --> 00:01:30.955
 are a lot of math skills.
+
+37
+00:01:30.955 --> 00:01:33.140
 Something like data
 visualization and
+
+38
+00:01:33.140 --> 00:01:36.125
 reporting, dashboard,
 those thing.
+
+39
+00:01:36.125 --> 00:01:38.510
 As well as simple Data Analysis,
+
+40
+00:01:38.510 --> 00:01:40.475
 can fall into the category
+
+41
+00:01:40.475 --> 00:01:42.680
 of where's the
 hard data science.
+
+42
+00:01:42.680 --> 00:01:44.945
 Those involve more mathematical
+
+43
+00:01:44.945 --> 00:01:47.135
 and more technical skills,
+
+44
+00:01:47.135 --> 00:01:48.875
 such as analyzing data
+
+45
+00:01:48.875 --> 00:01:52.130
 or building systems
 using machine learning.
+
+46
+00:01:52.130 --> 00:01:55.400
 Also, data science can
 deal with the data that's
+
+47
+00:01:55.400 --> 00:01:57.050
 a small size that can fit into
+
+48
+00:01:57.050 --> 00:01:59.465
 your Excel file or
 something like that.
+
+49
+00:01:59.465 --> 00:02:04.500
 Or it's a big data that sits
 in the Big Data Warehouse.
+
+50
+00:02:04.820 --> 00:02:09.260
 In industry, the job
 description looks like this.
+
+51
+00:02:09.260 --> 00:02:12.815
 The data scientist's the
 job role can be very,
+
+52
+00:02:12.815 --> 00:02:14.480
 they can do data collection,
+
+53
+00:02:14.480 --> 00:02:16.400
 cleaning and munging
 data are preparing
+
+54
+00:02:16.400 --> 00:02:19.295
 data for whatever
 the company needs.
+
+55
+00:02:19.295 --> 00:02:21.530
 Or they can build machine
 learning models and
+
+56
+00:02:21.530 --> 00:02:23.600
 do the testing on
 those data would build
+
+57
+00:02:23.600 --> 00:02:25.520
 a system as well
+
+58
+00:02:25.520 --> 00:02:28.400
 as they can also do the
 visualization and stuff.
+
+59
+00:02:28.400 --> 00:02:32.510
 Usually data scientists
 have diverse backgrounds
+
+60
+00:02:32.510 --> 00:02:34.160
 and they require
+
+61
+00:02:34.160 --> 00:02:38.645
 interdisciplinary knowledge.
 Machine learning.
+
+62
+00:02:38.645 --> 00:02:41.030
 You mentioned the machine
 learning several times
+
+63
+00:02:41.030 --> 00:02:43.580
 during the talk
 about data science.
+
+64
+00:02:43.580 --> 00:02:46.250
 Machine learning is part
 of data science and it
+
+65
+00:02:46.250 --> 00:02:49.385
 is also a sub field of
 artificial intelligence.
+
+66
+00:02:49.385 --> 00:02:51.710
 It focuses on learning
 algorithm and
+
+67
+00:02:51.710 --> 00:02:54.725
 building models and
 training them on the data.
+
+68
+00:02:54.725 --> 00:02:57.800
 Machine learning consists of
 different types of loading,
+
+69
+00:02:57.800 --> 00:02:59.495
 such as supervised learning,
+
+70
+00:02:59.495 --> 00:03:03.025
 unsupervised learning, or
 reinforcement learning.
+
+71
+00:03:03.025 --> 00:03:04.925
 Many machine learning models,
+
+72
+00:03:04.925 --> 00:03:07.250
 they are coming from
 statistical learning.
+
+73
+00:03:07.250 --> 00:03:10.115
 Machine learning extends
 the statistical learning
+
+74
+00:03:10.115 --> 00:03:12.845
 by including more
 complex algorithm,
+
+75
+00:03:12.845 --> 00:03:14.990
 which deal with more
 complex data and
+
+76
+00:03:14.990 --> 00:03:17.950
 bigger data and more
 efficient algorithms.
+
+77
+00:03:17.950 --> 00:03:19.820
 Any industry machine learning
+
+78
+00:03:19.820 --> 00:03:21.680
 engineers can develop and test
+
+79
+00:03:21.680 --> 00:03:23.210
 the machine learning models and
+
+80
+00:03:23.210 --> 00:03:25.070
 design machine
 learning experiments
+
+81
+00:03:25.070 --> 00:03:27.775
 and build machine
 learning systems.
+
+82
+00:03:27.775 --> 00:03:29.985
 Artificial intelligence.
+
+83
+00:03:29.985 --> 00:03:32.105
 It has a long
 history in the CNS,
+
+84
+00:03:32.105 --> 00:03:35.590
 and it is about problem-solving
 with the intelligence.
+
+85
+00:03:35.590 --> 00:03:37.400
 That means an AI agent will make
+
+86
+00:03:37.400 --> 00:03:40.085
 an optimal decision
 according to its algorithm.
+
+87
+00:03:40.085 --> 00:03:42.545
 Whether it has a learning
 component or not,
+
+88
+00:03:42.545 --> 00:03:46.075
 to maximize the goal as a
 response to the environment.
+
+89
+00:03:46.075 --> 00:03:49.055
 You might think that I
 feel this very practical
+
+90
+00:03:49.055 --> 00:03:53.120
 because you're seeing a lot
 of applications these days.
+
+91
+00:03:53.120 --> 00:03:54.725
 However, AI also has
+
+92
+00:03:54.725 --> 00:03:57.630
 a lot of theoretical
 components in it.
+
+93
+00:03:57.710 --> 00:04:01.425
 Industry AI engineers
 and experts.
+
+94
+00:04:01.425 --> 00:04:04.565
 They are more or less
 similar to ML engineers.
+
+95
+00:04:04.565 --> 00:04:07.430
 But in broad sets
 skills including
+
+96
+00:04:07.430 --> 00:04:09.920
 mass and programming skills
 as well as machine-learning.
+
+97
+00:04:09.920 --> 00:04:12.815
 They work on building AI system,
+
+98
+00:04:12.815 --> 00:04:14.705
 building machine learning models
+
+99
+00:04:14.705 --> 00:04:16.205
 that drilling the processing,
+
+100
+00:04:16.205 --> 00:04:18.860
 robotics and computer
 vision and stuff.
+
+101
+00:04:18.860 --> 00:04:23.225
 In deep learning focuses
 on neural network models.
+
+102
+00:04:23.225 --> 00:04:26.660
 Building neural network models
 and training them on data.
+
+103
+00:04:26.660 --> 00:04:28.655
 It also tells us a lot of
+
+104
+00:04:28.655 --> 00:04:30.770
 optimization algorithms
 and training
+
+105
+00:04:30.770 --> 00:04:32.750
 techniques in order to deal
+
+106
+00:04:32.750 --> 00:04:35.730
 with a complex neural
 network model training.
+
+107
+00:04:35.730 --> 00:04:40.030
 It is a very suitable for
 complex data such as images,
+
+108
+00:04:40.030 --> 00:04:42.325
 texts and voice, and graphs,
+
+109
+00:04:42.325 --> 00:04:44.920
 and hybrid types of data.
+
+110
+00:04:44.920 --> 00:04:46.945
 It is a subfield of
+
+111
+00:04:46.945 --> 00:04:49.810
 artificial intelligence and
 subfield of machine learning.
+
+112
+00:04:49.810 --> 00:04:51.460
 In industry them learning
+
+113
+00:04:51.460 --> 00:04:53.830
 engineers to work on
 machine learning problems.
+
+114
+00:04:53.830 --> 00:04:55.705
 It tells is a
 complex data such as
+
+115
+00:04:55.705 --> 00:04:57.970
 images and texts and
 things like that.
+
+116
+00:04:57.970 --> 00:05:00.570
 Or if a high
 performance computing.
+
+117
+00:05:00.570 --> 00:05:03.335
 We're going to show
 some summary diagram.
+
+118
+00:05:03.335 --> 00:05:05.080
 There's a Data Science which is
+
+119
+00:05:05.080 --> 00:05:07.225
 a big interdisciplinary field,
+
+120
+00:05:07.225 --> 00:05:10.120
 and there's AI also
 very big field.
+
+121
+00:05:10.120 --> 00:05:12.370
 Data science is
 about anything to do
+
+122
+00:05:12.370 --> 00:05:14.770
 with data, including
 data analysis.
+
+123
+00:05:14.770 --> 00:05:17.200
 Whereas artificial
 intelligence is about solving
+
+124
+00:05:17.200 --> 00:05:19.885
 problem using
 intelligent algorithms.
+
+125
+00:05:19.885 --> 00:05:21.560
 In intersection,
+
+126
+00:05:21.560 --> 00:05:25.010
 when the AI algorithm is
 learning from the data,
+
+127
+00:05:25.010 --> 00:05:27.235
 it is called the
 machine learning.
+
+128
+00:05:27.235 --> 00:05:29.720
 Particularly if it tells you is
+
+129
+00:05:29.720 --> 00:05:32.375
 a complex data with a neural
 network architecture,
+
+130
+00:05:32.375 --> 00:05:34.500
 it is called deep learning.
+
+131
+00:05:35.400 --> 00:05:38.260
 Here is a Google trend on
+
+132
+00:05:38.260 --> 00:05:41.260
 the term on machine learning
 and software engineering.
+
+133
+00:05:41.260 --> 00:05:43.660
 Just to compare how
 the machine learning
+
+134
+00:05:43.660 --> 00:05:46.840
 becomes popular for
 recent few years.
+
+135
+00:05:46.840 --> 00:05:48.670
 The term machine learning has
+
+136
+00:05:48.670 --> 00:05:50.590
 been around for a long time.
+
+137
+00:05:50.590 --> 00:05:52.510
 However, it became much more
+
+138
+00:05:52.510 --> 00:05:56.015
 popular during the last
 five or more years.
+
+139
+00:05:56.015 --> 00:05:59.430
 This graph also indicates
 that the job girls in
+
+140
+00:05:59.430 --> 00:06:02.790
 machine learning has
 grown up really much,
+
+141
+00:06:02.790 --> 00:06:07.265
 about 350% during
 the past few years.
+
+142
+00:06:07.265 --> 00:06:09.310
 As you can see,
 machine learning is
+
+143
+00:06:09.310 --> 00:06:13.375
 a top skills in the jobs
 that involve the AI skills.
+
+144
+00:06:13.375 --> 00:06:17.080
 That already sounds
 like ML is very cool.
+
+145
+00:06:17.080 --> 00:06:20.180
 Let's talk about what ML can do.
+
+146
+00:06:20.310 --> 00:06:23.830
 Machine learning is applied
 everywhere these days.
+
+147
+00:06:23.830 --> 00:06:26.230
 For example, when you
 do online shopping,
+
+148
+00:06:26.230 --> 00:06:28.390
 you often see this
 product recommendation
+
+149
+00:06:28.390 --> 00:06:30.865
 based on your browsing
 and shopping history.
+
+150
+00:06:30.865 --> 00:06:32.935
 Those use machine
 learning algorithms
+
+151
+00:06:32.935 --> 00:06:34.240
 to predict the products
+
+152
+00:06:34.240 --> 00:06:37.660
 that are more likely to be
 purchased by the customers.
+
+153
+00:06:37.660 --> 00:06:39.700
 The same goes for
 movie recommendation
+
+154
+00:06:39.700 --> 00:06:42.080
 and music recommendations.
+
+155
+00:06:42.080 --> 00:06:45.270
 Sentiment analysis is very
+
+156
+00:06:45.270 --> 00:06:47.375
 popular applications these days.
+
+157
+00:06:47.375 --> 00:06:48.895
 It is standard by now,
+
+158
+00:06:48.895 --> 00:06:51.700
 the data scientists
 analyze the text,
+
+159
+00:06:51.700 --> 00:06:53.260
 such as news articles and
+
+160
+00:06:53.260 --> 00:06:55.330
 social media articles to figure
+
+161
+00:06:55.330 --> 00:06:58.390
 our citizens sentiment
 on political events.
+
+162
+00:06:58.390 --> 00:07:00.940
 Similarly, the product
 review scales or
+
+163
+00:07:00.940 --> 00:07:02.770
 restaurant review scales can be
+
+164
+00:07:02.770 --> 00:07:05.005
 predicted by machine
 learning algorithms,
+
+165
+00:07:05.005 --> 00:07:08.575
 which information can be
 important for businesses.
+
+166
+00:07:08.575 --> 00:07:10.840
 Machine learning is also used
+
+167
+00:07:10.840 --> 00:07:12.625
 a lot in the financial industry.
+
+168
+00:07:12.625 --> 00:07:14.290
 For example, we can
+
+169
+00:07:14.290 --> 00:07:16.870
 forecast the stock price
 using machine learning.
+
+170
+00:07:16.870 --> 00:07:20.680
 Machine learning is also used
 for algorithmic trading,
+
+171
+00:07:20.680 --> 00:07:22.945
 as well as robo-advisor,
+
+172
+00:07:22.945 --> 00:07:25.060
 which gives advice for
+
+173
+00:07:25.060 --> 00:07:27.835
 people or how to
 allocate their assets.
+
+174
+00:07:27.835 --> 00:07:32.170
 Also, it can be used for
 forecasting housing price.
+
+175
+00:07:32.170 --> 00:07:34.870
 As you can imagine,
 machine learning can be
+
+176
+00:07:34.870 --> 00:07:37.360
 also useful in medical industry.
+
+177
+00:07:37.360 --> 00:07:39.430
 By applying machine
 learning models
+
+178
+00:07:39.430 --> 00:07:41.485
 in the images or tables,
+
+179
+00:07:41.485 --> 00:07:43.240
 you can help doctors to make
+
+180
+00:07:43.240 --> 00:07:46.765
 a medical diagnosis
 or medical decisions.
+
+181
+00:07:46.765 --> 00:07:50.095
 It is also used in many
 science disciplines,
+
+182
+00:07:50.095 --> 00:07:51.655
 such as the bioscience.
+
+183
+00:07:51.655 --> 00:07:54.010
 For example, machine
 learning techniques can be
+
+184
+00:07:54.010 --> 00:07:56.560
 applied to this graph
 data to inspect
+
+185
+00:07:56.560 --> 00:07:59.445
 the protein interactions or
+
+186
+00:07:59.445 --> 00:08:03.130
 this type of data for
 the study of genetics.
+
+187
+00:08:03.540 --> 00:08:08.140
 Machine learning is also key
 component in other things.
+
+188
+00:08:08.140 --> 00:08:12.220
 Smart sensors and smart
 devices produce a lot of data.
+
+189
+00:08:12.220 --> 00:08:14.200
 Also, machine learning plays
+
+190
+00:08:14.200 --> 00:08:16.885
 a key role on
 analyzing those data.
+
+191
+00:08:16.885 --> 00:08:20.320
 Machine learning is also
 used in self-driving cars.
+
+192
+00:08:20.320 --> 00:08:23.140
 Self-driving cars can
 use machine learning and
+
+193
+00:08:23.140 --> 00:08:27.620
 deep learning to recognize
 images and make decisions.
+
+194
+00:08:28.350 --> 00:08:32.035
 Let's talk about what we'll
 learn in this course.
+
+195
+00:08:32.035 --> 00:08:35.605
 Here is a data science
 project life cycle.
+
+196
+00:08:35.605 --> 00:08:38.230
 Data should be collected and
+
+197
+00:08:38.230 --> 00:08:40.780
 pipelined into data warehouse.
+
+198
+00:08:40.780 --> 00:08:42.760
 There's a data
 governance that though
+
+199
+00:08:42.760 --> 00:08:45.940
 data warehouse it
 has to implement.
+
+200
+00:08:45.940 --> 00:08:48.370
 There will be also
 data pooling and
+
+201
+00:08:48.370 --> 00:08:51.340
 cleaning and
 maintaining the data.
+
+202
+00:08:51.340 --> 00:08:55.435
 That part is called data
 engineering mostly.
+
+203
+00:08:55.435 --> 00:08:57.625
 Data science, on the other hand,
+
+204
+00:08:57.625 --> 00:09:00.100
 focuses on using the
 data and analyzing
+
+205
+00:09:00.100 --> 00:09:01.600
 those data that were
+
+206
+00:09:01.600 --> 00:09:04.285
 prepared by the data
 engineering process.
+
+207
+00:09:04.285 --> 00:09:06.340
 You can include the selection of
+
+208
+00:09:06.340 --> 00:09:08.800
 the dose data from the
 warehouse and then cleaning
+
+209
+00:09:08.800 --> 00:09:11.530
 those data and
 exploratory data analysis
+
+210
+00:09:11.530 --> 00:09:13.090
 and data preprocessing,
+
+211
+00:09:13.090 --> 00:09:14.830
 which means that we prepare data
+
+212
+00:09:14.830 --> 00:09:16.795
 for the model to consume.
+
+213
+00:09:16.795 --> 00:09:19.300
 After that, data
 scientists will build
+
+214
+00:09:19.300 --> 00:09:22.480
 the models and then do
 the model training.
+
+215
+00:09:22.480 --> 00:09:25.015
 There is a result and
 depending on the result,
+
+216
+00:09:25.015 --> 00:09:27.130
 they had to go back
 to build models.
+
+217
+00:09:27.130 --> 00:09:28.960
 Or if the result is so strange,
+
+218
+00:09:28.960 --> 00:09:31.150
 then they will have to
 collect more data or select
+
+219
+00:09:31.150 --> 00:09:34.375
 more data and do
 this cycle again.
+
+220
+00:09:34.375 --> 00:09:37.120
 Among the steps that
 we mentioned in
+
+221
+00:09:37.120 --> 00:09:39.265
 the data science project cycle,
+
+222
+00:09:39.265 --> 00:09:41.650
 we're going to talk
 about a few things
+
+223
+00:09:41.650 --> 00:09:44.710
 and we don't cover
 everything for example,
+
+224
+00:09:44.710 --> 00:09:48.085
 this course is not about data
 collection and pipelining.
+
+225
+00:09:48.085 --> 00:09:50.770
 We'll talk about a little
 bit of data cleaning
+
+226
+00:09:50.770 --> 00:09:53.620
 and EDA and data preprocessing.
+
+227
+00:09:53.620 --> 00:09:56.590
 But the main focus will
 be how to build a model,
+
+228
+00:09:56.590 --> 00:09:58.000
 how to select models,
+
+229
+00:09:58.000 --> 00:09:59.800
 and how to do the
 training and do
+
+230
+00:09:59.800 --> 00:10:03.265
 the testing and
 analyze those results.
+
+231
+00:10:03.265 --> 00:10:06.070
 Let's talk about
 what is learning?
+
+232
+00:10:06.070 --> 00:10:08.980
 When these children
 learn alphabets,
+
+233
+00:10:08.980 --> 00:10:10.915
 they can learn to generalize.
+
+234
+00:10:10.915 --> 00:10:14.185
 For example, they can
 recognize this letter,
+
+235
+00:10:14.185 --> 00:10:16.075
 whether it's a small or large.
+
+236
+00:10:16.075 --> 00:10:19.555
 It has a different font or
 it has a different color.
+
+237
+00:10:19.555 --> 00:10:21.475
 Or the image it looks angled,
+
+238
+00:10:21.475 --> 00:10:24.245
 or the letter is in the word.
+
+239
+00:10:24.245 --> 00:10:27.015
 It seems so obvious for people,
+
+240
+00:10:27.015 --> 00:10:29.385
 however, to make a
 motion to learn this.
+
+241
+00:10:29.385 --> 00:10:31.810
 It is not trivial.
+
+242
+00:10:32.210 --> 00:10:36.390
 Here's some example of
 supervised learning.
+
+243
+00:10:36.390 --> 00:10:38.790
 There are images and the labels.
+
+244
+00:10:38.790 --> 00:10:41.550
 The labels are the
 names of these animals.
+
+245
+00:10:41.550 --> 00:10:43.650
 A supervised learning
 model learns to
+
+246
+00:10:43.650 --> 00:10:46.360
 predict the label given data.
+
+247
+00:10:46.860 --> 00:10:50.200
 Unsupervised learning
 actually resembles
+
+248
+00:10:50.200 --> 00:10:51.880
 very much how a human learn.
+
+249
+00:10:51.880 --> 00:10:54.190
 In babies stage, they
 don't know about
+
+250
+00:10:54.190 --> 00:10:58.090
 the geometric shapes and
 colors but overtime,
+
+251
+00:10:58.090 --> 00:11:01.360
 they learn to recognize
 this visual properties and
+
+252
+00:11:01.360 --> 00:11:03.145
 also recognize the similarities
+
+253
+00:11:03.145 --> 00:11:05.005
 and dissimilarities
 between them,
+
+254
+00:11:05.005 --> 00:11:06.430
 even before they learn about
+
+255
+00:11:06.430 --> 00:11:09.070
 the names of this
 color and shapes.
+
+256
+00:11:09.070 --> 00:11:11.770
 Those type of learning
 without labels
+
+257
+00:11:11.770 --> 00:11:14.875
 are called
 unsupervised learning.
+
+258
+00:11:14.875 --> 00:11:17.845
 Unsupervised learning
 is all about learning
+
+259
+00:11:17.845 --> 00:11:20.965
 underlying features and
 extracting information,
+
+260
+00:11:20.965 --> 00:11:23.395
 recognizing patterns
 in the data,
+
+261
+00:11:23.395 --> 00:11:26.110
 or clustering
 similar data points.
+
+262
+00:11:26.110 --> 00:11:29.800
 Another type of learning
 is reinforcement learning,
+
+263
+00:11:29.800 --> 00:11:33.490
 which the AI agent learns
 how to act from experience.
+
+264
+00:11:33.490 --> 00:11:37.450
 Experience is either
 reward or punishment.
+
+265
+00:11:37.450 --> 00:11:41.035
 It is very much similar
 to the animal training.
+
+266
+00:11:41.035 --> 00:11:43.645
 We give treats or punishment
+
+267
+00:11:43.645 --> 00:11:46.795
 to make the animal
 behave desired way.
+
+268
+00:11:46.795 --> 00:11:51.770
 Reinforcement learning is used
 a lot in AI and robotics.
+
+269
+00:11:51.810 --> 00:11:55.180
 Let's change gears
 and then talk about
+
+270
+00:11:55.180 --> 00:11:56.800
 some definitions that frequently
+
+271
+00:11:56.800 --> 00:11:58.795
 show up in machine learning.
+
+272
+00:11:58.795 --> 00:12:01.240
 Data in machine learning
 can be any forms,
+
+273
+00:12:01.240 --> 00:12:03.850
 such as tables,
 images and texts,
+
+274
+00:12:03.850 --> 00:12:05.365
 and sounds and graph.
+
+275
+00:12:05.365 --> 00:12:06.730
 It can be any format.
+
+276
+00:12:06.730 --> 00:12:08.440
 However, we're
 going to talk about
+
+277
+00:12:08.440 --> 00:12:11.320
 mostly the tabulated
 data format.
+
+278
+00:12:11.320 --> 00:12:14.170
 Let's take one example
 of this table.
+
+279
+00:12:14.170 --> 00:12:16.420
 Let's say the unsupervised
 learning task
+
+280
+00:12:16.420 --> 00:12:19.220
 is to predict a house price.
+
+281
+00:12:19.740 --> 00:12:23.605
 This one would be our labels.
+
+282
+00:12:23.605 --> 00:12:28.340
 In this labels also
 are called targets.
+
+283
+00:12:30.030 --> 00:12:34.060
 All this columns except the
 labels are there called
+
+284
+00:12:34.060 --> 00:12:40.250
 the features and also they
 are called predictors.
+
+285
+00:12:41.040 --> 00:12:44.470
 Which means that those
 features and predictors are
+
+286
+00:12:44.470 --> 00:12:45.820
 used in the machine learning
+
+287
+00:12:45.820 --> 00:12:48.740
 models to predict the labels.
+
+288
+00:12:48.990 --> 00:12:51.670
 This row of the tables are
+
+289
+00:12:51.670 --> 00:12:57.980
 called observations or samples.
+
+290
+00:12:58.380 --> 00:13:02.275
 Which means that they
 are instances of data.
+
+291
+00:13:02.275 --> 00:13:04.600
 Here are some few examples of
+
+292
+00:13:04.600 --> 00:13:07.240
 machine learning
 tasks for example,
+
+293
+00:13:07.240 --> 00:13:10.225
 prediction include the
 classification regression,
+
+294
+00:13:10.225 --> 00:13:11.620
 and these are in
+
+295
+00:13:11.620 --> 00:13:15.880
 supervised learning and
 clustering into groups,
+
+296
+00:13:15.880 --> 00:13:18.040
 the similar data
 points together and
+
+297
+00:13:18.040 --> 00:13:20.980
 anomaly detection and
 dimensionality reduction.
+
+298
+00:13:20.980 --> 00:13:24.490
 They are in a category of
 unsupervised learning.
+
+299
+00:13:24.490 --> 00:13:27.065
 There are other emotional
 learning tasks,
+
+300
+00:13:27.065 --> 00:13:30.705
 such as data generation and
 feature selection which are
+
+301
+00:13:30.705 --> 00:13:32.865
 typically not categorized as
+
+302
+00:13:32.865 --> 00:13:34.875
 supervised learning or
 unsupervised learning.
+
+303
+00:13:34.875 --> 00:13:38.040
 However, this type of
 machine learning tasks can
+
+304
+00:13:38.040 --> 00:13:42.430
 be used to enhance the performance
 of a supervised tasks.
+
+305
+00:13:42.930 --> 00:13:47.065
 Let's talk about prediction
 tasks in supervised learning.
+
+306
+00:13:47.065 --> 00:13:50.050
 Prediction task can be
 either classification or
+
+307
+00:13:50.050 --> 00:13:53.785
 regression depending on
 the labels datatype.
+
+308
+00:13:53.785 --> 00:13:57.010
 When the label is
 categorical variable,
+
+309
+00:13:57.010 --> 00:13:58.540
 which means a zero or one,
+
+310
+00:13:58.540 --> 00:14:01.480
 or 1,2,3 or A, B,
+
+311
+00:14:01.480 --> 00:14:04.570
 C. These are called
 categorical variables,
+
+312
+00:14:04.570 --> 00:14:07.915
 and in that case, it
 becomes classification.
+
+313
+00:14:07.915 --> 00:14:10.120
 If the categories are binary,
+
+314
+00:14:10.120 --> 00:14:12.910
 it is called the binary
 class classification.
+
+315
+00:14:12.910 --> 00:14:14.995
 If it's a multi categories
+
+316
+00:14:14.995 --> 00:14:17.755
 call them multi-class
 classification.
+
+317
+00:14:17.755 --> 00:14:25.705
 Binary multiclass.
 The other hand,
+
+318
+00:14:25.705 --> 00:14:29.650
 if the label variable is
 a real valued variable,
+
+319
+00:14:29.650 --> 00:14:32.575
 so something like 0.1,
+
+320
+00:14:32.575 --> 00:14:38.950
 0.999, something
 like that, or 3.4.
+
+321
+00:14:38.950 --> 00:14:42.190
 Real value variables to predict
+
+322
+00:14:42.190 --> 00:14:43.885
 those labels given the data
+
+323
+00:14:43.885 --> 00:14:46.730
 is called a regression problem.
+
+324
+00:14:48.510 --> 00:14:51.640
 With that in mind,
 let's talk about
+
+325
+00:14:51.640 --> 00:14:54.445
 how supervised learning
 works briefly.
+
+326
+00:14:54.445 --> 00:14:58.030
 Here's the data. Data consists
 of features and target.
+
+327
+00:14:58.030 --> 00:15:01.480
 Feature usually we call
 x and target is y.
+
+328
+00:15:01.480 --> 00:15:03.415
 Then we have a model,
+
+329
+00:15:03.415 --> 00:15:06.910
 and this feature is
 input to the model.
+
+330
+00:15:06.910 --> 00:15:08.770
 The model might
 have a parameters
+
+331
+00:15:08.770 --> 00:15:11.350
 inside or hyper parameters.
+
+332
+00:15:11.350 --> 00:15:13.975
 That means some settings
 the user get to choose.
+
+333
+00:15:13.975 --> 00:15:16.630
 Then after feeding the features
+
+334
+00:15:16.630 --> 00:15:20.170
 into model the border
 will make a prediction.
+
+335
+00:15:20.170 --> 00:15:23.395
 Initially the model does
 not predict very well.
+
+336
+00:15:23.395 --> 00:15:25.060
 There will be some error between
+
+337
+00:15:25.060 --> 00:15:27.175
 the prediction and
 target variable.
+
+338
+00:15:27.175 --> 00:15:31.090
 This adder can be used to
 tweak the model to have
+
+339
+00:15:31.090 --> 00:15:32.290
 a better prediction next
+
+340
+00:15:32.290 --> 00:15:34.630
 iteration and
 over-designed iteration,
+
+341
+00:15:34.630 --> 00:15:36.785
 the model becomes more accurate.
+
+342
+00:15:36.785 --> 00:15:39.840
 That's how supervised
 learning works.
+
+343
+00:15:39.840 --> 00:15:44.460
 Here is a brief taxonomy of
 unsupervised learning models.
+
+344
+00:15:44.460 --> 00:15:47.310
 Models that has
 internal parameters,
+
+345
+00:15:47.310 --> 00:15:49.505
 it is called the
 parametric models.
+
+346
+00:15:49.505 --> 00:15:52.270
 Without explaining what
 those are individually,
+
+347
+00:15:52.270 --> 00:15:54.925
 these are examples of
 parametric models,
+
+348
+00:15:54.925 --> 00:15:57.100
 whereas non-parametric models or
+
+349
+00:15:57.100 --> 00:15:58.960
 doesn't have
 internal parameters.
+
+350
+00:15:58.960 --> 00:16:02.080
 These are examples of
 non-parametric models.
+
+351
+00:16:02.080 --> 00:16:03.760
 Although we're not going to talk
+
+352
+00:16:03.760 --> 00:16:05.515
 about every single model here.
+
+353
+00:16:05.515 --> 00:16:09.470
 We'll talk about most of
 these models in this class.
