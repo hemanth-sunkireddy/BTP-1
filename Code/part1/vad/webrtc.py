@@ -9,7 +9,6 @@ from tabulate import tabulate
 from definitions import silence_threshold, chunk_min_dur, chunk_max_dur, sample_rate
 
 def read_wave(path):
-    """Reads a .wav file. Takes the path, and returns (PCM audio data, sample rate)."""
     with contextlib.closing(wave.open(path, 'rb')) as wf:
         num_channels = wf.getnchannels()
         assert num_channels == 1
@@ -21,7 +20,6 @@ def read_wave(path):
         return pcm_data, sample_rate
 
 def write_wave(path, audio, sample_rate):
-    """Writes a .wav file. Takes path, PCM audio data, and sample rate."""
     with contextlib.closing(wave.open(path, 'wb')) as wf:
         wf.setnchannels(1)
         wf.setsampwidth(2)
@@ -29,14 +27,12 @@ def write_wave(path, audio, sample_rate):
         wf.writeframes(audio)
 
 class Frame(object):
-    """Represents a "frame" of audio data."""
     def __init__(self, bytes, timestamp, duration):
         self.bytes = bytes
         self.timestamp = timestamp
         self.duration = duration
 
 def frame_generator(frame_duration_ms, audio, sample_rate):
-    """Generates audio frames from PCM audio data."""
     n = int(sample_rate * (frame_duration_ms / 1000.0) * 2)
     offset = 0
     timestamp = 0.0
@@ -46,43 +42,42 @@ def frame_generator(frame_duration_ms, audio, sample_rate):
         timestamp += duration
         offset += n
 
+def format_time(seconds):
+    minutes, seconds = divmod(seconds, 60)
+    milliseconds = int((seconds - int(seconds)) * 1000)
+    return f"{int(minutes):02}:{int(seconds):02}.{milliseconds:03}"
+
 def silent_periods_collector(sample_rate, vad, frames, silence_threshold_seconds=silence_threshold):
-    """Filters out voiced audio frames and collects continuous silence chunks of more than `silence_threshold_seconds`."""
     silent_frames = []
-    silence_timings = []  # This will store the [start_time, end_time, duration] for each silence period
+    silence_timings = []
     total_silence_duration = 0
     chunk_count = 0
     start_time = None
     end_time = None
-    table = []  # This is the table for printing
-
+    table = []
     last_silence_timestamp = None
 
     for frame in frames:
         is_speech = vad.is_speech(frame.bytes, sample_rate)
 
-        if is_speech:  # Speech
+        if is_speech:
             if last_silence_timestamp is not None:
                 end_time = frame.timestamp
                 duration = end_time - start_time
                 if duration >= silence_threshold_seconds:
                     chunk_count += 1
-                    # Append [start_time, end_time, duration] to silence_timings rounded to 2 decimal places
-                    silence_timings.append([round(start_time, 2), round(end_time, 2), round(duration, 2)])
-                    # Add the formatted row to the table
-                    start_min, start_sec = divmod(start_time, 60)
-                    end_min, end_sec = divmod(end_time, 60)
+                    silence_timings.append([round(start_time, 3), round(end_time, 3), round(duration, 3)])
                     table.append([
                         chunk_count,
-                        f"{int(start_min):02}:{int(start_sec):02}",
-                        f"{int(end_min):02}:{int(end_sec):02}",
-                        f"{duration:.2f} seconds"
+                        format_time(start_time),
+                        format_time(end_time),
+                        f"{duration:.3f} seconds"
                     ])
             total_silence_duration = 0
             last_silence_timestamp = None
             start_time = None
             end_time = None
-        else:  # Silence
+        else:
             if last_silence_timestamp is None:
                 start_time = frame.timestamp
                 last_silence_timestamp = start_time
@@ -90,38 +85,30 @@ def silent_periods_collector(sample_rate, vad, frames, silence_threshold_seconds
             total_silence_duration += frame.duration
             silent_frames.append(frame)
 
-    # Check if there's any silence at the end after the last speech segment
     if last_silence_timestamp is not None:
-        end_time = frames[-1].timestamp  # The last frame's timestamp
+        end_time = frames[-1].timestamp
         duration = end_time - start_time
         if duration >= silence_threshold_seconds:
             chunk_count += 1
-            silence_timings.append([round(start_time, 2), round(end_time, 2), round(duration, 2)])
-            # Add the formatted row to the table
-            start_min, start_sec = divmod(start_time, 60)
-            end_min, end_sec = divmod(end_time, 60)
+            silence_timings.append([round(start_time, 3), round(end_time, 3), round(duration, 3)])
             table.append([
                 chunk_count,
-                f"{int(start_min):02}:{int(start_sec):02}",
-                f"{int(end_min):02}:{int(end_sec):02}",
-                f"{duration:.2f} seconds"
+                format_time(start_time),
+                format_time(end_time),
+                f"{duration:.3f} seconds"
             ])
 
-    # Print the table with the chunk details
-    headers = ["Chunk Num", "Start Time (min)", "End Time (min)", "Duration"]
+    headers = ["Chunk Num", "Start Time (min:sec.ms)", "End Time (min:sec.ms)", "Duration"]
     print(tabulate(table, headers=headers, tablefmt="rounded_grid"))
-
     print(f"Total Chunks Which are Continuous Silent: {chunk_count}")
 
-    # Return the list of silence periods [start_time, end_time, duration] rounded to 2 decimal points
     return silence_timings
-
 
 
 def plot_vad(sample_rate, frames, vad, chunk_details):
     vad_output = []
     timestamps = []
-    print(chunk_details[1][2])
+    # print(chunk_details[1][2])
     for frame in frames:
         is_speech = vad.is_speech(frame.bytes, sample_rate)
         num_samples_in_frame = len(frame.bytes) // 2

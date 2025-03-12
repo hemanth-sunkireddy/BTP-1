@@ -3,5 +3,5 @@
 **/*.txt
 **/*.DS_Store
 **/*pycache*
-# **/*.vtt
+**/*.vtt
 **/*.zip

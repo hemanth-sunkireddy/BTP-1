@@ -2,42 +2,74 @@ import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
 import re
+import os
 
 # Initialize Sentence-BERT model
 model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 
-# Function to extract sentences from .vtt file
+# Function to extract combined sentences with timestamps from .vtt file
 def extract_sentences_from_vtt(file_path):
     with open(file_path, 'r') as file:
         lines = file.readlines()
+    
     sentences = []
-    skip_next = False
+    timestamps = []
+    current_sentence = ""
+    current_timestamp = ""
+    
     for line in lines:
         line = line.strip()
-        # Skip empty lines and timestamp lines
-        if not line or re.match(r'\d{2}:\d{2}:\d{2}\.\d{3} --> \d{2}:\d{2}:\d{2}\.\d{3}', line):
+        
+        # Check for timestamp lines
+        timestamp_match = re.match(r'(\d{2}:\d{2}:\d{2}\.\d{3}) --> (\d{2}:\d{2}:\d{2}\.\d{3})', line)
+        if timestamp_match:
+            current_timestamp = timestamp_match.group(1) + ' --> ' + timestamp_match.group(2)
             continue
-        # Skip lines with only numbers (cue identifiers)
-        if line.isdigit():
+        
+        # Skip empty lines and cue identifiers (lines with only numbers)
+        if not line or line.isdigit():
             continue
-        sentences.append(line)
-    return sentences
+        
+        # Add line to current sentence
+        current_sentence += " " + line if current_sentence else line
+        
+        # If sentence ends, save it
+        if re.search(r'[.!?]$', line):
+            sentences.append(current_sentence.strip())
+            timestamps.append(current_timestamp)
+            current_sentence = ""
+            current_timestamp = ""
+    
+    return sentences, timestamps
 
-# Process lecture.vtt file
-vtt_file = 'lecture1.vtt'
-lecture_sentences = extract_sentences_from_vtt(vtt_file)
+# Directory containing VTT files
+vtt_dir = 'SRT'
+
+# Initialize lists for all sentences and timestamps
+all_sentences = []
+all_timestamps = []
+
+# Process all VTT files
+for file_name in os.listdir(vtt_dir):
+    if file_name.endswith('.vtt'):
+        file_path = os.path.join(vtt_dir, file_name)
+        sentences, timestamps = extract_sentences_from_vtt(file_path)
+        all_sentences.extend(sentences)
+        all_timestamps.extend(timestamps)
 
 # Encode sentences into embeddings
-sentence_embeddings = np.array(model.encode(lecture_sentences)).astype('float32')
+sentence_embeddings = np.array(model.encode(all_sentences)).astype('float32')
 
 # Create FAISS index
 embedding_dimension = sentence_embeddings.shape[1]
 faiss_index = faiss.IndexFlatL2(embedding_dimension)
 faiss_index.add(sentence_embeddings)
 
-# Save FAISS index and processed sentences
+# Save FAISS index, processed sentences, and their timestamps
 faiss.write_index(faiss_index, "lecture_embeddings.index")
-with open('processed_lecture_sentences.txt', 'w') as file:
-    file.write('\n'.join(lecture_sentences))
 
-print(f"Embeddings created for {len(lecture_sentences)} sentences from {vtt_file}.")
+with open('processed_lecture_sentences.txt', 'w') as file:
+    for sentence, timestamp in zip(all_sentences, all_timestamps):
+        file.write(f"{sentence}\n")
+
+print(f"Embeddings created for {len(all_sentences)} combined sentences from {len(os.listdir(vtt_dir))} VTT files.")

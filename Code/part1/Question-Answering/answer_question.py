@@ -1,6 +1,8 @@
 import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
+from tabulate import tabulate
+
 
 # Load the model and FAISS index
 model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
@@ -26,7 +28,6 @@ related_sentences = [(lecture_sentences[i], distances[0][j]) for j, i in enumera
 
 # Display related sentences
 print("\nSentences within threshold:")
-for rank, (sentence, distance) in enumerate(related_sentences, 1):
-    print(f"Rank {rank}: {sentence} (Distance Similarity: {distance:.4f})")
+print(tabulate(related_sentences, headers=["Sentence", "Rank"], tablefmt="solid"))
 
-print(f"\nFound {len(related_sentences)} related sentences.")
+
