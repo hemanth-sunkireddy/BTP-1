@@ -3,6 +3,9 @@
 ## Project Title
 * Automatic multimodal question and answering for video lectures
 
+## Report (PPT)
+**Presentation:** [Canva Link](https://www.canva.com/design/DAGhsnSEdRo/IxsYfXwTJMAf6B7icCmBbQ/view?utm_content=DAGhsnSEdRo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb2715aa87e)
+
 ## Project description
 This work involves synthesizing a video from a set of video lectures that answers the question raised by the student. This contains following objectives.
 1. Select a video lectures set that containing SRTs.
@@ -16,9 +19,6 @@ This work involves synthesizing a video from a set of video lectures that answer
 
 ## Guide
 Chiranjeevi Yarra (Spoken Language Forensics & Informatics (SLFI) group - LTRC)
-
-## Report (PPT)
-**Presentation:** [Canva Link](https://www.canva.com/design/DAGdXJG88EA/zs8v3wr5Ru36qYcWTp-EGA/view?utm_content=DAGdXJG88EA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb2892354ed)
 
 
 ### Team
