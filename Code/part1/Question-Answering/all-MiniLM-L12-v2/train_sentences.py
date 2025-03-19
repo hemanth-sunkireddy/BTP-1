@@ -5,7 +5,7 @@ import re
 import os
 
 # Initialize Sentence-BERT model
-model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+model = SentenceTransformer('sentence-transformers/all-MiniLM-L12-v2')
 
 # Function to extract combined sentences with timestamps from .vtt file
 def extract_sentences_from_vtt(file_path):
@@ -43,7 +43,7 @@ def extract_sentences_from_vtt(file_path):
     return sentences, timestamps
 
 # Directory containing VTT files
-vtt_dir = 'SRT'
+vtt_dir = '../SRT'
 
 # Initialize lists for all sentences and timestamps
 all_sentences = []
@@ -68,7 +68,7 @@ faiss_index.add(sentence_embeddings)
 # Save FAISS index, processed sentences, and their timestamps
 faiss.write_index(faiss_index, "lecture_embeddings.index")
 
-with open('processed_lecture_sentences.txt', 'w') as file:
+with open('sentences.txt', 'w') as file:
     for sentence, timestamp in zip(all_sentences, all_timestamps):
         file.write(f"{sentence}\n")
 

@@ -40,3 +40,7 @@ we will use **PyWebRTC model**.
     * If the speech contains noticeable pauses (silent gaps between sentences), we'll set a threshold for the duration of the pause that qualifies as a sentence boundary.
     * Then combine smaller chunks into their nearest chunks with monitoring max and min durations of the audio file.
     * If there is a pause then remove in between the sentences. And add small padding silence at both ends of the remaining audio at that window.
+
+
+
+* Update the torch version to latest.
