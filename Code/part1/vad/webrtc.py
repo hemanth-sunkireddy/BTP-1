@@ -44,8 +44,8 @@ def frame_generator(frame_duration_ms, audio, sample_rate):
 
 def format_time(seconds):
     minutes, seconds = divmod(seconds, 60)
-    milliseconds = int((seconds - int(seconds)) * 1000)
-    return f"{int(minutes):02}:{int(seconds):02}.{milliseconds:03}"
+    milliseconds = (seconds - int(seconds)) * 1000
+    return f"{int(minutes):02}:{int(seconds):02}.{milliseconds:04.1f}"
 
 def silent_periods_collector(sample_rate, vad, frames, silence_threshold_seconds=silence_threshold):
     silent_frames = []
@@ -137,17 +137,15 @@ def plot_vad(sample_rate, frames, vad, chunk_details):
 
 
 def vad_collector(sample_rate, vad, frames, silence_timings, chunk_min_dur=chunk_min_dur, chunk_max_dur=chunk_max_dur):
-    """Filters out non-voiced audio frames and collects continuous speech chunks of speech with silence removed."""
-    silence_timings = silence_timings
+    """Filters out non-voiced audio frames and collects continuous speech chunks with silence removed."""
     total_speech_duration = 0
     chunk_count = 0
     start_time = None
     end_time = None
     current_frames = []
     segments = []
-
-    chunk_details = []  # This will store chunk info for printing in tabular format
-    continous_silence = 0
+    chunk_details = []  # Stores chunk info for tabulation
+    continuous_silence = 0
 
     for frame in frames:
         is_speech = vad.is_speech(frame.bytes, sample_rate)
@@ -155,93 +153,77 @@ def vad_collector(sample_rate, vad, frames, silence_timings, chunk_min_dur=chunk
             start_time = frame.timestamp
 
         if is_speech:  # Speech frame
-            continous_silence = 0
+            continuous_silence = 0
             current_frames.append(frame)
             total_speech_duration += frame.duration
 
-            # If speech duration reaches chunk_max_dur, cut the chunk and create a new one
+            # If speech duration reaches chunk_max_dur, finalize the chunk
             if total_speech_duration >= chunk_max_dur:
                 end_time = frame.timestamp + frame.duration
                 duration = end_time - start_time
                 chunk_count += 1
                 segments.append(b''.join([f.bytes for f in current_frames]))  # Add the chunk
 
-                # Store chunk details for tabulation
-                start_min, start_sec = divmod(start_time, 60)
-                end_min, end_sec = divmod(end_time, 60)
-                # chunk_details.append([
-                #     chunk_count,
-                #     f"{int(start_min):02}:{int(start_sec):02}",
-                #     f"{int(end_min):02}:{int(end_sec):02}",
-                #     f"{duration:.2f} seconds"
-                # ])
+                # Store chunk details
                 chunk_details.append([
                     chunk_count,
-                    f"{int(start_min):02}:{int(start_sec):02}",
-                    f"{int(end_min):02}:{int(end_sec):02}",
-                    f"{duration:.2f} seconds"
+                    format_time(start_time),
+                    format_time(end_time),
+                    f"{duration:.4f} seconds"
                 ])
 
-
-                # Reinitialize for next chunk
+                # Reset for the next chunk
                 current_frames = []
                 total_speech_duration = 0
-                start_time = None  # Ready for the next chunk
+                start_time = None
 
         else:  # Silence frame
             total_speech_duration += frame.duration
             current_frames.append(frame)
-            # If we've passed the chunk_min_dur threshold and encounter silence
-            if total_speech_duration >= chunk_min_dur:
+            continuous_silence += frame.duration
+
+            # If we've passed the chunk_min_dur threshold and encounter enough silence, finalize the chunk
+            if total_speech_duration >= chunk_min_dur and continuous_silence >= silence_threshold:
                 end_time = frame.timestamp
                 duration = end_time - start_time
-                continous_silence += frame.duration
-                
-                # If silence is detected, cut the chunk at this point
-                if duration >= chunk_min_dur and duration <= chunk_max_dur:
-                    if continous_silence >= silence_threshold:
-                        chunk_count += 1
-                        segments.append(b''.join([f.bytes for f in current_frames]))  # Add the chunk
+                chunk_count += 1
+                segments.append(b''.join([f.bytes for f in current_frames]))  # Add the chunk
 
-                        # Store chunk details for tabulation
-                        start_min, start_sec = divmod(start_time, 60)
-                        end_min, end_sec = divmod(end_time, 60)
-                        chunk_details.append([
-                            chunk_count,
-                            f"{int(start_min):02}:{int(start_sec):02}",
-                            f"{int(end_min):02}:{int(end_sec):02}",
-                            f"{duration:.2f} seconds"
-                        ])
+                # Store chunk details
+                chunk_details.append([
+                    chunk_count,
+                    format_time(start_time),
+                    format_time(end_time),
+                    f"{duration:.4f} seconds"
+                ])
 
-                        # Reinitialize for the next chunk
-                        current_frames = []
-                        total_speech_duration = 0
-                        start_time = None  # Ready for the next chunk
+                # Reset for the next chunk
+                current_frames = []
+                total_speech_duration = 0
+                start_time = None
 
-
-    # If there are any remaining frames, output them as the last chunk
+    # If there are remaining frames, output them as the final chunk
     if current_frames:
         end_time = frames[-1].timestamp + frames[-1].duration
         duration = end_time - start_time
         chunk_count += 1
         segments.append(b''.join([f.bytes for f in current_frames]))  # Add the final chunk
 
-        # Store the final chunk's details for tabulation
-        start_min, start_sec = divmod(start_time, 60)
-        end_min, end_sec = divmod(end_time, 60)
+        # Store the final chunk's details
         chunk_details.append([
             "Final",
-            f"{int(start_min):02}:{int(start_sec):02}",
-            f"{int(end_min):02}:{int(end_sec):02}",
-            f"{duration:.2f} seconds"
+            format_time(start_time),
+            format_time(end_time),
+            f"{duration:.4f} seconds"
         ])
 
-    # Print the chunk details in a table format using tabulate
-    headers = ["Chunk Num", "Start Time (min)", "End Time (min)", "Duration"]
+    # Print chunk details using tabulate
+    headers = ["Chunk Num", "Start Time", "End Time", "Duration"]
     print("\nChunks Details:")
     print(tabulate(chunk_details, headers=headers, tablefmt="rounded_grid"))
 
     return segments, chunk_details
+w
 
 
 

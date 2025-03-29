@@ -2,7 +2,6 @@ import os
 import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
-import pickle
 import google.generativeai as genai
 
 genai.configure(api_key="AIzaSyDPH5O8RY31uu0MDs5fPctNKmfXeACNfJA")
@@ -18,7 +17,6 @@ def classify_question(question):
 # Load the model
 model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 index_file = "lecture_embeddings.index"
-model_file = "faiss_model.pkl"
 sentences_file = "sentences.txt"
 
 def load_sentences(file_path):
@@ -28,25 +26,8 @@ def load_sentences(file_path):
 
 lecture_sentences = load_sentences(sentences_file)
 
-if os.path.exists(model_file):
-    print("Loading FAISS model from file...")
-    with open(model_file, 'rb') as f:
-        faiss_index = pickle.load(f)
-else:
-    if os.path.exists(index_file):
-        print("Loading existing FAISS index...")
-        faiss_index = faiss.read_index(index_file)
-    else:
-        print("Creating FAISS index...")
-        sentence_embeddings = np.array(model.encode(lecture_sentences)).astype('float32')
-        faiss_index = faiss.IndexFlatL2(sentence_embeddings.shape[1])
-        faiss_index.add(sentence_embeddings)
-        faiss.write_index(faiss_index, index_file)
-        print("FAISS index saved.")
-    
-    with open(model_file, 'wb') as f:
-        pickle.dump(faiss_index, f)
-    print("FAISS model saved.")
+print("Loading existing FAISS index...")
+faiss_index = faiss.read_index(index_file)
 
 while True:
     # Get student's question

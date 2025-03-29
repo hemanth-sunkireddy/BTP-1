@@ -7,9 +7,9 @@ import os
 # Initialize Sentence-BERT model
 model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 
-# Function to extract combined sentences with timestamps from .vtt file
-def extract_sentences_from_vtt(file_path):
-    with open(file_path, 'r') as file:
+# Function to extract combined sentences with timestamps from .srt file
+def extract_sentences_from_srt(file_path):
+    with open(file_path, 'r', encoding='utf-8') as file:
         lines = file.readlines()
     
     sentences = []
@@ -20,10 +20,10 @@ def extract_sentences_from_vtt(file_path):
     for line in lines:
         line = line.strip()
         
-        # Check for timestamp lines
-        timestamp_match = re.match(r'(\d{2}:\d{2}:\d{2}\.\d{3}) --> (\d{2}:\d{2}:\d{2}\.\d{3})', line)
+        # Check for timestamp lines (SRT uses commas for milliseconds)
+        timestamp_match = re.match(r'(\d{2}:\d{2}:\d{2}[.,]\d{3}) --> (\d{2}:\d{2}:\d{2}[.,]\d{3})', line)
         if timestamp_match:
-            current_timestamp = timestamp_match.group(1) + ' --> ' + timestamp_match.group(2)
+            current_timestamp = timestamp_match.group(1).replace(',', '.') + ' --> ' + timestamp_match.group(2).replace(',', '.')
             continue
         
         # Skip empty lines and cue identifiers (lines with only numbers)
@@ -42,18 +42,18 @@ def extract_sentences_from_vtt(file_path):
     
     return sentences, timestamps
 
-# Directory containing VTT files
-vtt_dir = '../SRT'
+# Directory containing SRT files
+srt_dir = '../complete_srt'
 
 # Initialize lists for all sentences and timestamps
 all_sentences = []
 all_timestamps = []
 
-# Process all VTT files
-for file_name in os.listdir(vtt_dir):
-    if file_name.endswith('.vtt'):
-        file_path = os.path.join(vtt_dir, file_name)
-        sentences, timestamps = extract_sentences_from_vtt(file_path)
+# Process all SRT files
+for file_name in os.listdir(srt_dir):
+    if file_name.endswith('.srt'):
+        file_path = os.path.join(srt_dir, file_name)
+        sentences, timestamps = extract_sentences_from_srt(file_path)
         all_sentences.extend(sentences)
         all_timestamps.extend(timestamps)
 
@@ -68,8 +68,8 @@ faiss_index.add(sentence_embeddings)
 # Save FAISS index, processed sentences, and their timestamps
 faiss.write_index(faiss_index, "lecture_embeddings.index")
 
-with open('sentences.txt', 'w') as file:
+with open('sentences.txt', 'w', encoding='utf-8') as file:
     for sentence, timestamp in zip(all_sentences, all_timestamps):
         file.write(f"{sentence}\n")
 
-print(f"Embeddings created for {len(all_sentences)} combined sentences from {len(os.listdir(vtt_dir))} VTT files.")
+print(f"Embeddings created for {len(all_sentences)} combined sentences from {len(os.listdir(srt_dir))} SRT files.")
