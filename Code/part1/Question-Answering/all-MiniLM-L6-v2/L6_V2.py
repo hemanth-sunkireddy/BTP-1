@@ -7,12 +7,20 @@ import google.generativeai as genai
 genai.configure(api_key="AIzaSyDPH5O8RY31uu0MDs5fPctNKmfXeACNfJA")
 
 def classify_question(question):
-    prompt = f"Classify the question as 'Vague' or 'Clear':\n\nQuestion: {question}\n\nLabel:"
-    
+    prompt = (
+        "This is an online course on Machine Learning. Your task is to classify the given question as 'Vague' or 'Clear'.\n\n"
+        "1. If the question is 'Clear', simply return: 'Clear'.\n"
+        "2. If the question is 'Vague', return: 'Vague' followed by a clear reason explaining *why* it is vague "
+        "and *how* the student can improve it.\n\n"
+        f"Question: {question}\n\n"
+        "Response:"
+    )
+
     model = genai.GenerativeModel("gemini-2.0-flash")
     response = model.generate_content(prompt)
     
     return response.text.strip()
+
 
 # Load the model
 model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')

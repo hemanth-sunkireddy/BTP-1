@@ -1,25 +1,18 @@
 from transformers import pipeline
+from tqdm import tqdm
 
 qg_pipeline = pipeline("text2text-generation", model="valhalla/t5-base-qg-hl")
 
+input_file = "sentences.txt"
+output_file = "generated_questions.txt"
 
-with open("sentences.txt", "r", encoding="utf-8") as file:
-    sentences = file.readlines()
+with open(input_file, "r", encoding="utf-8") as file:
+    sentences = [line.strip() for line in file if line.strip()]
 
-
-output_questions = []
-for sentence in sentences:
-    sentence = sentence.strip()
-    if sentence:
+with open(output_file, "w", encoding="utf-8") as out_file:
+    for sentence in tqdm(sentences, desc="Generating Questions", unit="sentence"):
         questions = qg_pipeline(sentence, max_length=128, num_return_sequences=1)
-        print(questions)
-        output_questions.append(f"Sentence: {sentence}")
-        for idx, q in enumerate(questions, 1):
-            output_questions.append(f"Q{idx}: {q['generated_text']}")
-        output_questions.append("")
-
-
-with open("generated_questions.txt", "w", encoding="utf-8") as output_file:
-    output_file.write("\n".join(output_questions))
+        for q in questions:
+            out_file.write(q["generated_text"] + "\n")  # Write each question on a new line
 
 print("Question generation complete! Questions saved in 'generated_questions.txt'.")
