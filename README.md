@@ -4,6 +4,9 @@
 
 > Dataset Link: [Coursera Website](https://www.coursera.org/learn/introduction-to-machine-learning-supervised-learning/home/week/1)
 
+## Question Classifier Output
+![Classify Question Image](classify-question-result.png)
+
 ## Project description
 This work involves synthesizing a video from a set of video lectures that answers the question raised by the student. This contains following objectives.
 1. Select a video lectures set that containing SRTs.
