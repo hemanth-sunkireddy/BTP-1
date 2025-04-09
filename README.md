@@ -10,6 +10,9 @@
 ## Finding Related Sentences for Question Output
 ![Related Sentences output](Related-Sentences-Output.png)
 
+## Voice Activity Detector Output
+![Voice Activity Detector Output](Voice-Activity-Detector-Output.png)
+
 ## Project description
 This work involves synthesizing a video from a set of video lectures that answers the question raised by the student. This contains following objectives.
 1. Select a video lectures set that containing SRTs.
