@@ -7,6 +7,9 @@
 ## Question Classifier Output
 ![Classify Question Image](Classify-Question.png)
 
+## Finding Related Sentences for Question Output
+![Related Sentences output](Related-Sentences-Output.png)
+
 ## Project description
 This work involves synthesizing a video from a set of video lectures that answers the question raised by the student. This contains following objectives.
 1. Select a video lectures set that containing SRTs.
