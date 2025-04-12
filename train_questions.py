@@ -12,7 +12,7 @@ questions = [line.strip() for line in open(questions_file, "r") if line.strip()]
 question_embeddings = np.array(model.encode(questions)).astype("float32")
 
 # Save embeddings and questions
-np.save("questions_embeddings.npy", question_embeddings)
+np.save("Data/questions_embeddings.npy", question_embeddings)
 with open("questions_list.txt", "w") as f:
     f.write("\n".join(questions))
 
