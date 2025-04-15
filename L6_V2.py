@@ -1,22 +1,38 @@
-import os
 import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
-
-
-# Load the model
+# Load the model and FAISS index
 model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
-index_file = "Data/sentence_embeddings.index"
-sentences_file = "Data/sentences.txt"
+faiss_index = faiss.read_index("Data/sentence_embeddings.index")
 
-def load_sentences(file_path):
-    with open(file_path, 'r') as file:
-        sentences = [line.strip() for line in file if line.strip()]
-    return sentences
+# Load lecture sentences
+with open('Data/sentences.txt', 'r') as file:
+    lecture_sentences = file.readlines()
+lecture_sentences = [line.strip() for line in lecture_sentences if line.strip()]
 
-lecture_sentences = load_sentences(sentences_file)
+# Get student's question
+student_question = input("Enter your question: ")
+question_embedding = np.array(model.encode([student_question])).astype('float32')
 
-print("Loading existing FAISS index...")
-faiss_index = faiss.read_index(index_file)
+# Search all sentences (max number can be total sentences in the index)
+distances, indices = faiss_index.search(question_embedding, len(lecture_sentences))
 
+# Define a distance threshold (lower means more similar)
+distance_threshold = 0.7
+
+related_sentences = []
+for j in range(len(indices[0])):
+    i = indices[0][j]
+    distance = distances[0][j]
+    sentence = lecture_sentences[i]
+    
+    # Check if the sentence is below the distance threshold and is not a question
+    if distance > 0 and distance <= distance_threshold and not sentence.strip().endswith('?'):
+        related_sentences.append((sentence, distance))
+
+
+# Display related sentences with distances
+print("\n Related Sentences:")
+for sentence, distance in related_sentences:
+    print(f"- {sentence} - {distance:.4f}")
