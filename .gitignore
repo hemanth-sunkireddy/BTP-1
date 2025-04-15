@@ -1,10 +1,7 @@
-**/*.txt
 **/*.DS_Store
 **/*pycache*
 **/*.vtt
 **/*.zip
 **/*.vtt
 **/*.srt
-**/*.txt
 **/*.wav
-**/*.index
