@@ -155,8 +155,9 @@ if question:
             filename, timestamp, _ = lecture_data[i+1]
             related_results.append((filename, timestamp, sentence, distance))
 
-    stitch_video_from_segments(related_results)
-
+    # stitch_video_from_segments(related_results)
+    # stitch_video_from_segments(related_results,transition_type="fade_through_black",apply_transitions=False)
+    stitch_video_from_segments(related_results,pause_duration=1.0)
     if not os.path.exists(video_path) or not os.path.exists(srt_path):
         st.error("Video or subtitle file not found.")
     else:
