@@ -88,12 +88,19 @@ import os
 import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
 from video_sticher import stitch_video_from_segments
 import csv
 
 # Load the model and FAISS index
 model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 faiss_index = faiss.read_index("../Data/sentence_embeddings.index")
+
+
+# Load embeddings and questions
+question_embeddings = np.load("../Data/questions_embeddings.npy")
+
+
 
 # Load lecture sentences
 with open('../Data/sentences.txt', 'r') as file:
@@ -134,10 +141,26 @@ st.title("AI Video Answer System")
 
 question = st.text_input("Ask your question:")
 
+def is_question_clear(query):
+    """Check if a given question is clear based on similarity to existing questions."""
+    query_embedding = model.encode([query]).astype("float32")
+    similarities = cosine_similarity(query_embedding, question_embeddings)[0]
+    
+    max_similarity = np.max(similarities)  # Get highest similarity score
+    return max_similarity >= 0.7, max_similarity
+
 if question:
     question_embedding = np.array(model.encode([question])).astype('float32')
     # Search all sentences (max number can be total sentences in the index)
     distances, indices = faiss_index.search(question_embedding, len(lecture_sentences))
+
+   
+    
+    is_clear, similarity_score = is_question_clear(question)
+    if not is_clear:
+        st.warning("The question is not related to the course. Please input a question related to the course content.")
+
+
 
     # Define a distance threshold (lower means more similar)
     distance_threshold = 0.7
