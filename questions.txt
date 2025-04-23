@@ -1,4 +1,11 @@
 1. What is Machine Learning?
+2. What is SVM?
+3. What is Support Vector Machine?
+
+
+
+
+
 2. What is Linear Regression?
 3. What are the applications of machine learning?
 4. What are Decision Trees?
