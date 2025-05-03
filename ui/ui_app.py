@@ -91,6 +91,10 @@ from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from video_sticher import stitch_video_from_segments
 import csv
+# import es_main
+import pickle
+import subprocess
+import json
 
 # Load the model and FAISS index
 model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
@@ -178,9 +182,37 @@ if question:
             filename, timestamp, _ = lecture_data[i+1]
             related_results.append((filename, timestamp, sentence, distance))
 
+    # with open('../extractive_summarization/data/related_results.pkl', 'wb') as f:
+    #     pickle.dump(related_results, f)
+    
+    related_results = [
+    (file, timestamp, text)
+    for file, timestamp, text, _ in related_results
+]
+    with open('../extractive_summarization/data/related_results.json', 'w', encoding='utf-8') as f:
+        json.dump(related_results, f, ensure_ascii=False, indent=2)
+
+    
+    # # Extractive Summarization
+    # es_main.clear_files()
+    # es_main.write_sentences_to_file(related_results, filename='../extractive_summarization/data/my_data.txt')
+    # sentence_dict=es_main.convert_to_sentence_dict(related_results)
+    # es_main.generate_extractive_summary()
+    # summary_results=es_main.reconstruct_tuples_from_file('../extractive_summarization/data/my_extractive_summary.txt', sentence_dict)
+    subprocess.run(["/home/sujal/miniconda3/envs/es_env/bin/python", "es_main.py"])
+    
+    # with open('../extractive_summarization/data/summary_results.pkl', 'rb') as f:
+    #     summary_results = pickle.load(f)
+        
+    with open('../extractive_summarization/data/summary_results.json', 'r', encoding='utf-8') as f:
+        summary_results = json.load(f)
+
+    summary_results = [tuple(entry) for entry in summary_results]
+
+
     # stitch_video_from_segments(related_results)
     # stitch_video_from_segments(related_results,transition_type="fade_through_black",apply_transitions=False)
-    stitch_video_from_segments(related_results,pause_duration=1.0)
+    stitch_video_from_segments(summary_results,pause_duration=1.0)
     if not os.path.exists(video_path) or not os.path.exists(srt_path):
         st.error("Video or subtitle file not found.")
     else:

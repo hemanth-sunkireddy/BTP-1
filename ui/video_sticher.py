@@ -225,7 +225,7 @@ def stitch_video_from_segments(segment_list, srt_filename="stitched_output.srt",
     clips = []
     clips_info = []
 
-    for idx, (filename, timestamp, sentence, distance) in enumerate(segment_list):
+    for idx, (filename, timestamp, sentence) in enumerate(segment_list):
         video_file = "../Data/Videos/" + os.path.splitext(filename)[0] + ".mp4"
         start, end = parse_timestamp(timestamp)
 
