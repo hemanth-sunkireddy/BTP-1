@@ -38,7 +38,10 @@ So please install through `apt install ffmpeg` (Linux) or `brew install ffmpeg` 
 1. Place the input videos inside this folder `Data/Videos` with naming as `1.mp4 2.mp4 ....`
 2. Run `video-to-audio-converter.py` file.
 3. Output Audio files in `Data/Audios` directory.
+4. Now run `voice-activity-detection.ipynb` file.
+5. Output Audio Chunk files in `Data/Audio-Chunks` directory.
 
+7. Run `QA.ipynb` to get related sentences and corresponding video number for the question.
 ---
 
 ## Audio Configuration
@@ -58,10 +61,10 @@ So please install through `apt install ffmpeg` (Linux) or `brew install ffmpeg` 
 
 
 ## Question Classifier Output
-![Classify Question Image](Classify-Question.png)
+![Classify Question Image](assets/Classify-Question.png)
 
 ## Finding Related Sentences for Question Output
-![Related Sentences output](Related-Sentences-Output.png)
+![Related Sentences output](assets/Related-Sentences-Output.png)
 
 ## Voice Activity Detector Output
-![Voice Activity Detector Output](Voice-Activity-Detector-Output.png)
+![Voice Activity Detector Output](assets/Voice-Activity-Detector-Output.png)
