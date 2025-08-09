@@ -1,22 +1,10 @@
 # BTP 1 - Automatic multimodal question and answering for video lectures
 
-**Presentation:** [Canva Link](https://www.canva.com/design/DAGhsnSEdRo/IxsYfXwTJMAf6B7icCmBbQ/view?utm_content=DAGhsnSEdRo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb2715aa87e)
+**Presentation:** [Canva](https://www.canva.com/design/DAGhsnSEdRo/IxsYfXwTJMAf6B7icCmBbQ/view?utm_content=DAGhsnSEdRo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb2715aa87e)
 
-> Dataset Link: [Coursera Website](https://www.coursera.org/learn/introduction-to-machine-learning-supervised-learning/home/week/1)
+**Demo:** [Youtube](https://www.youtube.com/watch?v=EWW-C-lGbvo)
 
-
-## Result
-[![Watch the video](https://img.youtube.com/vi/EWW-C-lGbvo/hqdefault.jpg)](https://youtu.be/EWW-C-lGbvo)
-
-
-## Question Classifier Output
-![Classify Question Image](Classify-Question.png)
-
-## Finding Related Sentences for Question Output
-![Related Sentences output](Related-Sentences-Output.png)
-
-## Voice Activity Detector Output
-![Voice Activity Detector Output](Voice-Activity-Detector-Output.png)
+**Dataset:** [Coursera Website](https://www.coursera.org/learn/introduction-to-machine-learning-supervised-learning/home/week/1)
 
 ## Project description
 This work involves synthesizing a video from a set of video lectures that answers the question raised by the student. This contains following objectives.
@@ -32,83 +20,48 @@ This work involves synthesizing a video from a set of video lectures that answer
 ## Guide
 Chiranjeevi Yarra (Spoken Language Forensics & Informatics (SLFI) group - LTRC)
 
-## 🎵 Video to Audio Conversion
+## Running in Local
+### Prerequisities
+1. FFMPEG:  `pip3 install ffmpeg-python`
+2. PyTorch: `pip3 install torch torchvision`
+3. Transformers: ` pip3 install transformers`
+4. Sentence Transfomers: `pip3 install -U sentence-transformers`
+5. Faiss: `pip3 install faiss-cpu`
+6. Silero VAD: `pip3 install silero-vad`
+7. SoundFile: `pip3 install soundfile`
+8. Sox: `pip3 install sox`
 
-This script extracts audio from multiple `.mp4` video files and saves them as `.wav` files with specified audio parameters.
+* Note: We require `ffmpeg` in system also.
+So please install through `apt install ffmpeg` (Linux) or `brew install ffmpeg` (Mac)
 
----
-
-## ✅ Prerequisites
-
-Make sure you have `ffmpeg-python` installed. You can install it using:
-
-```bash
-pip install ffmpeg-python
-```
-
----
-
-## 📂 Input and Output
-
-### 📥 Input
-- Folder: `Data/Videos`
-- File Type: `.mp4` video files
-- Example:
-  ```
-  Data/
-  ├── video1.mp4
-  ├── lecture2.mp4
-  └── sample3.mp4
-  ```
-
-### 📤 Output
-- Folder: `Data/Audios` (automatically created if it doesn't exist)
-- File Type: `.wav` audio files
-- Example:
-  ```
-  audios/
-  ├── video1.wav
-  ├── lecture2.wav
-  └── sample3.wav
-  ```
-
-Each output file corresponds to an input `.mp4` file with the same base filename.
+### Steps
+1. Place the input videos inside this folder `Data/Videos` with naming as `1.mp4 2.mp4 ....`
+2. Run `video-to-audio-converter.py` file.
+3. Output Audio files in `Data/Audios` directory.
 
 ---
 
-## 🛠️ Audio Configuration
+## Audio Configuration
 
 - Sample Rate: **16000 Hz** (you can change it to 32000 Hz in the script)
 - Channels: **1 (Mono)**
 - Codec: **PCM 16-bit**
 - Bit Rate: ~256 kbps (may vary)
-
 ---
 
-## 🚀 Usage
+# Voice Activity Detection
+* Converting Audio into smaller chunks - Removing Silent Portions - Silero VAD Algorithm
 
-1. Place your `.mp4` files in the `Data/` folder.
-2. Run the script using:
-
-```bash
-python3 video_to_audio.py
-```
-
-3. Extracted `.wav` files will be saved in the `audios/` folder.
-4. The terminal will display details of each extracted audio file (codec, sample rate, duration, etc.).
-
----
+1. Run `silero-vad.ipynb` file.
+2. Output Audio Chunks will be generated automatically in `Data/Audio-Chunks` folder
 
 
-# Voice Activity Detection - Converting Audio into smaller chunks - Silero VAD Algorithm
-we will use the **Silero Voice Activity Detection (VAD) model** to extract speech from an audio file, removing silent portions.
 
-1. Install Silero VAD:
-    `pip install silero-vad`
-2. Additional dependencies:
-    * **Soundfile:** To handle reading and writing audio files.
-        * `pip install soundfile`
-    * **Sox:** For audio processing and manipulation.
-        * `pip install sox`
-3. Run `silero-vad.ipynb` file.
-4. Output Audio Chunks will be generated automatically in `Data/Audio-Chunks` folder
+## Question Classifier Output
+![Classify Question Image](Classify-Question.png)
+
+## Finding Related Sentences for Question Output
+![Related Sentences output](Related-Sentences-Output.png)
+
+## Voice Activity Detector Output
+![Voice Activity Detector Output](Voice-Activity-Detector-Output.png)
