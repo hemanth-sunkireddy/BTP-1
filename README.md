@@ -30,6 +30,9 @@ Chiranjeevi Yarra (Spoken Language Forensics & Informatics (SLFI) group - LTRC)
 6. Silero VAD: `pip3 install silero-vad`
 7. SoundFile: `pip3 install soundfile`
 8. Sox: `pip3 install sox`
+9. Streamlit: `pip3 install streamlit`
+10. pysrt: `pip3 install pysrt`
+11. moviepy: `pip3 install moviepy==1.0.3`
 
 * Note: We require `ffmpeg` in system also.
 So please install through `apt install ffmpeg` (Linux) or `brew install ffmpeg` (Mac)
