@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Q&A System</title>
+    <!-- Use the Inter font for a clean, modern look -->
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <!-- Load Tailwind CSS from CDN for easy styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Apply the Inter font globally */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom styles for the container to center and add padding */
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 2rem;
+        }
+        /* Custom styles for the question input area */
+        #question-input {
+            resize: none; /* Prevents manual resizing of the textarea */
+            transition: all 0.2s ease-in-out; /* Smooth transition for focus */
+        }
+        #question-input:focus {
+            outline: 2px solid theme('colors.blue.500'); /* Blue outline on focus */
+            outline-offset: 2px;
+        }
+        /* Custom styles for the caption container */
+        .caption-container {
+            height: 150px;
+            overflow-y: scroll;
+            line-height: 1.5;
+        }
+        /* Class for highlighting the active caption sentence */
+        .caption-highlight {
+            background-color: theme('colors.blue.100');
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            transition: all 0.2s ease-in-out;
+            color: theme('colors.blue.800');
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 flex items-center justify-center min-h-screen">
+
+    <!-- Main application container -->
+    <div class="container bg-white shadow-xl rounded-2xl p-8 space-y-8">
+        <!-- Header section -->
+        <header class="text-center">
+            <h1 class="text-4xl font-extrabold text-blue-600 mb-2">Video Q&A</h1>
+            <p class="text-gray-500 text-lg">Ask a question, get a video answer.</p>
+        </header>
+
+        <!-- Question input form section -->
+        <section class="space-y-4">
+            <form id="qa-form" class="space-y-4">
+                <label for="question-input" class="block text-lg font-medium text-gray-700">Your Question:</label>
+                <textarea
+                    id="question-input"
+                    name="question"
+                    rows="4"
+                    class="w-full p-4 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500"
+                    placeholder="E.g., What are the three states of matter?"
+                    required
+                ></textarea>
+                <button
+                    type="submit"
+                    class="w-full bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors duration-200"
+                >
+                    Generate Video Answer
+                </button>
+            </form>
+        </section>
+
+        <!-- Video answer display section -->
+        <section id="video-answer-section" class="space-y-6 hidden">
+            <h2 class="text-2xl font-bold text-gray-700">Your Video Answer</h2>
+            
+            <!-- Flex container for video and side panels -->
+            <div class="flex flex-col md:flex-row gap-6">
+                <!-- Video player and captions -->
+                <div class="flex-grow space-y-4">
+                    <!-- Video player element -->
+                    <video
+                        id="answer-video"
+                        controls
+                        class="w-full aspect-video bg-gray-900 rounded-xl shadow-lg"
+                    >
+                        <source src="" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    
+                    <!-- Caption display area -->
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm caption-container">
+                        <p id="caption-text" class="text-gray-600">Captions will appear here.</p>
+                    </div>
+                </div>
+
+                <!-- Source lectures display -->
+                <div class="md:w-1/3 space-y-2">
+                    <h3 class="text-lg font-semibold text-gray-700">Source Lectures:</h3>
+                    <ul id="source-lectures-list" class="space-y-2 text-sm text-gray-500">
+                        <!-- Source lecture titles will be dynamically added here -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading state for user feedback -->
+        <div id="loading-spinner" class="hidden text-center">
+            <div class="flex items-center justify-center space-x-2">
+                <div class="w-6 h-6 rounded-full animate-pulse bg-blue-500"></div>
+                <div class="w-6 h-6 rounded-full animate-pulse bg-blue-500"></div>
+                <div class="w-6 h-6 rounded-full animate-pulse bg-blue-500"></div>
+            </div>
+            <p class="mt-2 text-gray-500">Generating your video answer...</p>
+        </div>
+    </div>
+
+    <!-- JavaScript for handling video, captions, and source lectures -->
+    <script>
+        // Get references to key DOM elements
+        const qaForm = document.getElementById('qa-form');
+        const videoSection = document.getElementById('video-answer-section');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        const videoPlayer = document.getElementById('answer-video');
+        const captionText = document.getElementById('caption-text');
+        const sourceList = document.getElementById('source-lectures-list');
+
+        // This is a mock function to simulate receiving data from your Flask backend.
+        // In your real implementation, you will get this data from a fetch() call.
+        function getMockData() {
+            // This is a sample SRT content. Your Flask app will generate this.
+            const srtContent = `1
+00:00:00,000 --> 00:00:04,410
+As you can see, machine learning is a top skill in the jobs that involves AI skills.
+
+2
+00:00:05,410 --> 00:00:12,618
+Machine learning consists of different types of learning, such as supervised learning, unsupervised learning, or reinforcement learning.
+
+3
+00:00:13,618 --> 00:00:16,879
+Many machine learning models, they are coming from statistical learning.
+
+4
+00:00:17,879 --> 00:00:24,207
+So machine learning is part of data science and it is also a subfield of artificial intelligence.
+
+5
+00:00:25,207 --> 00:00:35,567
+So machine learning extends the statistical learning by including more complex algorithms, which deal with more complex data and bigger data, and more efficient algorithms.
+
+6
+00:00:36,567 --> 00:00:39,758
+This video will talk about introduction to machine learning.`;
+            
+            const videoUrl = '../ui/stitched_output.mp4';
+            
+            const sources = [
+                'Lecture-1: Intro to Machine Learning',
+                'Lecture-2: Supervised Learning',
+                'Lecture-3: Unsupervised Learning'
+            ];
+
+            return { srtContent, videoUrl, sources };
+        }
+
+        // Event listener for form submission
+        qaForm.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent the default form submission
+            
+            // Show the loading spinner and hide the video section
+            videoSection.classList.add('hidden');
+            loadingSpinner.classList.remove('hidden');
+
+            const question = document.getElementById('question-input').value;
+            console.log(`Question submitted: ${question}`);
+
+            // In a real app, you would make a fetch() call here to your Flask backend
+            // Example: const response = await fetch('/generate-video', { method: 'POST', body: JSON.stringify({ question }) });
+            // const data = await response.json();
+            
+            // For this example, we'll use mock data
+            setTimeout(() => {
+                const mockData = getMockData();
+                loadingSpinner.classList.add('hidden');
+                videoSection.classList.remove('hidden');
+                
+                // Update the video player source
+                videoPlayer.src = mockData.videoUrl;
+                videoPlayer.load(); // Load the new video source
+                
+                // Load captions and source lectures
+                loadCaptionsAndSources(mockData.srtContent, mockData.sources);
+            }, 2000); // Simulate network delay
+        });
+
+        // Function to parse SRT content and display captions
+        function loadCaptionsAndSources(srtContent, sources) {
+            const lines = srtContent.split('\n\n').filter(line => line.trim() !== '');
+            const captions = lines.map(line => {
+                const parts = line.split('\n');
+                const timeString = parts[1];
+                const text = parts.slice(2).join(' ').trim();
+                const [startTimeStr, endTimeStr] = timeString.split(' --> ');
+                
+                // Helper function to convert time string (HH:MM:SS,mmm) to seconds
+                const parseTime = (timeStr) => {
+                    const [hours, minutes, rest] = timeStr.split(':');
+                    const [seconds, milliseconds] = rest.split(',');
+                    return parseInt(hours) * 3600 + parseInt(minutes) * 60 + parseInt(seconds) + parseInt(milliseconds) / 1000;
+                };
+
+                return {
+                    start: parseTime(startTimeStr),
+                    end: parseTime(endTimeStr),
+                    text: text
+                };
+            });
+            
+            // Clear existing captions and rebuild them
+            captionText.innerHTML = '';
+            captions.forEach((caption, index) => {
+                const span = document.createElement('span');
+                span.textContent = caption.text + ' ';
+                span.dataset.index = index;
+                captionText.appendChild(span);
+            });
+
+            let currentCaptionIndex = -1;
+
+            // Add an event listener to the video player's timeupdate event
+            videoPlayer.addEventListener('timeupdate', () => {
+                const currentTime = videoPlayer.currentTime;
+                let found = false;
+                
+                for (let i = 0; i < captions.length; i++) {
+                    const caption = captions[i];
+                    const spanElement = captionText.querySelector(`span[data-index="${i}"]`);
+                    
+                    if (currentTime >= caption.start && currentTime < caption.end) {
+                        // Highlight the current caption and scroll it into view
+                        if (currentCaptionIndex !== i) {
+                            if (currentCaptionIndex !== -1) {
+                                const oldSpan = captionText.querySelector(`span[data-index="${currentCaptionIndex}"]`);
+                                oldSpan.classList.remove('caption-highlight');
+                            }
+                            spanElement.classList.add('caption-highlight');
+                            currentCaptionIndex = i;
+                            
+                            // Scroll the container to keep the highlighted text visible
+                            spanElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                        found = true;
+                        break;
+                    } else {
+                        // Un-highlight captions that are no longer active
+                        if (spanElement.classList.contains('caption-highlight')) {
+                           spanElement.classList.remove('caption-highlight');
+                        }
+                    }
+                }
+            });
+
+            // Populate the source lectures list
+            sourceList.innerHTML = '';
+            sources.forEach(source => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `• ${source}`;
+                sourceList.appendChild(listItem);
+            });
+        }
+    </script>
+
+</body>
+</html>
