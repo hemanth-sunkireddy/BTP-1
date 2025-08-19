@@ -5,3 +5,6 @@
 **/*.vtt
 **/*.srt
 **/*.wav
+Data/Audios
+Data/Audio-Chunks
+Data/Videos
