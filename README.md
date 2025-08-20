@@ -44,7 +44,11 @@ So please install through `apt install ffmpeg` (Linux) or `brew install ffmpeg` 
 4. Now run `voice-activity-detection.ipynb` file.
 5. Output Audio Chunk files in `Data/Audio-Chunks` directory.
 
-7. Run `QA.ipynb` to get related sentences and corresponding video number for the question.
+7. Now place SRT files in `Data/SRT-Files` directory.
+8. Run `srt_to_embeddings.ipynb` file.
+9. Output Sentences generated in `sentences.txt`, embeddings of sentences in `sentence_embeddings.index` and 
+    related mapping in `srt-embedding-metadata.tsv` file.
+10. Run `QA.ipynb` to get related sentences and corresponding video number for the question.
 ---
 
 ## Audio Configuration
