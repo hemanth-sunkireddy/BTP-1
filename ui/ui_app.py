@@ -142,6 +142,7 @@ video_path = "stitched_output.mp4"
 srt_path = "stitched_output.srt"
 
 st.title("AI Video Answer System")
+st.set_page_config(layout="wide")
 
 question = st.text_input("Ask your question:")
 
@@ -224,10 +225,8 @@ if question:
         st.markdown("### Video Answer:")
 
         custom_html = f"""
-        <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-
         <!-- Video -->
-        <video id="video" width="720" controls style="margin-bottom: 20px;">
+        <video id="video" controls>
             <source src="{video_data_url}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -242,15 +241,12 @@ if question:
             min-height: 30px;
             color: #333;
             text-align: center;
-            width: 720px;
             margin-bottom: 10px;
         "></div>
 
         <!-- Scrollable subtitle list -->
         <div id="subtitle-list" style="
             height: 200px;
-            overflow-y: auto;
-            width: 650px;
             background: yellow;
             border-radius: 10px;
             padding: 10px;
@@ -259,8 +255,6 @@ if question:
             font-size: 16px;
         ">
             <!-- Populated by JS -->
-        </div>
-
         </div>
 
         <script>
@@ -305,4 +299,4 @@ if question:
         }});
         </script>
         """
-        st.components.v1.html(custom_html, height=900)
+        st.components.v1.html(custom_html, width=1500, height=900)
