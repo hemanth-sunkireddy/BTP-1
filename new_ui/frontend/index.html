@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Q&A System</title>
+    <!-- Use the Inter font for a clean, modern look -->
+    <link rel="stylesheet" href="frontend/css/style.css">
+    <!-- Load Tailwind CSS from CDN for easy styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 flex items-center justify-center min-h-screen">
+
+    <!-- Main application container -->
+    <div class="container bg-white shadow-xl rounded-2xl p-8 space-y-8">
+        <!-- Header section -->
+        <header class="text-center">
+            <h1 class="text-4xl font-extrabold text-blue-600 mb-2">MultiModal Video Question-Answering</h1>
+            <p class="text-gray-500 text-lg">Ask a question, get a video answer.</p>
+        </header>
+
+        <!-- Question input form section -->
+        <section class="space-y-4">
+            <form id="qa-form" class="space-y-4">
+                <label for="question-input" class="block text-lg font-medium text-gray-700">Your Question:</label>
+                <textarea
+                    id="question-input"
+                    name="question"
+                    rows="4"
+                    class="w-full p-4 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-blue-500"
+                    placeholder="E.g., What is Linear Regression?"
+                    required
+                ></textarea>
+                <button
+                    type="submit"
+                    class="w-full bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors duration-200"
+                >
+                    Generate Video Answer
+                </button>
+            </form>
+        </section>
+
+        <!-- Video answer display section -->
+        <section id="video-answer-section" class="space-y-6 hidden">
+            <h2 class="text-2xl font-bold text-gray-700">Your Video Answer</h2>
+            
+            <!-- Flex container for video and side panels -->
+            <div class="flex flex-col md:flex-row gap-6">
+                <!-- Video player and captions -->
+                <div class="flex-grow space-y-4">
+                    <!-- Video player element -->
+                    <video
+                        id="answer-video"
+                        controls
+                        class="w-full aspect-video bg-gray-900 rounded-xl shadow-lg"
+                    >
+                        <source src="" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    
+                    <!-- Caption display area -->
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm caption-container">
+                        <p id="caption-text" class="text-gray-600">Captions will appear here.</p>
+                    </div>
+                </div>
+
+                <!-- Source lectures display -->
+                <div class="md:w-1/3 space-y-2">
+                    <h3 class="text-lg font-semibold text-gray-700">Source Lectures:</h3>
+                    <ul id="source-lectures-list" class="space-y-2 text-sm text-gray-500">
+                        <!-- Source lecture titles will be dynamically added here -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading state for user feedback -->
+        <div id="loading-spinner" class="hidden text-center">
+            <div class="flex items-center justify-center space-x-2">
+                <div class="w-6 h-6 rounded-full animate-pulse bg-blue-500"></div>
+                <div class="w-6 h-6 rounded-full animate-pulse bg-blue-500"></div>
+                <div class="w-6 h-6 rounded-full animate-pulse bg-blue-500"></div>
+            </div>
+            <p class="mt-2 text-gray-500">Generating your video answer...</p>
+        </div>
+    </div>
+
+    <!-- JavaScript for handling video, captions, and source lectures -->
+    <script src="frontend/js/script.js?v=20250822"></script>
+
+</body>
+</html>

@@ -1,0 +1,2744 @@
+Hi everyone, I'm new to the forum.
+In this video, we're going to talk about multilinear regression.
+What is the first step in a multilinear regression model when there are multiple variables?
+What is the first step in interpreting the coefficients?
+What features are you going to select?
+What should we consider when selecting features?
+What will we talk about multicollinearity and highly correlated features?
+What are they?
+How does it affect the model?
+What do we do when we select features?
+What other things to consider when selecting features?
+What will we talk about when there are interactions between features?
+What is the multilinear regression model?
+All the variables are linearly combined to represent the model.
+What is the target variable Y?
+What is the average effect of a variable to Y target variable?
+When we consider all other variables are independent and fixed, we can conclude that all other variables are independent and fixed.
+What assumption may not be true in general?
+In real world scenario variables might be correlated.
+What is the assumption that the coefficients are constant?
+What might not be true in general?
+What is the true constant of a constant?
+What will we talk about when it happens?
+Let's take an example that we saw before.
+What is the house price prediction?
+What is the house price a Y target variable?
+What will we inspect to see if variables are suitable for a linear regression model?
+What are the types of variables?
+What can be categorical variable?
+What type of categorical variable can have ordinal and non-ordinal categorical variable?
+What is an ordinal categorical variable?
+What are categories that have meaning in their order?
+What can be a categorical variable?
+What are some examples of non-ordinary categorical variables?
+Some classes have no meaning in their order.
+What is the effect of permutation of categories?
+Non-ordinal categories are difficult to use in linear regression model because of their non-ordinal categories.
+What is the problem with using linear regression?
+What are ways to use non-ordinary categorical variables in the linear regression?
+What can code male, female into 0 or 1 or 1 or 1 or 0 or sometimes minus 1 to 1?
+What will work if we choose one of these?
+What is race?
+What race category did race have?
+What is the categorical value of the variable?
+So we can convert this into individual three binary categorical variables.
+Is the person Asian or not?
+Is the person black or not?
+Is the person Caucasian or not?
+If the two are known, the other one can be known as well.
+So they are dependent.
+What if we just get rid of one of them?
+If you use only 2 models into the model, then it works better.
+If a non- ordinary categorical variable had n categories, we could convert them into binary categorical variables.
+What is the first thing you have to consider if you want to include n-1 new features into your model?
+What would happen if you had a really large n?
+Do you want to add large n-1 features into your model?
+Probably not.
+What zip code is an example of?
+What zip code had 70 something categories?
+What other variables can help us to get some information about the location of a house?
+What is the zip code?
+Before we build a model, let's have a qualitative inspection.
+What is the correlation between the price and all other variables?
+Square foot living could be useful, grade could be useful, and grade could be useful.
+How many houses are similar in size to this one?
+What is the difference between square foot living and square foot basement?
+What is the high correlation between features?
+What is the correlation between square foot living and square foot living 15?
+What variables are linearly dependent to each other?
+In the pair plot, the plot can be visually inspected in the pair plot.
+What is a pair plot?
+In the diagonal element, it shows the distribution of itself, the feature itself.
+What is the distribution between one feature and another?
+What is the correlation between square foot above and square foot leaving?
+What is the collinearity of the two features?
+What did we find that some features may have redundant information?
+What happens if we throw all the features into the model and fit to the data?
+What is the fit with the R squared?
+What is the p-value for the f-static?
+What does this show is there is at least one significant variable in the model?
+So...
+What would be the null hypothesis for the F-test if all the coefficient values were 0.
+The F-value is defined by this formula.
+How many features does TSS minus RSS divide by?
+What is the formula for the F-test?
+What is the number that is more certain about there is at least one?
+What is the significance of the model?
+What is the p-value for the F statistic value?
+What means it's smaller than certain threshold of error rate?
+We can conclude that our model has at least one significant variable.
+What is the p-value for variables?
+Square floors have a really high p-value.
+What month has a high p-value?
+We can reject these features because their coefficient values are essentially zero.
+After removing the features that have a high p-value, we get the result that we want.
+What is the R-squared value similar to?
+f-statics value is still large.
+What is the t-score and p-value of each individual coefficient?
+What is the complete story of the model?
+What is the best way to add or remove features?
+In this video, we'll talk about feature selection method and things to consider when selecting features.
+What was the last time we tried to fit the model that had all the features inside?
+What did we find was significant but still linearly dependent?
+What features do you need to select?
+Instead of doing that, we're going to introduce some method that automatically selects the features.
+What is the first method called?
+What is the forward selection?
+What is the backward selection method called?
+What does full model mean?
+What feature has the maximum p-value?
+What is the p-value of xj that has the maximum p-value?
+What is a mixed selection method?
+What does this mean?
+What is the process of adding a feature again?
+What is the result of the comparison?
+What is the result of adding a square for living first?
+What's the stock criteria for the last feature?
+What is the result from the backward selection?
+The model starts from the full model and then it removes one by one.
+What did the company do with the floors and then the secure-floor lot, second and sales months removed and so on?
+What year was the last one that was removed?
+What is the feature importance of the backward selection?
+What is the p-value of the mix selection?
+What happens at some point?
+What is the p value of the feature that leads to a p value that's larger than certain criteria?
+What is a good way to use mix selection?
+What is the feature selection of the feature selection?
+What is the correlation matrix after we select features from mixed selection?
+What is the good news about square feet?
+What are the correlation values between the features gone?
+What are correlated features?
+Why do they occur?
+So high correlation among features may occur from different regions.
+One of the redundant information would be redundant information.
+When features are linearly dependent on each other, the information is redundant and they may have a high correlation.
+What is a confounding effect?
+Sharks attack ice cream sales and sharks attack ice cream sales.
+What do they have nothing to do with each other?
+What can cause them?
+What is confounding?
+Diabetes can lead to heart attack, diabetes can lead to heart attack, diabetes can lead to heart attack, diabetes can lead to heart attack, diabetes can lead to heart attack, diabetes can lead to heart attack, diabetes can lead to heart attack, diabetes can lead to heart attack, diabetes can lead to heart attack, diabetes can lead to heart attack, diabetes can lead to heart attack, diabetes can lead to heart attack, diabetes can lead to heart attack, diabetes can lead to heart attack, diabetes can lead to heart attack, diabetes can lead to heart attack, diabetes
+Diabetes and heart attack may look highly correlated when we look at the diabetes and heart attack.
+In some cases, just the variables are correlated in nature.
+What is the difference between the number of bedrooms and the size of house?
+What is the confounding part about the adolescent?
+What is the relationship between the two?
+What may have a high correlation?
+What is problematic when there are highly correlated features?
+Why is it that?
+When predictors are highly correlated, the coefficient estimate becomes very inaccurate.
+What is the interpretation of the coefficient?
+As a variable contribution to the response becomes inaccurate, the response becomes inaccurate.
+What is the correlation between features that is more than 0.7?
+What is collinearity?
+What feature is the distribution of the data very skinny between?
+What is the collinearity of correlation metrics?
+Why may multiple variables look okay in the correlation matrix?
+What could be collinear?
+What is the multicollinearity?
+What is the variance inflation factor?
+So VIF is defined by this formula.
+The VIF of a coefficient beta i.
+What is the fitting that is not fitting the target variable Y but fitting that variable Xi using all other variables?
+What is the VIF value?
+If the VIF value is larger than 5, or sometimes 10, it means that there is strong multicollinearity.
+What variables had multicollinearity in the original model?
+Square foot above, square foot below, square foot basement are dependent on each other.
+So they show strong multicollinearity.
+What is the first feature that is gone after a mixed selection?
+What is the name of the one that is gone?
+Let's inspect.
+Square-foot living has still high VIF value, but it's much better than previous one because one of the dependent feature was gone.
+What was the only one that was bad here?
+What is the correlation matrix?
+What is the name of the one that is similar to this one?
+Let's remove these highly correlated features.
+After the mixed selection, what was the final selection?
+What is the collinearity gone?
+What are some things to consider when selecting features?
+So we talked about model fitness.
+How many features can be added at a time?
+What did we talk about removing variables with insignificant coefficients?
+What is the backward selection of the game?
+What is the result of combining the two things?
+What was the main problem with multicore linearity?
+What is the name of the book that we've been talking about for a while?
+What is the performance of each model shown in the graph?
+This includes intercepts.
+What is the model of intercept 1?
+How many features are there?
+So it shows here.
+What is the star that represents the model performance after we removed the variables with high correlation?
+When we remove highly correlated features, they may have a better estimation of the coefficient value and then better interpretation.
+What is the downside of the XP?
+What features do we need?
+What model complexity seems to give an efficient result?
+What is the performance of the 14 features?
+What is the best part about the movie?
+So we can consider that as well.
+What is the VIF of the six feature model?
+What are the results of the models that we considered so far?
+What is the inner set of features included in the inner set?
+What's the total number of features of the car?
+What is the mix selection?
+What is the coefficient value for square foot living?
+All of them are statistically significant.
+If you can see the coefficient values, they are very different.
+What features were removed from the model that were highly correlated to the square foot living?
+The coefficient value for square-foot living is more accurate and more interpretable.
+What does this mean for the house price?
+What is the coefficient value for square-foot living in other models?
+What other variables were highly correlated to square-foot living?
+The coefficient values are not accurate.
+What is the contribution of the house price to the house price?
+What should we do when there are interactions?
+What is interaction?
+Interactions can happen when the coefficient is not constant, but is function of some other variable, say x3.
+What is the interaction term?
+What is the beta version of the model?
+What is the other way to do all the combinations?
+What is the difference between higher order terms and higher order terms?
+What is the problem with infinite menu of features?
+Or, we can just choose the order.
+What is the maximum order of a feature times the maximum order?
+We can add the numbers to the table and add them up.
+What is the problem with selecting all the combination features?
+What method will we use to apply the same method that we talked about before?
+What is a good way to do that is mixed selection method?
+What is the interaction term?
+What terms should we include in the definition of the term?
+What is the difference between having interaction terms in the model and having multiple features in the model?
+What is the name of the video that we're going to talk about in this video?
+How does decision tree splitting work?
+What is the threshold value of the feature that is selected?
+What feature will be added to the threshold value?
+How did you like this?
+What did we talk about different metrics for different tasks?
+What do we use to split the nodes?
+What does the tree use to split the nodes?
+In this video, we'll talk about some usage in SKLang, how to fit the models.
+What will we talk about in the next section?
+What are some references that you can look at the document and find useful stuff?
+What is the classifier that we can call?
+What is the name of the document that shows that it has many many other options?
+Alright, so we'll talk about some of them.
+What is the plot tree?
+When we pass the fitted object to the plot tree function, it's going to return some list of text objects and then also the visualization of this.
+What can we do with export function from sk1 tree?
+What is the use of graphics and some other modules?
+What is the text object to a graph object?
+What will the future look like?
+If you see more red and more blue it means that the node is more pure and if you see more white it means it's kind of 50-50 or very mixed there.
+What is the main difference between the two versions of the same game?
+Decision trees have drawbacks.
+What are some strategies to prevent overfitting?
+What is the first strategy to stop the tree from growing?
+What is all-stopping?
+What is the second strategy called pruning?
+What will we talk about later?
+What is a good strategy for ensembleing trees?
+How can we stop the tree growing only?
+What is the hyper parameter list?
+MaxDepth will limit the tree, the depth of the tree, so that it can stop growing when it reaches certain depths.
+When a sample has arrived in a node, meanSampleSplit will stop splitting.
+What can stop a tree from growing further?
+What is the difference between the two?
+What is the mean weight fraction lift?
+What is the weight fraction of the node?
+If the impurity decrease from that node is negligible or less than certain number, the mean impurity decrease stops splitting at that node.
+Max features can help with the overfitting because it can make the model less flexible when we have so many features.
+What is the design parameter in the documentation?
+What is the most direct way to prevent overfitting in the decision tree?
+By limiting the depth, we can directly make the tree not grow.
+What is the minimum sample width?
+The smaller the number of the leaf sample, the more flexible the model is.
+If you want to make the model less flexible, so less overfit, then increase this number.
+What is another way to decrease impurities?
+What will you have to know about some values?
+An impurity decrease is calculated as this one.
+When there are n samples in the parent node and it splits to an L and an R, what happens?
+The weight of the right box times the impurity of the right box is the fraction of the sample numbers times the impurity of the left box and the weight of the right box times the impurity of the right box.
+So that's the impurity decrease.
+What value threshold will you pick?
+What happens when you see what happens?
+Max features are a useful option when you build a model.
+What is the most popular feature of the log option?
+Square root is more popular by the way.
+What class weight is not set to zero?
+What is CCP-alpha used for?
+What will we talk about in the pruning video?
+How do we choose its hyperparameter values?
+What might we have some heuristic values or just try a few values?
+What is a pragmatic approach?
+What is the most convenient tool for sklearn library?
+gridSearchCV is a grid search engine.
+What is the default cross-validation?
+What model hyperparameter gave the best result?
+What can we call gridSearchCV from the model selection module?
+What is the classifier for individual decision tree classifier?
+What can you call?
+What is the dictionary that shows which hyperparameters and values you want to change to?
+What did I give different options for.
+And then...
+What is the result of the grid search?
+What is the best estimator?
+Alright so these are some handy tools.
+How to use sklearn library for constructing decision trees?
+What is the next step in pruning trees?
+What is the split criteria of decision tree classifier?
+Decision tree classifier look exactly like decision tree regressor.
+The decision tree classifier is a representation of the decision tree classifier in the HERT dataset.
+What is the binary class classification?
+How many samples does the terminal node have?
+When we stop growing trees in the middle, they will just fully grow until they have a pure node, everything pure in the terminal node.
+What will the first few nodes look like?
+What feature value will split on?
+Out of 13 features, it chose a thal and less than equal to the value of 4.5.
+If the split is true, it will split whether it's true or not.
+What will lead to children rules?
+What is the split criteria?
+What does decision tree regressor do?
+In decision tree regressor, we picked the criteria such that the splitted box, so true and false, we measure MSC here.
+What type of movie doesn't have to be MSC?
+RSS or MAE could be the cause of the problem.
+MSC of the left box and MSC of the right box are the same.
+What is the original box?
+What feature will try to split everything in every possible way?
+By best I mean minimize the total MSC.
+What is Gini instead of MSE?
+Gini is a measure of impurity.
+Decision tree classifier measures the impurities of the left box and the right box and then inspects all the split possibilities like this.
+What will it pick the one that gives the minimum total impurity?
+What is the regression decision tree regressor?
+What is the classification of the three choices?
+What are the three most popular ones?
+Gini is a measure of impurity.
+What does the image look like?
+What is Gini's similarity to when you look at the RSS?
+Gini is a measure of impurities.
+What is the name of the game that is similar to the one that is the other?
+Entropy is a measure of uncertainty.
+What does uncertainty in the information theory mean?
+If we don't know fully, then the uncertainty is maximized, therefore the entropy is maximized.
+What is the probability of a 0 being a 0?
+The entropy measures that and the formula looks like this.
+What is the minus sign over here?
+What is the difference between the two entropies?
+What will we see in more detail in the next few weeks?
+Gini and entropy are similar concepts, so they measure the same kind of property, purity or impurity or uncertainty, they are similar concepts.
+What is the case like?
+What is the goal of the two bags?
+If the marbles are not separated well enough, then maybe one bag has 80% of blue marbles and 20% of red marble and then 20% of blue marble and then 20% of blue marble and then 20% of blue marble and then 20% of red marble and then 20% of blue marble and then 20% of blue marble and then 20% of blue marble and then 20% of blue marble and then 20% of red marble and then 20% of blue marble and then 20% of blue marble and then 20% of blue marble and then 20% of blue marble and then 20% of red marble and then 20%
+What is the chance of a good separation?
+What is the name of the thing that is a part of the 'thing' that is a part of the 'thing'?
+What is the purpose of the case study?
+We didn't gain any information.
+What color is in which bag?
+What information is included in the information section of the website?
+What is the certainty that we have?
+How can we know which one is which?
+What is pure and what is maximally impure?
+What is uncertain about the outcome of the election?
+What is certain about the outcome of the election?
+What is the goal of the splitted nodes?
+What is the decision tree split algorithm?
+What is the Gini index?
+Gini function look like this.
+In the binary case, it's symmetric.
+What is the maximum and 50-50 mixture?
+Let's have some example.
+Let's practice calculating Gini.
+What is the Gini of the entire box?
+What is the burr puck?
+What would be the genie half of the genie?
+What is the maximum value of the binary case?
+We can calculate the two.
+What is the cat in the box?
+What is the half of the story?
+How many times is 1 minus 1 half equal to 1 half as well?
+What is the probability of having a tiger in a box?
+What is the total of the two parts?
+What is the genio of the entire box?
+What happened to the split?
+What is the genio of the left box?
+The left box is pure.
+What is the name of the cat?
+What is Ginny's name in the box?
+In the left box, we have a cat out of 6 samples, and a tiger out of 6 samples, so the probability of cat is 1 6 and the probability of tiger is 5 6.
+What is the formula for 5 6 times 1 minus 1 6?
+What is the genie of the right box all right?
+What is the base of log of base 2 or 10?
+What is the most popular choice of logs?
+What is the maximum entropy value of 1?
+What value is weird in this case?
+What is the max at 50-50 mixture?
+What is the effect of information gain on information gain?
+What is the entropy of the original box and minus the summed or total entropy of the split as a result of the split?
+What is the name of the game?
+What is the total entropy of unsplitted box?
+When we use the log base 2, everything is like 50-50 so we get the entropy value of 1.
+What is the second part of the split?
+What would happen to the left box?
+What is the probability of having cat and 5 6 is the probability of having tiger?
+For left box, so we give the weight as fraction of the sample.
+What samples were in the right box?
+The fraction of the weight of the left box would be 0.4.
+What is the entropy of the left box?
+Minus...
+What is the fraction of weight of the right box?
+What is the width split among these three choices?
+What color is the first choice?
+What will give this split?
+What would be the third choice?
+Which one do you think will give the most information gain?
+What is the eyeball?
+What is the probability of having cat in the left box and right box?
+For the right box, the probability of having cat is 1, 6 and the probability of having tiger is 5, 6.
+What is the tiger in the left box?
+What was the split of the samples?
+How many samples are there in a pure sample?
+What is the probability like in the pure node?
+How many times is this number?
+What is the name of the tigers out of 7?
+What do you think of the numbers?
+What is the most pure result on the pure node?
+What can we be more quantitative and use an entropy formula?
+What is the red is going to be 1 minus 0.4 times 0 minus 0.6 times minus 1 times 1 6 plus 5 6 times log 5 6 times log 5 6 times log 5 6 times log 5 6 times log 5 6 times log 5 6 times log 5 6 times log 5 6 times log 5 6 times log 5 6 times log 5 6 times log 5 6 times log 5 6 times log 5 6 times log 5 6 times log 5 6 times log 5 6 times log 5 6 times log 5 6 times log 5 6 times log 5
+For green, minus 0.1 times 0 minus 0.9 times 1 times 59 log 59 plus 49 times log 49 and for blue, minus 0.3 times 0 minus 0.3 7 times minus 1 times 2 sevenths log 2 sevenths plus 5 sevenths plus log 5 sevenths plus log 5 sevenths plus log 5 sevenths plus log 5 sevenths plus log 5 sevenths plus log 5 sevenths plus log 5 sevenths plus log 5 sevenths plus log 5 sevenths plus log 5 sevenths plus log 5 seventh
+What is the reduction of the calculator?
+What is the reduction for blue?
+What did you see in the graphs that gave the most reduction in entropy?
+So most information gained too.
+What did we talk about in the decision tree split?
+What is the decision tree regressor?
+If you want to split a character, use the MAE or MAE to do so.
+What three factors does the Gini, Entropy, and Information Gain use?
+What is the formula for the formula?
+In the next video, we'll talk about how to prune the decision tree.
+What error will optimize the parameter values so that the prediction value is as close as possible to the target value?
+In non-parametric models, the parameter doesn't exist.
+How do we optimize the model so that the prediction value gets as close as possible to the target value?
+The model has hyperparameters.
+What is the most common way to find out about the weather in the US?
+What should they have had?
+Non-parametric models sometimes use this error or use some other quantity to optimize the model.
+What's the next step in the discussion?
+What is the simplest machine learning algorithm?
+What model does the tree-like model use?
+What will we get to later?
+What is the difference between the points and the decision boundary?
+How does k-nearest neighbor work?
+What data does training data look like?
+What is the task to classify data points?
+What color is the data point to classify?
+What is the term for k-nearest neighbors?
+What is the closest neighbor?
+If I had three neighbors, would my green points be classified as 2?
+By majority rule, a voting rule.
+What is the difference between a red and blue neighbor?
+What did you notice about the two things you might have noticed?
+What is the odd number in the green point?
+Why would I have a tie?
+What color would I choose?
+What is the odd number for the k values for the KNN model?
+What is the difference between red and blue?
+What green sits on the decision boundary?
+What side of the coin is the right in between so it can swing?
+What is not very important about the 'stuff' that's important to you?
+I just wanted to show it can happen.
+What other thing can KNN do?
+Yes, it can.
+You can also do the regression.
+What would be the difference in taking the average of the five values?
+What is the metric used by Kaelin?
+What is the simple distance between the Euclidean and Manhattan?
+What are the two most popular distance metrics?
+Let's have an example.
+What dataset is used to determine the iris dataset?
+How do I display my iris?
+What is the color of the red points in some areas?
+So it's hard to separate the two.
+So this two graph shows that the decision boundary, I can model.
+In each case, k values are different.
+What is the name of the person who asked you to answer the question?
+Which of the k's has a smaller k number?
+Okay, we'll see the answer here.
+The left one has a smaller k value than the right one?
+In fact, it was k cos 1.
+As the k increases, the decision boundary becomes smoother and smoother.
+When the k is small, let's say 1, I only have to consider one neighbor.
+What is the first data point that I consider when I consider another data point?
+The decision boundary can be very granular.
+What can fit to the very complex data like this?
+When I'm here, I will have to consider many neighbors and then count red versus blue and decide which one is more dominant here?
+How can the decision boundary be smooth in this way?
+What concept of bias and variance might you remember?
+How is the bias and variance in K and N?
+What are some quizzes?
+Which model has a larger bias?
+When is the K small or large?
+When we have a larger K, we have a larger bias.
+Why is it that?
+Why is a K and N model simpler and less flexible?
+When K is larger, decision boundaries are smoother.
+The simpler model introduces more bias and more assumption about data.
+Alright, another question.
+What model has a larger variance when the K is small or when the K is large?
+What is the difference between the small k, k and n?
+How do we determine the optimal k value?
+As you saw previously, the training error goes down as the model complexity increases, test error goes down in the beginning but then it has an optimal value and then it has an optimal value as the model complexity increases.
+Why is the model overfitting?
+What is the generalization of the 'short term'?
+So that point happens here.
+What is the optimal value of k equals 21?
+So you can see that this side is more complex model.
+When the k value gets smaller, the model becomes more complex, flexible, and has a larger bias, larger variance.
+The relationship between k and then, k of the k and n, and bias and variance is shown in the relationship between k and then, k of the k and then, k of the k and n and bias and variance.
+All right.
+So more KNN properties.
+What is the algorithm used for?
+Memory-based means that it just needs all the training data in order to infer.
+How complex is time complexity?
+What is the name of the neighbor that can be K?
+Time complexity is roughly n times m where this is number of samples and this is number of features and we can just support that by doing some, a few experiments.
+What is the data source of OpenML?
+At k equals 9, which was the optimal value, the train time for k and n linearly increases as the number of samples increases.
+What is another data support?
+Instead of increasing the number of samples, by increasing number of features, the train time also goes linearly.
+What was the purpose of the data?
+What is the main feature of the gene sequence?
+Training the logistic regression on the same data set and measuring the training time can give some comparisons.
+What is the efficiency of the KNN model?
+What is the usual opinion of KNN?
+What is the reason for measuring all the distance between the points in the training data set?
+What is the slowness of the sampler?
+Training time is very small compared to the logistic regression.
+How fast is the ipad?
+What is the problem with logistic regression?
+The graph below shows that there is an optimal k-value for the KNN model.
+At certain k-value, which is 7 in this case?
+What is another property that KNN has that KNN suffers from?
+What is the curse of dimensionality?
+What is the Cure of dimensionality?
+When the dimension is high, there is a curse.
+What will we do to see that?
+What is the variance ratio from the PCA plotted from?
+What will rank the combination of 180 features in order of importance?
+What is explained variance ratio?
+What is the reason for the gradual increase of the explained variance ratio?
+What would be the main features of the variance ratio graph?
+What would explain 90% of variance?
+What is the graph that shows that it gradually increases?
+What does that mean?
+What is the logistic regression?
+In logistic regression, you can see that the test accuracy increases as the number of features increases.
+In KNN, as you can see, with the various values of K, for the various k values, for the various k values.
+What is the performance of a pc that has a peak value at very small dimension of features?
+What is the curse of high dimensionality?
+Let's fix it.
+What is the optimal value of k?
+Why does curse of dimensionality happen here?
+When a height dimension becomes high, the number of data points in the given volume of data points in the given volume of this dimension sharply decreases.
+We need more data points in order to have the same level of accuracy.
+With the fixed data size, the concentration of data decreases dramatically.
+When the dimension is too high, we have degradation of performance in accuracy.
+What is the problem with a simple system?
+Researchers have found that if features are highly correlated to each other, it may suffer less because the effective dimension is less than the number of features.
+What is the curse of dimensionality?
+When this happens, you want to use smaller number of features and avoid from being high dimension.
+When you are using KNN, you are using KNN.
+What is the curse of dimensionality?
+What model should you use when your dimension is too high?
+What is the simplest machine learning model?
+What will we talk about in the next videos?
+All right.
+Hey everyone.
+In this video, we're going to talk about decision trees.
+What are some examples of parametric models that have parameters or coefficients inside?
+What model does KNN have?
+What metric do we use?
+What is the process of making a decision?
+Decision tree is a non-parametric method which is a little bit more complex than KNN.
+What is the name of the game?
+What is a decision tree?
+Let's take an example.
+What kind of mushroom is edible?
+Which one do you think is edible?
+How do you tell the difference between the two?
+What is the lower cat called?
+What is the decision tree like?
+What is the first node of data that asks for a criteria of whether it's large or small?
+What is the classification of large equals yes?
+What is the name of the node that will be reached by this node?
+Let's say we call this node 2 and this node 3.
+What is the yellow color of the node 2?
+What is the yellow color of this one?
+What will we go to node4 to see if they have fall smell?
+What is the smell of the fall smell?
+So decision tree works like this.
+The splits the samples from each node depending on their criteria.
+What is the definition of a term that is used to describe a term that is used to describe a term that is used to describe a term that is used to describe a term that is used to describe a term that is used to describe a term that is used to describe a term that is used to describe a term that is used to describe a term that is used to describe a term that is used to describe a term that is used to describe a term that is used to describe a term that
+What is the root node?
+When samples travel through different nodes, they arrive at the terminal nodes that doesn't split anymore, those nodes are called leaf nodes and they are highlighted as green here.
+What are the decision criteria for intermediate nodes?
+So they are decision nodes.
+How does the model learn to make decisions?
+What does linear regression minimize the MSE to learn to make a decision by optimizing their parameter values?
+What is the new criteria for cross entropy?
+KNN has no parameters, therefore no optimization.
+Decision tree does not have parameters, but uses other metrics such as MSA for regression task and entropy or Gini for classification task.
+What's the difference between the split nodes?
+Decision tree regressor works like this.
+What is the goal of splitting samples into two boxes?
+What is the difference between the different options?
+What is the data that has two features and six data points?
+What is the total sum of MSE?
+What is the choice of splitting along x1 or along x2?
+What value of x2 should I split?
+Should I split here or here, here or here, here or here?
+What is the MSC of each split?
+What is the split of X1?
+What is the split criteria for B?
+What is the split criteria?
+What is the MSE?
+What is the split criteria for x2?
+What is the goal of inspecting the MSC values and picking the one that makes the minimize MSC?
+What is the split criterion for my root node?
+What is the first box that we're given?
+So this is my root node.
+What is the best split that minimized MSE?
+What is the root node?
+What is the root node?
+How does the decision tree regressor work?
+What metric does the metric use?
+What will we talk about later?
+What is the real data?
+Faculty salary data set records faculty salary at all the 90s and the task is to predict assistant professor salary.
+What is the name of the app that has 50 samples?
+What feature does depth equal two?
+How many levels do we go to grow a tree?
+What is the root node of the node?
+If you don't specify the depth limit, the tree will grow until it has only one sample at the leaf node.
+What was the original salary mean value of 43,000?
+What are the samples of the samples?
+What is the root node value?
+What criteria will we find?
+The decision tree will inspect all split points along x0 and then along x1.
+What's going to split at the in the middle between the two samples?
+What is the middle here, middle here, all the way to here?
+What is the MSC of the lowest node?
+What criteria will we have for next split?
+What feature was split at feature x0 at the value 84.25?
+What's the split?
+What is the mean value of the mean values of the two digits?
+What is the result of the same procedure for this node?
+What was the simple example for how decision tree regressor works?
+What is the next video about?
+Hello everyone.
+What is the purpose of the discussion?
+What is the maximum likelihood?
+What is the likelihood function?
+What is the Likelihood function?
+What is the likelihood function?
+By maximizing the likelihood, we can determine the coefficient values for the logit in the logistic regression.
+What function does likelihood function occur for in machine learning?
+This principle applies to all parametric models.
+If we maximize the likelihood, the parameters get determined.
+What is the maximum likelihood of a prediction?
+What is the special case for the binary class classification?
+What is the likelihood function for binary class classification?
+What is the name of the game?
+What is the true value for the third example?
+Y5 is 1 and y4 is 0 and y5 is 1.
+What is the probability of the model producing at the output?
+What is the sigmoid function?
+What is the probability of the label becoming 1?
+What is the probability for sample number 1?
+What is the probability of the label being 1?
+What is the total number of y1 and y2?
+Are you correct?
+What is the correct probability?
+Let's maximize this.
+What is a maximum likelihood?
+What is the likelihood function?
+What is the form that we would like to maximize?
+What is the problem with multiplications?
+What is the summation of the term?
+What is the yi label 1?
+What is the case when the case is y equals 0.
+What is the summation of the summation of the two summations?
+What is the final form for the log likelihood?
+What is log likelihood?
+What is the difference between maximizing log likelihood and minimizing the loss function?
+What is the loss function?
+What is the difference between the minus sign and the formula?
+What is the loss function called?
+What is the cross entropy loss function?
+What is cross entropy?
+What is the probability distribution?
+What is the cross entropy?
+What is the formula for a cross entropy?
+We derived from the maximum likelihood.
+Searching parameters involves optimization.
+The model has parameters and goes into model.
+The loss function compares prediction and target value and produces some error.
+If the error is bigger, then it's going to change the parameter value more.
+What is the optimal value for the parameter values?
+What is the parameter update procedure?
+Alright, so let's talk about gradient descent.
+What is the error surface from MSC loss?
+What is the loss of a skier?
+What is your strategy?
+What slope is steepest?
+What is the parameter values for a and b, according to this gradient?
+What makes this skier to go this direction and follow the steepest slope?
+What is the intuition for gradient descent?
+So loss function for MSC looks like this.
+What is the residual squared?
+What is the function of g?
+What will we do with dg dx?
+What does it look like when you look at it carefully?
+When there is a multiple nested function, you take the derivative as this and take the chain rule.
+What is the chain rule here?
+What is the derivative of loss function with respect to b coefficient?
+What is the df db?
+So there is nothing here.
+What is the formula for gradient descent for MSA loss function and weight update rule?
+What is the learning rate?
+The bigger the value, the bigger the step size.
+If the learning rate is big, then the step is bigger.
+What is the problem with too big a syringe?
+What is the learning rate of the project?
+What is the learning rate of a child's computer?
+What learning rate do you usually have to choose when you do gradient descent optimization?
+What is the learning rate a hyperparameter?
+Hyperparameter means that some kind of...
+What parameter will the user have to choose?
+Learning rate is one of them.
+What is the logistic regression?
+What is the Newton method called?
+What will we talk about in the coming weeks?
+Alright so gradient descent for binary cross entropy laws.
+Let's calculate this.
+So BC law looks like this.
+What is the derivative of sigma dg?
+Alright so dG dW is simply X.
+What is the dL d w?
+We can do the derivative for the bias for the bias for the bias for the bias for the derivative for the bias for the bias.
+What will it take except this part?
+So there is only 1 here.
+What is the gradient along a coefficient w and bias B?
+What is the same principle applied to update our weights?
+What could be w or bias?
+What is the learning rate?
+Okay so that was it.
+Newton's method is an extension of gradient descent method.
+What is the update rule of gradient descent method?
+Gradient with respect to w of the loss function.
+Newton's method uses both the first and second derivatives.
+So first derivative here and second derivative here.
+What term is a Hessian?
+In a matrix form, the gradient matrix will look like a Hessian inverse.
+Newton's method can be good when we have a very flat gradient.
+If a Hessian is dividing a small gradient, then Hessian is also small, which can boost the speed of the convergence when the gradient is very small?
+What is the difference between Newton's method and Newton's method?
+What is the drawback of the software?
+Newton's method scales as n squared whereas Newton's method scales as n squared.
+Where is the gradient method when it takes O?
+Newton's method is n cubed, whereas gradient method is n.
+What is the benefit of gradient descent?
+n is the number of parameters.
+Newton's method is slow if you have millions or billions of parameters like in the neural network.
+What is the second derivative method?
+In logistic regression and other models in machine learning, where the number of parameters is smaller, we don't have to worry about that.
+Why is I.S.K. so important?
+What Newton's method is used to optimize parameters in Newton's package?
+What is the name of the simulation that we're going to use?
+What is the gradient descent?
+Newton's method is faster when the gradient is small at the bottom.
+What is the difference between the small gradient and the flat gradient?
+What was the intuition of the video?
+In the next video, we'll talk about performance matrix.
+Hi everyone, I'm new to the forum.
+What is the introduction to logistic regression?
+So brief review of machine learning problems.
+In machine learning, label and reinforcement learning with feedback signals are not used.
+What is the focus of the supervised learning?
+What is the main task of the CIA?
+Regression and classification are two of the two main aspects of classification.
+What are the two main classes of classification?
+What is the main difference between linear regression and linear regression?
+What is the logistic regression we're going to talk about in this video?
+What is regression?
+Especially useful for binary class classification.
+What is the logistic regression method used for multi-class classification?
+What will require engineering to do that?
+What can they do different things?
+Support vector machine can do both regression and classification.
+What is the main difference between binary class and multi-class?
+What can work on multi-class?
+If you engineer the label and some algorithms inside the model correctly, you can make it work.
+Decision trees can do everything.
+So you can do regression and binary class, multi-class without problem?
+What is nice about categorical variables?
+Neural networks can do everything and many other models that we may not introduce in this course can do different things.
+What is the binary class classification?
+What is the simplest way to answer the question?
+So the label is binary.
+What is the likelihood of a credit card default?
+What is the risk of fraudulent insurance claims?
+What can be a binary class classification?
+What is the subject line of the email?
+What is the diagnosis of a disease?
+What is the prediction of if this patient will survive for next five years?
+How about customer retention?
+Is this customer behavior consistent with customer behavior?
+What is the likelihood of charming or not?
+Image recognition can also be binary class classification.
+What is the animal type?
+What is the sentiment of the tweet?
+Is this negative or positive?
+What kind of things are like that?
+What can binary class classification have a variety of different types of data input?
+What could be tabulated data, image, text, or even speeches?
+What determines a binary class?
+What is an example of a short example?
+What is the problem with breast cancer diagnosis?
+What can determine whether a tumor is malignant or not?
+What can be a binary classification problem?
+What do we want to have a threshold or some decision value that is above this value?
+What is the value below which a tumor is less likely to be malignant?
+What threshold value is the decision boundary?
+What is the decision boundary of a 2D diagram?
+What side is likely to be benign?
+What is the function that provides a convenient way to construct a model like this?
+So logistic function look like this.
+What is the line between 0 and 1?
+What is the threshold value?
+What is the value of the value 0?
+What is the value between 0 and 1?
+A logistic function can be a probability function.
+What is the logistic function called?
+What is a sigmoid function?
+What is the linear combination of the features with this weight and bias?
+What is the function that goes through the nonlinear function 1 over 1 plus e to the minus G?
+What is the shape of the curve?
+What is the g called?
+When g is zero, it's 1 half, so it's going to meet the 0.5.
+What is the probability of a malignant tumor being detected?
+What might some people ask why don't we use linear regression instead of linear regression?
+We can fit the probability of 0.5 and then find some threshold.
+We can try to do that.
+How can you get through the process of a divorce?
+What threshold will give 0.5 threshold?
+What threshold value does the logistic regression give?
+What is the problem with the linear regression model if it's fitted and then finds the threshold where the probability value becomes 0.5?
+Where is the logistic regression with the sigmoid function?
+What is the threshold for us to find?
+What is the decision boundary?
+In univariate cases, where we have only one feature, we have only one feature.
+What is the probability equal to 0.5?
+If we have two features the decision boundary becomes a line and the decision boundary becomes a line, we will find the line equation here which will draw this line.
+If it's a multivariate have a multidimension more than 3, the decision boundary will be a hyperplane.
+What if we have multiple categories?
+What is one way to have multiple categories?
+What is the logit?
+What is softmax?
+What is the new index for the K category?
+So this is index for category.
+So for example for category number one, we can construct this model.
+What weights will be assigned to each category and for each feature?
+What did we do with the logit?
+What is the sigmoid function used for?
+What is the name of the product that is similar to softmax?
+What is the index for the category?
+What is the summation over all the possible exponents of the corresponding categories?
+What is the term for multinomial logistic regression?
+What is another way that we can use the original logistic regression for multi-categories?
+What is the classification for category A, B, C?
+What is the logistic regression model 1?
+What is the third model that says C versus not C?
+What is the OVR problem?
+What is the most common way to get the multi-category classification done?
+What is the multinomial approach called?
+What is another way to do this?
+Softmax and Multinomial are the two classification models that are more common than Softmax and Multinomial.
+What is the sum of the probabilities for categories for OVR and Softmax?
+What is the same for logistic regression and softmax regression?
+What category does the A, B, C category have?
+What is the multi-label problem?
+What is the difference between labels and categories?
+What is a multi-label problem?
+The logistic and softmax models are for multi-class classification.
+What is the problem with multi-label training?
+What is the difference between multi-class and multi-level problems?
+Alright?
+Softmax regression can give this kind of visualization.
+What is the decision boundary that Softmax will give us?
+What are some examples of how to use a sandbox?
+Alright, and this is our last video.
+In the next video, we'll talk about how optimization works in logistic regression and how the coefficients are determined.
+Hello everyone.
+In this video, we're going to talk about performance metrics in classification.
+What is the label of a tumor when it is malignant?
+What is the feature that we created based on?
+What is the region where both labels and predictions are positive called a true positive?
+What is true negative?
+What region is false positive?
+What region is false negative?
+What is the goal of the model?
+What is the difference between false negative and false positive?
+What is the difference between false positive and type 2 error?
+What terminology is used to describe the picture?
+What type of error is like telling a man that he is pregnant?
+What type of error is like telling a pregnant woman that she is not pregnant?
+What is the difference between a bad and a good trade-off?
+What is important to us in the problem?
+What did we talk about false positive and false negative cases?
+What is confusion matrix?
+What is the confusion matrix like?
+What is a prediction label?
+What is the target label?
+What is the most popular classification metric?
+What is the true positive rate?
+So this is all the positives.
+What is the data on the positive side of the data?
+Okay, and another metric...
+True negative rate is similar to true positive rate except they are kind of flipped.
+What is another name for it?
+Measures how many are true negative out of all the negative cases in the data.
+What is the negative case of the data?
+What do I mean by data?
+What is a positive predictive value?
+Or, precision, precision.
+How many are correctly classified as true positive out of prediction from the prediction?
+What is the fallout rate?
+How many falsely classified as positive were actually negative?
+How many negatives are falsely classified as positives?
+What is the false negative rate?
+So they are related to each other.
+What is a good metric for recall?
+What is the difference between precision and recall?
+What is the F1 score a good metric to use?
+What is the F1 score?
+What is the ROC curve?
+In the x-axis, it has a false positive rate and its y-axis, it has a true positive rate.
+What is the random guess?
+If the curve goes this way, closer to the left top corner, this means it's good.
+What is the false positive rate?
+What is the probability of the curve being below this random guess?
+What does this mean for false positives?
+What side is good and bad?
+What is the ROC curve?
+What can we use to see a number?
+So we measure the area under the curve.
+What is the area under the curve?
+Between 0 and 1 is the normal range of the value of a digit.
+The bigger the value, the better it is.
+What was the difference between ROC and AUC?
+When to use different types of metric?
+What are the metric choices?
+So AUC, ROC.
+What is the accuracy of a model that says everything is negative?
+What's not good about that?
+What is the point of accuracy in a prediction?
+When you have a balanced data set, it's usually a good idea to use accuracy.
+Which is true positive divided by all the positive cases in the data?
+What are they used for?
+So even though we sacrifice false positives.
+What is a good thing about missing someone having cancer?
+What is the cost associated with missing a key event?
+What is the purpose of recall?
+What is the false negative rate?
+If you have too much false negatives in the data, then we are in trouble.
+What is the difference between the two?
+If we have a high cost of missing something.
+What can be used when the cost of false alarm is high?
+What is spam mail?
+What is the problem with spam mail?
+What's the problem with the 'sniffing'?
+What happens if you have a false alarm?
+If you're a developer, you're probably having trouble with the code.
+What is the false positive rate?
+What is similar to specificity or sensitivity?
+When we want to be sure about the action, precision is used.
+When we want to inactivate a scammer's account, we want to be very sure.
+What metrics can be considered more important than others?
+Performance metrics are robust and can be used in almost any case.
+What is cross entropy?
+Why do we want to use cross entropy and not accuracy?
+Why is accuracy a problem in data that is balanced?
+What is the main benefit of using the X-Ray viewer?
+Why do we want to use cross-entropy?
+What is the difference between accuracy and cross-entropy?
+Why is it that?
+What is the name of the site?
+So, for example, this case.
+What model is model A?
+Model A's have accuracy of 2 3rd because it's correct two times and incorrect one time for these three samples.
+What is the confidence level in the article?
+What is the confidence too confident for the incorrect answer?
+What is the model A of the A-series?
+What model has the same accuracy as model B?
+When a question is correct, it's pretty confident for the correct answers.
+What is the point of not knowing something?
+What does it make sense to do?
+In this case, if we used cross entropy, it can discern these two different cases.
+What is the lower cross entropy value?
+What is the cross entropy value for the less working model?
+What is the reason you might want cross entropy and not accuracy?
+Hello everyone.
+In this video, we're going to talk about sklearn library usage for logistic regression.
+What is the logistic regression module inside of sklearn.linear model?
+What is the name of the app that has a bunch of options here?
+What is the main feature of the regularization term?
+What type of solar panel is the most important?
+What is the default LBFGS for solar?
+By default, it uses L2 regularization.
+What is the fit intercept equals true?
+What can you try out if you want to try out different solvers?
+All of them use some sophisticated second derivative method.
+What is the benefit of using a multiple core CPU?
+If you do the njobs equal minus one, it's going to use all the CPU cores in your computer.
+What was the module's look like?
+So basic usage is like this.
+What is the fit function?
+What is the label for the training?
+What can you call this object as model or some other name?
+What is the model object's useful stuff inside?
+What will model.coef underscore give us?
+What is the value for intercept?
+The model.predict parentheses and throw your data.
+What is a good comment to make?
+Alright, so let's talk about some example.
+What is train test split?
+What is the name of the sklearn model selection?
+What is the reason that libraries may upgrade and change the names of their sub libraries?
+What is the point of the article?
+So we'll use that.
+What is the LogisticRegressionModule?
+What did I name the LR?
+Why did I choose it?
+What is an example of a good example of a good example of a good example of a good example of a good example of a good example of a good example of a good example of a good example of a good example of a good example of a good example of a good example of a good example of a good example of a good example of a good example of a good example of a good example of a good example of a good example of a good
+What is the y train label matrix shape?
+Use label.
+What can you use that case?
+What is the default score for accuracy?
+What is the accuracy of the result in this example?
+If you get rid of this option, it might be lower.
+What can we use in sklearn.metrics module?
+What is the Yp and Ypprediction?
+What's the name of the game?
+The accuracy score function requires Ytrue and then Yprediction.
+So I throw that order.
+Recall score as well as precision and F1 score.
+What does it give these numbers?
+Alright.
+What is the confusion matrix function?
+What does the Ytrue value and Yprediction need?
+What does the prediction value require labels?
+What is the label for this prediction?
+Okay, more examples.
+We can draw precision recall curves.
+What is the ROC curve and precision recall curve similar?
+What was the true positive rate of the ROC curve?
+What is the precision curve?
+When is the ROC curve closer to the left top corner?
+What does the precision recall curve function require?
+What is the probability of being label being one?
+So ROC curve also works as a similar.
+What is the ROC curve used to calculate the spots?
+The AUC score can be calculated using this function, out of series score, or by using the function in the AUC function.
+What does the prediction probability need?
+So it's very handy.
+What did we talk about in the class?
+What is the most important thing about statistics?
+The logistic regression module in sklearn doesn't give statistics right away.
+What are the two choices?
+One of the ways we used the stats model library is to use the stats model library as we did before in linear regression.
+Instead of linear regression, we can use dot logit module and throw our data.
+What is the order of features and labels in the book?
+What is the first step in a labeling process?
+What is the dot fit?
+What is different from linear regression?
+What is the standard error for the coefficient value?
+So here we see that this coefficient value is significant.
+Bootstrapping is another way to do it using sklearn library.
+So bootstrapping is like this.
+What is the original sample?
+What data might you see in a duplicate?
+What is the bagging classifier?
+How many times will we bootstrap and then fit the model?
+What does the bootstrap say is true?
+It can do the bootstrap features.
+What is the main feature of the UI?
+What does the Ob score mean?
+For what purpose is the 'A' used?
+What is the most important thing that we can do with all the computing resources that we have?
+Alright so using that we can use as this.
+What is the base estimator?
+What is the value of the dot estimators?
+What is the first thing I can do with the model?
+So for example my first model coefficient values are like this.
+So I use the two features here.
+What is the coefficient value of the program?
+What list can I pull all of this from?
+What is the first step in doing the statistics?
+What is the size of the histogram?
+What do I do with the values for each coefficient?
+I can do the t-test.
+What is the Python package scipy stats?
+ttest one sample.
+What is the ttest for the p values?
+So the usage is like this.
+So I put the list of coefficients.
+What is the mean that it wants to compare with?
+What does the null hypothesis say about the coefficient value?
+What is the value of 0 in the code?
+The alternative says that my coefficient is not 0.
+What is the 5% error rate?
+If p-value is smaller than 0.025, what does that mean?
+If p-value is smaller than this value, what is the value of the p-value?
+What is the coefficient value of the coefficient?
+So the result I can pull out and print is the same as the image I want.
+What is the name of the component inside the box?
+The t-statistic value and then the p-value are the two main values of the t-statistic value and the p-value.
+How can I pull each of them?
+What is the p-value?
+In addition to consoles, you can console this documentation.
+All coefficients are very significant as you can see.
+How many values away from zeros are all zeros?
+All of them are significant.
+In this video we talked about how to use logistic regression module from sklearn and then we talked about how to use the various metrics from sklearn metrics module.
+How did we do the bootstrapping using the bootstrapping wrapper?
+What is gradient boosting?
+What is the general boosting algorithm?
+What is the shrinkage parameter of the stamp model?
+As we go through this iteration, the residual gets smaller and smaller.
+What is the combined model?
+Gradient boosting is a generalization of this boosting algorithm.
+Instead of fitting the residual, we're going to use gradient of a loss function.
+What is loss function?
+What is the fx of the prediction?
+What can be the MSE or RSS in the regression?
+What is an example of a scenario like this?
+What is a function that can be used to classify a classification?
+So this loss function can be very general form.
+What is the generalized form of loss function?
+How can we measure the gradient of loss function?
+What is the goal of the tree?
+What is the difference from our previous model?
+What is the same for everything else?
+So we're going to see more detail here.
+So we start by fitting our initial model to minimize the loss function.
+What is a similar to minimizing entropy or minimizing MAC loss for regression in decision tree?
+What's the split?
+What is the gradient of loss function with respect to the change of this function?
+And with this...
+We're gonna fit the stump tree to this training data to predict this negative gradient value.
+What will we update our loss function using?
+What is the result of the model update?
+What is the main reason we want to use gradients?
+What is the general boosting algorithm?
+What does it mean when it chooses the parameters that the reduction in residual is the biggest?
+What is the difference between greedy and greedy?
+What is the steepest descent in terms of reducing the loss function?
+What is more true about how the decision tree split happens?
+What is the difference between loss function and loss function?
+What is the gradient boosting algorithm?
+What is the difference between the two?
+So I prepared two data.
+How are the two types of similarity different?
+What is the difference between 13 and 20 features?
+What is the accuracy of data one?
+What is the accuracy of the decision tree?
+What is a good predictor of the target variable?
+What is the difference between decision tree and gradient boosting?
+AdaBoost is a popular AdaBoost product.
+What is AdaBoost's performance compared to?
+What is the data one on the data one gives similar result to AdaBoost?
+AdaBoost and Gradient Boosting gave much better results than just the Decision Tree.
+In Data 2, much better results than Decision Tree alone.
+Gradient Boosting works slightly better than AdaBoost.
+Gradient Boosting is always better than AdaBoost, but it depends on the data.
+AdaBoost is probably better performing than AdaBoost.
+What is the most sensitive to mislabeled data?
+AdaBoost is sensitive to mislabeled data because it uses a weight to each data sample.
+If the label is wrong, it's likely to suffer.
+What is the problem with gradient boosting?
+What are some other aspects of the process?
+What was the learning rate of the graphs?
+How can boosting algorithm deteriorate if learning rate is too high?
+What is the need to reduce the learning rate when we have a large number of trees in an additive model?
+What does the graph show that both boost and gradient boosting require smaller learning rate as the number of trees increases?
+How did I cross-validate each model?
+How time-efficient was gradient boosting?
+AdaBoost uses a stump, which means the max steps equals 1. In a gradient boosting library, the max steps equals 3.
+What is the performance comparison with the random forest even?
+Random forest did better than decision tree in data one.
+What is the difference between the two data sets?
+Random forest is a parallel ensemble algorithm versus boosting algorithm.
+Which one would be better?
+When a forest has a lot of features, it is difficult to tell when it is a lot of features.
+What is the data3?
+What is the difficulty of single-disk entry?
+Then ran three different ensemble models.
+Random Forest did better than boosting algorithm.
+What algorithm do you use?
+Random Forest will work better when you have a lot of features.
+When you have a smaller number of features, gradient boosting will usually do better.
+What is the trend of data?
+We can also think about the time.
+What is the boosting algorithm's advantage over random forest?
+What is the default square root of the forest?
+What is the other boosting algorithm?
+What is the interesting feature in gradient boosting in sklearn library?
+I think if you have a lot of features, it can be worthwhile.
+What are some other useful packages?
+XGBoost is an external library, so it's not part of sklearn.
+What library can be useful?
+What is the acronym for Extreme Gradient Boost?
+XWBoost is time efficient, and provides good performance because of regularization built-in.
+Light GBM is an external package that's not part of sklon and makes the boosting faster by binning the value of each feature.
+What can be useful for a feature that has a lot of continuous values?
+RandomForest is similar to RandomForest but with a different name.
+What's the name of the book that's in the library?
+ExtraTree means extreme randomized tree.
+RandomForest works very similar to RandomForest in sklearn.
+What is the only difference between the two?
+So no bagging.
+What feature was randomly sampled?
+Why is it extreme randomized?
+Why does it pick the best split value randomly?
+What is the full list of ensemble models in SKLearn libraries?
+What is the classification feature of AdaBoost?
+What is the difference between the bagging part and extractory classifier?
+What does the bag feature?
+Gradient boosting was talked about in the talk, and random forest was mentioned.
+What is the heat gradient boosting equivalent to?
+What did we talk about in this module?
+Ensemble methods are ways to strengthen the decision tree model.
+Decision tree model is weak learner.
+What is the problem with overfeeding?
+Taking parallel ensemble or serial ensemble can make the performance better.
+So parallel ensemble, we talked about random forest.
+Random forest is a parallel method, ensemble method, and boosting method.
+What method is used to bully people?
+What is the process of growing different trees?
+What is the difference between random sample data and average data?
+What is the main goal of boosting?
+What did we talk about when to use random forest versus boosting?
+Random forest usually works when there is a large number of features.
+So number of features is large.
+What can take longer because it's additive?
+When the number of features is smaller, we prefer using when the number of features is smaller.
+What feature can be used to subsampled features?
+Ok, so this is the end of Triangul models.
+What method will we talk about in the next module?
+Hello everyone.
+In this video, we're going to talk about support vector machine.
+What is the first thing I'll review?
+In machine learning, we have different learning tasks.
+In this class, we focus on supervised learning.
+What would we like to predict the labels given the data?
+What is the classification task?
+Regression means that the prediction value would be real valued, whereas classification means that the prediction value would be the categories.
+What was the difference between binary class classification and multi-class classification?
+What are the different models that we can apply?
+What does linear regression apply to regression problems?
+What is logistic regression?
+What is the main benefit of Softmax?
+What class can we choose if we choose one class versus another?
+What model did we move on to non-parametric models?
+What is the simplest model in machine learning?
+Decision trees are weak learners, but they're flexible and easy to interpret.
+What can it do with regression and classification?
+What method can apply to any model?
+Decision trees are weak learners and angsangbuling them can make them a strong learner.
+What is the parallel angsangbul method?
+What method did we talk about in the previous section?
+Instead of growing the full tree, we let it grow slowly and small one at a time.
+What did we add to the stumps?
+What is another powerful non-parametric model?
+What is a neural network?
+In this course, we'll skip neural network.
+What are hyper parameters and what's the criteria?
+What is the name of the book that I've written about it?
+What is the problem with linear regression?
+What is a design consideration?
+And linear regression has parameters.
+What is the difference between w1 x1 plus w2 x2 plus intercept?
+All these w's are parameters.
+What is the MSC loss function for linear regression?
+What is the RSS format?
+What are loss functions that we use?
+Logistic regression has a sigmoid function that thresholds the probability at the end of the regression.
+What is the design consideration for a hyper parameter?
+Parameters are the same.
+What is the sigmoid threshold at the end of linear regression?
+For loss function in logistic regression, it uses binary cross entropy.
+In KNN, the hyper parameter is the KNN hyper parameter.
+K is the number of neighbors that we want to consider when deciding whether a point around some other points is a certain class.
+What is the model that is not parametric?
+What is the rule of how to decide?
+What is the point of having more neighbors around this class?
+So it will classify this X.
+What does KNN use to determine neighbors near by?
+What is the loss function of KNN?
+Decision trees is again non-parametric models.
+What is the point of no parameters?
+What is the minimum sample in the terminal node?
+What kind of things are like that?
+What is the threshold of pruning criteria?
+What was the reason for the absence of a parameter for decision trees?
+What criteria does the split require?
+When the samples are in one box, when split, decision tree models go through all these features and pick the split value that minimizes this criteria function.
+What was the criteria function for classification MSC?
+What is the ang-sang-buling method?
+What is the difference between the two methods?
+What is the hyperparameter that can be added to the number of trees?
+What can be boosted by learning rate?
+There are no parameters for this method.
+Decision split criteria have the same criteria functions as decision trees.
+What role does the C parameter play in SVM?
+What is the main difference between a parametric and a parametric method?
+SVM has internal have some optimization process.
+What do neural networks have parameters and hyperparameters and loss functions?
+What is the supervector machine?
+What is the name of the supervector machine?
+What does the hyperplane do?
+What will we talk about later in this lecture?
+What does the kernel do?
+What is a useful tool when dealing with high dimensional objects?
+What is a feature space that can be used to display images or text?
+What can we do instead of doing feature engineering on image pixels?
+In the 90s support vector machine was widely used and developed before the neural network became very popular.
+What does it use to deal with high dimensional data such as images?
+What is one of the high performing off-the-shelf machine learning method?
+All three ensemble methods are popular high performing methods.
+Support vector machines can do regression and classification and it works natively on binary class classification.
+What method can be used to do multi-class classification?
+What is the definition of binary class classification?
+What is the simplest way to solve a problem?
+What could be a problem with a credit card user?
+What can be a medical diagnosis problem?
+What is the label for a binary class classification?
+What can image recognition be binary class classification?
+What can we do with text data?
+What is the simplest model to do the binary class classification?
+What is the probability of the curve?
+When G is 0, the probability of the sigmoid function becomes 0.5.
+What is a decision boundary?
+What is a decision boundary?
+What is the hyperplane?
+How do we find this hyperplane that becomes a decision boundary using SVM?
+What would we like to find the hyperplane that separates the data points according to the right class?
+How are data points distributed?
+What can be a perfect choice?
+What is the advantage of using a hyperplane?
+Which hyperplane should we choose?
+What is the maximum margin classifier?
+What can we consider if we want to train our model so that it can generalize better?
+If we have another new data point like this, our model should be able to classify that point correctly.
+What would you like to have a hyperplane?
+What is less likely to misclassify the new data?
+How can you achieve that?
+What hyperplane has the biggest margin?
+What does that mean?
+What is the data again?
+What is the hyperplane?
+What is the closest point to the hyperplane?
+What is support?
+The distance between the hyperplane and the support closes the points.
+I'll call margins.
+These are margins.
+The maximum margin classifier learns how to maximize the distance between a hyperplane and its supports.
+How does the maximum margin classifier find a hyperplane?
+What is the first thing it's going to look like?
+What makes the hyperplane the wrong side of the margin?
+When data points are wrong side of margin, it will make the loss function bigger.
+The optimizer in the SVM will try to reduce this error.
+So it will adjust the coefficients of the hyperplane equation.
+What does the hyperplane look like?
+What is the size of the error that is smaller than the previous one?
+So smaller loss function.
+The optimizer will try to reduce the error.
+What does the hyperplane look like?
+When we go this iteration over and over again, the hyperplane will be optimized so that the margin between the supports is maximized.
+What is the name of the quiz?
+What happens if we add a new data point?
+Where do the data points get added?
+What happens if a new data point is added outside of the margin?
+If data points are added inside the margin or even the wrong side of the margin, the hyperplane must change.
+What is the wrong side of the margin?
+Blue points should be upper to the hyperplane.
+What is the wrong side below the hyperplane?
+What is the condition of having a hard margin?
+What method can be useful in this case?
+What's the name of the next video?
+Hello everyone.
+In this video, we're going to talk about AdaBoost algorithm.
+What is the generic boosting algorithm?
+What is added to each stump from each iteration with some shrink parameter lambda here?
+What did the lambda help the model learn?
+What is the most common variant of boosting algorithms?
+What are the two most used and most popular?
+What will we talk about in a moment?
+AdaBoost is the first algorithm we'll talk about.
+AdaBoost was originally developed for classification purposes.
+What was the first feature of the regression tool?
+AdaBoost uses weights to sample data samples.
+What will make some more emphasis on the misclassified samples?
+Adabo's algorithm uses a linear combination of the stump model and B is the iteration.
+What is the shrinkage parameter in AdaBoost?
+What does this algorithm start by initializing all the sample weights to 1 over n?
+What is the first time we repeat for B times?
+What is the stump model?
+Decision tree can use a sample weight when calculating split criteria.
+What is the stump model used to compare accuracy?
+What is the i function?
+So this means that we calculate the error only using misclassified examples.
+The first iteration of the test shows that the weights are all equal.
+What is the latest version of the site?
+What is the lambda b?
+What is the lambda given by this formula?
+What is the formula with or without?
+What is the weight of the sample again when there was a misclassification?
+After doing iteration for b times, we get our output model that looks like this.
+The linear combination of this stump model.
+What is the final sign given by that?
+What is the picture of the picture?
+What is the target Y?
+What is the stump model going to fit to training data?
+What kind of output is going to be like this?
+What is the difference between the two samples?
+What is the error rate for misclassifications?
+What is the value of the model coefficients?
+What is the function that can go from minus infinity to infinity?
+What is the shrinkage parameter?
+What is the weight of the model?
+What is the weight of the misclassified example?
+What is the weight of the examples?
+What is the name of the word that is used to describe the word "semi-syntax"?
+AdaBoost is available in sklearn ensemble module.
+AdaBoost and sklearn both have a classifier and regressor.
+What is the base estimator of a tree classifier?
+What is the learning rate on top of the lambda b?
+Adaboost classifier can be reduced to a hyperparameter if you want to make it run slowly.
+What algorithm is used by default?
+Where does this r come from?
+What do they make use of to predict probability?
+What is the probability of being each class instead of using just a binarized classifier?
+SEMI-R is an advanced version of the original AdaBoost algorithm.
+What is the best way to classify a class?
+What is the name of the book that you can use it for?
+What is SEMI-R?
+AdaBoost algorithm was based on the original discrete AdaBoost algorithm.
+What is the best algorithm for boosting a decision tree?
+AdaBoost was originally developed for the classification problem, can it also do regression?
+The answer to the question is yes.
+AdaBoost regressor is called in sklearn-angsangbul module.
+What is the difference between the two things?
+What is the learning rate?
+What is the loss function?
+What is the AdaBoost?
+What did I pick two different datasets with about 5000 samples and 20 features?
+As you can see, the absolute accuracy can be different depending on the problem difficulty.
+Boosting algorithms are always better than fully grown decision trees.
+So this is decision tree fully grown and this is boosting algorithm.
+What is the difference between the left and right graphs?
+As you can see, boosting algorithm can have overfitting as well if the running rate is too big and number of trees are too big as well.
+What is the trade-off between the running rate and the number of trees?
+What is the name of the video that we're going to talk about gradient boost in the next video?
+What is the second part of the ensemble method?
+What was the problem with trees?
+What was the first idea we used to address this issue?
+What can be done to improve the performance of a diversified tree?
+What is the idea that we can further de-correlate the trees?
+The random forest used the idea of using random forest to create a forest.
+How did it do that?
+Random forest features were implemented in the random forest.
+What is another way to bag data?
+Random sample zone features feature in a random sample zone feature.
+What can be done to further de-corrlate the trees?
+What is parallel ang-sang-bulling method?
+We showed that the performance of trees increased dramatically by ang-sang-bulling trees.
+What is the bagging classifier alone?
+What can we do to make the tree look better?
+What is the second ensemble method?
+What is the name of the ensemble that is boosting?
+What is the problem with trees being weak learner and trees overfit?
+How do we do that?
+What is the next stage of the tree?
+What analogy do you think about?
+What is the first scientific approach to solving a problem like this?
+What is the problem that the second scientist will ignore?
+What is the gap of error gradually reduced?
+What can we do with the small tree?
+Instead of growing large tree that try to solve this problem all at once, we're gonna have small tree that will solve some part of this problem and then leave this error behind, instead of large tree that try to solve this problem all at once.
+The second tree will only look at this error and try to solve it.
+Then reduce the gap of error.
+What is the gap between the error and the next?
+What is boosting?
+What does boosting mean?
+Link or two at a time.
+So a single decision tree is grown to the maximum depth.
+How do you solve the problem all at once?
+How many depths at a time can boosting tree grow?
+The rest of the error will be fit to another small tree in the second stage and then the rest of error will be fit by another small tree in the second stage.
+What will be the final model of the trees?
+What is the algorithm?
+What is the initialization of our model to zero?
+What's the first step in the coding?
+In the first iteration, residual is the same as y so we try to fit the residual first.
+In the first stage since this was 0, we're gonna have our model called our stump times some constant.
+What constant is less than 1?
+What does this mean?
+Why do we want to consider our new model conservatively?
+Okay?
+What helps us learn slower?
+What is the learning rate similar to?
+What is the residual in the current stage?
+The final output model will be the sum of the shrinked stump models.
+What is the look of the graphic?
+What is the first step of the stump model?
+What will the residual predict?
+What will I do with the third stump model?
+What is the third stage residual from the third stage?
+What is the generic boosting algorithm?
+What is the name of the boosting algorithm?
+AdaBoost uses exponential loss instead of residual loss.
+What can be done to improve performance?
+What is GradientBoost?
+What method will we talk about in the next videos?
+What is the name of the video that we're going to show you how to prune trees?
+How did we prevent overfitting in decision trees?
+Decision trees are easy to overfit, so we talked about stopping last time.
+What is the number of hyper parameters that can be used to stop trees from growing early?
+What is the maximum depth of a tree?
+After a certain depth, the tree stops growing.
+What was the minimum sample leaves?
+What does the threshold mean?
+What strategy is the information gain?
+What happens when the information gain is not enough by splitting the node?
+What is the main benefit of overfitting?
+What is the issue with splitting after a tree stops growing?
+What can further split have a huge reduction in impurities?
+What do we never know what will happen after a certain point?
+What is another idea that we can try?
+How are we gonna do that?
+What is the minimal cost complexity pruning algorithm?
+What is the name of the tree that is in the tree?
+What will we call it T0?
+What is the point that is node T and the impurity can be measured as RT?
+What could be another name for impurity?
+What does RT mean?
+What term is a measure of complexity by splitting further?
+What is the alpha t of complexity?
+What is the sub-tree proportional to?
+The bigger the subtree, the bigger the subtree, the more we penalize more, the more we add term into our error term.
+What is the penalty term?
+What are the details of the documents?
+What is the alpha parameter?
+What is the leaf node T?
+What is the impurity at the node T before the split larger than the impurity of the sub-tree?
+What happens if the file doesn't split?
+What is the impurity of the sub-tree generally larger than?
+How do we calculate the impurity of a subtree?
+What is the sum of all the impurities in the leaf node of that subtree?
+Alright?
+So far, these were pure impurities at node T and the subtree.
+The sum of impurities into the leaf nodes.
+What happens if we add this complexity term or regularization term?
+In each case we can add this term to the regularization term.
+What is the effective error at node T?
+What is the complexity term?
+What is the subtree hole itself?
+The impurities at the terminal nodes are the sum of all the impurities at the terminal nodes.
+Alpha times the complexity of the tree, of that subtree, of that subtree, of that subtree, of that subtree, of that subtree, of that subtree, of that subtree, of that subtree, of that subtree, of that subtree, of that subtree, of that subtree, of that subtree, of that subtree, of that subtree, of that subtree, of which is number of leaf nodes
+What is the effective error of the subtree?
+What is the alpha of the alpha?
+What is the error of this node before split?
+Alpha effective is the alpha that makes this possible.
+What is the alpha effective?
+What is the formula for the formula?
+Okay, so great.
+So we can define a threshold at the node T that tells us whether we should split or not.
+What is the pruning process?
+So we can calculate all alpha effective for intermediate nodes.
+Every intermediate node except terminal node will have its own alpha effective and their numbers can be different.
+What is the alpha effective for all intermediate nodes?
+What is the smallest size of the smallest?
+What is the smallest alpha effective?
+If a node had the smallest alpha effective among all other intermediate nodes, then we can remove this node as well as its subtree, like that.
+What is the next step in the process?
+We repeat until we meet some criteria.
+When do we stop pruning?
+When all of the alpha effectives are bigger than this number, we stop pruning.
+What does this mean for link strength?
+In SQL, the threshold value is called a CCP alpha in the SQL library.
+What is the alpha effective of a link?
+If the alpha effective is bigger, that means the split at that node was worth it, so we don't prune that link.
+What is the alpha effective of a branch?
+Hello everyone.
+In this video, we're going to talk about the support factor machine.
+What is the difference between maximum margin classifier and hard margin classifier?
+So the points closest to the hyperplane are called support.
+What are margins?
+What is the goal of making these margins as big as possible?
+What is the difference between a bigger margin and a bigger safety margin?
+What did we mention about the maximum margin classifier?
+What is the formula for the formula?
+What can be useful for describing this optimization technique?
+So here's the hyperplane.
+What would you like to measure?
+What is the vector to the support point on the hyperplane called?
+What is the vector xa minus xb?
+What is the distance between the support point and the hyperplane?
+What is the point b?
+What is the vector that's normal to this hyperplane?
+What is the angle between n and normal vector n?
+What is the distance of the S vector?
+If you were in p-high dimensional space, you would have a p component, S1 to Sp.
+The unit vector will also have three components in the three dimension.
+W1, W2, and W3 are examples of W1 and W2.
+What is the length of the unit vector?
+What would have to be 1 in three dimensions?
+What is the three-dimensional example for D?
+XA 3W 3 minus XB 1 W 1 minus XB 2 W 2 minus XB 3 W 3 minus XA 3W 3 minus XA 3W 3 minus XA 3W 3 minus XA 3W 3 minus XB 1 W 1 minus XB 1 W 1 minus XB 2 W 2 minus XB 3 W 3 minus XB 3W 3 minus XA 3W 3 minus 
+What is the point B arbitrary?
+Let's simplify XA is actually X.
+What is the rest of the constant?
+Let's say b.
+What is the margin between the support and the hyperplane?
+What is the point below the hyperplane?
+What is the prime of the hyperplane?
+As you know, this cosine value will be negative.
+When the support vector is below the hyperplane, the quantity becomes negative.
+What variable will we assign to take care of that case?
+Let's say y for the point A is going to be plus 1 value.
+When it's above the hyperplane.
+What is the minus 1 when it's below the hyperplane?
+What is the Y and the formula for the optimization condition?
+What is the name of the song that sounds like YI?
+What does the I mean?
+What is the coefficient for the first component?
+What condition does the optimization need to satisfy for all the data points?
+What should the formula that we just derived have to change?
+When you have inseparable data, you have inseparable data.
+When we have inseparable data, what do we need to relax the condition?
+Instead of having a hard margin, all the points has to be above and below these margins.
+Instead of accepting some errors, we soften the margin by allowing some errors to be accepted.
+What is a soft margin classifier?
+What does the soft margin mean?
+So this is the hard margin that we showed before.
+We had the coefficients to each component of the vector x and a constant.
+What is the sum of the y and y above the hyperplane?
+What was the hard margin classifier?
+When we say we relaxed the condition, we introduce a new variable called slack variable.
+So this one.
+What helps give some wiggle room for this m?
+What is the condition that we have to satisfy as previously?
+What is the slack variable always positive value?
+What is the condition that we have to satisfy?
+What is the budget for the error?
+If c is large, then we can tolerate more errors.
+What is the hyperparameter?
+What is the definition of a term that is used to describe a person's behavior?
+What are the margins of the hyperplane?
+What is the color of the text on the other side?
+When the data points are above the margin, this is a safe margin.
+Above the safe margin, then this is correctly classified.
+So these are correctly classified.
+When data points are on the margin itself, just saying we can just say it's on the margin itself.
+So this is also on the margin.
+How about the data?
+What is the wrong side of the hyperplane?
+So these are wrong side.
+What is the hyperplane's hyperplane's hyperplane?
+What about these?
+What is the wrong side of the margin?
+What is the margin of error?
+When it comes to red data points, we'll care about this margin.
+What is wrong side of the margin?
+What is the safe margin to the blue data point?
+Time for this to happen.
+What are some definitions of what is a definition of a definition?
+What happens to the slack values for all these different situations?
+What is the condition for the hyperplane?
+What is the slack variable?
+When the data points are on the correct side of the margin, which means these, the slack variable values for those points are zero, it doesn't do anything on this equation so it doesn't change and satisfy the hard margin requirement.
+What is the value of the slack variable when it's on the wrong side of margin?
+If it is sitting right on the hyperplane, it's going to have the slack variable equal to 1.
+What happens to wrong side of hyperplane?
+If it's wrong side of hyperplane, the slack variable will be larger than 1.
+So this value becomes negative.
+We want to avoid that situation.
+Alright, so again, the role of the C parameters.
+What is the error budget?
+What is the budget of the error?
+What are the three questions that we're going to address?
+What is the maximum number of supports in the wrong side of the hyperplane when the C is given?
+What happens to the margin M when C changes whether increases or decreases?
+What does that mean in terms of bias and variance?
+What is the maximum number of supports on the wrong side of the hyperplane given the C?
+What is the formula for a positive value for every slack variable?
+If all of the select variables are equal to 1, the maximum number of adders can be C.
+What happens to the margin when C decreases?
+Which one of these will have the smallest C?
+What is the answer to the question?
+The smaller the C, the smaller the tolerance for the adder.
+What happens when margins get tighter?
+What happens when the margin decreases?
+What happens when the margin becomes narrower?
+Alright, the next question is.
+What happens when C is small?
+Small C means tighter margins.
+What does that mean?
+What is the result of less tolerance to the error?
+What does less bias mean?
+What is the effect of bias decreasing?
+What is the hard margin classifier?
+There are overlaps between the two.
+What is the distance between the hyperplane and the supports called the margin?
+What is the condition that all the points need to be satisfied for the hard margin classifier?
+What did we talk about some general cases where the data points are not perfectly seperate?
+What is the slack variable that will make this condition softer?
+What is the C parameter?
+So far we talked about linearly separable data, that means our hyperplane was not curved.
+What was the name of the movie?
+What is the name of the hyperplane?
+In some cases, there is no way to separate data with just one hyperplane.
+What will we need to separate the data like this?
+What kernel will we use?
+In the next video, we'll talk about kernel method.
+Hello everyone.
+In this video, we're going to talk about support vector machine with the kernel tricks.
+What is the margin between the hyperplane and the support vectors?
+What did we add to all this data?
+How much deviates from the margin?
+What is the amount for different blue points?
+What is the c parameter?
+What is the problem with using one hyperplane to separate the data?
+What is the kernel trick?
+What is the kernel of the kernel?
+What is the name of the submargin classifier?
+What is the formula for the hyperplane?
+Let's call it f .
+What are the coefficients for this equation?
+The optimizer will find the values for these coefficients.
+Why do we call SVM as a non-parametric method?
+18
+What is the use of Connors?
+What term does SVC stand for?
+Supervector Machine generally refers to some generalization of Supervector Classifier, whereas Supervector Classifier usually refers to the Soft Margin Classifier.
+In SKLUN, they use a different algorithm.
+SVC uses a lip linear.
+What is the similarity to the optimization algorithm that we use in logistic regression?
+What does this SVM use?
+What are the kernels?
+What is the formula for the hyperplane?
+What is the equivalent formula to f?
+We'll skip the derivation and just show the result.
+What is the inner product of the inner product?
+What is the name of the product that is a dot product?
+If you have xi', then this is dot product between the point i' and point i.
+What does the dot product represent?
+What are the names of the kernels that we call K kernel, xi and xi'?
+What is the linear kernel?
+What is the essentially the same as this one?
+When we implement the algorithm, it will have a different time complexity.
+What is the time complexity of a linear library?
+What is the problem with linear data?
+What will be the SVM with linear corner?
+What is the use of kernel for?
+What is the kernel method used for?
+What is the name of the game?
+When we have data that is not possible to separate by linear hyperplane, what do we want to do?
+What is the data that's not linearly separable?
+In the one-dimensional, the hyperplane will be just a point.
+What is the difference between two hyperplanes?
+What is not possible?
+What is the kernel trick?
+What is the third dimension?
+What is the name of the hyperplane?
+Adding one more dimension means that we want to make a higher order terms in the function.
+What is the problem with adding a higher order terms to the data?
+What is the kernel trick?
+What is the polynomial function for the high order terms?
+What can we generalize our function to be a form that has these corners?
+What type of data might involve a nonlinear decision boundary?
+We can use polynomial kernel that we just saw.
+By having polynomial kernel, we can have this type of decision boundary.
+Shows the data result when we had the d equals 2 for polynomial kernels.
+What nicely separates the blue points from the red points?
+What is another name for the radial kernel?
+What is the kernel's shape?
+What defines the RBF corner?
+What is the shape of the round shape?
+What will be able to separate the data into three blobs?
+What is a great corner for a corner?
+You can solve some complex data.
+What kind of kernels should we use?
+What is the point of a linear separable?
+What will solve perfectly?
+What is the RBF corner?
+What is linear approvable?
+So linear SVM and RBF-SVM worked well.
+What type of data are yin and yang?
+The linear SVM doesn't work very well.
+What did the radial basis corner do well on?
+What corners did not do well for this type of data?
+What donut shape of data is used?
+Linear SVM did not do very well as you might expect.
+What is the perfect data shape for radial kernel?
+So now you can see that the choice of kernel strongly depends on the pattern of the data.
+What is the best kernel for nonlinear data?
+In this video, we're gonna talk about ensemble method and especially random forest.
+What is an ensemble?
+What kind of image might you imagine if you hear ensemble?
+So individual instrument players can make some sound in music.
+What is the sound characteristic of an instrument?
+What kind of instruments can you make rich and flavorful sound?
+What is the ensemble called?
+What can apply to machine learning model?
+What is a weak learner?
+If they are aggregated in certain ways, they can be much better.
+What is the intuition why the collection of machine learning model can be better?
+What is the problem to solve in the general public community?
+If you sample people that has the same race, same gender, same age group, and same kind of background, it's likely to only represent those kinds of people.
+What is the benefit of having a diverse group?
+Okay, so diversity is great.
+How can we make our models diverse?
+What is one idea that might be used to train models on different subsets of data?
+So training model on different random subset of data is called bagging.
+What can you think about putting different data set into bag and then make the model trained on this data?
+Why is the name of the company not because they put the data into bags?
+What is the full name of the bootstrap aggregation?
+What is bootstrap aggregation like?
+Random sampling is a way to sample data.
+What would be the first step in a replacement subset of training data?
+So we can use the replacement.
+What does this mean for us?
+What is the yellow section of the data?
+What can overlap like this?
+What's the process of bootstrap?
+What data can be used to grow a tree?
+Tree number 1 and tree number 2 and tree number 3 and tree number 4 are the same.
+What tree may become similar to each other?
+What is another way to grow prune the tree?
+After growing the tree to each subset of data, we can ensemble them.
+What is the ensemble method in regression?
+What is the benefit of doing bagging?
+What is auto bag error?
+What was the training of the yellow chunks?
+What can we test on the rest of the data that we didn't select to train on?
+What is the random forest?
+What is another idea for bagging?
+What can be bagging classifier alone give performance boost?
+In random forest on top of that we also have some process of decorrelation.
+What is the difference between a whole feature and a subset of it?
+What is the decorrelation?
+Why is it important to have the same features all the time to grow the trees?
+What is the structure of a tree that is grown on a random sampling of features?
+What is a decorrelation?
+The algorithm is called the random forest.
+How do I randomly sample the features?
+A rule of thumb is the square root method.
+When we have 100 features in the data, we will select 10 features in the data subset.
+Here are the results of random forest classifiers.
+The red curve means a random forest using all samples.
+What's the bagging?
+When we de-correlate trees, you can see some increased performance.
+What is the main difference between a smaller number of features and a smaller number of features?
+What is another result showing the power of angsangbol?
+What is the green star point actually a single tree test performance?
+As you can see, as we increase the number of trees in the angsangbol, it generally goes up and then behaves like they do in the angsangbol.
+What is the blue curve?
+What is the red curve?
+The bagging method and the random forest method are ensembleing methods and increase performance a lot.
+Decolonizing trees is a better way to do it than bagging them.
+What is the out-of-bag test error?
+What are the kind of validation error during the training process?
+Random forests have a cool feature.
+What is the built-in feature importance of the ipad?
+In SQL library you can pull out feature importance after fitting the random forest model.
+What is a feature selection tool that can be used to make a feature selection?
+Random forest can be used to make some serious models on top of it.
+What can be a handy tool?
+Random forest is a term for a forest that is used to describe it.
+What is the angsangbuk method called?
+Hello everyone.
+In this video, we're going to compare support vector machines' performance with other models.
+What was the last time we talked about kernel tricks?
+What is not linearly seperate?
+What would happen if SPM with the linear hyperplane was unable to separate?
+What did the trick do to add higher order terms?
+What is essentially making the data lie in the higher dimension like in the picture on the right?
+What is the advantage of adding higher dimension?
+So we introduce several corners that treats a higher dimension.
+What was the polynomial corner?
+What is the degree d of the features we want to include?
+We were able to separate the data, otherwise not separable.
+What is a discussion shape function?
+What is a good fit for data that's a radial shape?
+Let's talk briefly about properties of SVMs.
+What feature scaling is needed for SVM?
+What is the difference between the features in a column and the features in a feature?
+How does time complexity scale linearly to number of features?
+What does SVM do when there are many features?
+What is the time complexity of SVM?
+What is SVM usually good for?
+SVM also works well on sparse features.
+What does SVM have to handle even though the feature value has a lot of zeros?
+Random forest is also good for a large number of features.
+Random forest can be very slow if the feature values are all real values and it's dense.
+What is the difference between SVM and categorical variables?
+What property does the SVM have a C parameter?
+The C parameter gives the budget of the error.
+Small c means that the model can tolerate small error.
+A larger C means a model can tolerate more errors and hence higher bias, lower variance, and higher variance.
+What does the optimization look like under the hood of SVM?
+What did we talk about making all of the data points within this margin with some kind of slack variables?
+What is the equivalent to minimizing this loss function?
+Without the mathematical proof, we're going to use it.
+What is the hinge loss function?
+What is the value for loss?
+What happens when the g becomes one?
+What is the loss at zero?
+What looks like a hinge?
+What is the name of the Hinge loss?
+What is the term for regularization term?
+What is the regularization parameter proportional to?
+What is the SK-Lon library used for?
+What is SK-Lon library's main function?
+What is one of the linear SPCs?
+What is the penalty for using a linear SVC function?
+What is the one versus the rest strategy?
+Why are SVC and SVM built for binary class classification?
+What is the difference between a class and a class?
+What is another classification function called SVC?
+What is the name of the server that is using libSVM?
+What does the kernel do?
+What is the default method of using radial basis function?
+If you are using polynomial, you can also change to poly if you are using polynomial.
+What degree only applies when we are using polynomial kernel?
+What is the C parameter in sklon?
+What definition of the hyperparameter is inverse to the textbook's notation?
+In the textbook, C means that it's number of violations that we can handle.
+What is the inverse of that?
+If we were to have more regularization, we need to make this C smaller.
+All right.
+In SKLUN, SVM module can do regression, and that function is called SVR.
+What is the SVR function?
+To SVC.
+What is the SVR's function?
+What is the reverse of SVC?
+What is the reverse of the meaning of reverse?
+What is the hyperplane and this is the margin?
+What is the margin for classified points outside of this margin?
+How many errors do we allow?
+In SVR, we have to be careful about what we do in order to be able to...
+What do we want them to be as close to as possible with this decision boundary?
+What is the hyperplane or line to the data?
+What's the basic workings of the SVR?
+What is the comparison between SVM and ensemble method?
+What data are similar or different from each other?
+All of these data has a task of binary class classification.
+What is the difference between the two types of features?
+What is the first data set?
+What percentage of accuracy is the decision tree after this training and testing?
+What is the most categorical feature of the data?
+So these are real value features.
+Most of the data in this data are categorical and some have zero values.
+The second data of our choice has 20 features, similar number of samples, similar number of training samples.
+What is the problem with the second version of the game?
+So even the decision tree can perform well, about 90% accuracy.
+All of these features are very dense, so all of them have some numbers, and they are also real value features.
+What CERN data is used for training?
+What percentage of decision tree performance was about 70 something percent?
+All of these features are categorical and sparse.
+Data 4 has 300 and more features.
+How many samples will be used in training?
+What percentage of decision tree performance was less than 70%?
+All of these data have value features and they are very dense.
+All right, this is our last data.
+What is the biggest feature of the Xperia Z3?
+We're going to select only very small number for training.
+How many samples were used to train the rest of the sample?
+We chose low training samples because we wanted to show the performance of different models on the data that has more features than the training examples and also small training data.
+The decision tree performance on this data is about 70%.
+What percentage of categorical variables does this data consist of?
+What is the summary table for the performance of different models?
+What are the five models that we compare?
+What is the decision tree and logistic regression model?
+What is the performance of the models from the three ang-sang-bu methods?
+What is the name of the machine that boosts gradients?
+What is the best model for logistic regression?
+What data did this data not get to use a lot of trees?
+What is the second most difficult data to get in terms of accuracy?
+Even the decision trees and logistic regression have high performance.
+What did fancier models do better with the expense of lots of trees for the triangle symbols?
+For data number 3, the season tree was a little more than 70%.
+What logistic regression performed reasonably well?
+What is the maximum iteration of the sklearn library?
+When logistic regression becomes little unstable, what happens?
+Nevertheless, it gives some number so we can use that.
+What team did Triang Sang Bulls play with?
+What was the result of the models?
+What is the name of the Triang Sang Bulls?
+DataFour has even more features.
+What did the same results give?
+All these models and SVM worked better.
+SVM and tri-ensemble are similar but not always the same.
+What are some trade-offs?
+For Data 5, the decision tree and logistic regression models didn't do very well.
+The tri-ensemble and the SVM model worked much better.
+All of the accuracy values are from a 5-fold cross-validation.
+What are the selected hyperparameters in the parentheses?
+All ensemble models and SVM are comparable or sometimes ensemble models are better than SVM.
+What is the training time?
+What model took less time to train than the other?
+So let's see what we can see here.
+What took about 100 milliseconds to complete the ensemble methods?
+As you can see, even the number of features and the data dimension are similar.
+Sometimes the other data takes much longer.
+Why is it so important to have a good relationship with God?
+What is data 1?
+If you use models that use histogram-based splits, you can avoid this problem.
+SVM doesn't suffer from that problem.
+What is the difference between tree ensemble method and tree ensemble method?
+What is the advantage of SVM?
+What model should you use first?
+What is the most likely benefit of using SVM model?
+A good thing that we should always try simple model first and see how it goes.
+What is the Razor principle?
+What can be the choice of model depending on your goal and the computation resource and the data size?
+What is the cost of a little training time?
+What is the best model for a system with big data?
+What is the behavior of test header that goes down first and up later as we increase the model's flexibility?
+What is bias and variance?
+Let's have a look at graphical explanation.
+When the bullets are well-centered and well-grouped, they are more likely to be well-centered and well-grouped.
+Low bias and low variance are also called low bias and low variance.
+When the bullets are well grouped but far away from the target center, it has a high bias because it's far away from the center or true value.
+What is the variance of the groups?
+What is the bias of a bullet?
+What is the difference between a high bias and high variance?
+How does that relate to machine learning?
+In machine learning, we have data from real life and we can't know what the true model is.
+What is the result of a model?
+What is the bias?
+What is the difference in machine learning models?
+What is the variability of the model?
+What is the difference between the simple model and the more complex model?
+What is the new model going to be different from the previous model?
+What is the variance of the model?
+What is the variance of a simple model?
+What does the training data change little even though we change the training data?
+When we have more flexibility in the model, the training samples may change a lot depending on how we choose the training samples.
+What is the variance of the variances?
+What is the bias of a simpler model?
+So it will correspond to this one.
+A more complex model tends to have lower bias but has higher variance.
+So it will be this case.
+In machine learning, many models are either this case or this case.
+What is the trade-off between the two?
+What is the trade-off between bias and variation?
+What is the most common scenario that may occur if the model is not very good?
+What is the effect of a deep neural network on a model?
+In most cases, we have the trade-off between bias and variance.
+What is the reason why the test error goes down and then goes up?
+Why is there a trade-off between bias and variation?
+When we have this is model complexity.
+What is the test error?
+Or error in general.
+The bias goes down as our model complexity increases and the model variability goes up as our model complexity increases.
+What is the general relationship between bias and variance to the test error?
+What is the difference between the variance of the model and the estimated model?
+What is the test error sum of the variance of the model and bias scaled of the model?
+What is the shape of the header?
+What is the test header shape like?
+What is the most common way to look at your training header?
+What is the most common way to get data from a simple model?
+If you have already good test error for the simple model, you may have already good error for the simple model as well as this.
+What is the remark that goes up like this?
+What is the name of the thing that is a part of the 'thing' that is a part of the 'thing'?
+What square error does not have to be squared error?
+What is the general behavior of loss function?
+What happens if we add more complexity to our model?
+What did we talk about polynomial regression?
+What is the bias-variance trade-off principle?
+Hi everyone, I'm new to the forum.
+In this video, we're going to talk about multilinear regression.
+What is the main difference between simple linear regression and adding more variables?
+What is the key idea we're going to discuss?
+What is the concept of bias-variance trade-off?
+What will we talk about when selecting features that are most contributing to a model?
+What is the form of y equals a0 plus a1 plus x1?
+What is x1 a one feature that we care about?
+What is the size of the house that can predict the price of house sales?
+Price is the y that we want to predict.
+What is the name of the feature that we want to add to the site?
+What is the difference between a lot and a lot?
+What is the size of the house that has a smaller lot?
+What can we add to our model?
+What can be added to the home to add more features?
+What is the main problem with the model?
+What is multi linear regression?
+What is the name of the model that has a higher order terms of the house size?
+What can we have a square term of the house size?
+What's the squared value of a1x1 plus a2x1?
+What could be a good model for a model that could be a good model?
+What is the third term of the house size?
+What is the polynomial regression?
+Multilinear regression is a type of regression that is multilinear.
+We can engineer some features.
+Instead of square term and cubic term, we are not restricted to having just higher order terms.
+What can be created using existing features?
+What is the probability of diabetes based on?
+What did we measure from the lab?
+What is the BMI of the model?
+What is the BMI function of x1 and x2?
+What are the different possibilities that we can engineer?
+So linear model can become really flexible in this case.
+What happens if we start adding more complexity into model?
+What will we talk about in a moment?
+What is the first step in polynomial regression?
+What represents the order of the maximum term?
+What is the simple linear regression AX plus B?
+What is the result of m equals 2?
+So these are the complexity of our model.
+What is the problem with linear regression?
+What term does the square term add?
+As you add more high-order terms, the line becomes more flexible and have different shapes of the curve.
+At some point, the fitting fails.
+What happens when I wasn't very careful about scaling of the feature x?
+In my simple linear regression model, this was on the order of 1000.
+If my y is going to be on the order of million, then this coefficient could be on the order of thousand or less and so on.
+What is the square term of the house of six power?
+What is the problem with the computer calculating all the coefficients?
+The fitting may not work very well.
+How can you scale the feature to prevent this disaster?
+What is the difference between the features of a feature and the features of a feature?
+What's the difference between 1 to 6 and 10 to 6?
+So it's more manageable.
+What is the default way to add high order terms?
+We don't want to add high order terms indefinitely.
+What is the question where do we want to stop adding high order terms?
+What will happen to the model fitness as you add more model complexity?
+So you have some data like this.
+What could be a little crazy that your model can fit everything like this?
+What model is not very good?
+What is the main problem with the XML?
+What will happen if you make a huge error with this?
+What is the biggest benefit of a simpler model?
+What motivation is there?
+How do we determine where to stop when we add model complexity?
+What do we want to monitor when we introduce new data points?
+What did we talk about measuring the test data error and training data error?
+What did we call test data?
+What is another name for validation?
+So we can call them interchangeably.
+In machine learning community validation error is more commonly used term for the data set that's set aside for testing while you're training the model.
+What can be done to measure errors for training and testing?
+What did we pick for MSC?
+What is the training label?
+What is the error for the training?
+What can we do for the test data?
+What is the prediction value of YTE?
+Then we can have the error for the test data.
+What does the F correspond to?
+High-order terms or different model complexity are examples of high-order terms.
+What is the model with M equals 2?
+When you plot, the exact shape of the curve for training error and test error will be different depending on the number of data and data itself that you randomly sample.
+What will depend on your model?
+Complexity and so on.
+What type of error curves are gonna be seen?
+As you increase your model complexity, you will see a decrease in training error.
+When the model complexity is increased, the test error will start going up again.
+What is the sweet spot where the test error is minimized?
+So we can pick our best model.
+What is the complexity equal to?
+What model is also comparably good?
+What is Occam's razor?
+What is the difference between simpler model and complex model?
+How well does my model fit?
+What are the numbers R squared value and adjusted R squared value?
+What are the metrics for how well the model fits?
+What is the difference between R squared and R squared?
+When the number of samples is much larger than number of features in the model, the two numbers are essentially the same.
+What is the squared measure of model fit?
+When do we know that model has a good fit?
+When a squared error is minimized, the model has a good fit.
+What can we use MSC or RSS?
+RSS is a residual thermal squares.
+What is the difference between MSC and MSC?
+What is the quantity that we define and we know that if the quantity is minimized, we know the model has a good fit?
+What is the problem with this metric?
+One of the things that can be arbitrarily large depends on our unit of the target variable.
+What is the quantity of data that will be different if we have different sets of data?
+What do we want to normalize by?
+What would be a good way to do that?
+What is the difference between the two models?
+y equals beta 0 plus beta 1 x plus beta 1 x plus beta 1 x.
+What is the TSS?
+What is the dimensionless quantity?
+How is RSS divided by TSS?
+What is the ratio of the error from my model to the error from the null model or benchmark model?
+How many null models does this measure?
+What do we want our quantity or R-squared value to be higher when when my model fits better?
+What does RSS go down when the model fits better?
+What's the flip of the sign?
+We're going to subtract this quantity from 1.
+What is the definition of R squared?
+What values can R squared take?
+All right.
+What are the two extreme cases?
+What is the extreme case of my model fitting perfectly all of the data points?
+What is the point of my model?
+What term goes to 0 and my R-squared value goes to 1?
+What is one extreme?
+Can R-squared go 1?
+What is the largest number of a larger than 1?
+Why can't the R-squared value be larger than 1?
+What is the other extreme case that my model is just as good as my null model?
+What value will be the same as TSS?
+What is the first step in the process of determining the number of points in the equation?
+What will go to zero?
+Can R squared value go negative?
+Yes, it can.
+In practice, if you use a package to fit your regression line, it will almost never happen.
+What is the slope of the model that is bad?
+What RSS might be larger than TSS?
+What can go negative if the R squared value is negative?
+For simple linear regression, this might not happen.
+What can go negative?
+What did we see that R-squared value could be a good measure of how my model fits?
+What is the value of a summary table?
+What would you want a model that takes form of ax and there is no intercept?
+Why would we want to do that?
+What intercept value is the intercept value?
+What is the negative value of my living space?
+What doesn't make a lot of sense?
+What is the model that has no intercept?
+What sounds good to me?
+What should my sales price of house be when the living space is zero?
+What is the summary table for?
+What is the square fit living coefficient?
+What happens when the R-squared value goes up?
+What does that mean?
+Does it mean our new model y equals ax plus b is better than our old model ax plus b?
+Well, not necessarily.
+What is the r squared next to?
+What does that mean?
+What is the new null model y equals 0?
+What is the sum of squares from y equals 0?
+What is the R-squared value?
+Can be much larger than the previous one?
+What can you do to compare apple to apple model error?
+What is the previous model RSS?
+What is the size of the RSS feed?
+What value does the summary table give?
+What is the significance of the coefficient values?
+When do you say the coefficient values are significant?
+When can we say that the coefficient value is not significant?
+What is the meaning of a coefficient value that is not significant?
+When the coefficient value is zero, the coefficient value is zero.
+When you hear a coefficient value is not significant, that means the coefficient value should be zero.
+Let's look at the coefficient value.
+What is the difference between the minus 4000 and minus 280?
+What is the difference from zero?
+What is the coefficient value of the coefficient?
+What is the absolute value of the coefficient value?
+What is the difference between the two?
+What is the number that is good enough to be considered good enough?
+What is the standard error?
+What does this mean?
+What do we want to know about my average coefficient value?
+What do we want to know about my spread?
+What is the spread of the coefficient?
+What is the distribution of my coefficient values?
+All these values that shows here are good measure of confidence or statistical significance.
+What is the name of the book?
+What did we mention was important to know about the standard error or spread of my coefficient value?
+How can I get the standard error or spread of my coefficient value?
+One uses some theory or assumption that the residual is some normal distribution with zero mean and certain spread or variance.
+How do we get the coefficient value?
+What can we get from the standard error of my coefficients?
+What is the model-based method?
+What is the covariance matrix?
+So matrix looks like this.
+What math do we need to remember?
+What is the standard error value for intercept and slope?
+What looks like this?
+What formula do we need to remember?
+What is the variance of the residual?
+What is the probability that my coefficient values also have a large spread?
+What is the spread of the coefficients dependent on?
+This model assumes a homoscedasticity.
+What does that mean?
+What does the data look like?
+The residual, the spread of the residual is not homogeneous.
+We can assume this model and then derive the quantities that we need.
+If you are not convinced by that, the model's assumption, then maybe we can use bootstrapping method.
+So bootstrapping method is resampling method.
+What is the original look of the data point?
+What can we sample that samples some data point like this?
+What is the next step in analyzing the data?
+And so on.
+What can we have multiple copies of?
+We can have many many samples that we want.
+What can we do with the same data twice?
+What does it matter?
+What can we sample with the replacement?
+What is the difference between the coefficient values of the two data sets?
+So we get all these values and we can get the mean value of this as well as the standard deviation or variance of that value.
+What is the standard error for the coefficient values?
+How do we determine whether our coefficient values are statistically significant?
+What will we do to test the hypothesis?
+The null hypothesis says that our coefficient value is 0 and the alternate hypothesis says that our coefficient value is not 0.
+What is the t-score given by?
+The t-score is standardized.
+How do we estimate the value of our coefficient?
+When the number of samples is larger than 30, the t-distribution approximate to normal distribution.
+We're going to calculate the p-value and review it briefly.
+What is the standard distribution like?
+What is the mean of the variance?
+What is the error rate of 5%?
+What defines critical value within these critical values?
+What is the standard normal distribution plus 1.96 and minus 1.96?
+What is the area of the region that is 0.95?
+What is the error rate?
+What is the shaded area symmetrical?
+If our t-score lies in the rejection region, or maybe here, then we can reject the null hypothesis.
+What is the p-value here?
+What is the p-value of the area under the curve enclosed by the t-score?
+In this particular example, our p-value is smaller than the half of the alpha.
+What is the green area of the t-score?
+We can reject the null hypothesis.
+What if our t-score lied in here?
+What is the p-value of the p-value?
+When the p-value is larger than half of the alpha, we cannot reject the null hypothesis.
+What is the null hypothesis?
+So that looks like this.
+What is the slope of the slope?
+What is the p value of the coefficients?
+We can safely reject the null hypothesis and conclude that our coefficient values are statistically significant.
+What is the 95% CI?
+To calculate that, the formula is given by this.
+What is the mean of the coefficient plus minus two?
+We can define 95% confidence interval for the regression line.
+What percentage of the time will my regression line lie within this orange shaded region?
+What is the 95% prediction interval?
+95% of the time the sample points will be within this blue shaded region.
+What can be useful when you have some outliers that you may remove to have better regression?
+How do we measure the error from the test data and training data?
+What is the popular error measure?
+Instead of using all of them to fit the model, we're going to set aside some data.
+Some portion of data is test data.
+What is the purpose of the training?
+Train set, test set, and each of them have feature and label.
+What features does the train set have?
+What is the feature test set for?
+What is the train set used to fit the model?
+So model had undefined coefficient values.
+What is the first step in the fit?
+What will determine the coefficient values?
+What is the model's optimal coefficient values?
+What's the prediction for the next time?
+Do not predict.
+What does a label not need to be used for?
+Train data is gonna be put in train data.
+What happens to yprediction?
+What is the training data?
+We can do the similar.
+What will happen if you dot predict and supply test data instead of the fitted model?
+What do we do with this?
+So this value and this value.
+We can measure the error between the prediction value and a label.
+What is the training MSC of Y true value for the training label?
+What's going to be our train error?
+So for example this one.
+How can MSA be calculated for test data?
+What is the MSA test TE?
+What value is this for example?
+What is the common error that is slightly larger than the train error?
+If the data were pretty homogeneous and your model was doing well then train error and test error could be similar value.
+If my model is overparameterized, it doesn't do very well in the test data.
+What is an important way to determine if my model is overparameterized or not?
+What will we talk about later?
+How do we determine the coefficients?
+What is the least squares method?
+What method minimizes the residual sum of squares?
+What is the RSS?
+What did we talk about the fit of the model?
+What is the derived value of R squared?
+What did we use to generate the RSS feed?
+What did we talk about when we interpret the R squared value?
+What did we talk about significance of the coefficients?
+What is the standard error of the coefficients?
+What did we talk about t-score and p-value and hypothesis testing?
+What did we talk about confidence intervals?
+What did we talk about measuring the error for training data and test data?
+What is the simple linear regression?
+What happens when we add more model complexity?
+Hello everyone, welcome to the class!
+In this video, we will talk about introduction to machine learning.
+What is machine learning?
+What is one of the courses in data science that you might be taking?
+What is the course about machine learning going to be about?
+What is another buzzword that is being used in the field of AI?
+What did you hear about deep learning?
+What are the terms for the 'separate' systmes?
+Data science is a really big interdisciplinary field about data.
+What is one thing you can think about when you think about data pipelining?
+Machine learning techniques can be used to analyze data.
+What is the spectrum of data science?
+Soft data science is a science that doesn't require a lot of software engineering skills or math skills.
+What can data visualization and reporting fall into?
+Hard data science involves more mathematical and technical skills.
+Data science can deal with data that's small and small and fits into an Excel file or something like that.
+In industry, the job description looks like this.
+Data scientists are a part of the data science team.
+What can they do with data collection, cleaning, and preparing data for a company?
+Machine learning models can be built and tested on data or they can build a system.
+As well as visualization and stuff, they can also do the visualization and stuff.
+Data scientists have a wide range of backgrounds and they need interdisciplinary knowledge.
+When talking about data science, we mentioned machine learning several times.
+Machine learning is a subfield of artificial intelligence.
+What does the company focus on learning?
+Machine learning consists of different types of learning, such as supervised learning, unsupervised learning, or reinforcement learning.
+Many machine learning models come from statistical learning.
+Machine learning extends the statistical learning by including more complex algorithms.
+Machine learning engineers can develop and test machine learning models and design machine learning experiments.
+Machine learning systems are a great way to learn from machine learning.
+Artificial intelligence is about problem solving with intelligence.
+What does AI do to make the best decision?
+What is the main reason that AI is so practical?
+AI has a lot of theoretical components in it.
+AI engineers and experts are similar to ML engineers in broad set skills, including math and programming skills, and machine learning skills.
+What are some of the things they work on?
+Deep learning focuses on neural network models and training them on data.
+What does the software deal with in order to deal with the complex neural network model training?
+What type of data is graphing best suited for?
+What is the subfield of artificial intelligence and subfield of machine learning?
+Deep learning engineers work on machine learning problems in industry.
+What is a high performance computing term for?
+What will we show you in a summary diagram?
+Data science is a big interdisciplinary field.
+AI is a very big field.
+Data science is anything that has to do with data, including data analysis.
+Artificial intelligence is about solving problems using intelligent algorithms.
+When AI is learning from data, it is called machine learning.
+Deep learning is a type of deep learning that deals with complex data with neural network architecture.
+What is the trend on the term machine learning and software engineering?
+Just to compare how machine learning becomes popular for recent few years.
+Machine learning has become more popular in the last five or six years.
+Machine learning has grown up 350% in the past few years, according to the graph below.
+Machine learning is a top skill in the jobs that involve AI skills.
+Alright, that already sounds like ML is very cool.
+What can ML do?
+Machine learning is applied everywhere these days.
+When you do online shopping, you may see product recommendations based on your browsing and shopping history.
+Machine learning algorithms predict the products that are more likely to be purchased by customers.
+Movie recommendation and music recommendation are the same for movie recommendation and music recommendation.
+So sentiment analysis is very popular applications these days.
+Data scientists analyze texts such as news articles and social media articles.
+What is the purpose of a citizen's opinion on political events?
+Machine learning algorithms can predict product reviews or restaurant reviews.
+Machine learning is used in the financial industry.
+What can we do to forecast the stock price using machine learning?
+Machine learning is used for algorithmic trading.
+What can be used for forecasting housing price?
+Machine learning can be useful in medical industry.
+Machine learning models can help doctors make decisions about medical decisions.
+What is the main use of abiotics?
+Machine learning techniques can be applied to this graph data to inspect the protein interactions.
+Machine learning is a key component in the Internet of Things.
+Machine learning plays a key role in analyzing data.
+Machine learning is also used in self-driving cars.
+Machine learning and deep learning can help self-driving cars make decisions and recognize images.
+What will we learn in this course?
+What is the lifecycle of a data science project?
+Data should be collected and pipelined into data warehouse.
+Data warehouses have to implement data governance.
+Data pulling and cleaning will be done as well.
+Data engineering is a part of data engineering.
+Data science focuses on using the data and analyzing those prepared by the data engineering process.
+What is the process of preparing data for the model to consume?
+Data scientists will build models and train them.
+What did the result be?
+What is the result of the model building process?
+What happens when a user collects more data?
+All right.
+What are some things that we're going to talk about in the data science project cycle?
+What do we cover?
+What is not about data collection and pipelining?
+What will be the main focus of this workshop?
+What is learning?
+When children learn alphabets, they can learn to generalize.
+What is the letter in the word?
+How can a machine learn this?
+What is supervised learning?
+The labels are the same as the images and the labels.
+Labels are the names of the animals on the labels.
+A supervised learning model learns to predict the label given data.
+Unsupervised learning actually resembles very much how humans learn.
+In baby stage, they don't know about geometric shapes and colors.
+What does the child learn to recognize in visual properties?
+What are unsupervised learning without labels?
+Unsupervised learning is about learning underlying features and extracting information, organizing patterns or clustering similar data points.
+What type of learning is reinforcement learning?
+AI agents learn how to act from experience.
+What is the difference between experience and punishment?
+What is the training of animals similar to?
+What is the purpose of treats or punishments given to animals?
+What is reinforcement learning used for in AI?
+What definitions often show up in machine learning?
+Machine learning can be any form of data, images, text, sounds and graphs, sounds and graphs, and sounds and graphs.
+What format can be used to create a video?
+What is the main focus of the tabulated data format?
+Let's take an example of the table.
+Let's say the task is to predict the house price.
+What would be the labels for our labels?
+What are targets?
+All these columns, except the labels, are called the features.
+What features are used in machine learning models to predict labels?
+What is the row of tables called observations?
+Here are some examples of machine learning tasks.
+What is supervised learning?
+Clustering and dimensionality reduction are in the category of unsupervised learning.
+What is the classification of unsupervised learning?
+What type of machine learning tasks can be used to enhance the performance of supervised learning tasks?
+What is the first step in supervised learning?
+Prediction tasks can be either classification or regression depending on the label's data type.
+What is a categorical variable?
+If the categories are binary, it is called binary class classification.
+What is multi-class classification?
+Binary, multi-class.
+What is the real value of a label variable?
+What is a regression problem?
+What is supervised learning?
+What is the data?
+What is the main component of data?
+What is the target of the feature called y?
+What is the feature input to the model?
+The model might have parameters inside or hyperparameters inside.
+What does that mean?
+What is the first step in predicting?
+What is the first error between the prediction and target variable?
+What error can be used to tweak the model to have a better prediction next iteration?
+How does supervised learning work?
+What is the taxonomy of supervised learning models?
+Parametric models are models that have internal parameters.
+What are the examples of parametric models?
+Non-parametric models don't have internal parameters.
+What are examples of non-parametric models?
+What is the class about?
+Hi everyone, I'm new to the forum.
+In this video, we're going to talk about linear regression.
+What is the definition of linear regression?
+What is a fitness performance metric?
+What is the significance of the estimate values?
+What is supervised learning?
+What is the need for training data that feeds to the model?
+What is the model's internal parameters?
+Some models don't have parameters at all.
+Some models have hyperparameters that users need to tweak.
+The model can predict the value of the model with that information.
+If the parametric model parameters are not optimized, then the prediction value will be far away from the target.
+What is the goal of tweaking the parameter by optimization?
+What is a linear regression?
+What is one of the simplest kind of supervised learning model?
+What is the real value number?
+And then it has the parameters.
+What are the parameters inside that are often called coefficients?
+What does not have a hyperparameters?
+What's the benefit of using a design tool?
+What is the most important aspect of a linear regression model?
+What does that mean?
+What does this mean?
+What could be some data like this that tell us that when the house size gets larger than the house price gets larger?
+What would you like to predict the salary of a person as a function of years of experience?
+What might we have some data like that?
+What does that show?
+What slope does it not have to be all the time?
+What could be another example like this?
+What age is the data based on?
+What is the survival rate from cancer?
+As the age of the population increases, maybe survival rates go down.
+So these examples show some kind of linear relationship of the feature to the target variable.
+When we have multiple features, linear model also have some linear combination.
+What shape is the shape of the sand?
+What does that mean?
+What is the coefficient a1?
+What is the coefficient for feature p?
+What is the linear model of my model?
+What is linear combination?
+What is the linear regression model?
+Let's take an example.
+What data comes from Kaggle website?
+Kaggle is a repository for machine learning data.
+What is the place to go if you want to build a machine learning model and train to the data?
+What competition does this website host?
+What does this mean for competitors?
+What is the name of the game you should try?
+What is the main purpose of the data?
+Price is our target variable Y and all other columns are features.
+What feature could be a good predictor to predict the house sales price?
+What feature will be useful to predict the house price?
+What is the importance of number of bedrooms?
+If you have more bedrooms, it's likely to be more expensive.
+What does the size of the house matter?
+Where is the house located?
+What kind of things are like that?
+What features are most important to predict the price?
+The correlation matrix gives correlation values between features.
+What does diagonal elements show the correlation to the cell?
+What is the value of 1 all the time?
+What is the correlation between different features?
+How many features are there in the app?
+What is the name of the game?
+What is the square foot living, which is the house size, is most correlated to the price?
+What other features are good to predict the price of a house?
+What is the order of correlation?
+What is the value of a skirt foot living?
+What is the correlation between skirt foot living and grades?
+What is the difference between the model and the model on the other side?
+What other variables would add value to predict the price?
+What is the main reason you have to be a little bit careful?
+What is the method that actually helps to select the features?
+In the right order, in the right order.
+What is the correlation matrix for?
+What is the first step in the process?
+Let's talk about univariate linear regression.
+What is the difference between univariate linear regression and simple linear regression?
+What are the coefficients beta 0 and beta 1, which represent the intercept and slope?
+What does the residuals measure?
+What residual is important to measure the error?
+What is an example of a data that looks like this?
+What is the slope of the intercept?
+What is the goal of my model?
+How can I do this?
+What is another package such as sklons linear model?
+What is a summary table like this?
+What is the most interesting part of the summary table?
+What are the values of my coefficient values?
+What is the slope of my simple linear regression model?
+What is the main question that we can ask about linear regression?
+How do we determine the coefficients?
+What is the package that comes with the package?
+How does my model fit?
+What gives an idea of how my model fits?
+What will we talk about my coefficients?
+How robust is our estimation for the coefficient?
+How well does my model predict on unseen data?
+How well does it generalize?
+How do we find the coefficients?
+What are the beta zero and beta one coefficients?
+What is the difference between the target value and the predicted value called?
+What is the plot that plots the residuals?
+What is the difference between a positive and negative residual?
+How small is the error overall?
+What is the error measure that accounts for all residuals from all points?
+How do we do that?
+How do you sum up the numbers?
+If the regression line was fit, it's going to be zero all the times if the regression line was fit.
+So this is not very useful.
+What is the distance measurement?
+What is the value of the samples?
+What is the mean absolute error?
+What can we do with residuals?
+What is the mean square error?
+What are the two most popular error measures in regression tasks?
+What other error metrics can be useful?
+What is the definition of MAE?
+Rather than percent absolute error, we can define percent absolute error instead.
+What is percent absolute error?
+What is the prediction value?
+What can be handy?
+What can be useful metric?
+What is the difference between the mean squared error unit and the Y unit?
+What is the least squared method?
+What is optimization?
+What is the squared method?
+What is the name of the least squared error?
+What is the error surface of MSA?
+In MSA, the error in the coefficient space where this axis is one of the coefficients and the other axis is the other coefficient represents the error, the size of the error.
+What does the bowl shape look like?
+If you look at from the top, the contour will look like an ellipsoid.
+What is the derivative of MSE with respect to coefficient A?
+What is the derivative of MSE with respect to B?
+Why do we do that?
+If you think about the parabola shape, at the bottom, the slope or the gradient becomes 0.
+What's the point of using that fact?
+What is the supplemental note that has all the derivation?
+What is the slope proportional to the covariance of the variables x and y?
+What is the relation between intercept and intercept?
+What suggests that the regression line passes through the center?
+What is the regression line centered around?
+What happens when we change the scale of variables?
+What is the difference between a big value for living space square foot and a really big value for a sales price?
+So we want to change the unit for example.
+How much is a million dollar unit?
+What happens to my value if we change the value by one over thousand of original value?
+Beta 1 and beta 2 are beta 1 and beta 0. Beta 1 and beta 2 are beta 1 and beta 0.
+What is the name of the thing that you can think about for a while?
+Alright, we're back.
+What is the covariance calculated by?
+What is the expectation of x-xmean squared?
+What is the part scaled by squared?
+What is the result of s divided by r times original value of beta 1?
+What is the original beta value for beta 1?
+What is the slope of a slope that gets thousand times smaller if I make my X variable thousand times smaller and make my Y variable million times smaller?
+What happens to beta0, my intercept?
+What is the original value of EY?
+And this we already calculated.
+What is the original value of EY?
+What is the square of the ex?
+What happens when beta zero is reached?
+What does the inner set of the x change when I scale the x?
+When I scale the y, it only depends on the scaling of the y.
+Let's talk about how we generalize the least squares method to multivariate case.
+What is the feature matrix?
+What is the design matrix?
+What is the feature index including the intercept?
+What is the MSE in matrix form going to look like?
+What are the matrices of Y-X?
+What is the Y-X transpose and Y-X?
+What is the derivative of beta?
+What is a normal equation?
+What is the solution like?
+What is the inverse of the matrix inside?
+What happens when two or more variables are linearly correlated?
+What is redundant if the x1 values were 1, 2, 3 and some other feature were dependent on x1?
+The metrics become non-invertible.
+What is the problem when we try to get the beta version of the solution?
+What does it mean that we don't have a solution?
+What does it mean that we have a solution that are not unique?
+What is the hard part about determining unique solution?
+What does almost all Python packages that solve the least squares or less have a mechanism to find the inverse metrics of?
+What is Moore-Penrose inverse?
+What is the problem with non-invertible matrices?

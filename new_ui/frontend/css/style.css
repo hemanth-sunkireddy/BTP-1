@@ -1,0 +1,36 @@
+/* src/css/style.css */
+
+/* Apply the Inter font globally */
+body {
+    font-family: 'Inter', sans-serif;
+}
+/* Custom styles for the container to center and add padding */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 2rem;
+}
+/* Custom styles for the question input area */
+#question-input {
+    resize: none; /* Prevents manual resizing of the textarea */
+    transition: all 0.2s ease-in-out; /* Smooth transition for focus */
+}
+#question-input:focus {
+    outline: 2px solid theme('colors.blue.500'); /* Blue outline on focus */
+    outline-offset: 2px;
+}
+/* Custom styles for the caption container */
+.caption-container {
+    height: 150px;
+    overflow-y: scroll;
+    line-height: 1.5;
+}
+/* Class for highlighting the active caption sentence */
+.caption-highlight {
+    background-color: theme('colors.blue.100');
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease-in-out;
+    color: theme('colors.blue.800');
+}
