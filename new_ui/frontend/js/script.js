@@ -6,29 +6,47 @@ const videoPlayer = document.getElementById('answer-video');
 const captionText = document.getElementById('caption-text'); 
 const sourceList = document.getElementById('source-lectures-list'); 
 
+// Get references for the new modal elements
+const videoModal = document.getElementById('video-modal');
+const originalVideoPlayer = document.getElementById('original-video-player');
+const videoModalCloseBtn = document.getElementById('video-modal-close');
+
 // Centralized object to manage caption state and logic
 const captionManager = {
     captions: [],
     activeCaptionSpan: null,
+    // Add a new property to store the segments data
+    segmentsData: [],
 
-    parseSrtContent(srtContent) {
+    parseAndPrepareCaptions(segmentsData, srtContent) {
+        this.segmentsData = segmentsData;
         const lines = srtContent.split('\n\n').filter(line => line.trim() !== '');
-        this.captions = lines.map(line => {
+        
+        // Map SRT captions to segment data
+        this.captions = lines.map((line, index) => {
             const parts = line.split('\n');
             const timeString = parts[1];
             const text = parts.slice(2).join(' ').trim();
             const [startTimeStr, endTimeStr] = timeString.split(' --> ');
 
-            const parseTime = (timeStr) => {
+            const parse_srt_timestamp = (timeStr) => {
                 const [hours, minutes, rest] = timeStr.split(':');
                 const [seconds, milliseconds] = rest.split(',');
                 return parseInt(hours) * 3600 + parseInt(minutes) * 60 + parseInt(seconds) + parseInt(milliseconds) / 1000;
             };
 
+            const parseTime = (timeStr) => {
+                const [hours, minutes, seconds] = timeStr.split(':');
+                return parseInt(hours) * 3600 + parseInt(minutes) * 60 + parseFloat(seconds);
+            };
+
+            const segmentInfo = this.segmentsData[index];
             return {
-                start: parseTime(startTimeStr),
-                end: parseTime(endTimeStr),
-                text: text
+                start: parse_srt_timestamp(startTimeStr),
+                end: parse_srt_timestamp(endTimeStr),
+                text: text,
+                originalUrl: segmentInfo[3],
+                originalStart: parseTime(segmentInfo[2]),
             };
         });
     },
@@ -39,6 +57,11 @@ const captionManager = {
             const span = document.createElement('span');
             span.textContent = caption.text + ' ';
             span.dataset.index = index;
+            // Add a class to style and identify clickable captions
+            span.classList.add('clickable-caption');
+            // Store the original video details as data attributes
+            span.dataset.originalUrl = caption.originalUrl;
+            span.dataset.originalStart = caption.originalStart;
             captionText.appendChild(span);
         });
         this.activeCaptionSpan = null; // Reset the active span
@@ -73,6 +96,7 @@ const captionManager = {
 
     reset() {
         this.captions = [];
+        this.segmentsData = [];
         this.activeCaptionSpan = null;
         captionText.innerHTML = 'Captions will appear here.';
         sourceList.innerHTML = '';
@@ -104,6 +128,9 @@ qaForm.addEventListener('submit', async (e) => {
         }
 
         const data = await response.json();
+        
+        // Log the received data for verification
+        console.log("Received data:", data);
 
         loadingSpinner.classList.add('hidden'); 
         videoSection.classList.remove('hidden'); 
@@ -111,8 +138,8 @@ qaForm.addEventListener('submit', async (e) => {
         videoPlayer.src = data.videoUrl;
         videoPlayer.load(); 
          
-        // Load captions and source lectures
-        captionManager.parseSrtContent(data.srtContent);
+        // Load captions and source lectures using both srtContent and segments data
+        captionManager.parseAndPrepareCaptions(data.segments, data.srtContent);
         captionManager.displayCaptions();
         
         // Populate sources
@@ -131,4 +158,35 @@ qaForm.addEventListener('submit', async (e) => {
 // Add a single timeupdate listener that uses the manager
 videoPlayer.addEventListener('timeupdate', () => { 
     captionManager.highlightCaption(videoPlayer.currentTime);
+});
+
+// Event listener to handle clicks on captions to show the modal
+captionText.addEventListener('click', (e) => {
+    const clickedSpan = e.target;
+    if (clickedSpan.classList.contains('clickable-caption') && clickedSpan.dataset.originalUrl && clickedSpan.dataset.originalStart) {
+        const originalUrl = clickedSpan.dataset.originalUrl;
+        const originalStart = clickedSpan.dataset.originalStart;
+
+        videoPlayer.pause();
+        videoModal.classList.remove('hidden');
+        
+        originalVideoPlayer.src = originalUrl;
+        
+        // Use a listener to ensure the video is ready before seeking and playing
+        originalVideoPlayer.onloadeddata = () => {
+            originalVideoPlayer.currentTime = originalStart;
+            originalVideoPlayer.play();
+            originalVideoPlayer.onloadeddata = null;
+        };
+
+        // Load the video
+        originalVideoPlayer.load();
+    }
+});
+
+// Event listener to close the modal
+videoModalCloseBtn.addEventListener('click', () => {
+    originalVideoPlayer.pause();
+    originalVideoPlayer.src = ""; // Clear the source to stop playback
+    videoModal.classList.add('hidden');
 });

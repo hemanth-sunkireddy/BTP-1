@@ -14,7 +14,7 @@ def create_continuous_srt(clips_info, output_filename="./data/output/stitched_ou
     srt_lines = []
     current_time = 0.0
 
-    for idx, (duration, sentence) in enumerate(clips_info, start=1):
+    for idx, (duration, sentence, start, video_file) in enumerate(clips_info, start=1):
         start_time = format_srt_timestamp(current_time)
         end_time = format_srt_timestamp(current_time + duration)
         srt_lines.append(f"{idx}\n{start_time} --> {end_time}\n{sentence}\n")
@@ -29,10 +29,13 @@ def parse_timestamp(timestamp_str):
 def stitch_video_from_segments(segment_list, srt_filename="./data/output/stitched_output.srt", pause_duration=1.0):
     clips = []
     clips_info = []
+    sources = set()
 
     for idx, (filename, timestamp, sentence, distance) in enumerate(segment_list):
-        video_file = "./data/videos/" + os.path.splitext(filename)[0] + ".mp4"
+        lecture_no = os.path.splitext(filename)[0]
+        video_file = "./data/videos/" + lecture_no + ".mp4"
         start, end = parse_timestamp(timestamp)
+        sources.add("Lecture - " + lecture_no)
 
         try:
             clip = VideoFileClip(video_file).subclip(start, end)
@@ -44,7 +47,7 @@ def stitch_video_from_segments(segment_list, srt_filename="./data/output/stitche
                 clips.append(black_clip)
 
             clips.append(clip)
-            clips_info.append((clip.duration, sentence))
+            clips_info.append((clip.duration, sentence, start, video_file))
         except Exception as e:
             print(f"Error processing segment ({filename}, {timestamp}): {e}")
 
@@ -63,3 +66,5 @@ def stitch_video_from_segments(segment_list, srt_filename="./data/output/stitche
     )
 
     create_continuous_srt(clips_info, output_filename=srt_filename, transition_sec=pause_duration)
+
+    return clips_info, sources

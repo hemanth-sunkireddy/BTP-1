@@ -49,15 +49,9 @@ def generate_video_answer(question: str, model, faiss_index, lecture_sentences, 
             filename, timestamp, _ = lecture_data[i+1]
             related_results.append((filename, timestamp, sentence, distance))
 
-    stitch_video_from_segments(related_results,pause_duration=1.0)
+    segments_info, sources = stitch_video_from_segments(related_results,pause_duration=1.0)
 
     video_url = f"./data/output/stitched_output.mp4?cache_bust={uuid.uuid4()}"
-    sources = [
-        'Lecture-1: Intro to Machine Learning',
-        'Lecture-2: Supervised Learning',
-        'Lecture-3: Unsupervised Learning'
-    ]
-
     # Read SRT content from the file
     try:
         with open('./data/output/stitched_output.srt', 'r', encoding='utf-8') as f:
@@ -67,9 +61,9 @@ def generate_video_answer(question: str, model, faiss_index, lecture_sentences, 
     except Exception as e:
         srt_content = f"An error occurred while reading the SRT file: {e}"
 
-    print (srt_content)
     return {
         "srtContent": srt_content,
         "videoUrl": video_url,
-        "sources": sources
+        "sources": sources,
+        "segments": segments_info
     }
