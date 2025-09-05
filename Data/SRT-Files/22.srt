@@ -1,0 +1,532 @@
+1
+00:00:05,719 --> 00:00:09,050
+Hey everyone, in this video we're going to talk about gradient boosting.
+
+2
+00:00:11,400 --> 00:00:27,300
+So previously we talked about generic boosting algorithm that we iteratively add a stamp model to our initial model and each stamp model fits the data to predict the residual from each stage.
+
+3
+00:00:29,190 --> 00:00:33,420
+And with the shrinkage parameter we add this stamp model iteratively.
+
+4
+00:00:33,800 --> 00:00:38,930
+and also the residual gets smaller and smaller as we go through this iteration.
+
+5
+00:00:40,150 --> 00:00:43,609
+And then as an output, we're going to have the combined model.
+
+6
+00:00:46,350 --> 00:00:50,219
+Gradient boosting is a generalization of this boosting algorithm.
+
+7
+00:00:51,939 --> 00:01:00,240
+Instead of fitting the residual, which is y minus fx at each stage, we're going to use gradient of a loss function.
+
+8
+00:01:00,740 --> 00:01:06,170
+So if you remember loss function is some generalization form of measuring some error.
+
+9
+00:01:07,269 --> 00:01:17,920
+So we're going to measure an error by having a data x and y and our prediction yp, which is essentially the fx.
+
+10
+00:01:19,710 --> 00:01:23,439
+So this can be MSE or RSS in the regression.
+
+11
+00:01:23,439 --> 00:01:25,260
+So for example, something like this.
+
+12
+00:01:28,849 --> 00:01:32,400
+Or some other function if it's classification.
+
+13
+00:01:32,480 --> 00:01:35,650
+So this loss function can be very general form.
+
+14
+00:01:36,480 --> 00:01:41,530
+And this can be a measure of error, but loss function is more generalized form.
+
+15
+00:01:42,159 --> 00:01:54,199
+So by measuring the gradient of loss function with respect to our change of model at each iteration, we can measure the gradient of the loss function.
+
+16
+00:01:54,949 --> 00:02:03,519
+And the goal is to fit our tree to predict the negative gradient minus g instead of just pure residual.
+
+17
+00:02:04,339 --> 00:02:07,629
+So that's a little bit difference from our previous model.
+
+18
+00:02:08,659 --> 00:02:10,280
+And everything else is the same.
+
+19
+00:02:11,629 --> 00:02:13,579
+So we're going to see more in detail here.
+
+20
+00:02:14,689 --> 00:02:19,229
+So we start by fitting our initial model to minimize the loss function.
+
+21
+00:02:20,530 --> 00:02:27,250
+This is something similar to minimizing entropy or minimizing MAC loss for regression in decision tree.
+
+22
+00:02:27,959 --> 00:02:29,189
+So we're going to have some split.
+
+23
+00:02:29,989 --> 00:02:41,849
+And then for each iteration, we're going to calculate the negative gradient, which is again gradient of loss function with respect to the change of this function.
+
+24
+00:02:43,329 --> 00:02:43,969
+And with this...
+
+25
+00:02:44,120 --> 00:02:50,840
+gradient value, we're gonna fit the stump tree to this training data to predict this negative gradient value.
+
+26
+00:02:52,610 --> 00:03:03,229
+And this will give some set of parameters while it's fitting and then we will update our loss function using this updated parameter values.
+
+27
+00:03:05,379 --> 00:03:13,900
+And also we're gonna update the function and as we go this iteration, we're gonna have this additive model as a result.
+
+28
+00:03:17,819 --> 00:03:22,710
+So let's talk about why we want to use a gradient instead of just a residual.
+
+29
+00:03:24,039 --> 00:03:38,810
+So if we use just generic boosting algorithm, which is a greedy algorithm, which will look into all the possible split of a stump or small tree, and then it will pick one that gave the best split.
+
+30
+00:03:39,389 --> 00:03:44,770
+That means it will choose the parameters such that the reduction in residual is the biggest.
+
+31
+00:03:46,580 --> 00:03:58,070
+So, measuring gradient of this multi-dimensional space is very similar to this greedy approach, but it's even better because it's going to choose the direction that's the steepest descent.
+
+32
+00:03:58,070 --> 00:04:06,890
+So steepest descent in terms of reducing the loss function.
+
+33
+00:04:06,890 --> 00:04:17,879
+And when you think about classification problem where we chose some different function like entropies or Gini in decision tree classifier instead of
+
+34
+00:04:19,139 --> 00:04:27,500
+whether it's right or wrong, which is residual in classifier, that is more true to how the decision tree split happens.
+
+35
+00:04:27,790 --> 00:04:30,819
+So having loss function is more expressive in that way.
+
+36
+00:04:34,790 --> 00:04:44,670
+Okay, so I'm trying to convince you that the gradient boosting should in theory work better than four stepwise or generic boosting algorithm.
+
+37
+00:04:44,980 --> 00:04:47,840
+So let's have some comparison.
+
+38
+00:04:48,189 --> 00:04:50,050
+So I prepared two data.
+
+39
+00:04:50,780 --> 00:04:52,810
+each of which are very similar to each other.
+
+40
+00:04:54,300 --> 00:05:03,000
+So they are they have a small number of features, 13 features versus 20 features and they have approximately 5,000 or more samples.
+
+41
+00:05:03,000 --> 00:05:14,920
+The data one is a little bit difficult so having fully grown decision tree will give about 61% accuracy whereas data 2 it's a little easier.
+
+42
+00:05:14,980 --> 00:05:20,410
+So that decision tree fully grown will give performance of 89% accuracy.
+
+43
+00:05:23,710 --> 00:05:34,980
+So even though number of features and the number of samples are similar, sometimes depending on how one or more features are a good predictor of the target variable, things can be different.
+
+44
+00:05:37,370 --> 00:05:42,500
+But as you can imagine, the gradient boosting is much better than decision tree already.
+
+45
+00:05:43,830 --> 00:05:45,320
+But how about AdaBoost?
+
+46
+00:05:45,500 --> 00:05:48,320
+But how about comparing to AdaBoost?
+
+47
+00:05:48,990 --> 00:05:54,700
+So if we compare to AdaBoost, the data one on the data one gives similar result.
+
+48
+00:05:55,329 --> 00:06:02,150
+Both of AdaBoost and Gradient Boosting gave much better results than just the Decision Tree.
+
+49
+00:06:02,150 --> 00:06:08,480
+In Data 2, much better results than Decision Tree alone.
+
+50
+00:06:08,520 --> 00:06:13,100
+However, you can see the Gradient Boosting works slightly better than AdaBoost.
+
+51
+00:06:16,780 --> 00:06:22,300
+So the conclusion is that whether the Gradient Boosting is always better than AdaBoost, it depends on the data.
+
+52
+00:06:22,949 --> 00:06:28,030
+But most of time, it is likely to be better performing than AdaBoost.
+
+53
+00:06:29,510 --> 00:06:34,110
+Also, gradient boosting is less sensitive to mislabeled data.
+
+54
+00:06:35,100 --> 00:06:41,280
+So for example, AdaBoost is sensitive to mislabeled data because it uses a weight to each data samples.
+
+55
+00:06:41,600 --> 00:06:45,800
+Therefore, if the label is wrong, it's likely to suffer.
+
+56
+00:06:45,830 --> 00:06:49,250
+However, gradient boosting doesn't have that problem.
+
+57
+00:06:55,070 --> 00:06:56,370
+How about some other aspects?
+
+58
+00:06:57,220 --> 00:07:02,950
+So these graphs were generated at a different learning rate.
+
+59
+00:07:04,939 --> 00:07:13,340
+As you know from previous video, any boosting algorithm can deteriorate if learning rate is too high and number of trees are too many.
+
+60
+00:07:15,040 --> 00:07:25,300
+So in order to prevent overfitting, when we have a large number of trees in additive model like boosting algorithm, we need to reduce the learning rate.
+
+61
+00:07:25,710 --> 00:07:34,610
+So this graph shows that, and then you can see that both the boost and gradient boosting, they require smaller learning rate as the number of trees increases.
+
+62
+00:07:36,800 --> 00:07:42,629
+This one is time, so I ran a five-fold cross-validation for each model.
+
+63
+00:07:42,659 --> 00:07:51,990
+In this case, gradient boosting was time-efficient than AdaBoost, but just empirically speaking, it depends on the data.
+
+64
+00:07:51,990 --> 00:08:05,730
+And also, you have to keep in mind that AdaBoost uses a stump, which means the max steps equals 1, whereas a gradient boosting SK-1 library, they by default use max steps equals 3.
+
+65
+00:08:08,259 --> 00:08:11,790
+Now let's talk about performance comparison with the random forest even.
+
+66
+00:08:12,629 --> 00:08:26,730
+So the data one, which was a difficult case, we saw that the random forest didn't do much better than decision tree and boosting algorithms were much better than random forest.
+
+67
+00:08:27,170 --> 00:08:36,549
+Whereas this little bit easier data with the data two, all of the ensemble algorithm did better, much better than just a decision tree.
+
+68
+00:08:38,110 --> 00:08:39,779
+So can you say
+
+69
+00:08:40,379 --> 00:08:44,970
+random forest which is a parallel ensemble algorithm versus boosting algorithm.
+
+70
+00:08:45,669 --> 00:08:46,850
+Which one would be better?
+
+71
+00:08:47,850 --> 00:08:57,799
+It is difficult to tell when we have such small number of features because when the random forest really shines is when the number of features are a lot.
+
+72
+00:08:58,309 --> 00:09:07,590
+So I prepared the data3 which has 145 features, which is a lot more features than previous data and has 3000 samples.
+
+73
+00:09:08,850 --> 00:09:11,149
+And single-disk entry performance is
+
+74
+00:09:12,100 --> 00:09:17,480
+almost 70%, which is kind of medium difficulty.
+
+75
+00:09:18,279 --> 00:09:21,019
+Then ran three different ensemble models.
+
+76
+00:09:21,080 --> 00:09:25,779
+As you can see, Random Forest did better than boosting algorithm.
+
+77
+00:09:27,420 --> 00:09:30,540
+Now you have some sense of when to use which algorithm.
+
+78
+00:09:31,509 --> 00:09:36,070
+When you have a lot of features, Random Forest will work better.
+
+79
+00:09:36,639 --> 00:09:43,389
+When you have a smaller number of features, usually the gradient boosting will do better.
+
+80
+00:09:45,019 --> 00:09:51,220
+And as I mentioned before, it all depends on data too, but in general, that's the trend.
+
+81
+00:09:53,750 --> 00:09:55,500
+We can also think about the time.
+
+82
+00:09:56,950 --> 00:10:05,799
+So as you can see, the boosting algorithm takes much longer time than random forest and it's not surprising because we have a lot of number of features.
+
+83
+00:10:06,169 --> 00:10:14,649
+All the gradient boosting algorithms, they inspect all the features, whereas the random forest will take only subset of features and by default is square root.
+
+84
+00:10:14,840 --> 00:10:25,140
+So about 12 features they will only look at and the other boosting algorithm they will look at all 145 features here.
+
+85
+00:10:27,110 --> 00:10:44,460
+So there's an interesting feature in gradient boosting in sklearn library that it can take an option called max features so you can actually set it to random sample the features whereas other boost algorithm doesn't have this option so
+
+86
+00:10:44,910 --> 00:10:57,910
+It will consider all the number of features, whereas gradient boosting, if you set to do something similar to random foresting, it will run faster, so you can save some time at the expense of a slight performance drop.
+
+87
+00:10:57,910 --> 00:11:03,470
+However, I think if you have a lot of features, it can be worthwhile.
+
+88
+00:11:06,730 --> 00:11:10,690
+So let me just mention briefly other useful packages.
+
+89
+00:11:11,080 --> 00:11:15,610
+XGBoost is an external library, so it's not part of sklearn.
+
+90
+00:11:15,940 --> 00:11:19,200
+However, it's a separate library that can be useful.
+
+91
+00:11:19,500 --> 00:11:20,510
+XGBoost is a
+
+92
+00:11:20,730 --> 00:11:40,500
+acronym for Extreme Gradient Boost and nothing very different from gradient boosting, but they implement some other tricks such as regularization and random sampling of the data and random sampling of features like random forest do.
+
+93
+00:11:40,710 --> 00:11:45,750
+So, XWBoost is time efficient, also provides a good performance because of built-in regularization.
+
+94
+00:11:45,750 --> 00:11:49,870
+Light GBM is another
+
+95
+00:11:51,250 --> 00:11:59,640
+external package that's not part of sklon and it makes the boosting faster by binning the value of each feature.
+
+96
+00:11:59,640 --> 00:12:13,600
+So if the feature has some continuous values a lot instead of looking into all these chopped values, it can bin larger size like this so it can split faster so that way it can be useful.
+
+97
+00:12:13,600 --> 00:12:22,840
+sklon also has a counterpart to this one so I think you can get similar results from sklon library
+
+98
+00:12:24,350 --> 00:12:27,570
+ExtraTree is similar to RandomForest.
+
+99
+00:12:27,840 --> 00:12:29,930
+It's also part of sklearn library.
+
+100
+00:12:30,260 --> 00:12:33,640
+ExtraTree means extreme randomized tree.
+
+101
+00:12:33,900 --> 00:12:37,170
+It works very similarly to RandomForest in sklearn.
+
+102
+00:12:37,300 --> 00:12:41,450
+And the only difference is that it doesn't do bagging.
+
+103
+00:12:41,740 --> 00:12:42,600
+So no bagging.
+
+104
+00:12:45,030 --> 00:12:47,690
+But it still randomly sampled the features.
+
+105
+00:12:48,400 --> 00:12:51,240
+And also why it's extreme randomized?
+
+106
+00:12:51,420 --> 00:12:52,850
+Because it picks
+
+107
+00:12:53,240 --> 00:12:57,080
+split value randomly instead of doing the best split.
+
+108
+00:12:57,830 --> 00:13:01,850
+Here is a full list of ensemble models in SKLearn libraries.
+
+109
+00:13:02,570 --> 00:13:14,010
+So we talked about AdaBoost and they have both classification and regression and bagging classifier would be random for something like random forest without random sampling on features.
+
+110
+00:13:14,500 --> 00:13:19,210
+So it has just a bagging part and extractory classifier it's the opposite.
+
+111
+00:13:20,170 --> 00:13:24,400
+So it does not have bagging but it random samples on the
+
+112
+00:13:24,690 --> 00:13:25,200
+features.
+
+113
+00:13:26,450 --> 00:13:31,480
+Gradient boosting, we talked about it, and random forest we also mentioned.
+
+114
+00:13:31,480 --> 00:13:41,880
+There are some other more complicated stuff and this heat gradient boosting would be something equivalent to light GBM.
+
+115
+00:13:44,540 --> 00:13:48,280
+As a recap, we talked about ensemble method in this module.
+
+116
+00:13:48,810 --> 00:13:53,220
+Ensemble methods are ways to strengthen the decision tree model.
+
+117
+00:13:53,580 --> 00:13:55,840
+Decision tree model is a weak learner.
+
+118
+00:13:56,330 --> 00:14:01,690
+So it can overfeed and overall its performance isn't very good.
+
+119
+00:14:01,690 --> 00:14:08,000
+However, by taking parallel ensemble or serial ensemble, we can make the performance better.
+
+120
+00:14:08,610 --> 00:14:13,020
+So parallel ensemble, we talked about random forest.
+
+121
+00:14:13,110 --> 00:14:25,050
+So random forest is a parallel method, ensemble method, and we also talked about boosting method, which is a serial.
+
+122
+00:14:27,340 --> 00:14:27,620
+ang-sang-bulling method.
+
+123
+00:14:27,620 --> 00:14:32,470
+So this is just growing different trees, randomized.
+
+124
+00:14:32,470 --> 00:14:39,710
+They look different because we random sample data and features and then we just average them, right?
+
+125
+00:14:39,710 --> 00:14:56,480
+And in boosting, we use a smaller tree like stump and try to fit to the residual and then we additively add these small models to create a stronger model.
+
+126
+00:15:01,560 --> 00:15:06,180
+And we also talked about when to use this random forest versus boosting.
+
+127
+00:15:06,180 --> 00:15:10,480
+So random forest usually works better when there is a large number of features.
+
+128
+00:15:10,880 --> 00:15:12,750
+So number of features is large.
+
+129
+00:15:14,260 --> 00:15:19,120
+Whereas boosting can take longer because it's additive.
+
+130
+00:15:19,120 --> 00:15:23,410
+So we prefer using when the number of features are smaller.
+
+131
+00:15:23,490 --> 00:15:30,370
+However, it can also take advantage of random subsampling of features by using the max features option.
+
+132
+00:15:31,610 --> 00:15:34,760
+Ok, so this is the end of Triangul models.
+
+133
+00:15:34,940 --> 00:15:37,540
+We'll talk about Conner method in the next module.
+

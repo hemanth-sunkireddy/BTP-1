@@ -1,0 +1,472 @@
+1
+00:00:05,179 --> 00:00:05,870
+Hello everyone.
+
+2
+00:00:05,929 --> 00:00:09,720
+In this video, we're going to talk about performance metrics in classification.
+
+3
+00:00:12,060 --> 00:00:23,399
+So here is the example for binary class classification where the label is 1 when the tumor is malignant and the label is 0 when the tumor is not malignant.
+
+4
+00:00:24,260 --> 00:00:33,049
+So we created a logistic regression model based on this feature and let's talk about some terminology here.
+
+5
+00:00:33,870 --> 00:00:40,230
+So this region where both the labels and the predictions are positive is called a true positive.
+
+6
+00:00:41,380 --> 00:00:47,109
+And this region where the labels and the predictions are both negative, we call true negative.
+
+7
+00:00:49,010 --> 00:00:56,230
+And this region is called false positive because the prediction says it's positive, but actually the label says it's negative.
+
+8
+00:00:57,689 --> 00:01:05,629
+On the other hand, this region is called false negative because the prediction says negative, whereas the label says it's positive.
+
+9
+00:01:06,519 --> 00:01:15,379
+So we would like to build a model that maximizes the number of true positives and true negatives, whereas we want to minimize false positives and false negatives.
+
+10
+00:01:18,210 --> 00:01:21,710
+This false negative and false positive have different names as well.
+
+11
+00:01:22,430 --> 00:01:27,520
+And false positive is called type 1 error, whereas false negative is called type 2 error.
+
+12
+00:01:28,680 --> 00:01:33,340
+If those terminology confuses you, then you can remember this funny picture.
+
+13
+00:01:33,760 --> 00:01:36,659
+Type 1 error is like telling a man that he is pregnant.
+
+14
+00:01:37,130 --> 00:01:41,490
+Whereas type II error is like telling a pregnant woman that she is not pregnant.
+
+15
+00:01:42,460 --> 00:01:44,930
+So both are bad and sometimes they are in trade-off.
+
+16
+00:01:44,930 --> 00:01:52,310
+So depending on the situation and what are important to us in the problem, we'll have to consider one more seriously than the other.
+
+17
+00:01:52,310 --> 00:02:00,180
+So we talked about true positive, true negative, and then false positive and false negative cases.
+
+18
+00:02:00,180 --> 00:02:05,630
+A formal way to express that in a table is called confusion matrix.
+
+19
+00:02:05,630 --> 00:02:08,840
+So confusion matrix is like this.
+
+20
+00:02:08,840 --> 00:02:10,220
+There is a prediction label.
+
+21
+00:02:10,220 --> 00:02:12,070
+There is a target label.
+
+22
+00:02:13,490 --> 00:02:42,980
+and they are in the table that this is true positive and this is true negative and this is false positive this is false negative and sometimes depending on the notation they may be the row and the column may be exchanged and this can be calculated by the scalar matrix confusion matrix module and when you use a confusion matrix module it will give the
+
+23
+00:02:43,880 --> 00:03:14,080
+labels as row and then prediction as column, but they don't display this so Sometimes it's confusing but you can figure out by looking at the data Okay, so let's say we have all the numbers that we collected from this confusion matrix and now let's calculate some performance metrics So the most popular one in classification is accuracy Accuracy is number of correct answers divided by all the data points
+
+24
+00:03:14,890 --> 00:03:18,250
+So it's a measure of how many are accurate out of all the data points.
+
+25
+00:03:20,720 --> 00:03:31,620
+And true positive rate, in other words, recall or sensitivity, is a measure of how many are truly positive out of all the positive cases in the data.
+
+26
+00:03:31,720 --> 00:03:33,410
+So this is all the positives.
+
+27
+00:03:34,570 --> 00:03:38,540
+And this is true positive in the data.
+
+28
+00:03:41,130 --> 00:03:43,280
+Okay, and another metric...
+
+29
+00:03:44,670 --> 00:03:49,319
+True negative rate, which is similar to true positive rate except that they are kind of flipped.
+
+30
+00:03:50,129 --> 00:03:54,040
+Another name for it is specificity or selectivity.
+
+31
+00:03:54,560 --> 00:03:58,550
+Measures how many are true negative out of all the negative cases in the data.
+
+32
+00:03:59,939 --> 00:04:03,290
+So it's negative cases in the data.
+
+33
+00:04:05,150 --> 00:04:06,610
+By data, I mean the labels.
+
+34
+00:04:09,960 --> 00:04:14,030
+Another good measure that we often use is a positive predictive value.
+
+35
+00:04:14,480 --> 00:04:16,120
+Or in other words, precision.
+
+36
+00:04:16,439 --> 00:04:24,699
+measures how many are correctly classified as true positive out of prediction from the prediction.
+
+37
+00:04:28,310 --> 00:04:38,810
+And false positive rate, in other words, fallout rate tells us how many are false positive out of all the negative cases.
+
+38
+00:04:39,519 --> 00:04:45,480
+So how many were falsely classified as positive when it was actually negative.
+
+39
+00:04:46,089 --> 00:04:47,430
+So it's although
+
+40
+00:04:47,999 --> 00:04:54,879
+negatives from the data and how many of them are falsely classified as positive.
+
+41
+00:04:56,459 --> 00:05:18,279
+So actually as you can see it is 1 minus right here and similarly false negative rate, in other words miss rate is also how many of positive in the data
+
+42
+00:05:19,719 --> 00:05:26,349
+are falsely classified as negative and this is actually 1-tPr.
+
+43
+00:05:26,349 --> 00:05:33,069
+So they are related to each other.
+
+44
+00:05:33,069 --> 00:05:38,579
+F1 score is a good metric because oftentimes there is a trade-off between recall and precision.
+
+45
+00:05:38,579 --> 00:05:49,369
+So recall and precision and in some cases recall is a good metric but we want to see both of them together so in the case we want to use
+
+46
+00:05:50,109 --> 00:05:56,089
+F1 score because it has both of the precision and recall inside.
+
+47
+00:05:58,579 --> 00:06:02,689
+So F1 score is usually robust metric so it's good to use.
+
+48
+00:06:05,569 --> 00:06:12,909
+All right so not only the F1 score here are also good metrics that are robust in you know different kinds of situations.
+
+49
+00:06:13,279 --> 00:06:20,419
+One of them is called ROC curve which is a receiver operating characteristic curve and it shows like this.
+
+50
+00:06:21,329 --> 00:06:25,669
+So in the x-axis it has a false positive rate and its y-axis it has a true positive rate.
+
+51
+00:06:25,669 --> 00:06:30,589
+And this red dotted line represents the random guess.
+
+52
+00:06:30,589 --> 00:06:37,719
+So if the curve goes this way, closer to this left top corner, this means it's good.
+
+53
+00:06:37,719 --> 00:06:44,199
+We have small false positive rate and large true positive rate, so that's good.
+
+54
+00:06:44,199 --> 00:06:49,669
+However, if the curve is below this random guess, then it's bad.
+
+55
+00:06:49,669 --> 00:06:52,609
+That means we have a high false positive rate and
+
+56
+00:06:53,709 --> 00:06:55,239
+small true positive rate.
+
+57
+00:06:55,939 --> 00:06:57,999
+So this side is good and this side is bad.
+
+58
+00:06:58,849 --> 00:07:02,759
+So that's ROC curve and this is a graphic way to tell.
+
+59
+00:07:03,319 --> 00:07:11,329
+However, if you want to see a number then we can use area under the curve AUC.
+
+60
+00:07:11,839 --> 00:07:13,899
+So we measure the area under the curve.
+
+61
+00:07:14,289 --> 00:07:22,749
+So for example this curve the example the area under the curve will be this value.
+
+62
+00:07:24,389 --> 00:07:26,109
+So usually between 0 and 1.
+
+63
+00:07:26,379 --> 00:07:28,429
+the bigger the value, it's better.
+
+64
+00:07:30,249 --> 00:07:32,169
+So that was ROC and AUC.
+
+65
+00:07:32,849 --> 00:07:39,889
+Okay so when to use these different kinds of metric?
+
+66
+00:07:40,729 --> 00:07:50,859
+So we have a number of choices, accuracy, sensitivity, specificity, precision, fallout rate, miss rate, F1 score, AUC, and confusion metrics.
+
+67
+00:07:51,109 --> 00:07:54,389
+So AUC, ROC.
+
+68
+00:07:55,049 --> 00:07:56,299
+In general rule of thumb
+
+69
+00:07:56,539 --> 00:08:20,629
+when the data is when the label is very imbalanced accuracy might be really bad so for example if your data is 99.9% negative and maybe 0.1% positive and maybe your model says 100% negative then it's going to give a fantastic accuracy 99.9%
+
+70
+00:08:29,379 --> 00:08:33,609
+0.9% correct if it says everything is negative.
+
+71
+00:08:33,609 --> 00:08:35,309
+So that's not good.
+
+72
+00:08:35,309 --> 00:08:39,289
+So accuracy may have some pitfall there.
+
+73
+00:08:39,289 --> 00:08:43,449
+So usually it's a good idea to use accuracy when you have a balanced data.
+
+74
+00:08:43,449 --> 00:08:50,899
+And recall, which is true positive divided by all the positive cases in the data.
+
+75
+00:08:50,899 --> 00:08:57,349
+They are used mostly when we want to capture as many positive cases as possible.
+
+76
+00:08:57,349 --> 00:09:00,769
+So even though we kind of sacrifice false positives.
+
+77
+00:09:02,349 --> 00:09:15,699
+So when it's good for, so for example cancer detection, cancer detection by missing someone having cancer, if we miss the cancer of a patient then the patient is at risk.
+
+78
+00:09:16,139 --> 00:09:19,929
+So there is a high cost associated with missing.
+
+79
+00:09:20,129 --> 00:09:26,769
+So in that case we want to use recall because we want to capture as as much of post cases as possible.
+
+80
+00:09:28,019 --> 00:09:31,449
+And in that case also we want to look at false negative rate.
+
+81
+00:09:32,479 --> 00:09:36,649
+If you have too much false negatives in the data, then we are in trouble.
+
+82
+00:09:36,649 --> 00:09:39,249
+So we want to look at both of them at the same time.
+
+83
+00:09:39,829 --> 00:09:41,949
+If we have a high cost of missing something.
+
+84
+00:09:42,879 --> 00:09:51,319
+And on the other hand, the false post rate or false alarm rate can be used when the cost of false alarm is high.
+
+85
+00:09:51,919 --> 00:09:54,149
+So for example, spam mail.
+
+86
+00:09:55,969 --> 00:09:58,799
+So having spam mail is fine.
+
+87
+00:09:58,799 --> 00:09:59,849
+It's just annoying.
+
+88
+00:09:59,849 --> 00:10:05,289
+However, if you have a false alarm, that means it's going to erase the important mail.
+
+89
+00:10:05,709 --> 00:10:07,079
+then it's problematic.
+
+90
+00:10:07,079 --> 00:10:11,719
+So we want to avoid these false alarms, then we want to look at the false positive rate.
+
+91
+00:10:12,719 --> 00:10:18,189
+Which is also similar to specificity or sensitivity, so we want to look at it as well.
+
+92
+00:10:19,359 --> 00:10:23,849
+Precision is used when we want to be very sure about the action.
+
+93
+00:10:24,729 --> 00:10:37,309
+So for example, when we identify scammers in PayPal or Venmo, and we'd like to inactivate their account, then we want to be very sure because otherwise we can
+
+94
+00:10:37,469 --> 00:10:41,969
+just delete innocent user's account and it'll make the customer unhappy.
+
+95
+00:10:43,599 --> 00:10:52,809
+All right, so in summary, some performance metrics can be considered more important than the other depending on the situation and what's important in your problem.
+
+96
+00:10:53,569 --> 00:10:58,389
+However, these performance metrics are robust and can be used in almost any cases.
+
+97
+00:10:59,669 --> 00:11:05,279
+All right, so let's talk about cross entropy as a performance metric.
+
+98
+00:11:05,679 --> 00:11:09,599
+So, why do we want to use cross entropy and not accuracy?
+
+99
+00:11:10,039 --> 00:11:17,139
+Because accuracy, although it doesn't work very well in imbalanced data, if the data is balanced, it's pretty good.
+
+100
+00:11:17,539 --> 00:11:19,539
+And it's intuitive and interpretable.
+
+101
+00:11:20,279 --> 00:11:22,109
+But why do we want to use cross-entropy?
+
+102
+00:11:22,109 --> 00:11:35,559
+In a nutshell, cross-entropy can use more granular information about how the prediction is more confident, whereas accuracy only says whether it's correct or not.
+
+103
+00:11:35,559 --> 00:11:37,979
+Why is that?
+
+104
+00:11:37,979 --> 00:11:38,719
+Let's have a look.
+
+105
+00:11:38,719 --> 00:11:40,029
+So, for example, this case.
+
+106
+00:11:41,839 --> 00:11:43,059
+This is model A.
+
+107
+00:11:43,139 --> 00:11:53,699
+Model A's have accuracy of 2 3rd because it's correct two times and incorrect one time for these three samples.
+
+108
+00:11:54,859 --> 00:11:59,609
+And when you see, although it's correct here, the confidence is not that great.
+
+109
+00:12:00,359 --> 00:12:07,339
+Whereas the incorrect ones, the confidence is too confident for the incorrect answer.
+
+110
+00:12:07,599 --> 00:12:10,889
+So we can say this model A is not very good model.
+
+111
+00:12:12,409 --> 00:12:17,949
+Maybe we can compare to model B, which has the same accuracy to third.
+
+112
+00:12:18,559 --> 00:12:23,489
+However, when it's correct, it's pretty confident for the correct answers.
+
+113
+00:12:24,179 --> 00:12:28,039
+And when it's not correct, maybe it's not sure.
+
+114
+00:12:28,169 --> 00:12:29,809
+So maybe it makes sense.
+
+115
+00:12:31,909 --> 00:12:38,569
+So in this case, if we used cross entropy, it can discern these two different cases.
+
+116
+00:12:39,259 --> 00:12:43,319
+So it will give a better score, which is a lower cross entropy value.
+
+117
+00:12:43,789 --> 00:12:50,419
+for the better model and higher cross entropy value for the less working model.
+
+118
+00:12:50,939 --> 00:12:58,099
+So that's some intuition behind why you might want cross entropy and not accuracy, although accuracy might be more intuitive.
+

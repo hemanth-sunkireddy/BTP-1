@@ -1,0 +1,608 @@
+1
+00:00:05,509 --> 00:00:06,160
+Hello everyone.
+
+2
+00:00:06,400 --> 00:00:09,550
+In this video, we're going to talk about support vector machine.
+
+3
+00:00:12,779 --> 00:00:14,259
+So let's review briefly.
+
+4
+00:00:14,289 --> 00:00:17,660
+So in machine learning, we have different learning tasks.
+
+5
+00:00:18,280 --> 00:00:21,339
+So in this class, we focus on supervised learning.
+
+6
+00:00:21,739 --> 00:00:24,920
+That means given the data, we would like to predict the labels.
+
+7
+00:00:25,920 --> 00:00:31,690
+And this prediction task have two different categories such as regression and classification.
+
+8
+00:00:31,980 --> 00:00:39,090
+Regression means that the prediction value would be real valued, whereas classification, the prediction value would be the categories.
+
+9
+00:00:40,460 --> 00:00:44,460
+And we talked about binary class classification and multi-class classification.
+
+10
+00:00:44,460 --> 00:00:49,750
+And according to these different tasks, there are different models that we can apply.
+
+11
+00:00:49,750 --> 00:00:53,390
+So for example, linear regression applies to regression problems.
+
+12
+00:00:53,390 --> 00:01:00,980
+And logistic regression, although the name says regression, it is for binary class classification.
+
+13
+00:01:00,980 --> 00:01:09,920
+And we talked about we can generalize logistic regression using Softmax, and then we can do the multi-class classification.
+
+14
+00:01:11,520 --> 00:01:19,800
+or we can apply a logistic regression model to do the multi-class classification if we choose one class versus the other ones.
+
+15
+00:01:19,800 --> 00:01:27,670
+And then we moved on to non-parametric models such as a k-nearly neighbor and decision trees.
+
+16
+00:01:28,050 --> 00:01:40,000
+k-nearly neighbor doesn't have a parameter unlike linear regression or logistic regression, and it is one of the most simplest models in machine learning, and it can do both regression and classification.
+
+17
+00:01:45,890 --> 00:01:50,300
+Decision trees are weak learners, but it's very flexible and it's easy to interpret.
+
+18
+00:01:51,000 --> 00:01:53,140
+It can also do regression and classification.
+
+19
+00:01:54,850 --> 00:01:59,050
+And also we talked about the angsangbul method, which can apply to any model.
+
+20
+00:01:59,200 --> 00:02:06,490
+However, it is most beneficial for decision trees because decision trees are weak learners and by angsangbuling them, they can be a strong learner.
+
+21
+00:02:07,330 --> 00:02:16,129
+So for example, we talked about parallel angsangbul method, which is random forest, which we grow the trees in a decorrelated way and then average them.
+
+22
+00:02:17,310 --> 00:02:22,010
+Another method that we talked about was serial ensembleing method, which is a boosting method.
+
+23
+00:02:22,500 --> 00:02:28,140
+So instead of growing the full tree, we let them grow very slowly and small one at a time.
+
+24
+00:02:29,010 --> 00:02:38,100
+So we talked about adding a stump, which has one or just a few decision splits, and then we additively added them with some learning rate.
+
+25
+00:02:38,100 --> 00:02:46,810
+The rest of the class will talk about SVM, which is another powerful non-parametric model.
+
+26
+00:02:48,390 --> 00:02:52,969
+And there are some other supervised learning models that can perform well, such as a neural network.
+
+27
+00:02:53,210 --> 00:03:01,560
+However, we won't have a time to go deeply into neural network in this course, so we'll skip that.
+
+28
+00:03:06,000 --> 00:03:10,009
+Let's briefly talk about hyper parameters and what's the criteria.
+
+29
+00:03:10,439 --> 00:03:11,909
+So a little bit in depth.
+
+30
+00:03:11,909 --> 00:03:17,469
+So linear regression, there was no hyper parameters, but we need to
+
+31
+00:03:17,680 --> 00:03:25,090
+design in the feature space how many features we want to include, how many high order terms that we want to include.
+
+32
+00:03:25,500 --> 00:03:31,419
+That is domain of more feature engineering, but it can be a design consideration.
+
+33
+00:03:32,740 --> 00:03:34,519
+And linear regression has parameters.
+
+34
+00:03:34,689 --> 00:03:42,169
+So, you know, w1 x1 plus w2 x2 plus intercept.
+
+35
+00:03:42,769 --> 00:03:46,129
+That could be, so all these w's are parameters.
+
+36
+00:03:47,490 --> 00:03:52,269
+Loss function for linear regression, we talked about MSC loss.
+
+37
+00:03:53,160 --> 00:03:54,670
+similarly RSS.
+
+38
+00:03:55,760 --> 00:03:57,670
+Those are loss functions that we use.
+
+39
+00:03:58,520 --> 00:04:08,240
+Logistic regression is very similar to linear regression except that it has a sigmoid function that threshold the probability at the end.
+
+40
+00:04:08,860 --> 00:04:19,340
+So there is no hyper parameter and again there is a design consideration such as how many features that we want to include and how many higher order terms that we want to include.
+
+41
+00:04:20,040 --> 00:04:22,060
+And parameters they are the same.
+
+42
+00:04:24,129 --> 00:04:39,740
+We have the same form of this and then there is a threshold, sigmoid threshold at the end, but these are the parameters and it's very much same as linear regression.
+
+43
+00:04:40,800 --> 00:04:44,780
+For loss function in logistic regression, it uses a binary cross entropy.
+
+44
+00:04:47,810 --> 00:04:51,830
+And in KNN, the K is the hyper parameter.
+
+45
+00:04:51,830 --> 00:05:01,019
+K means the number of neighbors that we want to consider when we decide whether a point around some other points are certain class.
+
+46
+00:05:02,070 --> 00:05:10,600
+Alright, and there is no parameter because KNN is a non-parametric model and there's no loss function because there is no optimization going on.
+
+47
+00:05:10,600 --> 00:05:13,600
+However, there is a some kind of rule how to decide.
+
+48
+00:05:13,600 --> 00:05:28,400
+So when there are neighbors like this, then this point here would be having more neighbors around this with this X class.
+
+49
+00:05:28,620 --> 00:05:30,980
+So it will classify this X.
+
+50
+00:05:32,079 --> 00:05:39,670
+So, in KNN, to determine which neighbors are close by, it uses a distance metric such as Euclidean distance.
+
+51
+00:05:40,259 --> 00:05:47,360
+So, KNN doesn't have loss function, therefore no optimization, however, it uses a distance metric in order to make a decision.
+
+52
+00:05:48,920 --> 00:05:51,870
+And decision trees is again non-parametric models.
+
+53
+00:05:51,870 --> 00:05:54,519
+So, there is no parameters, therefore there is no optimization.
+
+54
+00:05:54,519 --> 00:05:59,589
+However, decision trees have hyperparameters such as max-depths and
+
+55
+00:06:03,430 --> 00:06:05,820
+What's the minimum samples in the terminal node?
+
+56
+00:06:06,310 --> 00:06:07,040
+Things like that.
+
+57
+00:06:08,240 --> 00:06:16,730
+And as optionally, if you were to do some pruning, there was something called the CCP alpha, which is set the threshold of pruning criteria.
+
+58
+00:06:19,740 --> 00:06:25,780
+So there was no parameter for decision trees because it doesn't have explicit optimization process.
+
+59
+00:06:26,240 --> 00:06:30,000
+However, it requires some criteria for splitting.
+
+60
+00:06:30,480 --> 00:06:34,210
+So if you remember, when the samples are in one box,
+
+61
+00:06:34,560 --> 00:06:47,189
+when split, the decision tree models go through all these features and pick the split value of that feature which that minimize this criteria function.
+
+62
+00:06:47,850 --> 00:07:05,900
+So this criteria function was something like Gini index and entropy for classification MSC or RSS for regression tests.
+
+63
+00:07:09,589 --> 00:07:12,750
+And then we also talked about ang-sang-buling method that derives from this decision trees.
+
+64
+00:07:12,750 --> 00:07:16,550
+So ang-sang-buling method, they all share similar hyperparameters as decision trees.
+
+65
+00:07:16,550 --> 00:07:28,069
+And on top of that, they can have different, they have additional hyperparameters such as number of trees because it's going to ang-sang-bul, you know, several number of trees.
+
+66
+00:07:28,800 --> 00:07:32,870
+Or for boosting, it can have also learning rate.
+
+67
+00:07:32,939 --> 00:07:37,550
+And again, there is no parameters for this ang-sang-buling method.
+
+68
+00:07:41,670 --> 00:07:47,740
+And the criteria function, decision split criteria, they have the same criteria functions as decision trees.
+
+69
+00:07:50,319 --> 00:07:58,709
+In SVM that we're going to talk about, there is one hyperparameter called the C parameter, which we'll talk about what the role of this C parameter is.
+
+70
+00:07:59,389 --> 00:08:03,339
+And there is no parameter because SVM is also a non-parametric method.
+
+71
+00:08:03,339 --> 00:08:09,060
+However, SVM has an internally have some optimization process.
+
+72
+00:08:11,679 --> 00:08:21,509
+And neural networks, although we're not going to talk about deeply here, they have both parameters and hyperparameters and loss functions as well.
+
+73
+00:08:23,099 --> 00:08:25,370
+Alright, so let's talk about the supervector machine.
+
+74
+00:08:25,859 --> 00:08:28,549
+So here are some few facts about the supervector machine.
+
+75
+00:08:28,689 --> 00:08:32,169
+It uses a hyperplane to make a decision boundary.
+
+76
+00:08:32,439 --> 00:08:36,000
+We'll talk about it more later in this lecture.
+
+77
+00:08:36,459 --> 00:08:41,039
+And uses a kernel which is a function that applies on feature space.
+
+78
+00:08:41,529 --> 00:08:45,329
+And especially it's useful when we deal with the high dimensional.
+
+79
+00:08:45,740 --> 00:08:48,320
+feature space such as images or text.
+
+80
+00:08:49,409 --> 00:09:02,620
+So for example, instead of doing feature engineering on image pixels, we can apply some functions such as finding similarity between some pixel patches and then that way we can save some computation.
+
+81
+00:09:03,200 --> 00:09:11,170
+Because of that, support vector machine was widely used and developed during the 90s before the neural network became very popular.
+
+82
+00:09:11,500 --> 00:09:16,940
+It uses some mathematical kernel tricks to deal with the high dimensional
+
+83
+00:09:17,159 --> 00:09:18,559
+data such as images.
+
+84
+00:09:21,259 --> 00:09:24,360
+And it is one of the high performing off-the-shelf machine learning method.
+
+85
+00:09:24,360 --> 00:09:31,429
+So all of the three ensemble methods, support vector machine and neural network, they are popular high performing method.
+
+86
+00:09:31,429 --> 00:09:41,500
+Support vector machines can do regression and classification and especially it works natively on binary class classification.
+
+87
+00:09:41,500 --> 00:09:47,429
+However, we can also use one versus the other method to do the multi-class classification.
+
+88
+00:09:51,409 --> 00:09:54,129
+Well, so let's talk about binary class classification.
+
+89
+00:09:54,470 --> 00:09:56,340
+It is essentially a yes or no problem.
+
+90
+00:09:56,830 --> 00:10:09,120
+So for example, it could be some problem like whether this credit card user will pay the debt or not, or this insurance claim is fraudulent or not, or maybe this email is spam or not.
+
+91
+00:10:10,129 --> 00:10:20,440
+And it can be medical diagnosis problem, whether this patient has certain disease or not, whether the patient will survive or not, whether this customer will
+
+92
+00:10:21,039 --> 00:10:22,750
+continue for the service or not.
+
+93
+00:10:23,539 --> 00:10:31,169
+And as you know already, the binary class classification can take any data format as long as the label is yes or no.
+
+94
+00:10:32,169 --> 00:10:42,259
+So for example, image recognition can be binary class classification whether the object in the driving scene is a pedestrian or not, something like that.
+
+95
+00:10:43,009 --> 00:10:49,490
+Also, we can also do binary class classification on text data such as sentiment analysis.
+
+96
+00:10:50,909 --> 00:10:57,389
+And previously, we talked about logistic regression as a simplest model to do the binary class classification.
+
+97
+00:10:57,830 --> 00:11:04,059
+And as you know, this curve is a representation of a probability which is actually
+
+98
+00:11:05,049 --> 00:11:20,629
+sigmoid function as a function of G. So this is a G and G is called logit and described by this linear combination of feature x with the weight and bias like in the linear regression.
+
+99
+00:11:21,330 --> 00:11:27,870
+And when G is 0, the probability of the sigmoid function becomes 0.5.
+
+100
+00:11:28,309 --> 00:11:29,970
+Therefore, it becomes a decision boundary.
+
+101
+00:11:29,970 --> 00:11:34,720
+And previously we talked about this decision boundary can be
+
+102
+00:11:35,669 --> 00:11:53,279
+a threshold point when it's only one-dimensional feature space or it can be a line like this when it's a two-dimensional feature space and it can be a plane in the three-dimensional space or hyperplane when it's a multi-dimensional space.
+
+103
+00:11:53,279 --> 00:11:57,159
+So, now you know what the hyperplane is.
+
+104
+00:11:57,159 --> 00:12:02,840
+Now, the question is how do we find this hyperplane that becomes a decision boundary using SVM?
+
+105
+00:12:02,840 --> 00:12:06,379
+And we would like to find the hyperplane
+
+106
+00:12:08,190 --> 00:12:13,509
+that separates the data points according to the right class like this.
+
+107
+00:12:15,529 --> 00:12:23,649
+But depending on how the data points are distributed, there could be more than one way to separate those data points.
+
+108
+00:12:24,080 --> 00:12:29,980
+So for example, this can be a perfect choice, but also this can be a good choice.
+
+109
+00:12:31,779 --> 00:12:36,330
+And this hyperplane can also separate the data perfectly.
+
+110
+00:12:38,070 --> 00:12:40,639
+So the question is which hyperplane should we choose?
+
+111
+00:12:42,930 --> 00:12:50,820
+And we're going to introduce a classifier called the maximum margin classifier and sometimes it is just called hard margin SVM.
+
+112
+00:12:53,270 --> 00:12:59,460
+So one thing that we can consider is that we want to train our model such that it can generalize better.
+
+113
+00:13:00,140 --> 00:13:07,500
+That means if we have another new data point like this, our model should be able to classify that correctly.
+
+114
+00:13:08,070 --> 00:13:10,580
+In other words, we would like to have a hyperplane.
+
+115
+00:13:11,009 --> 00:13:13,830
+that's less likely to misclassify the new data.
+
+116
+00:13:15,540 --> 00:13:16,660
+And how can you achieve that?
+
+117
+00:13:16,970 --> 00:13:19,750
+We can select the hyperplane that has the biggest margin.
+
+118
+00:13:20,570 --> 00:13:22,110
+So let's see what that means.
+
+119
+00:13:23,280 --> 00:13:24,680
+So here is the data again.
+
+120
+00:13:25,310 --> 00:13:27,570
+And let's say this is the hyperplane.
+
+121
+00:13:29,350 --> 00:13:33,420
+And these points are closest to the hyperplane.
+
+122
+00:13:35,070 --> 00:13:36,410
+And those are called support.
+
+123
+00:13:38,350 --> 00:13:41,470
+And the distance between the hyperplane to those support
+
+124
+00:13:41,690 --> 00:13:42,740
+closes the points.
+
+125
+00:13:42,860 --> 00:13:44,930
+I'll call it margins.
+
+126
+00:13:45,690 --> 00:13:46,560
+These are margins.
+
+127
+00:13:47,899 --> 00:13:54,350
+The maximum margin classifier learns how to maximize the distance between the hyperplane and its supports.
+
+128
+00:13:56,320 --> 00:14:01,279
+Let's talk about how the maximum margin classifier finds a hyperplane.
+
+129
+00:14:01,750 --> 00:14:05,899
+Initially, because it doesn't know the right hyperplane, it's going to look like this.
+
+130
+00:14:05,899 --> 00:14:12,170
+It randomly chose a hyperplane which makes this pointer
+
+131
+00:14:12,400 --> 00:14:13,740
+the wrong side of the margin.
+
+132
+00:14:14,550 --> 00:14:18,640
+When data points are wrong side of margin, it will make the loss function bigger.
+
+133
+00:14:20,460 --> 00:14:24,190
+And the optimizer in the SVM will try to reduce this error.
+
+134
+00:14:25,060 --> 00:14:28,290
+So it will adjust the coefficients of the hyperplane equation.
+
+135
+00:14:29,000 --> 00:14:31,230
+So now the hyperplane looks like this.
+
+136
+00:14:31,480 --> 00:14:37,640
+We still find the data points that are wrong side of the margin, but it is a smaller error compared to the previous one.
+
+137
+00:14:38,030 --> 00:14:39,400
+So smaller loss function.
+
+138
+00:14:39,950 --> 00:14:42,980
+And again the optimizer will try to reduce the error.
+
+139
+00:14:43,680 --> 00:14:46,909
+and updates its hyperplane and that look like this.
+
+140
+00:14:47,090 --> 00:14:56,889
+So when we go this iteration over and over again, finally the hyperplane will be optimized such that the margin between the supports are maximized.
+
+141
+00:15:00,070 --> 00:15:01,730
+Alright, here is a short quiz.
+
+142
+00:15:02,060 --> 00:15:05,899
+What happens to the separating hyperplane if we add a new data point?
+
+143
+00:15:06,389 --> 00:15:09,889
+The answer is that it depends where the data points get added.
+
+144
+00:15:10,330 --> 00:15:13,310
+So for example, if the new data point like this
+
+145
+00:15:14,569 --> 00:15:19,169
+are added outside of the margin, it will not do anything about the hyperplane.
+
+146
+00:15:19,740 --> 00:15:27,509
+However, if the data points are added inside the margin or even the wrong side of the margin, the hyperplane must change.
+
+147
+00:15:29,559 --> 00:15:35,000
+Let's say we have new data points like this and obviously it's the wrong side of the margin.
+
+148
+00:15:35,949 --> 00:15:38,649
+The blue points should be upper to the hyperplane.
+
+149
+00:15:38,699 --> 00:15:43,269
+However, this new data point is the wrong side below the hyperplane.
+
+150
+00:15:43,759 --> 00:15:46,929
+So we need to relax the condition of having hard margin.
+
+151
+00:15:48,860 --> 00:15:53,629
+And therefore, another method called the soft margin classifier can be useful in this case.
+
+152
+00:15:54,539 --> 00:15:56,389
+So we'll talk about that in the next video.
+

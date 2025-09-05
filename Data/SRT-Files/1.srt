@@ -1,0 +1,620 @@
+1
+00:00:05,610 --> 00:00:07,580
+Hi everyone, welcome to the class.
+
+2
+00:00:07,940 --> 00:00:11,130
+This video will talk about introduction to machine learning.
+
+3
+00:00:13,529 --> 00:00:17,879
+So before we talk about machine learning, let's talk about a several buzz word here.
+
+4
+00:00:17,879 --> 00:00:24,489
+You might have heard about data science, which some of you might be taking other courses in data science.
+
+5
+00:00:25,100 --> 00:00:30,719
+Surely you heard about machine learning because this course is going to be about machine learning.
+
+6
+00:00:31,960 --> 00:00:40,000
+Many of you might have heard about artificial intelligence, which is another buzzword, along with the machine learning and data science these days.
+
+7
+00:00:40,950 --> 00:00:44,340
+Maybe you also heard about deep learning, which is another hype word.
+
+8
+00:00:45,170 --> 00:00:47,159
+So let's briefly talk about what these are.
+
+9
+00:00:47,450 --> 00:00:53,379
+So for data science, it's a really big interdisciplinary field about data.
+
+10
+00:00:53,679 --> 00:01:03,560
+So you can think about it's actually anything to do with data, including data pipelining, even data collection and data munging and cleaning and data analysis.
+
+11
+00:01:03,949 --> 00:01:16,069
+which may include manual data analysis, including some simple checks or exploratory data analysis, or can also include machine learning techniques to analyze the data.
+
+12
+00:01:16,859 --> 00:01:22,750
+Since the data science has a really big spectrum, it can oftentimes be called soft and hard data science.
+
+13
+00:01:23,150 --> 00:01:30,449
+Soft data science means dealing with the techniques that doesn't require a lot of software engineering skills or a lot of math skills.
+
+14
+00:01:31,120 --> 00:01:40,229
+So something like data visualization and reporting, dashboard, those kind of things, as well as simple data analysis, can fall into that category.
+
+15
+00:01:40,670 --> 00:01:51,450
+Whereas the hard data science, those involve more mathematical and more technical skills, such as analyzing data or building systems using machine learning.
+
+16
+00:01:52,840 --> 00:02:03,479
+Also, data science can deal with the data that's a small size that can fit into your Excel file or something like that, or it's a big data that sits in the big data warehouse.
+
+17
+00:02:05,379 --> 00:02:08,789
+In industry, the job description looks like this.
+
+18
+00:02:09,569 --> 00:02:12,500
+So the data scientists, their job role can be varied.
+
+19
+00:02:12,639 --> 00:02:19,000
+They can do data collection, cleaning, and managing data or preparing data for whatever the company needs.
+
+20
+00:02:19,560 --> 00:02:24,189
+or they can build machine learning models and do the testing on those data or build a system.
+
+21
+00:02:25,170 --> 00:02:28,090
+As well as they can also do the visualization and stuff.
+
+22
+00:02:28,590 --> 00:02:35,590
+So usually data scientists have diverse backgrounds and they require interdisciplinary knowledge.
+
+23
+00:02:37,450 --> 00:02:42,409
+Machine learning, we mentioned that machine learning several times during the talk about data science.
+
+24
+00:02:42,550 --> 00:02:48,879
+So machine learning is part of data science and it is also a subfield of artificial intelligence.
+
+25
+00:02:49,840 --> 00:02:54,140
+It focuses on learning algorithms and building models and training them on the data.
+
+26
+00:02:55,280 --> 00:03:02,489
+Machine learning consists of different types of learning, such as supervised learning, unsupervised learning, or reinforcement learning.
+
+27
+00:03:03,539 --> 00:03:06,799
+Many machine learning models, they are coming from statistical learning.
+
+28
+00:03:07,229 --> 00:03:17,589
+So machine learning extends the statistical learning by including more complex algorithms, which deal with more complex data and bigger data, and more efficient algorithms.
+
+29
+00:03:18,560 --> 00:03:24,889
+In industry, machine learning engineers can develop and test machine learning models and design machine learning experiments.
+
+30
+00:03:25,250 --> 00:03:26,830
+and build machine learning systems.
+
+31
+00:03:28,719 --> 00:03:35,400
+Artificial intelligence has a long history in the CS, and it is about problem solving with intelligence.
+
+32
+00:03:35,870 --> 00:03:45,360
+That means an AI agent will make an optimal decision according to its algorithm, whether it has a learning component or not, to maximize the goal as a response to the environment.
+
+33
+00:03:46,789 --> 00:03:52,909
+You might think that AI field is very practical because you're seeing a lot of applications these days.
+
+34
+00:03:53,310 --> 00:03:56,569
+However, AI also has a lot of theoretical components in it.
+
+35
+00:03:58,460 --> 00:04:09,909
+And in industry, AI engineers and experts, they are more or less similar to ML engineers, but in broad set skills, including math and programming skills, as well as machine learning.
+
+36
+00:04:10,189 --> 00:04:18,209
+And they work on building AI system, building machine learning models, natural language processing, robotics, and computer vision and stuff.
+
+37
+00:04:19,550 --> 00:04:26,089
+And deep learning focuses on neural network models, so building neural network models and training them on data.
+
+38
+00:04:26,589 --> 00:04:35,019
+And it also deals with a lot of optimization algorithms and training techniques in order to deal with the complex neural network model training.
+
+39
+00:04:36,439 --> 00:04:43,900
+It is very suitable for complex data such as images, texts and voice, and graphs, and hybrid types of data.
+
+40
+00:04:45,920 --> 00:04:49,770
+It is a subfield of artificial intelligence and subfield of machine learning.
+
+41
+00:04:50,129 --> 00:04:53,660
+And in industry, deep learning engineers work on machine learning problems.
+
+42
+00:04:54,040 --> 00:04:59,760
+It deals with complex data such as images and texts and things like that, or even high performance computing.
+
+43
+00:05:01,410 --> 00:05:03,110
+We're going to show some summary diagram.
+
+44
+00:05:03,370 --> 00:05:06,990
+So there is a data science, which is a big interdisciplinary field.
+
+45
+00:05:07,390 --> 00:05:09,910
+And there is AI, also very big field.
+
+46
+00:05:10,400 --> 00:05:14,550
+Data science is about anything to do with data, including data analysis.
+
+47
+00:05:15,010 --> 00:05:19,490
+Whereas artificial intelligence is about solving problems using intelligent algorithms.
+
+48
+00:05:20,230 --> 00:05:26,430
+And in intersection, when the AI algorithm is learning from the data, it is called machine learning.
+
+49
+00:05:27,620 --> 00:05:33,500
+And particularly, if it deals with complex data with neural network architecture, it is called deep learning.
+
+50
+00:05:36,290 --> 00:05:41,000
+And here is the Google trend on the term on machine learning and software engineering.
+
+51
+00:05:41,470 --> 00:05:46,320
+Just to compare how the machine learning becomes popular for recent few years.
+
+52
+00:05:47,320 --> 00:05:55,210
+The term machine learning has been around for a long time, however, it became much more popular during the last five or more years.
+
+53
+00:05:56,820 --> 00:06:06,550
+This graph also indicates that the job growth in machine learning has grown up really much, about 350% during the past few years.
+
+54
+00:06:07,960 --> 00:06:12,370
+As you can see, machine learning is a top skill in the jobs that involves AI skills.
+
+55
+00:06:13,940 --> 00:06:16,820
+Alright, that already sounds like ML is very cool.
+
+56
+00:06:17,150 --> 00:06:19,130
+Let's talk about what ML can do.
+
+57
+00:06:21,170 --> 00:06:23,620
+So, machine learning is applied everywhere these days.
+
+58
+00:06:23,850 --> 00:06:30,480
+So, for example, when you do online shopping, you often see this product recommendation based on your browsing and shopping history.
+
+59
+00:06:31,090 --> 00:06:37,380
+And those use machine learning algorithms to predict the products that are more likely to be purchased by the customers.
+
+60
+00:06:37,940 --> 00:06:41,120
+Same goes for movie recommendation and music recommendations.
+
+61
+00:06:41,810 --> 00:06:47,060
+So sentiment analysis is very popular applications these days.
+
+62
+00:06:47,680 --> 00:06:54,550
+It is standard by now that data scientists analyze the texts such as news articles and social media articles.
+
+63
+00:06:54,920 --> 00:06:57,970
+to figure out citizens' sentiment on political events.
+
+64
+00:06:58,800 --> 00:07:07,689
+Similarly, the product review scales or restaurant review scales can be predicted by machine learning algorithms, which information can be important for businesses.
+
+65
+00:07:09,439 --> 00:07:12,490
+Machine learning is also used a lot in the financial industry.
+
+66
+00:07:12,550 --> 00:07:16,400
+So, for example, we can forecast the stock price using machine learning.
+
+67
+00:07:17,240 --> 00:07:27,360
+Machine learning is also used for algorithmic trading, as well as RoboAdvisor, which gives advice for people on how to allocate their assets.
+
+68
+00:07:28,290 --> 00:07:31,300
+Also, it can be used for forecasting housing price.
+
+69
+00:07:32,840 --> 00:07:36,790
+And as you can imagine, machine learning can be also useful in medical industry.
+
+70
+00:07:37,920 --> 00:07:46,080
+By applying machine learning models in the images or tables, it can help doctors to make a medical diagnosis or medical decisions.
+
+71
+00:07:47,450 --> 00:07:51,440
+It is also used in many science disciplines, such as the bioscience.
+
+72
+00:07:51,690 --> 00:08:02,060
+So for example, machine learning techniques can be applied to this graph data to inspect the protein interactions or this type of data for the study of genetics.
+
+73
+00:08:04,560 --> 00:08:07,610
+Machine learning is also a key component in Internet of Things.
+
+74
+00:08:08,160 --> 00:08:16,160
+Smart sensors and smart devices produce a lot of data, and also machine learning plays a key role in analyzing those data.
+
+75
+00:08:17,610 --> 00:08:19,690
+Machine learning is also used in self-driving cars.
+
+76
+00:08:19,690 --> 00:08:25,710
+Self-driving cars can use machine learning and deep learning to recognize images and make decisions.
+
+77
+00:08:25,710 --> 00:08:30,800
+Alright, so let's talk about what we will learn in this course.
+
+78
+00:08:30,800 --> 00:08:33,850
+So here is the data science project lifecycle.
+
+79
+00:08:33,850 --> 00:08:39,430
+So data should be collected and pipelined into data warehouse.
+
+80
+00:08:39,430 --> 00:08:43,900
+And there is a data governance that the data warehouse has to implement.
+
+81
+00:08:45,940 --> 00:08:50,450
+And there will be also data pulling and cleaning and maintaining the data.
+
+82
+00:08:52,000 --> 00:08:54,610
+And that part is called data engineering mostly.
+
+83
+00:08:56,200 --> 00:09:03,650
+Data science, on the other hand, focuses on using the data and analyzing those data that were prepared by the data engineering process.
+
+84
+00:09:04,780 --> 00:09:15,720
+So you can include the selection of those data from the warehouse and then cleaning those data and exploratory data analysis and data pre-processing, which means that we prepare data for the model to consume.
+
+85
+00:09:17,140 --> 00:09:22,240
+And after that, data scientists will build the models and then do the model training.
+
+86
+00:09:22,690 --> 00:09:23,600
+And there is a result.
+
+87
+00:09:23,640 --> 00:09:26,990
+And depending on the result, they have to go back to build models.
+
+88
+00:09:27,230 --> 00:09:33,420
+Or if the result is so strange, then they will have to collect more data or select more data and do this cycle again.
+
+89
+00:09:34,810 --> 00:09:35,080
+All right.
+
+90
+00:09:35,080 --> 00:09:41,460
+So among the steps that we mentioned in the data science project cycle, we're going to talk about a few things.
+
+91
+00:09:41,810 --> 00:09:43,470
+And we don't cover everything.
+
+92
+00:09:43,720 --> 00:09:47,610
+So, for example, this course is not about data collection and pipelining.
+
+93
+00:09:48,560 --> 00:10:01,830
+We'll talk about a little bit of data cleaning and EDA and data pre-processing but the main focus will be how to build a model, how to select models and how to do the training and do the testing and analyze those results.
+
+94
+00:10:01,830 --> 00:10:05,100
+Okay so let's talk about what is learning.
+
+95
+00:10:05,100 --> 00:10:09,930
+When these children learn alphabets they can learn to generalize.
+
+96
+00:10:09,930 --> 00:10:18,720
+So for example they can recognize this letter whether it's a small or large or it has a different font or it has a different color
+
+97
+00:10:19,900 --> 00:10:23,350
+or the image looks angled, or the letter is in the word.
+
+98
+00:10:25,160 --> 00:10:30,760
+It seems so obvious for people, however, to make a machine to learn this, it is not trivial.
+
+99
+00:10:33,070 --> 00:10:35,910
+So here is some example of supervised learning.
+
+100
+00:10:36,850 --> 00:10:38,560
+There are images and the labels.
+
+101
+00:10:38,980 --> 00:10:41,160
+The labels are the names of these animals.
+
+102
+00:10:41,870 --> 00:10:45,320
+And a supervised learning model learns to predict the label given data.
+
+103
+00:10:47,880 --> 00:10:51,610
+Unsupervised learning actually resembles very much how humans learn.
+
+104
+00:10:51,890 --> 00:10:55,790
+So in baby stage, they don't know about the geometric shapes and colors.
+
+105
+00:10:57,029 --> 00:11:09,970
+But over time, they learn to recognize these visual properties and also recognize the similarities and dissimilarities between them, even before they learn about the names of these colors and shapes.
+
+106
+00:11:09,970 --> 00:11:13,920
+So those types of learning without labels are called unsupervised learning.
+
+107
+00:11:15,670 --> 00:11:25,460
+And unsupervised learning is about learning underlying features and extracting information, organizing patterns in the data, or clustering similar data points.
+
+108
+00:11:26,759 --> 00:11:29,610
+Another type of learning is reinforcement learning.
+
+109
+00:11:29,970 --> 00:11:32,790
+which the AI agent learns how to act from experience.
+
+110
+00:11:33,960 --> 00:11:36,810
+So experience is either reward or punishment.
+
+111
+00:11:38,060 --> 00:11:40,379
+It is very much similar to the animal training.
+
+112
+00:11:40,780 --> 00:11:45,960
+So we give treats or punishment to make the animal behave desired way.
+
+113
+00:11:47,400 --> 00:11:50,710
+So reinforcement learning is used a lot in AI and robotics.
+
+114
+00:11:52,160 --> 00:11:58,290
+All right, so let's change gears and then talk about some definitions that frequently show up in machine learning.
+
+115
+00:11:59,090 --> 00:12:02,340
+So data in machine learning can be any forms such as tables,
+
+116
+00:12:02,590 --> 00:12:05,130
+images and text and sounds and graphs.
+
+117
+00:12:05,410 --> 00:12:06,630
+It can be any format.
+
+118
+00:12:06,810 --> 00:12:10,700
+However, we're going to talk about mostly the tabulated data format.
+
+119
+00:12:11,730 --> 00:12:13,920
+So let's take an example of this table.
+
+120
+00:12:14,420 --> 00:12:18,190
+Let's say the supervised learning task is to predict the house price.
+
+121
+00:12:18,610 --> 00:12:22,870
+So this one would be our labels.
+
+122
+00:12:24,330 --> 00:12:27,310
+And these labels also are called targets.
+
+123
+00:12:30,080 --> 00:12:34,770
+And all these columns, except the labels, they are called the features.
+
+124
+00:12:37,270 --> 00:12:47,710
+And also they are called predictors, which means that those features and predictors are used in the machine learning models to predict the labels.
+
+125
+00:12:49,830 --> 00:13:01,400
+And this row of the tables are called observations, or samples, which means that the instances of data.
+
+126
+00:13:03,110 --> 00:13:05,670
+Here are some few examples of machine learning tasks.
+
+127
+00:13:06,290 --> 00:13:12,509
+So for example, prediction includes classification regression, and these are in supervised learning.
+
+128
+00:13:14,140 --> 00:13:23,680
+And clustering, which groups the similar data points together, and anomaly detection and dimensionality reduction, they are in a category of unsupervised learning.
+
+129
+00:13:25,180 --> 00:13:34,870
+And there are other machine learning tasks, such as data generation and feature selection, which are typically not categorized as supervised learning or unsupervised learning.
+
+130
+00:13:34,870 --> 00:13:41,430
+However, these type of machine learning tasks can be used to enhance the performance of supervised learning tasks.
+
+131
+00:13:43,460 --> 00:13:46,759
+Alright, so let's talk about prediction tasks in supervised learning.
+
+132
+00:13:47,309 --> 00:13:53,059
+Prediction tasks can be either classification or regression, depending on the label's data type.
+
+133
+00:13:54,289 --> 00:14:07,350
+So, when the label is a categorical variable, which means 0 or 1, or 1, 2, 3, or a, b, c, these are called categorical variables, and in that case, it becomes classification.
+
+134
+00:14:08,480 --> 00:14:12,639
+If the categories are binary, it is called binary class classification.
+
+135
+00:14:13,190 --> 00:14:16,040
+And if it's multi-categories, call them multi-class classification.
+
+136
+00:14:16,040 --> 00:14:17,320
+Binary, multi-class.
+
+137
+00:14:18,160 --> 00:14:34,690
+On the other hand, if the label variable is a real value variable, so something like 0.1, 0.999, something like that, or 3.4.
+
+138
+00:14:35,170 --> 00:14:43,430
+So real value variables, to predict those labels given the data, is called a regression problem.
+
+139
+00:14:49,280 --> 00:14:54,070
+So with that in mind, let's talk about how supervised learning works briefly.
+
+140
+00:14:54,610 --> 00:14:55,670
+So here's the data.
+
+141
+00:14:55,810 --> 00:14:57,800
+Data consists of features and target.
+
+142
+00:14:58,050 --> 00:15:01,160
+So feature usually we call x and target is y.
+
+143
+00:15:01,660 --> 00:15:06,530
+And then we have a model and this feature is input to the model.
+
+144
+00:15:07,280 --> 00:15:11,120
+The model might have parameters inside or hyperparameters.
+
+145
+00:15:11,540 --> 00:15:13,720
+That means some settings the user get to choose.
+
+146
+00:15:14,200 --> 00:15:19,379
+And then after feeding the features into model, the model will make a prediction.
+
+147
+00:15:20,929 --> 00:15:26,669
+Initially, the model doesn't predict very well, so there will be some error between the prediction and target variable.
+
+148
+00:15:27,490 --> 00:15:36,240
+And this error can be used to tweak the model to have a better prediction next iteration, and over this iteration, the model becomes more accurate.
+
+149
+00:15:37,190 --> 00:15:39,029
+So that's how supervised learning works.
+
+150
+00:15:40,399 --> 00:15:43,639
+So here is a brief taxonomy of supervised learning models.
+
+151
+00:15:44,080 --> 00:15:49,159
+So for models that has internal parameters, it is called parametric models.
+
+152
+00:15:49,830 --> 00:15:54,649
+We are explaining what those are individually, and these are examples of parametric models.
+
+153
+00:15:55,210 --> 00:15:57,879
+Whereas non-parametric models doesn't have internal parameters.
+
+154
+00:15:57,879 --> 00:16:00,550
+And these are examples of non-parametric models.
+
+155
+00:16:00,550 --> 00:16:07,790
+Although we are not going to talk about every single model here, we'll talk about most of these models in this class.
+

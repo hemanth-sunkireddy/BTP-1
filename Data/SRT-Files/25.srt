@@ -1,0 +1,356 @@
+1
+00:00:05,089 --> 00:00:05,780
+Hello everyone.
+
+2
+00:00:05,809 --> 00:00:09,660
+In this video, we're going to talk about support vector machine with the kernel tricks.
+
+3
+00:00:11,220 --> 00:00:21,809
+So just a brief recap, we talked about hard margin classifier, which goal is to maximize its margin, which is the distance between the hyperplane and the support vectors.
+
+4
+00:00:22,410 --> 00:00:31,339
+And then, in case we had inseparable data like this, we simply added the slack variable epsilon to all this.
+
+5
+00:00:31,679 --> 00:00:38,490
+data points and then this epsilon just specify how much they deviates from the margin.
+
+6
+00:00:38,870 --> 00:00:45,560
+So like this for red points and then this amount for different blue points here.
+
+7
+00:00:45,560 --> 00:00:59,260
+And these slack variables need to satisfy two conditions such as it has to be no negative value and then we also define the c parameter which gives an idea how much of error budget we have.
+
+8
+00:01:01,060 --> 00:01:02,130
+Also we mentioned that
+
+9
+00:01:02,379 --> 00:01:08,890
+Sometimes the data can be not possible to use one hyperplane to separate the data.
+
+10
+00:01:09,569 --> 00:01:16,329
+So in that case, we need to use some special trick called the kernel trick, which will be the subject of this video.
+
+11
+00:01:18,209 --> 00:01:21,439
+Before we go on what the kernels are, let's think about this.
+
+12
+00:01:21,849 --> 00:01:31,650
+So in support vector classifier, which is another name for submargin classifier, we mentioned that we have to satisfy all these conditions.
+
+13
+00:01:32,349 --> 00:01:32,769
+And
+
+14
+00:01:32,939 --> 00:01:36,209
+this part is the formula for the hyperplane.
+
+15
+00:01:36,590 --> 00:01:37,759
+Let's call it f .
+
+16
+00:01:40,539 --> 00:01:48,280
+And then this beta zero and beta one and all the way to the beta p are the coefficients for this equation.
+
+17
+00:01:48,280 --> 00:01:52,030
+And the optimizer will find the values for these coefficients.
+
+18
+00:01:52,030 --> 00:02:02,229
+Now we can ask ourselves, why do we call SVM as a non-parametric method when we do see these parameters in the equation?
+
+19
+00:02:02,969 --> 00:02:03,280
+18.
+
+20
+00:02:03,750 --> 00:02:06,040
+That's very much related to the use of Connors.
+
+21
+00:02:06,450 --> 00:02:15,140
+You might notice that I use the term SVC, which is a Supervector Classifier, versus SVM, Supervector Machine.
+
+22
+00:02:15,140 --> 00:02:28,230
+It's not very important, but Supervector Machine generally refers to some generalization of Supervector Classifier, whereas Supervector Classifier usually refers to the Soft Margin Classifier.
+
+23
+00:02:29,290 --> 00:02:31,400
+In SKLUN, they use a different algorithm.
+
+24
+00:02:31,400 --> 00:02:34,270
+SVC uses a lip linear.
+
+25
+00:02:35,530 --> 00:02:40,390
+It's very much similar to the optimization algorithm that we use in logistic regression.
+
+26
+00:02:40,930 --> 00:02:52,409
+Whereas this SVM uses a libSVM algorithm which is specially made for SVM and this algorithm uses the kernels.
+
+27
+00:02:54,469 --> 00:02:56,650
+Alright, so let's talk about what the kernels are.
+
+28
+00:02:57,319 --> 00:03:04,909
+So this is again hard margin classifier and this is soft margin classifier and this is the formula for the hyperplane.
+
+29
+00:03:06,500 --> 00:03:11,810
+We're going to introduce a different math formula which is equivalent to this formula f .
+
+30
+00:03:12,220 --> 00:03:15,290
+However, we'll skip the derivation and just show the result.
+
+31
+00:03:15,290 --> 00:03:23,750
+So using the inner product, it is known that this formula f can be rewritten to this formula.
+
+32
+00:03:23,750 --> 00:03:25,560
+And this is a dot product.
+
+33
+00:03:25,560 --> 00:03:33,460
+So if you have xi', then this is dot product between the point i' and point i.
+
+34
+00:03:33,460 --> 00:03:38,760
+And this dot product represents the linear corner.
+
+35
+00:03:39,610 --> 00:03:44,040
+Oftentimes, we will call it as K kernel, xi and xi'.
+
+36
+00:03:44,140 --> 00:03:47,690
+That product again is a linear kernel.
+
+37
+00:03:47,850 --> 00:03:50,930
+So essentially, this is same as this one.
+
+38
+00:03:50,930 --> 00:03:56,780
+However, when we implement the algorithm, it will have a different time complexity.
+
+39
+00:03:56,780 --> 00:04:09,090
+So for example, the SVC that uses a linear library will have time complexity of number of data point times number of features.
+
+40
+00:04:09,920 --> 00:04:17,069
+And if we use the libSVM and solve for linear data, then it's going to take more time.
+
+41
+00:04:17,530 --> 00:04:23,680
+It's going to have SVM with linear corner.
+
+42
+00:04:24,450 --> 00:04:34,620
+It's going to take n squared times p. So by using kernel, it doesn't seem it's useful for the linear data.
+
+43
+00:04:34,790 --> 00:04:38,740
+However, the kernel method shines when it comes to complex data.
+
+44
+00:04:39,360 --> 00:04:40,330
+So let's have a look.
+
+45
+00:04:42,820 --> 00:04:51,370
+When we have this type of data that's not possible to separate by linear hyperplane, what we want to do is this.
+
+46
+00:04:51,780 --> 00:04:57,500
+So let's say a simple example, we have a data that's not linearly separable.
+
+47
+00:04:57,920 --> 00:05:03,850
+So in the one-dimensional, the hyperplane will be just a point.
+
+48
+00:05:04,750 --> 00:05:09,330
+So we need two hyperplanes in order to separate it perfectly.
+
+49
+00:05:09,330 --> 00:05:11,130
+However, it's not possible.
+
+50
+00:05:11,130 --> 00:05:12,380
+So the trick is,
+
+51
+00:05:13,450 --> 00:05:25,660
+We can add one dimension here and then now we can separate this perfectly with this one hyperplane So adding one more dimension is a key and it's called the kernel trick.
+
+52
+00:05:26,340 --> 00:05:34,770
+So again, this data is not separable In 2D using linear hyperplane So what we do is we add the third dimension.
+
+53
+00:05:35,150 --> 00:05:44,860
+So this is a G by the way, and this is Maybe we can call it X and Y So we're gonna introduce G and maybe X here and Y here
+
+54
+00:05:45,940 --> 00:05:50,580
+And now we can see that this data is separable with the hyperplane like this.
+
+55
+00:05:53,470 --> 00:05:58,880
+Adding one more dimension means that we want to make a higher order terms in the function.
+
+56
+00:05:59,700 --> 00:06:11,640
+Okay, so we have a p number of features in the data and then we can add a higher order terms in order to make extra dimensions to separate the data points, which was previously not separable in the linear fashion.
+
+57
+00:06:13,250 --> 00:06:18,060
+So we can add higher order terms like this, but then, naively, what happens is that
+
+58
+00:06:18,480 --> 00:06:52,660
+Now our optimization need to find all these parameter values for the higher order terms Which might be a lie if you add even more higher order terms And as well as if you have a large number of features It's going to be a problem like we saw in the polynomial regression So instead of adding directly higher order terms we can use a kernel trick instead So let's make a use of this inner product We can create a function kernel function k that has this form this is the
+
+59
+00:06:54,910 --> 00:06:59,150
+dot product and then represent a first order terms.
+
+60
+00:06:59,750 --> 00:07:08,120
+And by having a constant plus this dot product to the order of d, we can create the polynomial function for the high order terms.
+
+61
+00:07:10,960 --> 00:07:14,870
+And then we can generalize our function to be a form that has these corners.
+
+62
+00:07:17,250 --> 00:07:22,000
+So let's have a look when we have this type of data that might involve a nonlinear decision boundary.
+
+63
+00:07:22,509 --> 00:07:25,540
+We can use polynomial kernel that we just saw.
+
+64
+00:07:26,810 --> 00:07:30,560
+By having polynomial kernel, we can have this type of decision boundary.
+
+65
+00:07:30,819 --> 00:07:35,110
+Shows the data result when we had the d equals 2 for polynomial kernels.
+
+66
+00:07:35,889 --> 00:07:42,110
+Which nicely separates these blue points and the red points by adding another dimension to the data.
+
+67
+00:07:44,099 --> 00:07:53,629
+There are other types of kernels and another very famous one is called the radial kernel or sometimes called the radial basis functional kernel or RBF for short.
+
+68
+00:07:54,079 --> 00:07:57,399
+And it takes this form, this kind of Gaussian shape kernel.
+
+69
+00:07:59,280 --> 00:08:03,079
+defines the RBF corner and the result is like this.
+
+70
+00:08:03,079 --> 00:08:05,870
+So it's like a round shape.
+
+71
+00:08:07,840 --> 00:08:11,970
+Basis corner will be able to separate this data into three blobs.
+
+72
+00:08:15,080 --> 00:08:16,259
+So having corner is great.
+
+73
+00:08:16,259 --> 00:08:18,120
+You can solve some complex data.
+
+74
+00:08:18,400 --> 00:08:22,629
+However, we need to think ahead what kind of kernels that we should use.
+
+75
+00:08:23,019 --> 00:08:27,430
+So when it's a linear separable, you can see that we don't need any fancy kernels.
+
+76
+00:08:27,629 --> 00:08:33,919
+Just a linear kernel or linear SVM or SVC that does not use a kernel at all will solve perfectly.
+
+77
+00:08:35,279 --> 00:08:44,759
+Whereas RBF corner is fancy corner so the radial basis corner can also solve the problem depending on how the data look like.
+
+78
+00:08:44,949 --> 00:08:49,840
+So this data was generated by a blob data and linear is approvable.
+
+79
+00:08:50,259 --> 00:08:54,879
+So it was both linear SVM and RBF-SVM worked well.
+
+80
+00:08:56,679 --> 00:09:06,590
+You know different types of data like this, this shape like yin and yang or moon shape in sklon, they look like this type of data usually.
+
+81
+00:09:07,289 --> 00:09:09,509
+The linear SVM doesn't work very well.
+
+82
+00:09:09,819 --> 00:09:12,759
+However, the radial basis corner did well on this.
+
+83
+00:09:13,120 --> 00:09:17,850
+Other corners did not do well for this type of data.
+
+84
+00:09:19,529 --> 00:09:23,850
+How about this circular donut shape of data?
+
+85
+00:09:24,459 --> 00:09:29,579
+Linear SVM did not do very well as you can expect.
+
+86
+00:09:30,169 --> 00:09:34,759
+But radial kernel is perfect for this type of data because the data shape is radial.
+
+87
+00:09:35,299 --> 00:09:37,769
+So now you can see that
+
+88
+00:09:38,240 --> 00:09:41,379
+The choice of kernel strongly depends on the pattern of the data.
+
+89
+00:09:42,479 --> 00:09:53,679
+So although the kernel is very convenient for this nonlinear data, it requires the user to think about what the data looks like and guess what the best kernel would be.
+

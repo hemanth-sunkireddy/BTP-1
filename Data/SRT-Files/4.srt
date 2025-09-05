@@ -1,0 +1,324 @@
+1
+00:00:11,160 --> 00:00:14,089
+Alright, so let's talk about how well my model fits.
+
+2
+00:00:14,630 --> 00:00:19,519
+So we're going to look at the numbers R squared value and adjusted R squared.
+
+3
+00:00:20,410 --> 00:00:23,609
+These are metrics for how well the model fits.
+
+4
+00:00:24,750 --> 00:00:30,800
+Adjusted R squared is actually same as R squared except that it also takes number of features in top count.
+
+5
+00:00:31,349 --> 00:00:39,479
+However, when the number of samples are much larger than number of features in the model, these two numbers are essentially the same.
+
+6
+00:00:42,129 --> 00:00:45,560
+So let's derive R squared as a measure of model fit.
+
+7
+00:00:48,670 --> 00:00:50,619
+When do we know that model has a good fit?
+
+8
+00:00:51,789 --> 00:01:02,179
+From the least squared method that we used to determine our coefficient values, we know that model has a good fit when we have a squared error is minimized.
+
+9
+00:01:03,479 --> 00:01:06,299
+So again, we can use MSC or RSS.
+
+10
+00:01:07,039 --> 00:01:09,289
+RSS is a residual thermal squares.
+
+11
+00:01:09,319 --> 00:01:13,629
+It's nothing but same as MSC without the averaging factor.
+
+12
+00:01:15,009 --> 00:01:22,299
+So we define this quantity and we know that if this quantity is minimized, we know the model has a good fit.
+
+13
+00:01:23,479 --> 00:01:26,049
+However, there is a little bit of problem with this metric.
+
+14
+00:01:27,179 --> 00:01:34,099
+One is that this value can be arbitrarily large depending on our unit of the
+
+15
+00:01:35,019 --> 00:01:35,839
+target variable.
+
+16
+00:01:37,709 --> 00:01:42,099
+And also if we have a different set of data, this quantity will be different.
+
+17
+00:01:42,099 --> 00:01:49,499
+So we want to normalize by something similar error measure that has same kind of unit.
+
+18
+00:01:51,429 --> 00:01:53,539
+So what would be a good way to do that?
+
+19
+00:01:54,009 --> 00:02:05,399
+We can define a benchmark model, say y equals y mean, and then we can compare how good is my error from my model.
+
+20
+00:02:06,089 --> 00:02:09,259
+y equals beta 0 plus beta 1 x.
+
+21
+00:02:10,689 --> 00:02:32,309
+Compared to the error of my benchmark model, which is y equals y min, so we're gonna define another quantity called the TSS, total sum of squares, that actually quantifies the error between my null model and my training data points.
+
+22
+00:02:34,149 --> 00:02:38,769
+So with that, we can define a dimensionless quantity.
+
+23
+00:02:39,269 --> 00:02:41,859
+by dividing RSS by TSS.
+
+24
+00:02:43,059 --> 00:02:54,999
+So this is a quantity essentially telling that what's the ratio of the error from my model to the error from the null model or benchmark model.
+
+25
+00:02:56,419 --> 00:03:02,579
+So this can be a good quantity that measures how my model fits compared to my null model.
+
+26
+00:03:05,619 --> 00:03:09,959
+We also want our quantity or R-squared value to be higher when
+
+27
+00:03:12,299 --> 00:03:13,710
+when my model fits better.
+
+28
+00:03:14,439 --> 00:03:18,750
+And if you see, RSS goes down when the model fits better.
+
+29
+00:03:18,750 --> 00:03:20,759
+So we're going to flip the sign.
+
+30
+00:03:20,979 --> 00:03:24,430
+We're going to just subtract this quantity from 1.
+
+31
+00:03:25,530 --> 00:03:29,139
+Then actually it becomes the definition of R squared.
+
+32
+00:03:31,229 --> 00:03:36,329
+So let's take a moment and think about what values R squared can take.
+
+33
+00:03:39,979 --> 00:03:40,509
+All right.
+
+34
+00:03:41,039 --> 00:03:43,829
+So we're gonna think about two extreme cases.
+
+35
+00:03:44,210 --> 00:03:53,819
+So one extreme case is that when my RSS is 0, that means my model fits perfectly all of the data points, which will never happen in practice.
+
+36
+00:03:54,109 --> 00:04:01,759
+But let's think that my model is so good that all the data points are on my model's line.
+
+37
+00:04:03,129 --> 00:04:06,879
+Then this term goes to 0, and my R-squared value will go 1.
+
+38
+00:04:06,909 --> 00:04:08,709
+So that's one extreme.
+
+39
+00:04:08,709 --> 00:04:13,169
+Can R-squared go 1?
+
+40
+00:04:13,939 --> 00:04:14,789
+larger than 1.
+
+41
+00:04:16,699 --> 00:04:21,539
+R-squared value cannot be larger than 1 because RSS cannot be negative, right?
+
+42
+00:04:22,979 --> 00:04:35,599
+The another extreme case is that my model is actually just as good as my null model y equals y mean.
+
+43
+00:04:35,599 --> 00:04:41,029
+In that case, my RSS value will be same as TSS.
+
+44
+00:04:41,029 --> 00:04:44,209
+So this goes to 1.
+
+45
+00:04:45,379 --> 00:04:47,720
+Then my R squared will go to zero.
+
+46
+00:04:50,689 --> 00:04:52,460
+Can R squared value go negative?
+
+47
+00:04:54,470 --> 00:04:55,069
+Yes, it can.
+
+48
+00:04:55,069 --> 00:05:02,509
+In practice, if you use a package to fit your regression line, it will almost never happen.
+
+49
+00:05:03,449 --> 00:05:10,710
+But in case your model is this bad, like this, the slope is totally wrong.
+
+50
+00:05:10,830 --> 00:05:14,139
+And then it might have RSS that's larger than TSS.
+
+51
+00:05:14,389 --> 00:05:16,519
+Then this R squared value can go negative.
+
+52
+00:05:18,230 --> 00:05:27,689
+For simple linear regression, this may not happen, but as you might see later, in a more complex model, sometimes the model can fit worse than the baseline.
+
+53
+00:05:28,629 --> 00:05:31,590
+So remember that R-squared can go negative as well.
+
+54
+00:05:31,590 --> 00:05:38,870
+Alright, so we saw that R-squared value could be a good measure of how my model fits.
+
+55
+00:05:38,870 --> 00:05:43,890
+However, you have to be careful when you interpret the value from your summary table.
+
+56
+00:05:44,060 --> 00:05:48,330
+Let's take an example where we
+
+57
+00:05:49,500 --> 00:05:55,579
+might want a model that takes a form of ax and there is no intercept.
+
+58
+00:05:56,180 --> 00:05:57,449
+Why would we want to do that?
+
+59
+00:05:58,550 --> 00:06:00,770
+So let's have a look at the intercept value.
+
+60
+00:06:01,379 --> 00:06:08,009
+It's a negative value and that means my sales price will go negative when my living space is zero.
+
+61
+00:06:08,620 --> 00:06:10,019
+That doesn't make a lot of sense.
+
+62
+00:06:10,400 --> 00:06:19,269
+So maybe instead of having this uninterpretable intercept, maybe we want to have a model that has no intercept.
+
+63
+00:06:20,730 --> 00:06:23,660
+And then, yeah that sounds good.
+
+64
+00:06:24,800 --> 00:06:29,250
+My sales price of house should be zero when the living space is zero.
+
+65
+00:06:30,639 --> 00:06:34,740
+So let's take a fit and look at the summary table.
+
+66
+00:06:36,740 --> 00:06:44,150
+We have a square fit living coefficient which is similar to the previous value which is good.
+
+67
+00:06:45,660 --> 00:06:48,800
+But then we suddenly see R-squared value has gone up.
+
+68
+00:06:48,800 --> 00:06:50,629
+What does that mean?
+
+69
+00:06:52,310 --> 00:06:58,980
+Does it mean our new model y equals ax is better than our old model ax plus b?
+
+70
+00:07:01,010 --> 00:07:02,490
+Well, not necessarily.
+
+71
+00:07:03,140 --> 00:07:07,520
+If you look at carefully, you're going to see uncensored next to the r squared.
+
+72
+00:07:07,790 --> 00:07:08,530
+What does that mean?
+
+73
+00:07:10,420 --> 00:07:21,500
+It turns out that this r squared value is calculated such that RSS of our new model, this guy,
+
+74
+00:07:22,340 --> 00:07:37,110
+and then divide by TSS of the new null model which is not y equals y mean but now our new null model is y equals 0.
+
+75
+00:07:38,379 --> 00:07:48,060
+So this goes to here and then the total sum of squares from y equals 0 will be way higher.
+
+76
+00:07:49,129 --> 00:07:51,450
+Therefore, the R-squared value ...
+
+77
+00:07:53,060 --> 00:07:55,120
+can be much larger than the previous one.
+
+78
+00:07:57,540 --> 00:08:07,680
+So if you want to compare apple to apple how my new model is doing in terms of the error, you can just directly calculate RSS for our new model.
+
+79
+00:08:08,850 --> 00:08:19,920
+Let's say y equals ax and then compare with the previous model RSS y equals ax plus b.
+
+80
+00:08:20,310 --> 00:08:23,480
+Then you're gonna see this RSS is larger than this one.
+
+81
+00:08:24,850 --> 00:08:29,760
+But the value that it gives here in the summary table is a little bit deceptive.
+

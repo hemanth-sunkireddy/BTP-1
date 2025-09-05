@@ -1,0 +1,588 @@
+1
+00:00:05,129 --> 00:00:10,500
+Hey everyone, in this video we're going to talk about decision tree classifier and their split criteria.
+
+2
+00:00:14,070 --> 00:00:18,789
+So decision tree classifier look exactly like decision tree regressor.
+
+3
+00:00:19,589 --> 00:00:25,250
+This is a representation of the decision tree classifier in the HERT dataset.
+
+4
+00:00:25,449 --> 00:00:31,820
+It's binary class classification, so at the end of the day in the terminal node we'll have
+
+5
+00:00:33,390 --> 00:00:34,369
+a few samples.
+
+6
+00:00:34,630 --> 00:00:40,039
+It seems like it has only one or two samples or just a few at each terminal node.
+
+7
+00:00:40,619 --> 00:00:49,870
+When we don't stop growing tree in the middle, it will just fully grow until it has a pure node, everything pure in the terminal node.
+
+8
+00:00:51,019 --> 00:00:55,489
+Alright, so if we zoom in some first a few nodes, it will look like this.
+
+9
+00:00:56,200 --> 00:01:02,789
+So like Decision Tree Regressor, it will pick a a criteria
+
+10
+00:01:03,429 --> 00:01:11,310
+So which feature to split on and which feature value on that feature to split on.
+
+11
+00:01:11,400 --> 00:01:20,099
+So for example, out of these 13 features, it chose a thal and less than equal to the value of 4.5.
+
+12
+00:01:20,099 --> 00:01:24,209
+It will split whether it's true, satisfy this condition or not.
+
+13
+00:01:24,209 --> 00:01:26,959
+And then it will lead to children rules.
+
+14
+00:01:26,959 --> 00:01:32,170
+So then the next question we can ask is how does decision tree classifier
+
+15
+00:01:33,570 --> 00:01:36,640
+pick this split criteria.
+
+16
+00:01:38,760 --> 00:01:41,170
+So it works very similar to decision tree regressor.
+
+17
+00:01:41,300 --> 00:01:56,620
+So in decision tree regressor, there was some samples in the original boxes and then we picked the criteria such that the splitted box, so true and false, we measure MSC here.
+
+18
+00:01:57,250 --> 00:01:58,490
+It doesn't have to be MSC.
+
+19
+00:01:58,490 --> 00:02:00,200
+It could be RSS or MAE.
+
+20
+00:02:00,670 --> 00:02:04,890
+So MSC of the left box and MSC of the right box.
+
+21
+00:02:05,769 --> 00:02:12,030
+we have different you know choices of how to split the box, the original box.
+
+22
+00:02:12,159 --> 00:02:38,560
+So we'll go through this is feature one, this is feature two, then it will try to split everything in every possible way like this and then measure the resulting left and right, left and right, left and right, and then pick the one, pick one split that actually gave the best result.
+
+23
+00:02:38,560 --> 00:02:42,449
+By best I mean the minimize the total MSC.
+
+24
+00:02:44,030 --> 00:02:57,319
+So, it similarly works that way, except that now the metric that we use to calculate this left box and right box result is Gini instead of MSE.
+
+25
+00:02:57,979 --> 00:03:00,310
+So Gini is a measure of impurity.
+
+26
+00:03:00,969 --> 00:03:13,050
+So decision tree classifier measures the impurity of the left box and then the impurity of the right box and then it will also inspect all the split possibilities like this.
+
+27
+00:03:13,359 --> 00:03:18,519
+every combination and it will pick the one that gives the minimum total impurity.
+
+28
+00:03:20,389 --> 00:03:34,959
+All right, okay, so again the regression decision tree regressor has MSC or RSS, same as RSS, and MAE as a metric that helps the finding split criteria.
+
+29
+00:03:36,479 --> 00:03:38,889
+And for classification, we have three choices.
+
+30
+00:03:38,889 --> 00:03:43,229
+It could be more but you know these three are most popular.
+
+31
+00:03:43,259 --> 00:03:45,539
+So Gini is a measure of impurity.
+
+32
+00:03:46,189 --> 00:03:48,430
+and it looks like this.
+
+33
+00:03:49,049 --> 00:04:05,639
+Actually when you look at the RSS which is a measure of variance of that box, Gini is somewhat similar because when you just think about coin flip problem, this is a variance of the Bernoulli probability distribution function.
+
+34
+00:04:05,639 --> 00:04:15,289
+So Gini somehow it's measuring the variance like RSS does or MSC does, but Gini is a measure of impurity.
+
+35
+00:04:16,250 --> 00:04:20,649
+So I just wanted to mention that they have some similarity.
+
+36
+00:04:21,529 --> 00:04:24,009
+An entropy is a measure of uncertainty.
+
+37
+00:04:24,680 --> 00:04:35,689
+So uncertainty in the information theory means that when there is a packet, we don't know the value of the packet, whether it's a 0 or 1.
+
+38
+00:04:35,939 --> 00:04:41,490
+If we don't know fully, then the uncertainty is maximized, therefore the entropy is maximized.
+
+39
+00:04:41,860 --> 00:04:51,919
+However if we have certain information that maybe 80% of chance that it's a 0 and maybe 20% of chance it's 1, then we have certain
+
+40
+00:04:52,319 --> 00:04:56,879
+information and less uncertainty than 50-50 chance.
+
+41
+00:04:56,879 --> 00:05:03,050
+So the entropy measures that and the formula looks like this.
+
+42
+00:05:03,779 --> 00:05:15,459
+So there is minus sign over here and the information gain is a difference in the entropy of the one parent node and it's a binary split the children node.
+
+43
+00:05:15,500 --> 00:05:24,949
+So some of these two entropies left box and right box or it could have some weight as well if they have different number of samples.
+
+44
+00:05:25,129 --> 00:05:26,750
+So we'll see them in more detail.
+
+45
+00:05:31,150 --> 00:05:40,960
+Alright, so Gini and entropy, they measure the same kind of property, purity or impurity or uncertainty, they are similar concepts.
+
+46
+00:05:41,500 --> 00:05:56,949
+So you can kind of intuitively think about this case, you have some bag and if everything is kind of fully mixed, you have blue marble and red marble kind of mixed 50-50 like this.
+
+47
+00:06:02,480 --> 00:06:26,490
+and our goal is to separate them to everything pure in the two small bags and if everything is perfectly separated we'll have all blues in one bag and all red in the other bag so we have full visibility and
+
+48
+00:06:30,680 --> 00:06:33,920
+we are like 100% sure that which one is which.
+
+49
+00:06:34,660 --> 00:06:55,340
+If they are not separated well enough, then maybe they will have 80% of blue marbles in one bag and 20% of red marble in the same bag and the other one has 80% of red marbles and then 20% of blue marble.
+
+50
+00:06:57,060 --> 00:07:00,700
+And if the separation was bad,
+
+51
+00:07:01,080 --> 00:07:04,670
+then everything will be just 50-50.
+
+52
+00:07:07,200 --> 00:07:08,090
+Something like this.
+
+53
+00:07:11,820 --> 00:07:14,150
+So there is no useful information in this case.
+
+54
+00:07:14,240 --> 00:07:16,430
+We didn't gain any information.
+
+55
+00:07:16,890 --> 00:07:22,360
+Everything is just mixed together so we don't know which bag contains which color.
+
+56
+00:07:23,610 --> 00:07:28,120
+However, there are certain information here.
+
+57
+00:07:28,220 --> 00:07:31,900
+We have some certainty and this is...
+
+58
+00:07:32,420 --> 00:07:35,030
+100% certain that we know which one is which.
+
+59
+00:07:37,990 --> 00:07:50,620
+So this is pure and this is, we can say maximally impure and somewhat impure.
+
+60
+00:07:52,769 --> 00:07:55,540
+And this is uncertain.
+
+61
+00:07:57,870 --> 00:07:58,710
+This is certain.
+
+62
+00:07:59,530 --> 00:08:04,009
+So our goal is to
+
+63
+00:08:05,000 --> 00:08:11,110
+make the node split such that the splitted nodes are as pure as possible.
+
+64
+00:08:11,710 --> 00:08:29,629
+So to do that, we're gonna use Gini and entropy as a metric and the decision tree split algorithm will inspect every possible split along one feature and will also scan every features and will pick the split criteria.
+
+65
+00:08:29,629 --> 00:08:36,879
+Alright, so split criteria using Gini index.
+
+66
+00:08:37,259 --> 00:08:39,450
+So Gini function look like this.
+
+67
+00:08:40,269 --> 00:08:43,419
+So in the binary case, it's symmetric.
+
+68
+00:08:44,190 --> 00:08:55,820
+So we can draw the function like this and it's a maximum and 50-50 mixture and then it's a zero at the pure node.
+
+69
+00:09:00,019 --> 00:09:01,909
+So let's have some example.
+
+70
+00:09:02,029 --> 00:09:04,710
+Let's practice calculating Gini.
+
+71
+00:09:04,710 --> 00:09:07,070
+So what's the Gini of this entire box?
+
+72
+00:09:09,850 --> 00:09:15,670
+Well, as a burr puck, it's a fully mixed five cats and five tigers.
+
+73
+00:09:16,269 --> 00:09:19,830
+So the genie would be one half.
+
+74
+00:09:20,710 --> 00:09:25,710
+So genie for the binary case, one half is the maximum value.
+
+75
+00:09:28,269 --> 00:09:29,450
+We can calculate the two.
+
+76
+00:09:29,450 --> 00:09:35,850
+So in this box, five out of ten sample is a cat.
+
+77
+00:09:35,850 --> 00:09:37,529
+So one half.
+
+78
+00:09:37,800 --> 00:09:40,490
+times 1 minus 1 half is 1 half as well.
+
+79
+00:09:41,019 --> 00:09:52,409
+Plus, when you switch the label as a tiger, the probability of having tiger in this box is 1 half, same as 1 minus 1 half.
+
+80
+00:09:52,970 --> 00:09:55,480
+So altogether it's going to be 1 half.
+
+81
+00:09:56,490 --> 00:09:58,560
+So that's the genio of this entire box.
+
+82
+00:09:59,360 --> 00:10:02,370
+Now, let's say we had some split like this.
+
+83
+00:10:03,360 --> 00:10:05,480
+And what is the genio of this left box?
+
+84
+00:10:06,840 --> 00:10:08,889
+Well, the left box is pure.
+
+85
+00:10:09,029 --> 00:10:10,180
+Everything is cat.
+
+86
+00:10:10,210 --> 00:10:10,769
+So
+
+87
+00:10:11,300 --> 00:10:16,350
+we're gonna have 0, Ginny, in the left box.
+
+88
+00:10:16,910 --> 00:10:32,200
+In the right box, we have a 1 cat out of 6 samples, and the 5 are tigers, so the probability of cat is 1 6, and the probability of tiger is 5 6.
+
+89
+00:10:33,630 --> 00:10:40,720
+So according to this formula, it's symmetric, so 1 6 times 1 minus 1 6 is 5 6.
+
+90
+00:10:41,530 --> 00:11:10,970
+plus 5 6 1 minus of that is 1 6 again so it's going to be 5 18th so that's the genie of the right box all right so let's talk about entropy so entropy is again measure of uncertainty if it's a 50-50 mixture in the binary class it's the most uncertain and
+
+91
+00:11:11,250 --> 00:11:21,570
+This is when we use a natural log, but it's also common to use a base of 2, log2, when we have a binary class classification.
+
+92
+00:11:22,130 --> 00:11:27,270
+Actually, you can use anything like log of base 2 or 10 or natural log.
+
+93
+00:11:28,430 --> 00:11:32,130
+Doesn't matter, but I think the natural log is the most popular choice.
+
+94
+00:11:33,270 --> 00:11:42,400
+But anyway, if we use log base of 2 when the binary class classification, the maximum entropy value becomes 1.
+
+95
+00:11:42,790 --> 00:11:47,290
+but in this case because I used the natural log, it's some weird value here.
+
+96
+00:11:47,680 --> 00:11:58,220
+But anyway, that is the same as that it's the max at 50-50 mixture and it's zero at pure nodes.
+
+97
+00:11:58,220 --> 00:12:04,820
+All right, and information gain is a reduction in entropy.
+
+98
+00:12:05,100 --> 00:12:12,760
+So reduction means the entropy of the original box and minus
+
+99
+00:12:13,830 --> 00:12:18,910
+the summed or total entropy of the split as a result of the split.
+
+100
+00:12:20,530 --> 00:12:21,400
+So let's have a look.
+
+101
+00:12:21,400 --> 00:12:26,750
+So total entropy of unsplited box is 1.
+
+102
+00:12:26,940 --> 00:12:32,790
+When we use the log base 2, everything is like 50-50 so we get entropy value of 1.
+
+103
+00:12:33,450 --> 00:12:36,500
+And let's say we split to this part again.
+
+104
+00:12:37,180 --> 00:12:43,780
+So the left would be 0 because everything is pure as a cat and the right box would be non-zero.
+
+105
+00:12:44,530 --> 00:13:13,030
+again and we use the formula then we get this so 1 6 is the probability of having cat and 5 6 is the probability of having tiger so when we calculate that the entropy of the right box is 0.65 so information gain in this case would be the original entropy which is 1 and then minus the weighted sum of
+
+106
+00:13:14,730 --> 00:13:16,720
+those left box and right boxes.
+
+107
+00:13:18,050 --> 00:13:23,500
+So for left box, so we give the weight as a number of fraction of the sample.
+
+108
+00:13:24,040 --> 00:13:28,710
+So originally there were 10 samples, but then the left box only has a 4.
+
+109
+00:13:29,250 --> 00:13:33,350
+So the fraction or the weight of the left box would be 0.4.
+
+110
+00:13:33,670 --> 00:13:41,320
+And then the entropy of the left box is 0, so times 0 here.
+
+111
+00:13:41,320 --> 00:13:41,640
+Minus...
+
+112
+00:13:44,430 --> 00:14:03,820
+the fraction or weight of the right box is 0.6 and then the entropy of the right box is 0.65. so have this and when you calculate the information gain then we get 0.61. okay as an exercise let's have a look at this example.
+
+113
+00:14:03,820 --> 00:14:11,540
+so you are asked to find the width split among these three choices gives the maximum information gain.
+
+114
+00:14:11,540 --> 00:14:16,590
+so first choice is red split.
+
+115
+00:14:17,860 --> 00:14:19,850
+it will give this split.
+
+116
+00:14:20,470 --> 00:14:27,759
+The second choice would be green split and the third choice would be the blue split.
+
+117
+00:14:28,330 --> 00:14:31,280
+So which one do you think will give the maximum information gain?
+
+118
+00:14:32,250 --> 00:14:35,240
+You can use eyeball or you can calculate it.
+
+119
+00:14:37,759 --> 00:14:51,240
+Alright the answer is red and the hand waving way to explaining is that it's going to give the most number in the pure node in the left box and then also the right box is the most pure
+
+120
+00:14:51,860 --> 00:15:02,560
+So for the red split, left box and right box, the probability of having cat is 1 and the probability of having tiger is 0, so it's very pure.
+
+121
+00:15:03,100 --> 00:15:12,110
+For the right box, the probability of having cat is 1, 6 and the probability of having tiger is 5, 6.
+
+122
+00:15:12,950 --> 00:15:21,450
+For the green split, we had one tiger in the left box and then
+
+123
+00:15:22,520 --> 00:15:44,460
+So it's 1, 0, and then the impure box give not much gain in terms of information because you know 4 out of 9 is tiger and 5 out of 9 is cat.
+
+124
+00:15:45,150 --> 00:15:54,250
+So before the split they were 50-50 so 10 samples 5 cat 5 tigers
+
+125
+00:15:55,100 --> 00:16:02,440
+so it was 5 out of 10, 5 out of 10, so in terms of changes it didn't change much.
+
+126
+00:16:03,780 --> 00:16:08,260
+And then the number of a pure sample is only one here.
+
+127
+00:16:09,230 --> 00:16:21,840
+For the blue, it has a three tigers versus everything else, so in the pure node the probability is like this, but only had the three numbers in the sample.
+
+128
+00:16:22,040 --> 00:16:24,060
+This is 4, this is 1.
+
+129
+00:16:25,200 --> 00:16:33,510
+And as a result, out of 7, 2 are tigers and 5 of them are cats.
+
+130
+00:16:35,150 --> 00:16:38,510
+So when you just eyeball these numbers, what do you think?
+
+131
+00:16:39,610 --> 00:16:52,270
+It seems like the red split gave the most pure result on the pure node and also more pure among these 3 choices.
+
+132
+00:16:53,760 --> 00:16:56,870
+We can be more quantitative and use an entropy formula.
+
+133
+00:16:57,560 --> 00:17:24,590
+So using entropy formula, we can do the red is going to be 1 minus 0.4 times 0 minus 0.6 times minus 1 times 1 6 log 1 6 plus 5 6 times log 5 6.
+
+134
+00:17:24,590 --> 00:17:31,180
+And for green,
+
+135
+00:17:32,400 --> 00:18:00,690
+1 minus 0.1 times 0 minus 0.9 times 1 times 59 log 59 plus 49 times log 49 and for blue minus 0.3 times 0 minus 0.3
+
+136
+00:18:03,020 --> 00:18:14,780
+7 times minus 1 times 2 sevenths log 2 sevenths plus 5 sevenths plus log 5 sevenths.
+
+137
+00:18:15,880 --> 00:18:29,340
+Well so yeah if we calculate that with the calculator we're gonna get a result like so this one gives a reduction of 0.61 and this one gives a reduction of 0.11 only.
+
+138
+00:18:29,340 --> 00:18:34,700
+It's very small reduction and then for blue it's gonna give a reduction of
+
+139
+00:18:35,690 --> 00:18:36,780
+approximately 0.4.
+
+140
+00:18:36,780 --> 00:18:44,070
+So yeah, you can see quantitatively that this one gave the most reduction in entropy.
+
+141
+00:18:44,070 --> 00:18:46,660
+So most information gained too.
+
+142
+00:18:46,660 --> 00:19:01,290
+Alright, so that was it for the practice and as a summary, we talked about different metrics for regression task and classification task in the decision tree split.
+
+143
+00:19:01,290 --> 00:19:05,670
+So for the decision tree regressor, use MSC or RSS.
+
+144
+00:19:07,750 --> 00:19:11,540
+or MAE to choose the split character.
+
+145
+00:19:11,540 --> 00:19:17,730
+And for decision tree classifier, it uses a Gini, Entropy, and Information Gain.
+
+146
+00:19:18,070 --> 00:19:22,200
+And we talked about what their formula is and how to calculate them.
+
+147
+00:19:22,990 --> 00:19:28,260
+Alright, so in the next video, we're going to talk about how to prune the decision tree.
+

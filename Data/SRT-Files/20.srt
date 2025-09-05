@@ -1,0 +1,264 @@
+1
+00:00:05,360 --> 00:00:10,269
+Hello everyone, in this video we're going to talk about ensemble method second part, boosting.
+
+2
+00:00:12,339 --> 00:00:19,550
+Previously we talked about the trees have a problem that they are weak learner and they can overfit very easily.
+
+3
+00:00:20,969 --> 00:00:30,629
+So the first idea we used to address this issue was let's try to ensemble them by introducing diversity.
+
+4
+00:00:31,609 --> 00:00:44,750
+which were trained on different subsets of data, we can have diversified trees and then hopefully the averaging this diversified tree will give better performance than just picking one single tree.
+
+5
+00:00:48,010 --> 00:00:59,789
+On top of that, we also add an idea that we can further de-correlate the trees, so make sure we actually pick the trees that are different from each other so that we can have a true diversification.
+
+6
+00:01:03,299 --> 00:01:05,209
+So the random forest used that idea.
+
+7
+00:01:05,540 --> 00:01:06,689
+How it did that?
+
+8
+00:01:06,689 --> 00:01:19,530
+So not only training the trees in the different subset of data, we also, when we sample the data, we also random sample the features and that was implemented in the random forest.
+
+9
+00:01:23,469 --> 00:01:31,730
+So again, bagging in random forest, bagging random samples of data, which means the row in the table and random forest also.
+
+10
+00:01:31,959 --> 00:01:33,390
+random sample zone features.
+
+11
+00:01:35,689 --> 00:01:41,079
+Therefore, it can further de-correlate the trees and both of bagging classifier and random forest.
+
+12
+00:01:41,079 --> 00:01:50,579
+They are parallel ang-sang-bulling method, which means the training of each tree on different subsets of data, they can be trained at the same time.
+
+13
+00:01:50,579 --> 00:01:56,620
+We also showed that the performance increased dramatically by ang-sang-bulling trees.
+
+14
+00:01:56,620 --> 00:02:01,319
+So, here is the single tree performance and here is the bagging classifier alone.
+
+15
+00:02:01,319 --> 00:02:02,539
+I can make this
+
+16
+00:02:05,369 --> 00:02:12,750
+a huge difference and then on top of that if we further decorate the tree we can gain another performance increase.
+
+17
+00:02:16,299 --> 00:02:25,069
+Okay so we're going to introduce a second ensemble method which is a sequential ensemble whereas previously we talked about parallel ensemble.
+
+18
+00:02:25,689 --> 00:02:28,299
+So this sequential ensemble is called boosting.
+
+19
+00:02:29,429 --> 00:02:35,969
+So boosting also solves the same problem that trees are weak learner and trees overfit but instead of
+
+20
+00:02:36,080 --> 00:02:42,990
+diversifying and averaging those different many trees, we're gonna make single tree a stronger runner.
+
+21
+00:02:43,909 --> 00:02:44,909
+And how do we do that?
+
+22
+00:02:45,650 --> 00:03:00,710
+We're gonna grow a small stump at a time to fit the error from the previous stage and then we're gonna grow another tree in another stage in the next stage to fit the error from the previous stage.
+
+23
+00:03:01,329 --> 00:03:03,280
+So you can think about this analogy.
+
+24
+00:03:03,979 --> 00:03:12,039
+When we have a big problem like this, maybe the first scientist will look at it and quickly solve the problem by this much.
+
+25
+00:03:12,799 --> 00:03:27,349
+leave this problem more, we need a more serious investigation, and the second scientist will ignore all this, but only look at this part, focus on this part, and then solve maybe this much.
+
+26
+00:03:30,039 --> 00:03:41,519
+And then the rest, the third scientist or investigator will look at it and then solve more problems and then reduce the gap of this error gradually.
+
+27
+00:03:42,689 --> 00:03:44,759
+So we can do the same with the small tree.
+
+28
+00:03:45,099 --> 00:03:52,859
+Instead of growing large tree that try to solve this big problem all at once, we're gonna have some small tree that will solve some
+
+29
+00:03:53,329 --> 00:03:55,769
+part of this problem and then leave this error.
+
+30
+00:03:56,549 --> 00:04:01,569
+And the second small tree will only look at this error and try to solve it.
+
+31
+00:04:02,419 --> 00:04:03,869
+Then reduce the gap of error.
+
+32
+00:04:05,199 --> 00:04:08,119
+And third one will even further reduce the gap of the error.
+
+33
+00:04:08,810 --> 00:04:11,389
+So this process is called boosting.
+
+34
+00:04:13,099 --> 00:04:24,089
+And boosting just means that we will make one single tree to a strong learner or performs better or will boost the performance by growing the tree slowly.
+
+35
+00:04:24,490 --> 00:04:25,800
+link or two at a time.
+
+36
+00:04:27,279 --> 00:04:31,409
+So a single decision tree is grown to the maximum depth.
+
+37
+00:04:32,639 --> 00:04:36,129
+So it's large and try to solve the problem all at once.
+
+38
+00:04:36,839 --> 00:04:44,099
+Whereas boosting tree grow very simple and very little one or two depths at a time.
+
+39
+00:04:44,849 --> 00:04:53,939
+And the rest of the error will be fit to another small tree in the second stage and then the rest of error will be fit by another small tree.
+
+40
+00:04:54,420 --> 00:05:00,250
+in the third stage and we continue that and our final model will be some of these small trees.
+
+41
+00:05:03,019 --> 00:05:05,089
+Okay so let's have a look at algorithm.
+
+42
+00:05:05,159 --> 00:05:19,550
+So we're gonna initialize our model to zero that means our model doesn't know anything about our data and let's say our error is as big as the label and then we're gonna iterate for b times.
+
+43
+00:05:20,769 --> 00:05:30,730
+Then we'll try to fit a stump in the stage b to train data so the data x and then the label is now the residual.
+
+44
+00:05:31,159 --> 00:05:36,310
+In the first iteration this residual is the same as y so we try to fit the y first.
+
+45
+00:05:38,129 --> 00:05:48,810
+And then in the first stage since this was 0, we're gonna have our model called our stump times some constant.
+
+46
+00:05:49,229 --> 00:05:50,889
+This constant is less than 1.
+
+47
+00:05:51,359 --> 00:06:00,120
+That means we will add the stump model to our whole model by certain fraction.
+
+48
+00:06:00,729 --> 00:06:07,799
+And the reason why is that we want to consider our new model kind of conservatively rather than adding all of them together.
+
+49
+00:06:08,919 --> 00:06:09,310
+Okay?
+
+50
+00:06:10,699 --> 00:06:12,919
+And this helps our learning slow.
+
+51
+00:06:13,129 --> 00:06:14,889
+So it's something similar to learning rate.
+
+52
+00:06:16,199 --> 00:06:28,969
+We're gonna update the residual in the current stage that our residual is also from the previous residual minus the prediction, the shrinked prediction from our current stump model.
+
+53
+00:06:31,169 --> 00:06:38,339
+And then after we repeat the times, the final output model will be the sum of this shrinked
+
+54
+00:06:38,600 --> 00:06:39,560
+stump models.
+
+55
+00:06:41,100 --> 00:06:45,360
+All right, so graphically it looks like this.
+
+56
+00:06:45,610 --> 00:07:11,029
+So here's the data and then it feeds to our first stump model and then the stump model will predict the prediction and in first stage it will be compared against the label and then its difference that we define as here, we will get the residual from the first stage and from the second stage
+
+57
+00:07:11,310 --> 00:07:14,750
+we build another stump model and try to fit the data.
+
+58
+00:07:15,520 --> 00:07:29,879
+It will predict the residual predicted and we're gonna also take this residual from the first stage as a label and then we'll get the error to produce the residual from the second stage.
+
+59
+00:07:30,660 --> 00:07:41,680
+And as you can guess, I will continue that with the third stump model to the data and then I'll try to predict this R2.
+
+60
+00:07:42,379 --> 00:07:48,060
+and we're gonna have another residual from the third stage and so on.
+
+61
+00:07:53,819 --> 00:08:11,230
+So we just showed the generic boosting algorithm which iteratively fit the small model to residuals from the previous stage and then we add up all these small models with some shrinkage to have the final model.
+
+62
+00:08:13,850 --> 00:08:21,689
+Okay, so that boosting algorithm was a generic form and we're gonna introduce two different boosting algorithms that are most popular.
+
+63
+00:08:22,920 --> 00:08:33,300
+For example, AdaBoost uses exponential loss instead of just residual, and then AdaBoost also uses different weighting to the data points.
+
+64
+00:08:34,730 --> 00:08:43,320
+And it can achieve better performance by weighting more to the data points, data samples that were previously misclassified.
+
+65
+00:08:44,980 --> 00:08:55,060
+Another popular method is called GradientBoost, and GradientBoost method tries to fit the gradient of residual instead of residual itself.
+
+66
+00:08:55,519 --> 00:08:58,170
+So we're going to talk about this method in the next videos.
+

@@ -1,0 +1,536 @@
+1
+00:00:05,129 --> 00:00:06,320
+Okay, hello everyone.
+
+2
+00:00:06,320 --> 00:00:11,480
+In this video, we're going to talk about sklearn library usage for logistic regression.
+
+3
+00:00:13,009 --> 00:00:17,170
+Okay, so logistic regression module is inside of sklearn.linear model.
+
+4
+00:00:17,170 --> 00:00:21,730
+And it has a bunch of options here.
+
+5
+00:00:21,730 --> 00:00:27,059
+And interestingly, it already has regularization terms.
+
+6
+00:00:27,059 --> 00:00:29,890
+And they actually depend on the type of the solar.
+
+7
+00:00:29,890 --> 00:00:32,079
+So by default, solar is LBFGS.
+
+8
+00:00:32,119 --> 00:00:36,210
+And then in that case, by default, it uses L2 regularization.
+
+9
+00:00:37,970 --> 00:01:14,300
+and it already does the fit intercept equals true which is better to have in linear model and you don't have to worry about a lot of things here but you might want to change class weight equals balanced if you have an imbalance labels then it will automatically weight your class labels so you have a better a slightly better performance and in case you have a more than binary class it's going to automatically apply some multi-class and usually most of time it will apply the softmax which is multinomial
+
+10
+00:01:16,460 --> 00:01:19,579
+And then, so there are several solver types.
+
+11
+00:01:19,820 --> 00:01:24,980
+Usually you don't have to worry about it, but if you want to try out different solvers, you can try.
+
+12
+00:01:26,010 --> 00:01:31,070
+All of them uses some sophisticated second derivative or similar method.
+
+13
+00:01:32,540 --> 00:01:42,490
+So for njobs, if you have a multiple core CPU, then you can utilize it so you can have less computation time with the parallelization.
+
+14
+00:01:43,099 --> 00:01:47,969
+If you do the njobs equals minus one, it's going to use all the CPU cores in your computer.
+
+15
+00:01:49,769 --> 00:01:56,150
+Alright, that was how the module looks like and then let's have a look at how to use it.
+
+16
+00:01:56,310 --> 00:01:57,950
+So basic usage is like this.
+
+17
+00:01:58,310 --> 00:02:09,909
+So you can just call the module and you can throw in your preferred options and then you can do the .fit and inside of this fit function, you're gonna throw your data.
+
+18
+00:02:09,909 --> 00:02:14,800
+So it's features for the training and this y is the labels for the training.
+
+19
+00:02:15,409 --> 00:02:18,490
+And you can call this object as model or some other name.
+
+20
+00:02:19,329 --> 00:02:27,280
+And from this model object, after this fitting has been done, it has some number of useful stuff inside.
+
+21
+00:02:27,519 --> 00:02:35,699
+So for example, model.coef underscore will give us the coefficient values for all the features in this feature matrix.
+
+22
+00:02:35,699 --> 00:02:43,179
+And intercept is a separate, so you will have to do model.intercept underscore, then it's going to give the value for intercept.
+
+23
+00:02:43,179 --> 00:02:48,000
+The model.predict parentheses and throw your data.
+
+24
+00:02:49,340 --> 00:03:20,629
+such as test data or train data or any data that you want to get the prediction out then it's going to give the binarized prediction so Y prediction another good comment is predict proba and you can throw in your data features then it's going to produce the probability so row output from sigmoid you can produce you can use that and plot this kind of graph or you can
+
+25
+00:03:21,949 --> 00:03:23,429
+inspect the probability.
+
+26
+00:03:25,519 --> 00:03:29,339
+Alright, so let's further talk about some example.
+
+27
+00:03:29,619 --> 00:03:45,809
+So in this example, I'm going to split my original data x and y into train chunk and then test chunk, and that's done by this very popular, very popular function called train test split.
+
+28
+00:03:45,809 --> 00:03:52,529
+It's inside of sklearn model selection, and be careful of these detailed names.
+
+29
+00:03:52,780 --> 00:04:03,229
+because sometimes they may upgrade and they may change the names as they change the directory of their you know sub libraries and things like that.
+
+30
+00:04:03,339 --> 00:04:05,659
+But I think for now it's valid.
+
+31
+00:04:06,500 --> 00:04:07,589
+So we'll use that.
+
+32
+00:04:08,530 --> 00:04:13,620
+So we'll call the LogisticRegressionModule and you can name it differently if it's too long.
+
+33
+00:04:13,969 --> 00:04:18,889
+So I named it as a LR and then I'm gonna throw my preferred options.
+
+34
+00:04:19,839 --> 00:04:22,769
+There's no reason why I chose it but I just chose it.
+
+35
+00:04:22,930 --> 00:04:23,730
+for example.
+
+36
+00:04:24,009 --> 00:04:35,069
+And then I'm gonna fit my data, x train and y train, and if your y train label matrix shape is not correct, it's going to complain.
+
+37
+00:04:35,100 --> 00:04:36,020
+Use label.
+
+38
+00:04:36,180 --> 00:04:38,300
+You can use that in that case.
+
+39
+00:04:39,199 --> 00:04:52,740
+And I'm gonna call my object clf this time, and then if you want to get an accuracy, so this score uses accuracy by default, you can do
+
+40
+00:04:53,060 --> 00:04:57,530
+fitted model.score and throw your test data and it's going to give some result.
+
+41
+00:04:57,710 --> 00:05:07,889
+So for this example the result was accuracy of 0.96 which is pretty good.
+
+42
+00:05:08,009 --> 00:05:13,639
+If you get rid of this option it might be slightly lower but yeah that's your choice.
+
+43
+00:05:13,639 --> 00:05:19,920
+We can use other kinds of metric and they are all in this sklearn.metrics module.
+
+44
+00:05:20,019 --> 00:05:22,120
+So for example
+
+45
+00:05:24,540 --> 00:05:31,620
+I can predict Yp and then most of them requires Ytrue and then Yprediction.
+
+46
+00:05:31,620 --> 00:05:32,950
+So I'm gonna throw in there.
+
+47
+00:05:34,130 --> 00:05:37,990
+So accuracy score function requires Ytrue and then Yprediction.
+
+48
+00:05:37,990 --> 00:05:39,390
+So I throw that order.
+
+49
+00:05:40,170 --> 00:05:43,320
+Recall score as well and precision and F1 score.
+
+50
+00:05:43,890 --> 00:05:46,280
+As a result, it gives these numbers.
+
+51
+00:05:46,790 --> 00:05:47,190
+Alright.
+
+52
+00:05:48,550 --> 00:05:53,070
+And then I can do the confusion matrix using confusion matrix function.
+
+53
+00:05:53,140 --> 00:05:55,860
+And again it needs Ytrue value and Yprediction.
+
+54
+00:05:56,220 --> 00:05:59,120
+prediction value and it also requires labels.
+
+55
+00:05:59,930 --> 00:06:07,920
+As we mentioned in the previous lecture, this is going to be y prediction and this is going to be the label.
+
+56
+00:06:10,630 --> 00:06:15,770
+Okay so more examples.
+
+57
+00:06:15,840 --> 00:06:17,990
+We can also draw precision recall curve.
+
+58
+00:06:18,080 --> 00:06:22,560
+So previously we talked about ROC curves and precision recall curve is similar.
+
+59
+00:06:22,560 --> 00:06:28,130
+So ROC curve had true positive rate versus false positive rate.
+
+60
+00:06:29,200 --> 00:06:36,720
+precision recall curve is precision versus recall and has this shape.
+
+61
+00:06:37,670 --> 00:06:50,620
+So ROC curve it was better when it's close to the left top corner and precision recall curve is better when it's close to the right top corner because we want to high precision and high recall as well.
+
+62
+00:06:52,540 --> 00:06:58,330
+So using precision recall curve function it also requires true value and
+
+63
+00:06:58,560 --> 00:07:03,760
+prediction probability actually rather than label, binarized label.
+
+64
+00:07:03,760 --> 00:07:19,110
+So I'm using this predict proba and then the column one actually gives the probability of being label being one so I'm gonna use that and I can just further draw this curve.
+
+65
+00:07:21,990 --> 00:07:24,420
+So ROC curve also works as a similar.
+
+66
+00:07:26,460 --> 00:07:29,970
+So I use ROC curve and then it's going to output
+
+67
+00:07:30,710 --> 00:07:44,569
+FPR, TPR, and the threshold that was used to calculate these kind of spots and then the result looks like this and I've included the random guess and AUC score as well.
+
+68
+00:07:44,600 --> 00:07:49,980
+The AUC score can be also automatically calculated using this function, out of series score.
+
+69
+00:07:50,689 --> 00:07:55,019
+Again, it needs a true label and then the prediction probability.
+
+70
+00:07:56,500 --> 00:07:57,590
+So it's very handy.
+
+71
+00:08:00,590 --> 00:08:05,660
+So we talked about some barosymmetrics and how to get the coefficient values from VTID model.
+
+72
+00:08:05,960 --> 00:08:07,950
+But how about statistics?
+
+73
+00:08:10,040 --> 00:08:15,190
+Unfortunately, the logistic regression module in sklearn doesn't give statistics right away.
+
+74
+00:08:15,720 --> 00:08:16,980
+So we have two choices.
+
+75
+00:08:17,440 --> 00:08:23,010
+One is using the stats model library as we did before as in linear regression.
+
+76
+00:08:23,900 --> 00:08:29,470
+So instead of linear regression, we can use dot logit module and then throw our data.
+
+77
+00:08:30,170 --> 00:08:37,180
+So be careful that their order of feature and label is different here.
+
+78
+00:08:37,180 --> 00:08:39,889
+So they take the label first and then the features.
+
+79
+00:08:41,350 --> 00:08:47,120
+and then similarly we can do the dot fit here and it's gonna give summary table.
+
+80
+00:08:48,960 --> 00:09:07,000
+So different from linear regression that gave a lot of other metric like r squared or just r squared and many other metrics such as f statistics but here they don't have that perhaps because we don't need that in the nonlinear case.
+
+81
+00:09:08,179 --> 00:09:16,519
+However it does give the coefficient value and then the standard error for that and then g test instead of t test but they are kind of the same.
+
+82
+00:09:17,230 --> 00:09:22,780
+So here we can see that this p value is very small so this coefficient value is significant.
+
+83
+00:09:26,180 --> 00:09:30,140
+Another way to do it using sklearn library is bootstrapping.
+
+84
+00:09:30,410 --> 00:09:32,830
+So bootstrapping is like this.
+
+85
+00:09:33,070 --> 00:09:39,129
+As a reminder, this is the original sample and then we can resample it multiple times like this.
+
+86
+00:09:42,050 --> 00:09:46,340
+We can resample with the replacement so you might see some duplicate data.
+
+87
+00:09:47,210 --> 00:10:17,700
+samples and then we can fit the model so logistic model here here separately and then get the coefficient values and we can do the statistics conveniently there is a module exist called the bagging classifier which is essentially a wrapper so this is class inside of skl and angsangbo module and then takes the base estimator so it can be any estimator so any kinds of model not only the logistic regression but you can do
+
+88
+00:10:18,240 --> 00:10:21,690
+linear regression or you can do tree models and others.
+
+89
+00:10:21,690 --> 00:10:28,740
+You can throw in here and then number of estimators means that how many times we will bootstrap and then fit the model.
+
+90
+00:10:28,950 --> 00:10:35,309
+And it says the bootstrap is true so it's going to use bootstrapping.
+
+91
+00:10:36,059 --> 00:10:38,080
+It can do the bootstrap features.
+
+92
+00:10:38,139 --> 00:10:42,289
+That means it can also select the features randomly but we don't need that here.
+
+93
+00:10:42,879 --> 00:10:51,129
+Ob score means the out of bag so it can set aside some of the bootstrap samples and then it can use it as a validation.
+
+94
+00:10:52,020 --> 00:10:52,710
+purposes.
+
+95
+00:10:53,780 --> 00:11:00,800
+And jobs we can do also a minus one then it will utilize all the computing resources that we have.
+
+96
+00:11:02,440 --> 00:11:07,800
+Alright so using that we can use as this.
+
+97
+00:11:08,700 --> 00:11:22,009
+So bagging classifier is a wrapper and inside the wrapper we're gonna throw our base estimator which is a logistic regression model and in the logistic regression model I'm gonna use weight equals balanced.
+
+98
+00:11:23,050 --> 00:11:52,889
+because it will give a slightly better result and then number of estimators is a thousand and then for this wrapper I'm gonna do the dot fit and throw my data here and as a result I call this object resulting object as a CLF and then I can pull some useful things from it so for example dot estimators underscore will give all the fitted model objects inside of
+
+99
+00:11:53,480 --> 00:12:00,570
+list and since I asked for number of estimators equals thousand, it's going to have a thousand models inside.
+
+100
+00:12:02,540 --> 00:12:06,019
+And then I can pull some of the model's coefficients.
+
+101
+00:12:06,019 --> 00:12:10,649
+So for example my first model coefficient values are like this.
+
+102
+00:12:10,800 --> 00:12:13,250
+So I use the two features here.
+
+103
+00:12:14,460 --> 00:12:18,540
+So it's going to give two coefficient values and then one intercept value.
+
+104
+00:12:21,620 --> 00:12:24,180
+And I can pull all of this from this list.
+
+105
+00:12:25,170 --> 00:12:26,490
+and then do the statistics.
+
+106
+00:12:26,600 --> 00:12:42,460
+So I draw histogram first to see how they look like and because n is reasonably big they look like normal distributions skewed sometimes but roughly they have some mean and some width.
+
+107
+00:12:43,750 --> 00:12:49,390
+Alright so what do I do with this all thousand values for each coefficients?
+
+108
+00:12:49,510 --> 00:12:50,580
+I can do the t-test.
+
+109
+00:12:50,580 --> 00:12:55,800
+So there is a convenient Python package here scipy stats.
+
+110
+00:12:56,870 --> 00:12:58,659
+ttest one sample.
+
+111
+00:12:59,060 --> 00:13:01,149
+We are doing ttest for the p values.
+
+112
+00:13:02,560 --> 00:13:04,060
+So the usage is like this.
+
+113
+00:13:04,330 --> 00:13:06,620
+So I put the list of coefficients.
+
+114
+00:13:06,950 --> 00:13:19,610
+So I'm gonna put one kind of coefficient at a time and then it can be in a for loop by the way and then this value is the mean that it wants to compare with.
+
+115
+00:13:19,690 --> 00:13:27,909
+So for the hypothesis testing, the null hypothesis says that my coefficient value is zero.
+
+116
+00:13:28,990 --> 00:13:30,720
+Therefore, I can put 0 here.
+
+117
+00:13:31,440 --> 00:13:37,019
+The alternative says that my coefficient is not 0.
+
+118
+00:13:38,240 --> 00:13:44,240
+And to test that, we're gonna pull out the p-value and if p-value is smaller than certain threshold, I'm gonna choose 5% error.
+
+119
+00:13:44,509 --> 00:13:52,019
+That means if p-value is smaller than 0.025, because t-test or g-test, they have two wings.
+
+120
+00:13:52,019 --> 00:13:55,929
+So if p-value is smaller than this value.
+
+121
+00:13:59,139 --> 00:14:03,509
+That means my coefficient value is significant, right?
+
+122
+00:14:03,620 --> 00:14:06,879
+So the result I can pull out and print.
+
+123
+00:14:07,350 --> 00:14:08,889
+It has two components inside.
+
+124
+00:14:09,149 --> 00:14:10,940
+The t-statistic value and then the p-value.
+
+125
+00:14:10,940 --> 00:14:15,480
+And I can pull each of them by just doing dot and their name.
+
+126
+00:14:15,480 --> 00:14:21,279
+So I just pulled t-statistic value for example, but you can pull the p-value as well.
+
+127
+00:14:21,279 --> 00:14:24,480
+Furthermore you can console this documentation.
+
+128
+00:14:24,480 --> 00:14:28,110
+So as you can see,
+
+129
+00:14:30,169 --> 00:14:32,609
+All coefficients are very significant.
+
+130
+00:14:32,799 --> 00:14:37,579
+Few hundreds t values away from the zero and p values are all zeros.
+
+131
+00:14:37,639 --> 00:14:39,870
+So all of them are significant.
+
+132
+00:14:41,089 --> 00:14:52,909
+And in this video we talked about how to use logistic regression module from the sklearn and then we talked about how to use the various metrics from sklearn metrics module.
+
+133
+00:14:53,309 --> 00:14:57,759
+We talked about also how to do the bootstrapping using the bootstrapping wrapper.
+
+134
+00:14:57,759 --> 00:14:57,849
+you
+

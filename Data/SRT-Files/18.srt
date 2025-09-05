@@ -1,0 +1,288 @@
+1
+00:00:05,150 --> 00:00:08,759
+Hey everyone, in this video we're going to talk about how to prune trees.
+
+2
+00:00:10,009 --> 00:00:16,079
+So last time we talked about some ways to prevent overfitting in decision trees.
+
+3
+00:00:16,410 --> 00:00:21,890
+Decision trees are very easy to overfit, so to mitigate we talked about all the stopping last time.
+
+4
+00:00:22,379 --> 00:00:27,679
+So we talked about number of hyper parameters that can be used for stopping growing trees early.
+
+5
+00:00:27,679 --> 00:00:30,710
+So for example we can set the
+
+6
+00:00:30,960 --> 00:00:32,520
+maximum depth of the tree.
+
+7
+00:00:32,859 --> 00:00:36,299
+So after that certain depth, the tree stops growing.
+
+8
+00:00:37,030 --> 00:00:41,689
+And another example was set the minimum sample leaves.
+
+9
+00:00:41,960 --> 00:00:49,850
+That means we set some threshold such that the number of samples need to be in the node in order to split further.
+
+10
+00:00:51,460 --> 00:00:53,760
+Another strategy was the information gain.
+
+11
+00:00:53,900 --> 00:01:02,070
+So we look at the information gain and if the gain is not enough by splitting the node, then we stop splitting there.
+
+12
+00:01:03,950 --> 00:01:13,520
+So this strategy can be effective for preventing overfitting, but it doesn't guarantee that the performance of the tree will be better.
+
+13
+00:01:15,520 --> 00:01:30,510
+So the issue is that we can have some good split after the tree stops growing, or maybe we locally look at some node and stop splitting from that node because maybe we saw the information gain wasn't enough.
+
+14
+00:01:30,890 --> 00:01:35,819
+However, further split can have some huge reduction in impurities, for example.
+
+15
+00:01:36,159 --> 00:01:39,750
+So we never know what's going to happen after a certain point.
+
+16
+00:01:41,090 --> 00:01:58,770
+So another idea that we can try is maybe we can let the tree grow fully and then prune back because it's a hind site we can make sure the prune tree is good enough both in performance and overfitting.
+
+17
+00:02:01,780 --> 00:02:03,790
+Alright so how are we gonna do that?
+
+18
+00:02:04,030 --> 00:02:14,220
+We're gonna use a algorithm called the minimal cost complexity pruning and this feature is implemented since two versions ago in the SQLon library.
+
+19
+00:02:16,810 --> 00:02:18,039
+So here is a big tree.
+
+20
+00:02:18,039 --> 00:02:22,230
+We grow the tree fully and we will call it T0.
+
+21
+00:02:22,920 --> 00:02:31,939
+And then a certain point, maybe pick this point that this is node T and the impurity can be measured as RT.
+
+22
+00:02:32,610 --> 00:02:44,780
+So impurity can be you know, gene index or entropy for classification task, but it could be something else like RSS or
+
+23
+00:02:45,260 --> 00:02:48,800
+mean-scaled error if it's a regression.
+
+24
+00:02:48,800 --> 00:02:54,520
+So RT really means that some error measure of the node before the splitting.
+
+25
+00:02:55,900 --> 00:03:08,050
+And then we can add some additional penalty alpha t which term is a measure of complexity by splitting further.
+
+26
+00:03:08,050 --> 00:03:10,870
+So this alpha t is a measure of complexity.
+
+27
+00:03:10,870 --> 00:03:20,909
+It's proportional to a complexity parameter and also proportional to the number of terminal nodes from that node t. So we define a sub-tree.
+
+28
+00:03:22,269 --> 00:03:36,579
+everything below this node T, and we count the number of terminal nodes, in this case 3, and the bigger the subtree, that means we penalize more, that means we add more term into our error term.
+
+29
+00:03:37,239 --> 00:03:43,379
+So effectively the error term is larger when we add this penalization term, or regularization term.
+
+30
+00:03:43,549 --> 00:03:46,719
+And you can check more details in these documents.
+
+31
+00:03:46,719 --> 00:03:54,560
+Okay, so we talked about that this alpha is complexity parameter, and this size T is
+
+32
+00:03:55,000 --> 00:03:57,269
+number of leaf nodes or terminal nodes in the sub-tree.
+
+33
+00:03:57,269 --> 00:04:07,159
+And this is again gray area is a sub-tree from that node T. So let's say this is node T and these are the leaf nodes.
+
+34
+00:04:07,159 --> 00:04:17,139
+And as you might guess, the impurity at the node T before the split is larger than the impurity of the sub-tree.
+
+35
+00:04:17,139 --> 00:04:19,759
+Otherwise, it won't split, right?
+
+36
+00:04:19,759 --> 00:04:24,689
+So this is generally larger than the impurity of the sub-tree.
+
+37
+00:04:25,790 --> 00:04:28,500
+So how do we calculate the impurity of subtree?
+
+38
+00:04:28,529 --> 00:04:33,560
+It's just a sum of all the impurities in the leaf node of that subtree.
+
+39
+00:04:34,550 --> 00:04:34,860
+Alright?
+
+40
+00:04:35,889 --> 00:04:41,579
+So, so far these were the pure impurities at the node T and the subtree.
+
+41
+00:04:41,930 --> 00:04:45,689
+The sum of the impurities into the leaf nodes.
+
+42
+00:04:46,199 --> 00:04:54,339
+Then now let's think about what happens if we add this complexity term or regularization term.
+
+43
+00:04:54,339 --> 00:04:57,990
+So each case we can add this regularization term.
+
+44
+00:04:57,990 --> 00:05:02,659
+So for node T, we can say the effective error at the node T.
+
+45
+00:05:03,289 --> 00:05:18,420
+is its plane impurity plus the complexity term, but remember it was before the split, so our complexity term, the number of terminal node is just one here, so we're gonna just add alpha here.
+
+46
+00:05:19,669 --> 00:05:22,240
+And let's think about the subtree hole itself.
+
+47
+00:05:22,779 --> 00:05:34,889
+So subtree, the effective error of the subtree is going to be the impurity of the subtree, which again is a sum of all the impurities at the terminal nodes.
+
+48
+00:05:35,699 --> 00:05:49,079
+plus the complexity parameter alpha times the complexity of the tree, of that subtree, which is number of leaf nodes, in this case, three.
+
+49
+00:05:49,639 --> 00:05:53,689
+So that is the effective error of that subtree.
+
+50
+00:05:54,399 --> 00:06:04,459
+And at certain point, if we pick the alpha carefully here, then we may be able to set these two numbers to be equal.
+
+51
+00:06:04,879 --> 00:06:12,490
+So error of this node before split and error of the entire subtree below that tree, below that node.
+
+52
+00:06:13,889 --> 00:06:21,090
+So the alpha that makes this possible is called alpha effective.
+
+53
+00:06:21,840 --> 00:06:30,590
+So this alpha effective is actually a number that will set the threshold when we can split further.
+
+54
+00:06:31,790 --> 00:06:35,699
+And if we do the algebra using this formula, then we get this formula.
+
+55
+00:06:36,660 --> 00:06:37,500
+Okay so great.
+
+56
+00:06:37,500 --> 00:06:43,460
+So we can define a threshold at the node T that tells whether we should split or not.
+
+57
+00:06:44,220 --> 00:06:46,820
+Okay, so with that, how do we do the pruning?
+
+58
+00:06:47,660 --> 00:06:52,960
+So we can calculate all alpha effective for intermediate nodes.
+
+59
+00:06:53,140 --> 00:07:05,960
+So alpha effective here, here, and every intermediate node except terminal node will have its own alpha effective and their numbers can be different.
+
+60
+00:07:05,960 --> 00:07:14,890
+And we have that list of that alpha effective for all the intermediate nodes and then we pick the one.
+
+61
+00:07:16,470 --> 00:07:19,230
+that's smallest and then remove it.
+
+62
+00:07:19,870 --> 00:07:24,710
+And we can iteratively remove the smallest alpha effective.
+
+63
+00:07:25,830 --> 00:07:38,870
+So for example, if this node had the smallest alpha effective among this all other intermediate nodes, then we can remove this node as well as its subtree, like that.
+
+64
+00:07:39,840 --> 00:07:46,290
+And let's say this one was the next, then we get rid of that, get rid of this.
+
+65
+00:07:48,500 --> 00:07:52,970
+and we repeat until we meet some criteria.
+
+66
+00:07:53,230 --> 00:07:54,600
+So when do we stop the pruning?
+
+67
+00:07:55,320 --> 00:08:08,020
+We set some threshold called alpha CCP or CCP alpha such that we stop pruning when all of the alpha effectives are bigger than this number.
+
+68
+00:08:08,790 --> 00:08:13,680
+That means the link strength is strong enough that we don't need to prune anymore.
+
+69
+00:08:14,890 --> 00:08:19,740
+And again this threshold value is called a CCP alpha in the SQL library.
+
+70
+00:08:20,770 --> 00:08:25,660
+So again, this alpha effective is a measure of strength of that link.
+
+71
+00:08:26,210 --> 00:08:34,460
+If the alpha effective is bigger, that means the split at that node was worth, so we don't prune that link.
+
+72
+00:08:34,789 --> 00:08:42,220
+If the alpha effective is smaller than certain threshold, that means it was not worth splitting, so we just prune that branch.
+

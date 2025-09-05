@@ -1,0 +1,376 @@
+1
+00:00:05,629 --> 00:00:06,049
+All right.
+
+2
+00:00:06,339 --> 00:00:07,049
+Hey everyone.
+
+3
+00:00:07,049 --> 00:00:09,449
+In this video, we're going to talk about decision trees.
+
+4
+00:00:12,050 --> 00:00:25,690
+So, so far we talked about some examples of parametric models such as linear regression and logistic regression, which they have parameters or coefficients inside, and we used different metrics to optimize those.
+
+5
+00:00:26,170 --> 00:00:32,219
+And then we had the KNN for example of non-parametric model, which does not have parameter inside.
+
+6
+00:00:32,219 --> 00:00:33,929
+However, we use this metric.
+
+7
+00:00:35,140 --> 00:00:36,140
+to make a decision.
+
+8
+00:00:36,929 --> 00:00:42,210
+And decision tree is another non-parametric method which is a little bit more complex than KNN.
+
+9
+00:00:42,210 --> 00:00:44,700
+So let's have a look.
+
+10
+00:00:44,700 --> 00:00:46,929
+So what is a decision tree?
+
+11
+00:00:46,929 --> 00:00:48,549
+Let's take an example.
+
+12
+00:00:48,549 --> 00:00:55,950
+These are the photos of two different kinds of mushroom and one of them is edible and the other one is deadly poisonous.
+
+13
+00:00:55,950 --> 00:00:58,439
+So which one do you think is edible?
+
+14
+00:00:58,439 --> 00:01:04,400
+It is difficult to tell because they look very similar.
+
+15
+00:01:05,749 --> 00:01:10,419
+And in fact, the upper one is edible and the lower one is called a death cat.
+
+16
+00:01:12,929 --> 00:01:14,759
+The decision tree may look like this.
+
+17
+00:01:15,929 --> 00:01:24,789
+Let's say we have different samples of mushroom data and then from this first node it's asking some criteria whether it's large or not.
+
+18
+00:01:25,299 --> 00:01:31,549
+So let's say this one is large and then classify to large equals yes.
+
+19
+00:01:31,839 --> 00:01:35,339
+This one as well and these two
+
+20
+00:01:36,099 --> 00:01:38,799
+are not large so we'll arrive to this node.
+
+21
+00:01:38,980 --> 00:01:41,849
+Let's say we call this node 2 and this node 3.
+
+22
+00:01:42,739 --> 00:01:50,090
+Alright from the node 2 there is another criteria or ask questions whether it's yellow or not.
+
+23
+00:01:50,840 --> 00:01:59,719
+So this one is not yellow so end up the edible and this one is yellow so therefore it's poisonous.
+
+24
+00:01:59,719 --> 00:02:05,599
+From the node 3 both of them are spotted so we'll go to
+
+25
+00:02:06,189 --> 00:02:10,159
+node4 asking whether they have fall smell or not.
+
+26
+00:02:10,159 --> 00:02:18,949
+Let's say this one had a fall smell therefore it's poisonous and this one did not so therefore it is edible.
+
+27
+00:02:19,530 --> 00:02:22,050
+So decision tree works like this.
+
+28
+00:02:22,050 --> 00:02:27,670
+It splits the samples from each node depending on their criteria.
+
+29
+00:02:27,670 --> 00:02:33,230
+Let's talk about some terminology here.
+
+30
+00:02:33,330 --> 00:02:39,340
+So node at the top is called the root node and contains all the samples to begin with.
+
+31
+00:02:41,740 --> 00:02:55,360
+And then as the samples travel through these different node splits, when it arrives at the terminal nodes that doesn't split anymore, those nodes are called the leaf nodes and they are highlighted as green here.
+
+32
+00:02:56,840 --> 00:03:06,840
+And all other nodes between, they're called intermediate nodes and including root node, they also have decision criteria.
+
+33
+00:03:06,930 --> 00:03:08,270
+Therefore they are decision nodes.
+
+34
+00:03:10,340 --> 00:03:12,870
+So how the model learns to make a decision?
+
+35
+00:03:13,110 --> 00:03:18,050
+So as we mentioned, linear regression minimizes the MSE to learn to
+
+36
+00:03:18,549 --> 00:03:21,689
+make a decision by optimizing their parameter values.
+
+37
+00:03:22,599 --> 00:03:27,709
+Same goes for logistic regression except that the criteria is now cross entropy.
+
+38
+00:03:29,030 --> 00:03:35,169
+KNN has no parameters, therefore no optimization, however uses a distance metric to make a decision.
+
+39
+00:03:36,199 --> 00:03:47,099
+Decision tree similarly does not have parameters, however uses other metrics such as MSA for regression task and entropy or Gini for classification task.
+
+40
+00:03:47,870 --> 00:03:50,759
+And they split nodes as we've seen before.
+
+41
+00:03:52,809 --> 00:03:55,519
+So decision tree regressor works like this.
+
+42
+00:03:56,379 --> 00:04:06,269
+So the goal is to split the samples into two boxes such that the MSA is minimized as a result of this split.
+
+43
+00:04:07,739 --> 00:04:15,169
+So let's say I have different options to split among these different features.
+
+44
+00:04:15,569 --> 00:04:19,719
+Let's say I have data that has two features only and six data points.
+
+45
+00:04:20,339 --> 00:04:21,379
+And then I want to
+
+46
+00:04:22,079 --> 00:04:30,999
+split this into two boxes and I don't know how yet that will minimize the total sum of MSE.
+
+47
+00:04:31,969 --> 00:04:40,509
+So I have a choice of splitting along x1 or I have a choice of splitting along x2.
+
+48
+00:04:41,579 --> 00:04:51,919
+So another choice that we should make is that okay let's say I chose x2 to split then which value of x2 should I split?
+
+49
+00:04:52,399 --> 00:04:57,739
+Should I split here or here, here or here?
+
+50
+00:04:59,369 --> 00:05:06,179
+So these all decisions will be made by looking at the MSC of each split.
+
+51
+00:05:09,189 --> 00:05:13,989
+So again, we have different choices for making splits along X1.
+
+52
+00:05:14,109 --> 00:05:26,749
+For example, I can split this way and maybe left and right and measure the MSC and let's say this split criteria was A, then I can
+
+53
+00:05:27,279 --> 00:05:56,869
+see if split by this split criteria and measure the MSC here and then sum them up and this total MSC I record it and then now I'm gonna move different split criteria so let's say this is called B then X1 is less than or equal to B
+
+54
+00:05:57,319 --> 00:06:06,739
+And then I'm gonna measure this MSE for left and right boxes and then record the total MSE and I keep this procedure.
+
+55
+00:06:07,379 --> 00:06:18,659
+Let's say this one is C, D, E. Then I have five different split criteria along X1 feature.
+
+56
+00:06:21,099 --> 00:06:23,089
+Then I also record this MSE.
+
+57
+00:06:23,799 --> 00:06:27,559
+So that's for X1 and I can do the same for
+
+58
+00:06:27,969 --> 00:06:40,769
+x2 so again it also have five different split criteria and then we can call it like big A, big B, C, D, something like that along the feature x2.
+
+59
+00:06:42,269 --> 00:06:55,349
+So as a result we have ten different values for MSC as a result of ten different split options and what we want to do is to inspect this MSC values and then pick the one that makes the minimize MSC.
+
+60
+00:06:56,039 --> 00:06:58,279
+So let's say this split criterion
+
+61
+00:06:59,369 --> 00:07:07,709
+gave the smallest MSE among these 10 different choices, then now it becomes my split criterion for my root node.
+
+62
+00:07:08,739 --> 00:07:12,649
+So by root node, I mean the first box that we're given.
+
+63
+00:07:14,259 --> 00:07:15,689
+So this is my root node.
+
+64
+00:07:16,959 --> 00:07:29,199
+And then as we just saw, let's say this was the best split that minimized MSE, then now these two boxes becomes the split node.
+
+65
+00:07:29,329 --> 00:07:33,569
+So this node at the root node had six data points, and now we have...
+
+66
+00:07:34,439 --> 00:07:58,009
+split into two boxes left and right and each of them has three samples and the decision criteria at the root node was x1 less than equal to c. So if we keep doing this procedure, we're gonna reach to some terminal node or stopping criteria then the tree stops there.
+
+67
+00:07:58,069 --> 00:08:06,369
+So this is how the decision tree regressor works and the decision tree classifier works similar way.
+
+68
+00:08:06,629 --> 00:08:09,859
+except that it's not MSC but uses some other metric.
+
+69
+00:08:10,839 --> 00:08:12,159
+So we'll talk about that later.
+
+70
+00:08:14,379 --> 00:08:16,479
+Okay so let's have a look at the real data.
+
+71
+00:08:16,539 --> 00:08:25,779
+This data set is called faculty salary data set recording faculty salary at all the 90s and the task is to predict the assistant professor salary.
+
+72
+00:08:26,369 --> 00:08:29,239
+And it has four features and 50 samples.
+
+73
+00:08:29,749 --> 00:08:37,289
+But for simplicity to visualize I only use the two features and then depth equals two.
+
+74
+00:08:37,289 --> 00:08:38,969
+So depth in the tree means that
+
+75
+00:08:40,769 --> 00:08:43,789
+how many levels that we go to grow the tree.
+
+76
+00:08:43,789 --> 00:08:48,999
+So this is depth equals zero at the root node, and this is steps one, and this is steps two.
+
+77
+00:08:49,929 --> 00:09:00,789
+If you don't specify the depth limit, the tree will grow until it has only one sample at the leaf node, or if there is another stopping criteria, it will stop there.
+
+78
+00:09:02,009 --> 00:09:10,069
+Anyway, this is the original data that had a salary mean value of 43,000, and then it had a 50...
+
+79
+00:09:10,969 --> 00:09:11,639
+samples.
+
+80
+00:09:12,000 --> 00:09:15,549
+So we have 50 samples and a value here at the root node.
+
+81
+00:09:16,359 --> 00:09:20,659
+And as we saw before, we will find all the split criteria.
+
+82
+00:09:20,689 --> 00:09:31,209
+That means that the decision tree will inspect all these split points along x0 and then along x1.
+
+83
+00:09:31,859 --> 00:09:36,129
+So it's going to split at the in the middle between the two samples.
+
+84
+00:09:36,919 --> 00:09:40,620
+So in the middle here, middle here, all the way
+
+85
+00:09:42,319 --> 00:09:47,379
+to here and then it's gonna measure MSC's and then you will figure out which one to split.
+
+86
+00:09:48,689 --> 00:10:04,799
+So that's how it measures MSC here and then as a result it found that the splitting X1 54.95 at this point will make the MSC the lowest from the root node.
+
+87
+00:10:04,799 --> 00:10:10,639
+So depending on the answer to this criteria, we'll have these two
+
+88
+00:10:13,489 --> 00:10:20,799
+And then each, from the each node, we'll also find another split criteria for next split.
+
+89
+00:10:21,589 --> 00:10:31,289
+And for example, this R1F box split criteria was splitting at feature x0 at the value 84.25.
+
+90
+00:10:31,289 --> 00:10:40,189
+And then it's gonna give this split, and then it leads to these two boxes.
+
+91
+00:10:40,339 --> 00:10:45,679
+Each of them have a mean value of 46,000 and 42,000.
+
+92
+00:10:48,279 --> 00:10:55,749
+Alright, if we further do that, the same procedure for this node will end up with this result.
+
+93
+00:10:56,349 --> 00:11:00,029
+So this was a simple example for how decision tree regressor works.
+
+94
+00:11:00,649 --> 00:11:04,049
+And in the next video, we'll talk about decision tree classifier.
+

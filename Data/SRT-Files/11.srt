@@ -1,0 +1,584 @@
+1
+00:00:05,700 --> 00:00:06,370
+Hello everyone.
+
+2
+00:00:06,450 --> 00:00:11,960
+We're going to talk about optimization in logistic regression to determine the values of the coefficients.
+
+3
+00:00:13,410 --> 00:00:17,239
+Alright so we're going to start by introducing a new concept called the maximum likelihood.
+
+4
+00:00:17,550 --> 00:00:19,010
+So what is the likelihood function?
+
+5
+00:00:19,089 --> 00:00:24,000
+Likelihood function is a product of all the probabilities that correspond to labels.
+
+6
+00:00:24,410 --> 00:00:29,829
+So for each sample the probability of classifying the label correctly
+
+7
+00:00:30,940 --> 00:00:35,609
+And multiplying all these probabilities for each sample is called the likelihood function.
+
+8
+00:00:36,060 --> 00:00:42,179
+And by maximizing this likelihood, we can determine the coefficient values for the logit in the logistic regression.
+
+9
+00:00:43,490 --> 00:00:51,240
+By the way, this likelihood function is not only for the logistic regression, but it occurs again and again in machine learning, and it's a common theme.
+
+10
+00:00:51,679 --> 00:00:54,450
+This principle applies to all parametric models.
+
+11
+00:00:54,570 --> 00:00:57,900
+So if we maximize the likelihood, the parameters get determined.
+
+12
+00:00:58,900 --> 00:01:01,350
+And we're going to derive from this maximum likelihood.
+
+13
+00:01:01,740 --> 00:01:08,219
+This is especially for the binary class classification because we only delete the label equals 1 or 0.
+
+14
+00:01:08,300 --> 00:01:16,180
+So we're going to start by this likelihood function for binary class classification, and then we're going to derive the loss function from it.
+
+15
+00:01:17,360 --> 00:01:18,270
+So let's have a look.
+
+16
+00:01:18,860 --> 00:01:31,510
+So here is some example where we have y1 and we set it to 1 and y2 equals 1 and y true value for third example would be 0.
+
+17
+00:01:32,560 --> 00:01:36,380
+4 is 0 and y5 is 1.
+
+18
+00:01:37,720 --> 00:01:47,970
+And let's say we are using logistic regression and feed our features to get the predicted value I had but actually what logistic regression model
+
+19
+00:01:48,420 --> 00:01:51,020
+produced at the output is the probability.
+
+20
+00:01:51,430 --> 00:01:54,040
+So this is a sigmoid function that we saw before.
+
+21
+00:01:54,190 --> 00:02:04,200
+So sigmoid function takes this form and this represents the probability of the label becomes 1.
+
+22
+00:02:05,170 --> 00:02:14,740
+So with that we can have a probability for sample number 1 and probability for sample number 2, probability for sample number 3 and so on.
+
+23
+00:02:14,740 --> 00:02:19,070
+And we'd like to construct the likelihood
+
+24
+00:02:19,600 --> 00:02:53,170
+that means when the probability represent the probability of the label being 1 we're gonna have to flip some of them like this one so that it has the probability that represent the y equals 0 so to do that we're gonna change the sign and multiply all of the probabilities together and this quantity becomes a total probability
+
+25
+00:02:54,300 --> 00:03:00,180
+of having all of these labels classified correctly.
+
+26
+00:03:00,850 --> 00:03:04,630
+So all y1, y2, etc.
+
+27
+00:03:06,050 --> 00:03:06,870
+are correct.
+
+28
+00:03:09,250 --> 00:03:20,690
+So this says that the correct probability that means we would like to maximize this probability so that our model can correctly classify all the examples.
+
+29
+00:03:21,610 --> 00:03:22,910
+So let's maximize this.
+
+30
+00:03:23,900 --> 00:03:26,060
+That's why this is called a maximum likelihood.
+
+31
+00:03:26,150 --> 00:03:28,870
+So likelihood function is the probability
+
+32
+00:03:29,060 --> 00:03:32,900
+the total probability of classifying everything correctly.
+
+33
+00:03:34,020 --> 00:03:36,810
+So it takes this form and we would like to maximize.
+
+34
+00:03:37,890 --> 00:03:42,380
+And now we have some trouble because there are so many multiplications here.
+
+35
+00:03:43,010 --> 00:03:52,720
+This is not very easy to you know calculate so we're gonna take a log to the entire term so that we change this to the summation.
+
+36
+00:03:53,840 --> 00:03:58,850
+So summing up all the examples that has yi label
+
+37
+00:03:59,290 --> 00:03:59,730
+1.
+
+38
+00:04:00,100 --> 00:04:14,950
+Actually this has to be log pi and sum when the case is y equals 0.
+
+39
+00:04:20,340 --> 00:04:25,610
+And we can even make it more clean by having this one summation instead of two.
+
+40
+00:04:25,610 --> 00:04:31,760
+So instead of having when the case is 0 or 1, I'm gonna just set to everything
+
+41
+00:04:32,699 --> 00:05:03,300
+has to be 1 and then I'm going to add yi here so it becomes the multiplication plus if I change the variable here to be 1 minus yi then when this is 1 this quantity becomes 0 so we can combine these two terms together so make it a little clean
+
+42
+00:05:04,860 --> 00:05:09,319
+So this is our final form for the log likelihood.
+
+43
+00:05:09,470 --> 00:05:16,060
+So this is log likelihood and we want to maximize this quantity.
+
+44
+00:05:18,259 --> 00:05:23,170
+So actually maximizing log likelihood is the same as minimizing the loss function.
+
+45
+00:05:23,720 --> 00:05:28,170
+So we can define a loss function as just inverse of this.
+
+46
+00:05:28,389 --> 00:05:36,019
+So take a minus sign here and the same formula.
+
+47
+00:05:38,050 --> 00:05:45,719
+So that's our loss function and this is called binary cross entropy.
+
+48
+00:05:45,719 --> 00:06:02,039
+And this binary cross entropy is very common in binary class classification so we'll use this cross entropy loss function very often.
+
+49
+00:06:03,569 --> 00:06:08,189
+Alright so cross entropy again is a generalized form as this.
+
+50
+00:06:08,699 --> 00:06:27,500
+So these two are probability distribution and usually the one that's here means that the probability distribution that's kind of a label or true value So it can come from the data or you can come from the labels Where is this one?
+
+51
+00:06:27,680 --> 00:06:39,769
+The probability that goes into the log is predicted value So essentially we are measuring the difference between the true labels and the predicted probability
+
+52
+00:06:40,800 --> 00:06:53,240
+So that's the meaning of the cross entropy and I omitted a category but if you have more than two categories, they have index for the category.
+
+53
+00:06:53,639 --> 00:07:02,180
+Alright so that's a cross entropy and for binary case where the category is only 0 and 1, we'll have this formula.
+
+54
+00:07:02,970 --> 00:07:05,009
+We derived from the maximum likelihood.
+
+55
+00:07:06,920 --> 00:07:09,910
+So searching parameters involves optimization.
+
+56
+00:07:10,000 --> 00:07:14,800
+So again the feature goes into model and the model has parameters.
+
+57
+00:07:15,430 --> 00:07:25,539
+the model will predict the value and with the target value, the loss function will compare this prediction and target and produce some error.
+
+58
+00:07:26,800 --> 00:07:30,860
+So if the error is bigger, then it's going to change the parameter value more.
+
+59
+00:07:31,259 --> 00:07:37,409
+And when we do this cycle multiple times, we're going to get the parameter values optimal value.
+
+60
+00:07:37,969 --> 00:07:45,250
+So that's optimization and this is parameter update procedure and we're going to use a gradient descent to update the parameters.
+
+61
+00:07:47,079 --> 00:07:49,000
+Alright, so let's talk about gradient descent.
+
+62
+00:07:49,489 --> 00:08:00,599
+So this error surface is actually from MSC loss, which is from linear regression, but the reason why I just draw here is that it's easier to draw than cross entropy.
+
+63
+00:08:01,569 --> 00:08:13,000
+So the loss looks like this, and let's say you're a skier and you're an advanced skier that you're not afraid to go to steep slope, and let's say you want to get to the base as soon as possible.
+
+64
+00:08:13,310 --> 00:08:14,859
+So what is your strategy here?
+
+65
+00:08:17,139 --> 00:08:20,099
+So you're gonna follow steepest slope, right?
+
+66
+00:08:20,169 --> 00:08:35,099
+So let's measure a gradient along the coefficient a, and let's measure the gradient along the coefficient b, and we're gonna update our weight, which is the parameter values for a and b, according to this gradient.
+
+67
+00:08:37,229 --> 00:08:43,159
+So that effectively makes this skier to go to this direction and follow the steepest slope.
+
+68
+00:08:43,779 --> 00:08:51,329
+Alright, so that's the intuition for gradient descent, and to do that mechanically, we'll have to make a derivative for loss function.
+
+69
+00:08:51,569 --> 00:08:54,069
+So loss function for MSC looks like this.
+
+70
+00:08:54,399 --> 00:08:55,799
+It has a residual squared.
+
+71
+00:08:56,379 --> 00:09:29,439
+and then the gradient along a coefficient is a partial derivative of loss function with respect to a and the function here is takes a form of f squared so it's like df squared of dx and it will be 2f times df dx so this is called a chain rule if you have a function that's a function of some other function which is a function of something else like this
+
+72
+00:09:31,009 --> 00:09:42,029
+you can take a chain so making derivative of this, let's say this is x and again g is of another function of x.
+
+73
+00:09:43,279 --> 00:09:59,620
+Then what we will do is take a derivative f with respect to its argument which is g and then times dg, dg and then finally we can do dg
+
+74
+00:10:00,379 --> 00:10:00,939
+dx.
+
+75
+00:10:01,549 --> 00:10:05,539
+So it looks complicated but actually when you look at it carefully it's not.
+
+76
+00:10:05,809 --> 00:10:15,620
+So when there is a multiple nested function you take the derivative conveniently as this and take the chain rule.
+
+77
+00:10:16,199 --> 00:10:30,189
+So using that if you take the chain rule here, it's 2f so there is a 2 here and therefore this 2 is gone and this is f and this is the fd
+
+78
+00:10:30,549 --> 00:10:32,439
+w which is df dA.
+
+79
+00:10:32,439 --> 00:10:40,709
+So there is x here and for derivative of loss function with respect to b coefficient.
+
+80
+00:10:41,879 --> 00:10:46,669
+Then also takes a f here and then df db which is 1.
+
+81
+00:10:46,840 --> 00:10:48,009
+So there is nothing here.
+
+82
+00:10:48,730 --> 00:11:01,579
+So this is the formula for gradient descent for MSA loss function and weight update rule says the weight is updated such that it's the old value of the weight minus
+
+83
+00:11:02,019 --> 00:11:07,189
+some constant alpha times the gradient of the loss function with respect to that weight.
+
+84
+00:11:09,569 --> 00:11:11,429
+This is called the learning rate by the way.
+
+85
+00:11:15,500 --> 00:11:18,009
+And the bigger the value, the bigger the step size.
+
+86
+00:11:18,009 --> 00:11:26,509
+So if the learning rate is big, then the step is bigger.
+
+87
+00:11:26,789 --> 00:11:30,669
+And be careful if it's too big, then it can pass the solution like this.
+
+88
+00:11:32,949 --> 00:11:34,959
+And if the learning rate is very small,
+
+89
+00:11:35,289 --> 00:11:41,000
+we're gonna take a small step toward the goal like this.
+
+90
+00:11:41,980 --> 00:11:47,460
+So if the learning rate is too small, it's going to take a lot of steps and longer time.
+
+91
+00:11:48,269 --> 00:11:54,580
+So usually when you do the gradient descent optimization, you will have to choose this learning rate.
+
+92
+00:11:54,580 --> 00:11:56,970
+So therefore, this learning rate is a hyperparameter.
+
+93
+00:12:02,149 --> 00:12:05,080
+Hyperparameter means that some kind of...
+
+94
+00:12:05,509 --> 00:12:09,050
+parameter that you will have to, the user will have to choose.
+
+95
+00:12:09,550 --> 00:12:11,170
+So learning rate is one of them.
+
+96
+00:12:11,910 --> 00:12:18,740
+We don't have to worry about it for the logistic regression because the logistic regression uses another form of gradient descent.
+
+97
+00:12:19,040 --> 00:12:26,550
+Actually that uses second derivatives rather than first derivative like in the gradient descent and that is called the Newton method.
+
+98
+00:12:26,550 --> 00:12:27,910
+We'll talk about it very soon.
+
+99
+00:12:29,200 --> 00:12:32,590
+Alright so gradient descent for binary cross entropy laws.
+
+100
+00:12:33,160 --> 00:12:34,640
+Let's calculate this.
+
+101
+00:12:35,150 --> 00:12:36,840
+So BC law looks like this.
+
+102
+00:12:37,930 --> 00:13:08,550
+derived and then this is a sigmoid function and we're gonna take a derivative of loss function with respect to w and g is a function of w and x plus b so d loss d w is going to be d loss d sigma because loss is a function of sigma and then it's going to be d sigma d g because
+
+103
+00:13:09,220 --> 00:13:36,960
+Sigma is a function of G and then DG DW okay so one at a time this value is going to be I'm gonna remove this for now because it's clean that way okay Y divided by Sigma so this is Sigma by the way this is Sigma
+
+104
+00:13:42,809 --> 00:14:09,720
+derivative of log x is 1 over x so minus sign is from here and then minus 1 so that's my d log d sigma and then d sigma dg is sigma times 1 sigma times 1 minus sigma
+
+105
+00:14:10,779 --> 00:14:27,709
+I'm not gonna show here but you can prove this easily and this is very good formula that sigma-weight function is very convenient as the derivative is itself times 1 minus itself and that's why it's used in the many gradient descent application.
+
+106
+00:14:27,819 --> 00:14:35,819
+Alright so we're gonna use that and then dG dW is simply X.
+
+107
+00:14:35,819 --> 00:14:40,679
+So combining all this together we're gonna get dL d
+
+108
+00:14:41,389 --> 00:14:57,469
+w is going to be minus times sigma times 1 minus sigma and x.
+
+109
+00:14:58,629 --> 00:15:04,049
+Similarly, we can do the derivative for the bias.
+
+110
+00:15:04,939 --> 00:15:10,149
+And it will take the same thing except this part.
+
+111
+00:15:10,649 --> 00:15:12,209
+So there is just 1 here.
+
+112
+00:15:14,959 --> 00:15:21,219
+So that's the gradient along a coefficient w and bias B.
+
+113
+00:15:21,870 --> 00:15:27,509
+And we're gonna apply the same principle to update our weights.
+
+114
+00:15:28,259 --> 00:15:31,229
+So this could be either w or bias.
+
+115
+00:15:32,159 --> 00:15:40,009
+They're the coefficients and then dLows times the learning rate.
+
+116
+00:15:41,139 --> 00:15:43,099
+Okay so that was it.
+
+117
+00:15:43,919 --> 00:15:47,779
+Alright, so Newton's method, it's an extension to gradient descent method.
+
+118
+00:15:47,779 --> 00:15:55,209
+So gradient descent method only used the first derivative of loss function and its update rule was this.
+
+119
+00:15:56,179 --> 00:16:00,979
+Gradient with respect to w of the loss function.
+
+120
+00:16:01,529 --> 00:16:06,889
+Whereas Newton's method will use both the first and second derivative.
+
+121
+00:16:08,109 --> 00:16:13,589
+So first derivative here and then second derivative here.
+
+122
+00:16:16,439 --> 00:16:18,759
+And by the way this term is called a Hessian.
+
+123
+00:16:19,909 --> 00:16:33,449
+So in a matrix form it will look like a Hessian inverse and the gradient matrix times alpha minus omega like that.
+
+124
+00:16:33,549 --> 00:16:43,899
+And then the reason why Newton's method can be good is when we have a very flat gradient it can be very slowly converging.
+
+125
+00:16:43,899 --> 00:16:47,319
+However if there's a Hessian that's dividing this small gradient
+
+126
+00:16:47,610 --> 00:16:54,730
+then Hessian is also small, then this can boost the speed of the convergence when the gradient is very small.
+
+127
+00:16:56,439 --> 00:17:06,569
+So the Newton's method converges faster, that means it requires a less number of iterations given the same learning rate for the gradient and the Newton's method.
+
+128
+00:17:07,019 --> 00:17:08,279
+However, it has a drawback.
+
+129
+00:17:08,920 --> 00:17:18,700
+So the memory that requires for one iteration, the Newton's method scales as n squared, whereas
+
+130
+00:17:20,049 --> 00:17:20,629
+Newton.
+
+131
+00:17:21,639 --> 00:17:26,289
+Where is the gradient method when it takes O ?
+
+132
+00:17:26,470 --> 00:17:44,289
+And for the time complexity, Newton's method per iteration is going to be n cubed, whereas gradient method is n. So this is more expensive per iteration.
+
+133
+00:17:44,289 --> 00:17:54,019
+It's great that it can require less iteration, but given the same number of iterations, gradient descent requires less memory and less time.
+
+134
+00:17:54,399 --> 00:17:56,119
+This n is the number of parameters.
+
+135
+00:17:57,029 --> 00:18:11,629
+So if you have a lot of parameters like in the neural network, neural network typically have millions or billions of parameters, Newton's method or similarly second derivative method will be very slow.
+
+136
+00:18:11,969 --> 00:18:19,659
+So usually the neural network optimization utilize a gradient descent method rather than the second derivative method.
+
+137
+00:18:20,169 --> 00:18:28,579
+But in logistic regression and other parametric models in machine learning, where the number of parameters are smaller, we don't have to worry about that.
+
+138
+00:18:29,000 --> 00:18:30,649
+So that's why I.S.K.
+
+139
+00:18:30,649 --> 00:18:31,219
+Lohn and other
+
+140
+00:18:32,829 --> 00:18:38,990
+similar packages using Newton's method or similar method to optimize the parameters.
+
+141
+00:18:39,329 --> 00:18:42,409
+Alright so let's have a look at some simulation here.
+
+142
+00:18:43,419 --> 00:19:02,109
+So this is a gradient descent and this is a Newton method and then they start from the same place and then you're gonna see shortly that they shoot very fast to the bottom and then it will go toward the goal.
+
+143
+00:19:03,579 --> 00:19:11,189
+Compared to the gradient descent method which goes very slowly when the gradient is small at the bottom, Newton's method is faster.
+
+144
+00:19:11,339 --> 00:19:23,559
+And that's because again, because this small gradient is divided by small h so it gains more boost when the gradient is flat here.
+
+145
+00:19:26,669 --> 00:19:31,449
+So that's some kind of intuition and then that's it for this video.
+
+146
+00:19:32,569 --> 00:19:35,299
+So in next video, we'll talk about performance matrix.
+

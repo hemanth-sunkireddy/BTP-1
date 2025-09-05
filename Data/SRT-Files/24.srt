@@ -1,0 +1,556 @@
+1
+00:00:06,139 --> 00:00:06,730
+Hello everyone.
+
+2
+00:00:06,879 --> 00:00:10,349
+In this video, we're going to continue to talk about the support factor machine.
+
+3
+00:00:12,019 --> 00:00:25,929
+Last time, we talked about maximum margin classifier, another name hard margin classifier, which has a hyperplane such that the margins or the distance between the support and the hyperplane will be maximized.
+
+4
+00:00:26,550 --> 00:00:30,329
+So these points closest to the hyperplane are called support.
+
+5
+00:00:31,190 --> 00:00:37,700
+And these dashed lines or the planes that are parallel to the hard margin hyperplane are called the margins.
+
+6
+00:00:39,420 --> 00:00:42,539
+And the goal is to make these margins as big as possible.
+
+7
+00:00:43,859 --> 00:00:49,049
+Having bigger margin means that we have more safety or confidence in terms of classification.
+
+8
+00:00:51,219 --> 00:00:58,760
+Last time, we also mentioned that the maximum margin classifier uses internal optimization to find this hyperplane.
+
+9
+00:00:59,950 --> 00:01:03,439
+Before we go further, let's derive some math formula.
+
+10
+00:01:03,679 --> 00:01:07,280
+that can be useful for describing this optimization technique.
+
+11
+00:01:08,489 --> 00:01:09,939
+So here's the hyperplane.
+
+12
+00:01:10,299 --> 00:01:19,829
+Here is one support point that's above this hyperplane and we'd like to measure this distance, shortest distance between this point and the hyperplane.
+
+13
+00:01:20,730 --> 00:01:33,710
+To do that, we're going to choose an arbitrary point on the hyperplane and let's say this vector to the support point is called xA and this vector to the point
+
+14
+00:01:34,040 --> 00:01:37,200
+that's on this hyperplane is called xb.
+
+15
+00:01:38,910 --> 00:01:42,370
+And now this vector will be xa minus xb.
+
+16
+00:01:45,230 --> 00:01:50,490
+And then we'd like to calculate the distance between this support point to the hyperplane.
+
+17
+00:01:52,010 --> 00:01:57,360
+To do that, we just draw a line between this projection point and this point b.
+
+18
+00:01:57,620 --> 00:02:05,200
+All right and this will be 90 degree and now let's say this is the
+
+19
+00:02:05,730 --> 00:02:07,890
+vector that's normal to this hyperplane.
+
+20
+00:02:08,060 --> 00:02:23,250
+So we will call it n, which is normal vector, and then the angle between these two vectors, let's call it s. So between this s vector and normal vector n will be called zeta.
+
+21
+00:02:24,230 --> 00:02:35,650
+And this distance is d. So we would like to calculate the d which will be s scalar value times the cosine zeta, which is the same as
+
+22
+00:02:36,299 --> 00:02:51,269
+the S vector, dot product, the unit vector n. And just an example, in the three dimension, the S vector would have three components, S1, S2, S3 for example.
+
+23
+00:02:51,699 --> 00:02:57,169
+If it was in p-high dimensional space, you would have a p component, S1 to Sp.
+
+24
+00:02:57,169 --> 00:03:02,759
+Similarly, the unit vector will also have three components in the three dimension.
+
+25
+00:03:02,759 --> 00:03:07,479
+So W1, W2, W3 for example.
+
+26
+00:03:07,479 --> 00:03:13,199
+And because it's a unit vector, we require that the length of this unit vector is 1.
+
+27
+00:03:13,869 --> 00:03:21,679
+so that means this would have to be 1 in three dimension.
+
+28
+00:03:23,359 --> 00:03:39,539
+So for D, it's going to be S1 W1 plus S2 W2 plus S3 W3 for this three-dimensional example, and we can also rewrite XA1 W1 XA2 W2.
+
+29
+00:03:44,419 --> 00:04:00,979
+XA 3W 3 minus XB 1 W 1 minus XB 2 W 2 minus XB 3 W 3.
+
+30
+00:04:02,959 --> 00:04:10,849
+And because this point B was kind of arbitrary, we don't care what that point was, but we do care about this one.
+
+31
+00:04:11,199 --> 00:04:15,849
+So let's just simplify XA is actually X.
+
+32
+00:04:16,219 --> 00:04:30,639
+then we can do x1w1 plus x2w2 plus x3w3 and we can call this guy, the rest, to be just some simple constant.
+
+33
+00:04:31,179 --> 00:04:31,869
+Let's say b.
+
+34
+00:04:33,969 --> 00:04:45,509
+So this formula is for the distance d and again if this point a was the support, then this distance between the support and the hyperplane becomes the margin.
+
+35
+00:04:47,269 --> 00:04:51,999
+And now let's think about how to take care of a point that's below the hyperplane.
+
+36
+00:04:52,669 --> 00:04:57,989
+So when it's below the hyperplane like this, let's say it's called A prime.
+
+37
+00:04:58,649 --> 00:05:02,239
+As you know, this cosine value will be negative.
+
+38
+00:05:02,799 --> 00:05:09,649
+So this quantity becomes negative when the support vector is below the hyperplane.
+
+39
+00:05:11,149 --> 00:05:15,309
+To take care of that case, we're going to assign a variable.
+
+40
+00:05:15,529 --> 00:05:20,559
+Let's say y for the point A is going to be plus 1 value.
+
+41
+00:05:21,039 --> 00:05:22,389
+When it's above the hyperplane.
+
+42
+00:05:23,729 --> 00:05:26,919
+and it's minus 1 when it's below the hyperplane.
+
+43
+00:05:28,139 --> 00:05:37,199
+So that gives an idea of how to combine this together and we can use this Y and this formula to make a mass expression for the optimization condition.
+
+44
+00:05:37,239 --> 00:05:37,729
+Something like YI.
+
+45
+00:05:38,449 --> 00:05:42,869
+So the I means the index for the data point.
+
+46
+00:05:43,299 --> 00:05:53,039
+So YI times XI, first component, the coefficient for the first component, XI2W2 all the way to
+
+47
+00:05:53,509 --> 00:05:59,829
+xipwp for the p-dimensional hyperplane and plus b for the constant.
+
+48
+00:05:59,829 --> 00:06:15,879
+And this quantity needs to be greater than equal to the margin m. So this inequality equation sets the condition that the optimization needs to satisfy for all the data points.
+
+49
+00:06:15,879 --> 00:06:22,309
+Alright, so let's talk about how should that formula that we just derived has to change.
+
+50
+00:06:23,439 --> 00:06:25,449
+when you have inseparable data.
+
+51
+00:06:27,419 --> 00:06:33,489
+So when we have inseparable data, what we need to do is that we need to just relax the condition.
+
+52
+00:06:33,949 --> 00:06:40,449
+Instead of having hard margin, that will require that all the points has to be above and below these margins.
+
+53
+00:06:40,739 --> 00:06:43,719
+Instead, we accept some errors by softening the margin.
+
+54
+00:06:43,869 --> 00:06:51,119
+And this is called soft margin classifier or in other words, a support vector classifier.
+
+55
+00:06:52,699 --> 00:06:55,249
+So let's have a look what does the soft margin mean.
+
+56
+00:06:56,079 --> 00:06:58,809
+So this is the hard margin that we showed before.
+
+57
+00:06:59,199 --> 00:07:05,349
+We had the coefficients to each component of the vector x and then a constant.
+
+58
+00:07:05,769 --> 00:07:13,229
+So sum of this times the y which is plus 1 when it's above the hyperplane and minus 1 below the hyperplane.
+
+59
+00:07:13,619 --> 00:07:20,279
+So this value should be greater than equal to m. That was hard margin classifier.
+
+60
+00:07:21,309 --> 00:07:26,369
+When we say we relaxed the condition, we introduce a new variable called slack variable.
+
+61
+00:07:26,399 --> 00:07:27,169
+So this one.
+
+62
+00:07:27,729 --> 00:07:30,469
+Which helps to give some wiggle room for this m.
+
+63
+00:07:31,489 --> 00:07:35,949
+So, in addition to this, we have to satisfy this condition as previously.
+
+64
+00:07:36,429 --> 00:07:40,269
+And then, this slack variable is always positive value.
+
+65
+00:07:41,609 --> 00:07:44,329
+And also, we have to satisfy this condition.
+
+66
+00:07:44,749 --> 00:07:54,789
+So sum of this slack variable need to less than or equal to a value called c. And this c represents the budget for the error.
+
+67
+00:07:55,689 --> 00:07:58,949
+In other words, if c is large, then we can tolerate more errors.
+
+68
+00:07:59,619 --> 00:08:05,069
+And also c is a hyperparameter, so the user get to choose how much of error budget we have.
+
+69
+00:08:06,969 --> 00:08:09,569
+Alright, so let's talk about some definitions here.
+
+70
+00:08:10,119 --> 00:08:13,989
+So this is a hyperplane, as you know, and these are the margins.
+
+71
+00:08:14,599 --> 00:08:22,629
+And if you look at carefully, blue texts are on this side and red texts are mostly on this side.
+
+72
+00:08:23,369 --> 00:08:28,169
+So when the data points are above the margin, this is a safe margin.
+
+73
+00:08:31,589 --> 00:08:35,179
+Above the safe margin, then this is correctly classified.
+
+74
+00:08:35,389 --> 00:08:39,519
+So these are correctly classified.
+
+75
+00:08:42,539 --> 00:08:50,379
+And when the data points are on the margin itself, just saying we can just say it's on the margin.
+
+76
+00:08:50,519 --> 00:08:52,179
+So this is also on the margin.
+
+77
+00:08:52,949 --> 00:08:55,759
+How about these data?
+
+78
+00:08:56,179 --> 00:09:02,399
+So blue points here, red point here, they are in the wrong side of the hyperplane.
+
+79
+00:09:03,799 --> 00:09:06,559
+So these are wrong side.
+
+80
+00:09:07,120 --> 00:09:11,349
+of the hyperplane.
+
+81
+00:09:11,769 --> 00:09:12,439
+What about these?
+
+82
+00:09:17,229 --> 00:09:25,809
+These are still on the correct side of the hyperplane, but it's the wrong side of the margin.
+
+83
+00:09:26,409 --> 00:09:28,240
+So, there are two margins.
+
+84
+00:09:28,240 --> 00:09:37,149
+However, we only care this margin when it comes to blue data points and we'll care about this margin when it comes to red data points.
+
+85
+00:09:37,919 --> 00:09:44,669
+So blue data points that are just below the margin but above the hyperplane are called wrong side of the margin.
+
+86
+00:09:53,709 --> 00:10:04,689
+And this one, although it seems like on the margin because it's not sitting on its correct margin or the safe margin to the blue data point, so it's still on the wrong side of the hyperplane.
+
+87
+00:10:06,859 --> 00:10:07,669
+Time for this.
+
+88
+00:10:09,419 --> 00:10:11,169
+So, that's some kind of definitions.
+
+89
+00:10:11,239 --> 00:10:16,319
+And with that, let's see what happens to the slack values for all these different situations.
+
+90
+00:10:17,149 --> 00:10:21,119
+And remember, this is the condition for the hyperplane.
+
+91
+00:10:21,659 --> 00:10:27,409
+And all of this slack variable needs to be positive value, either equal or greater than zero.
+
+92
+00:10:28,909 --> 00:10:39,799
+When the data points are on the correct side of the margin, which means these points, these, the slack variable values for those points are zero, so it doesn't
+
+93
+00:10:40,259 --> 00:10:46,159
+do anything on this equation so it doesn't change and satisfy the hard margin requirement.
+
+94
+00:10:47,899 --> 00:11:08,559
+And when it's a wrong side of margin, so anything below this margin for the blue points and anything below this but above the hyperplane for red ones, these slack variable will have some value between 0, something greater than 0 and something less than equal to 1.
+
+95
+00:11:10,759 --> 00:11:17,649
+If it is sitting right on the hyperplane, which is very rare, it's going to have the slack variable equals 1.
+
+96
+00:11:19,079 --> 00:11:20,599
+What about wrong side of hyperplane?
+
+97
+00:11:21,509 --> 00:11:25,399
+If it's wrong side of hyperplane, the slack variable will be larger than 1.
+
+98
+00:11:25,859 --> 00:11:28,769
+So this value becomes negative.
+
+99
+00:11:29,599 --> 00:11:31,929
+Therefore, we want to avoid that situation.
+
+100
+00:11:33,269 --> 00:11:35,769
+Alright, so again, the role of the C parameters.
+
+101
+00:11:36,199 --> 00:11:40,549
+C is the error budget that bounds the total number of
+
+102
+00:11:41,029 --> 00:11:43,949
+errors as well as the severity of the violations.
+
+103
+00:11:45,099 --> 00:11:50,279
+And as we mentioned before, C is also a hyperparameter, then we need to pick the budget of the error.
+
+104
+00:11:52,329 --> 00:11:54,809
+So with that in mind, we're going to address three questions.
+
+105
+00:11:55,209 --> 00:12:01,449
+So first one would be what is the maximum number of supports in the wrong side of the hyperplane when the C is given?
+
+106
+00:12:02,469 --> 00:12:10,549
+And secondly, we're going to also answer what happens to the margin M when C changes whether increases or decreases.
+
+107
+00:12:12,749 --> 00:12:15,409
+And what does that mean in terms of bias and variance?
+
+108
+00:12:16,879 --> 00:12:24,119
+So the first question, what is the maximum number of supports on the wrong side of the hyperplane given the C?
+
+109
+00:12:27,509 --> 00:12:41,709
+So when you remember this formula, you can think that every slack variable needs to be positive value and this sum of the slack variables need to be smaller than equal to the C parameter.
+
+110
+00:12:43,469 --> 00:12:49,299
+That means the maximum number of adders can be C if all of the select variables are equal to 1.
+
+111
+00:12:51,139 --> 00:12:55,079
+Alright, so second question, what happens to the margin when C decreases?
+
+112
+00:12:58,649 --> 00:13:02,789
+So which one of these will have smallest C?
+
+113
+00:13:06,019 --> 00:13:07,649
+The answer is this one.
+
+114
+00:13:08,139 --> 00:13:12,829
+The smaller the C, we have smaller tolerance for the adder.
+
+115
+00:13:13,429 --> 00:13:15,539
+Therefore, the margins gets tighter.
+
+116
+00:13:16,860 --> 00:13:19,139
+So what happens to the margin when C decreases?
+
+117
+00:13:19,340 --> 00:13:22,209
+The answer is the margin becomes narrower.
+
+118
+00:13:24,090 --> 00:13:25,120
+Alright, the next question.
+
+119
+00:13:25,779 --> 00:13:28,379
+What happens to the bias and variance when C is small?
+
+120
+00:13:28,929 --> 00:13:31,000
+So small C means a tighter margin.
+
+121
+00:13:31,419 --> 00:13:34,120
+That means we have a less tolerance to the error.
+
+122
+00:13:35,490 --> 00:13:39,929
+And less tolerance to the error means that we will get a more accurate model.
+
+123
+00:13:39,959 --> 00:13:41,059
+That means less bias.
+
+124
+00:13:41,299 --> 00:13:45,039
+So bias decreases but we will have instead a higher variance.
+
+125
+00:13:49,350 --> 00:14:01,190
+So, as a recap, we talked about hard margin classifier which has a hyperplane that separates the support which are this closest point to the hyperplane as much as possible.
+
+126
+00:14:01,330 --> 00:14:03,759
+There are these overlaps.
+
+127
+00:14:04,129 --> 00:14:10,100
+So these are called support again and the distance between this hyperplane and these supports are called the margin.
+
+128
+00:14:11,580 --> 00:14:18,769
+And we derived this formula that expresses the condition that all the points need to be satisfied for the hard margin classifier.
+
+129
+00:14:20,490 --> 00:14:26,330
+And we also talked about some general cases where the data points are not perfectly separable.
+
+130
+00:14:27,100 --> 00:14:39,370
+We need to introduce a slack variable that will make this condition a little bit softer, which allows some of the data points can be wrong side of the hyperplane or wrong side of the margin.
+
+131
+00:14:40,650 --> 00:14:47,290
+And we also talked about C parameter, which is a hyperparameter that we set, which value acts as a budget for the total error.
+
+132
+00:14:49,840 --> 00:14:54,700
+So far we talked about linearly separable data, that means our hyperplane was not curved.
+
+133
+00:14:55,100 --> 00:14:58,000
+It was kind of straight, multidimensional.
+
+134
+00:14:58,400 --> 00:15:06,170
+plane, hyperplane, and we show that it's a plane can be described by this linear formula.
+
+135
+00:15:06,750 --> 00:15:13,190
+However, in some cases like this, there is no way to separate this data with just one hyperplane.
+
+136
+00:15:14,460 --> 00:15:19,320
+And for that, we'll need some other ways to separate the data like this.
+
+137
+00:15:19,629 --> 00:15:23,280
+In that case, we will have to use some more general form of kernel.
+
+138
+00:15:23,770 --> 00:15:26,530
+So we'll talk about kernel method in the next video.
+
+139
+00:15:27,050 --> 00:15:27,220
+Chapter 3
+

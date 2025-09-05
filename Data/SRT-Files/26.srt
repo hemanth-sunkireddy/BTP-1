@@ -1,0 +1,620 @@
+1
+00:00:05,139 --> 00:00:05,919
+Hello everyone.
+
+2
+00:00:06,000 --> 00:00:10,960
+In this video, we're going to compare support vector machines' performance with other models.
+
+3
+00:00:12,949 --> 00:00:19,559
+Last time, we talked about kernel tricks which are used to treat the nonlinear data such as this one.
+
+4
+00:00:20,579 --> 00:00:22,210
+This is not linearly separable.
+
+5
+00:00:22,510 --> 00:00:26,629
+Therefore, SPM with the linear hyperplane wouldn't be able to separate.
+
+6
+00:00:27,519 --> 00:00:30,839
+So the trick was to add higher order terms.
+
+7
+00:00:31,410 --> 00:00:36,950
+which is essentially making the data to lie in the higher dimension like in the picture on the right.
+
+8
+00:00:37,509 --> 00:00:44,780
+So by adding higher dimension, we might be able to separate the data points which wasn't possible in a low dimension.
+
+9
+00:00:46,890 --> 00:00:51,140
+So to do that, we introduce several corners that treats a higher dimension.
+
+10
+00:00:51,210 --> 00:00:54,620
+So one of them was called the polynomial corner.
+
+11
+00:00:55,120 --> 00:01:03,530
+So with this degree d, we can specify how many higher order terms of the features we would like to include.
+
+12
+00:01:04,669 --> 00:01:10,390
+And as a result, we were able to separate this data, otherwise linearly not separable.
+
+13
+00:01:12,259 --> 00:01:18,079
+We also talked about radial basis function kernel, which is discussion shape function.
+
+14
+00:01:18,539 --> 00:01:23,239
+This is good for data that's a radial shape, such as a donut shape that we saw before.
+
+15
+00:01:25,789 --> 00:01:28,709
+So let's briefly talk about properties of SVMs.
+
+16
+00:01:29,899 --> 00:01:31,469
+SVM needs a feature scaling.
+
+17
+00:01:31,469 --> 00:01:38,819
+That means we need to normalize a feature by column so that all the features are more or less in the same range of the values.
+
+18
+00:01:40,149 --> 00:01:44,199
+And also their time complexity scales linearly to number of features.
+
+19
+00:01:45,109 --> 00:01:50,009
+That means SVM will treat well when the number of features are many.
+
+20
+00:01:52,159 --> 00:01:58,729
+However, SVM time complexity goes quadratics to cubic to the number of observations.
+
+21
+00:01:58,969 --> 00:02:04,239
+So SVM is usually good for small to medium sized data with a large number of features.
+
+22
+00:02:05,399 --> 00:02:08,419
+SVM also works well on sparse features.
+
+23
+00:02:08,629 --> 00:02:14,609
+That means even though the feature value has a lot of zeros, SVM will be able to handle gracefully.
+
+24
+00:02:16,319 --> 00:02:21,099
+Comparing to random forest which is also good for a large number of features.
+
+25
+00:02:21,689 --> 00:02:27,589
+However, random forest can be very slow if the feature values are all real values and it's dense.
+
+26
+00:02:27,619 --> 00:02:33,389
+Whereas SVM, it can handle more or less similarly to categorical variables.
+
+27
+00:02:35,519 --> 00:02:40,579
+Another property for SVM, as you know, the SVM has a C parameter.
+
+28
+00:02:41,509 --> 00:02:44,949
+And we mentioned the C parameter gives the budget of the error.
+
+29
+00:02:45,549 --> 00:02:49,169
+So small c means that the model can tolerate small error.
+
+30
+00:02:49,709 --> 00:02:58,879
+That means a high variance and low bias model, whereas a larger C, the model can tolerate more errors and therefore higher bias, lower variance.
+
+31
+00:02:58,949 --> 00:03:07,479
+In fact, the optimization under the hood of SVM looks like this.
+
+32
+00:03:08,000 --> 00:03:18,179
+So we talked about making all of the data points within this margin with some kind of slack variables.
+
+33
+00:03:19,009 --> 00:03:22,750
+That's equivalent to minimizing this loss function.
+
+34
+00:03:24,149 --> 00:03:27,489
+So without the mathematical proof, we're going to use it.
+
+35
+00:03:27,529 --> 00:03:30,219
+And this loss function is called the hinge loss.
+
+36
+00:03:33,289 --> 00:03:39,249
+And let's call this g. Then this is a positive value for loss.
+
+37
+00:03:39,249 --> 00:03:42,399
+And then it becomes zero, where this g becomes one.
+
+38
+00:03:43,339 --> 00:03:48,159
+And then after that, the loss stays at zero.
+
+39
+00:03:48,189 --> 00:03:49,759
+So this looks like a hinge.
+
+40
+00:03:50,389 --> 00:03:51,249
+So
+
+41
+00:03:52,959 --> 00:03:54,979
+Therefore, the name is Hinge loss.
+
+42
+00:03:56,059 --> 00:04:01,689
+And then, but not only the Hinge loss, but it also has regularization term.
+
+43
+00:04:02,609 --> 00:04:12,019
+And this parameter lambda, regularization parameter, is proportional to C. So if we have a larger C, that means we have a higher regularization parameter.
+
+44
+00:04:14,339 --> 00:04:16,539
+So let's talk about SK-Lon library usage.
+
+45
+00:04:16,539 --> 00:04:20,299
+So SK-Lon library has a couple of functions.
+
+46
+00:04:20,299 --> 00:04:22,439
+So one of them is linear SPC.
+
+47
+00:04:23,949 --> 00:04:56,939
+support vector classifier and it uses a liblinear algorithm which does not use conor so no conor so this linear SVC function works better when the data is a linear is a problem and as you can see the penalty is L2 already and then loss function uses a slightly different one it's called the scared hinge however everything else is works similar
+
+48
+00:04:58,970 --> 00:05:01,759
+And you can also handle multi-class classification problem.
+
+49
+00:05:01,759 --> 00:05:07,220
+It just uses a one versus the rest type of strategy.
+
+50
+00:05:07,779 --> 00:05:13,490
+Because SVC or SVM, they are built for binary class classification.
+
+51
+00:05:13,490 --> 00:05:18,870
+In order to do the multi-class classification, one needs to have one versus the other.
+
+52
+00:05:18,870 --> 00:05:24,730
+Alright, this is another classification function called SVC.
+
+53
+00:05:24,730 --> 00:05:26,230
+And it's using libSVM.
+
+54
+00:05:29,969 --> 00:05:35,250
+and it uses a kernel, so it can have different kernels.
+
+55
+00:05:35,339 --> 00:05:37,870
+So by default, it's using radial basis function.
+
+56
+00:05:38,169 --> 00:05:42,529
+However, we can also change to poly if you are using polynomial.
+
+57
+00:05:42,949 --> 00:05:47,099
+This degree only applies when we are using polynomial kernel.
+
+58
+00:05:50,189 --> 00:05:55,389
+Oh, by the way, important thing to mention, sklon has a C parameter.
+
+59
+00:05:56,129 --> 00:06:01,149
+However, the definition of this C hyperparameter is inverse to the textbook's notation.
+
+60
+00:06:01,859 --> 00:06:07,879
+In the textbook, C directly means that it's number of violations that we can handle.
+
+61
+00:06:07,879 --> 00:06:10,069
+However, this is the inverse of that.
+
+62
+00:06:10,889 --> 00:06:16,429
+So that means if we were to have more regularization, we need to make this C smaller.
+
+63
+00:06:18,099 --> 00:06:18,429
+All right.
+
+64
+00:06:20,519 --> 00:06:25,639
+In SKLUN, SVM module can also do the regression, and that function is called SVR.
+
+65
+00:06:25,759 --> 00:06:31,399
+So you can just simply call SVR function, and everything else is pretty much similar.
+
+66
+00:06:31,399 --> 00:06:32,250
+To SVC.
+
+67
+00:06:34,219 --> 00:06:36,909
+Just a quick explanation how the SVR works.
+
+68
+00:06:37,289 --> 00:06:39,629
+It is the reverse of SVC.
+
+69
+00:06:40,049 --> 00:06:41,719
+What do I mean by reverse is this.
+
+70
+00:06:41,719 --> 00:06:46,759
+This is the hyperplane and this is the margin.
+
+71
+00:06:46,829 --> 00:06:54,979
+Then in SVC, we want the classified points are outside of this margin.
+
+72
+00:06:55,019 --> 00:06:59,789
+And depending on how many errors we allow, they may be just inside the margin or something like that.
+
+73
+00:07:00,549 --> 00:07:04,599
+However, in SVR, we...
+
+74
+00:07:05,049 --> 00:07:12,539
+reverse that condition that we want them to be as close to as possible with this decision boundary.
+
+75
+00:07:12,539 --> 00:07:18,799
+So we kind of fit this hyperplane or line to the data and do the regression.
+
+76
+00:07:19,759 --> 00:07:22,749
+So yeah, that's essentially how the SVR works.
+
+77
+00:07:24,579 --> 00:07:34,409
+All right, so for the rest of the video, we're going to talk about SVM performance in comparison with the other high-performing models such as ensemble method.
+
+78
+00:07:35,829 --> 00:07:42,729
+So to do that, we prepared five data that are similar or different to each other.
+
+79
+00:07:44,019 --> 00:07:48,459
+All of these five data has a task of binary class classification.
+
+80
+00:07:50,209 --> 00:07:53,689
+And they have different number of features and different number of observations.
+
+81
+00:07:54,599 --> 00:08:05,509
+So first data, as you might have seen before, it has a certain features and little more than 5000 samples, of which 80% of them will be used for training.
+
+82
+00:08:07,119 --> 00:08:17,709
+And just naive decision tree performance after this training and testing on the testing sample is a little more than 60% accuracy.
+
+83
+00:08:19,659 --> 00:08:25,629
+And as you can see, some of the columns here, this data has a sparse and most categorical features.
+
+84
+00:08:26,349 --> 00:08:30,129
+So these are real value features.
+
+85
+00:08:30,169 --> 00:08:37,110
+But however, most of them in this data are categorical and a lot of them also have zero values.
+
+86
+00:08:39,469 --> 00:08:47,149
+The second data of our choice has 20 features, similar number of samples, similar number of training samples.
+
+87
+00:08:47,859 --> 00:08:55,039
+So even though the number of features and number of samples are similar to the first one, its problem is a little bit more easier.
+
+88
+00:08:55,039 --> 00:08:59,489
+So even the decision tree can perform well, about 90% accuracy.
+
+89
+00:09:01,439 --> 00:09:09,099
+And as you can see, all these features are very dense, so all of them have some numbers, and they are also real value features.
+
+90
+00:09:11,009 --> 00:09:20,349
+CERN data has more than 100 features and about 3,000 samples and about 80% of them will be used for training.
+
+91
+00:09:20,349 --> 00:09:25,419
+And decision tree performance was about 70 something percent.
+
+92
+00:09:25,419 --> 00:09:31,229
+And as you can see, all of these features are categorical and they are also sparse.
+
+93
+00:09:31,359 --> 00:09:39,259
+And data 4 has even more features, 300 and more.
+
+94
+00:09:39,859 --> 00:09:46,919
+And then about a little less than 6,000 samples and 80% of them will be used in training.
+
+95
+00:09:46,919 --> 00:09:51,789
+And decision tree performance on this data was about 70% or less.
+
+96
+00:09:51,789 --> 00:09:58,499
+And as you can see, all of these data have real value features and they are very dense.
+
+97
+00:09:58,499 --> 00:10:03,529
+All right, this is our last data.
+
+98
+00:10:03,529 --> 00:10:09,529
+It has even more features, about 1800 features, and it has
+
+99
+00:10:10,759 --> 00:10:12,609
+a little less than 4000 samples.
+
+100
+00:10:12,609 --> 00:10:16,469
+However, we're going to select only very small number for training.
+
+101
+00:10:16,469 --> 00:10:23,479
+So 375 training samples and let the rest to be testing data.
+
+102
+00:10:25,739 --> 00:10:38,449
+We chose arbitrarily low training samples just because we wanted to show the performance of different models on the data that has more features than the training examples and also small training data.
+
+103
+00:10:39,789 --> 00:10:43,409
+The decision tree performance on this data is about 70%.
+
+104
+00:10:44,089 --> 00:10:51,589
+And this data consists of 93% of most categorical variables, and it has some real value variables as well.
+
+105
+00:10:55,479 --> 00:11:02,049
+With this long description about our data, here are a summary table for the performance of different models.
+
+106
+00:11:03,539 --> 00:11:06,849
+So you can see we compare five different models.
+
+107
+00:11:07,239 --> 00:11:11,769
+This decision tree and logistic regression being simple model as a baseline.
+
+108
+00:11:12,209 --> 00:11:17,179
+And then we also compare other high-performing models from three ang-sang-bu methods.
+
+109
+00:11:18,919 --> 00:11:21,449
+random forest and gradient boosting machine.
+
+110
+00:11:23,269 --> 00:11:39,879
+So as you can see for the data one which has a relatively small number of features and moderate size of data, you can see interestingly the logistic regression was the best model and GBM and SVM also performed reasonably well.
+
+111
+00:11:40,379 --> 00:11:46,869
+And because it's a relatively simple data, this didn't get to use a lot of trees.
+
+112
+00:11:48,689 --> 00:11:54,019
+The data number two, if you remember, is a relatively easier data in terms of having higher accuracy.
+
+113
+00:11:54,019 --> 00:11:58,169
+So even the decision trees and logistic regression have a high performance.
+
+114
+00:11:59,489 --> 00:12:06,629
+As you can see, fancier models performed a little bit better with the expense of lots of trees for the triangle symbols.
+
+115
+00:12:08,979 --> 00:12:14,019
+For data number 3 from our baseline, the season tree was a little more than 70%.
+
+116
+00:12:14,019 --> 00:12:17,879
+And logistic regression also performed reasonably well.
+
+117
+00:12:17,879 --> 00:12:26,169
+However, as you can see here, a little star mark, that means the sklearn library gave a little warning that the max iteration has reached.
+
+118
+00:12:27,029 --> 00:12:36,169
+I found it happens usually when we have a lot of features, so the optimization in logistic regression becomes little unstable.
+
+119
+00:12:37,189 --> 00:12:41,519
+Nevertheless, it gives some number so we can use that.
+
+120
+00:12:43,449 --> 00:12:47,439
+The Triang Sang Bulls and SBM, they worked pretty well.
+
+121
+00:12:47,629 --> 00:12:53,809
+And they gave a good result by big margin to the baseline models.
+
+122
+00:12:53,809 --> 00:13:01,399
+And again, you can see Triang Sang Bulls used hundreds of trees.
+
+123
+00:13:02,729 --> 00:13:06,699
+And then DataFour, which has even more features.
+
+124
+00:13:08,069 --> 00:13:09,409
+gave some similar results.
+
+125
+00:13:09,919 --> 00:13:14,199
+All of these tri-ensemble models and SVM, they worked better.
+
+126
+00:13:14,199 --> 00:13:23,619
+You can see sometimes SVM and tri-ensemble, their performance are similar or sometimes tri-ensemble are slightly better.
+
+127
+00:13:23,619 --> 00:13:27,449
+But as you will see later, there are some trade-offs.
+
+128
+00:13:27,969 --> 00:13:40,259
+For the Data 5 that had a more number of features than the number of samples, the decision tree and logistic regression, those baseline models didn't do very well.
+
+129
+00:13:40,259 --> 00:13:43,679
+However, the tri-ensemble and the SVM model worked much better.
+
+130
+00:13:48,329 --> 00:13:52,709
+By the way, all of these accuracy values are from a 5-fold cross-validation.
+
+131
+00:13:52,709 --> 00:14:01,279
+And also, these numbers in the parentheses are the selected hyperparameters after we do the grid search with the 5-fold cross-validation.
+
+132
+00:14:01,279 --> 00:14:13,359
+Alright, so performance-wise, in terms of accuracy, we saw that all of the ensemble models and SVM, they are comparable or sometimes ensemble models are better.
+
+133
+00:14:13,359 --> 00:14:15,659
+But how about the training time?
+
+134
+00:14:15,659 --> 00:14:26,849
+If they give a similar performance, however, one model gives a much shorter training time than the other, then that model that took less time to train seems a better choice, right?
+
+135
+00:14:29,109 --> 00:14:30,109
+So let's see here.
+
+136
+00:14:30,789 --> 00:14:43,479
+So the ensemble methods, random force and gradient boosting machine, they took about 100 milliseconds to a little less than 100 seconds, depending on how many number of trees they used.
+
+137
+00:14:43,479 --> 00:14:52,069
+And as you can see, even the number of features and the data dimension are similar.
+
+138
+00:14:52,259 --> 00:14:54,989
+Sometimes the other data takes much longer.
+
+139
+00:14:55,889 --> 00:14:56,889
+And the reason is this.
+
+140
+00:14:57,319 --> 00:14:59,299
+So for example, data 1 had
+
+141
+00:14:59,859 --> 00:15:04,719
+Therefore, any tree-based method can be slower when there is a lot of real-value features.
+
+142
+00:15:04,719 --> 00:15:14,859
+This can be avoided if you use some models that uses a histogram-based split or split randomly instead of going through all these values.
+
+143
+00:15:14,859 --> 00:15:18,969
+On the other hand, SVM doesn't suffer from that problem.
+
+144
+00:15:18,969 --> 00:15:31,339
+So as you can see, it takes not only shorter than tree ensemble method usually, it also doesn't care whether the feature values are real-valued or the categorical.
+
+145
+00:15:33,619 --> 00:15:38,409
+So, in that case, we can see SVM is a little more advantageous.
+
+146
+00:15:41,089 --> 00:15:51,539
+So, as a conclusion, which models to use, we recommend you inspect the data first and then pick the method that's likely to be better suited for the data.
+
+147
+00:15:52,719 --> 00:16:06,699
+So, we recommend to use SVM model if it has large number features and small to medium size data, which means a few hundreds to few thousand, and also if the data features are
+
+148
+00:16:07,099 --> 00:16:16,389
+mostly real-valued, it's likely that the SVM performs comparable to random forest and GBM, and it takes much less training time.
+
+149
+00:16:16,389 --> 00:16:25,039
+A good thing that we should keep in mind is that always try simple model first and see how it goes.
+
+150
+00:16:25,039 --> 00:16:34,599
+You may have to think about Occam's Razor principle, which tells that if the model performances are similar, the simpler model is always better.
+
+151
+00:16:34,599 --> 00:16:38,479
+On the other hand,
+
+152
+00:16:39,349 --> 00:16:47,079
+Choice of model can be depending on your goal and also the computation resource and the data size as well.
+
+153
+00:16:47,479 --> 00:16:59,559
+So, for example, if you are running for a machine learning challenge, you might want to try fancy models at the expense of some training time because a little bit of higher performance would be helpful.
+
+154
+00:17:00,339 --> 00:17:10,679
+However, if you are dealing with a really big system with really big data, you want to go with a simple model that takes less time to get you an idea how the model and data interacts.
+
+155
+00:17:11,109 --> 00:17:14,359
+So all these choices depend on the situation
+

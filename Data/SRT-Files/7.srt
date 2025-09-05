@@ -1,0 +1,228 @@
+1
+00:00:09,900 --> 00:00:19,859
+Okay, so the behavior of test header that goes down first and goes up later as we increase the model's flexibility can be explained by bias-variance trade-off.
+
+2
+00:00:19,859 --> 00:00:23,699
+So what is bias and variance?
+
+3
+00:00:23,699 --> 00:00:25,190
+Let's have a look at graphical explanation.
+
+4
+00:00:25,190 --> 00:00:29,170
+So when the bullets are well-centered and well-
+
+5
+00:00:30,870 --> 00:00:31,350
+grouped.
+
+6
+00:00:31,710 --> 00:00:33,939
+They are called low bias and low variance.
+
+7
+00:00:36,240 --> 00:00:44,740
+When the bullets are well grouped but far away from the target center, then it has a high bias because it's far away from the center or true value.
+
+8
+00:00:45,549 --> 00:00:48,100
+But it has a low variance because they are well grouped.
+
+9
+00:00:50,630 --> 00:01:01,210
+On the other hand, if the bullets are quite spread, but it's still well centered around the target, then we can say it has a low bias and high variance.
+
+10
+00:01:03,169 --> 00:01:11,810
+And as you can imagine, if bullets are not close to the center but it also has a large spread, then we say it's a high bias and high variance.
+
+11
+00:01:12,719 --> 00:01:14,829
+So how does that translate to machine learning?
+
+12
+00:01:15,259 --> 00:01:23,599
+In machine learning, we have data from real life and this data can be very complex and we don't know what the true model is.
+
+13
+00:01:25,310 --> 00:01:34,169
+By making a model, we introduce some assumption and there is an error that's caused by a simplification by choosing our model.
+
+14
+00:01:34,469 --> 00:01:36,119
+and this error is called the bias.
+
+15
+00:01:38,159 --> 00:01:41,959
+On the other hand, variance in machine learning means a variability of the model.
+
+16
+00:01:42,279 --> 00:01:44,099
+So what is the variability of the model?
+
+17
+00:01:44,689 --> 00:02:05,389
+Let's say we had some data that look like this and then we were to fit the data with the simple model and maybe we can also fit with the more complex model that tends to have a lower error so lower bias
+
+18
+00:02:05,869 --> 00:02:25,609
+However, if we chose different data set, like this for example, then if we fit the simple model again, they will be very similar.
+
+19
+00:02:27,149 --> 00:02:35,239
+But if we fit the complex model, now it's going to be a little different from the previous.
+
+20
+00:02:35,789 --> 00:02:39,109
+So this variability of the model is called a
+
+21
+00:02:39,399 --> 00:02:40,599
+variance of the model.
+
+22
+00:02:42,349 --> 00:02:47,560
+So if the model is simple, they tend to have low variance.
+
+23
+00:02:47,879 --> 00:02:50,859
+They don't change much even though we change the training data.
+
+24
+00:02:52,769 --> 00:02:59,009
+But when we have a more flexibility in the model, they may change quite a bit depending on how we choose the training samples.
+
+25
+00:02:59,099 --> 00:03:01,449
+So they tend to have high variance.
+
+26
+00:03:04,899 --> 00:03:09,239
+All right, so simpler model tends to have a high bias and low variance.
+
+27
+00:03:09,299 --> 00:03:11,139
+So it will correspond to this one.
+
+28
+00:03:11,909 --> 00:03:17,759
+A more complex or flexible model tend to have a lower bias but has a higher variance.
+
+29
+00:03:17,879 --> 00:03:19,469
+So it will be this case.
+
+30
+00:03:20,459 --> 00:03:26,269
+In machine learning, a lot of models are either this case or this case.
+
+31
+00:03:26,269 --> 00:03:27,659
+There is a trade-off between the two.
+
+32
+00:03:27,659 --> 00:03:30,909
+That's where the bias-variance trade-off coming from.
+
+33
+00:03:30,909 --> 00:03:37,479
+Sometimes if the model is not very good, then you may encounter this case.
+
+34
+00:03:37,479 --> 00:03:46,199
+So some type of model, such as a deep neural network with some other tricks, they may have low bias and low variance.
+
+35
+00:03:48,509 --> 00:03:52,489
+But most of cases, we have the trade-off between the bias and variance.
+
+36
+00:03:52,629 --> 00:03:59,079
+So back to our test error, why it goes down and then goes up.
+
+37
+00:03:59,079 --> 00:04:00,359
+Because of the bias-variance trade-off.
+
+38
+00:04:00,679 --> 00:04:05,209
+So when we have this is model complexity.
+
+39
+00:04:05,209 --> 00:04:11,789
+This is test error.
+
+40
+00:04:11,789 --> 00:04:16,469
+Or error in general.
+
+41
+00:04:19,959 --> 00:04:33,529
+The bias goes down as our model complexity increases and the model variability goes up as our model complexity goes up.
+
+42
+00:04:34,819 --> 00:04:42,789
+And when you use a squared error, you can actually derive the general relationship between bias and variance to the test error.
+
+43
+00:04:42,789 --> 00:04:48,749
+So test error, let me see, can be written as a variance
+
+44
+00:04:49,919 --> 00:05:07,839
+of the model, estimated model, and then the bias of the estimated model also and squared plus some irreducible error, the variance of the residuals.
+
+45
+00:05:09,899 --> 00:05:21,649
+You can have a look at the supplemental note but this is the result and according to this the test error is a sum of this variance of the model and bias scaled of the model.
+
+46
+00:05:22,229 --> 00:05:34,419
+So in the end, our test header will have a shape of this because it adds this too and then there is some irreducible header from the residuals.
+
+47
+00:05:34,559 --> 00:05:36,969
+So that's how the test header shape looks like this.
+
+48
+00:05:38,099 --> 00:05:54,069
+However, in reality, depending on your model and data, your test header may look, just go down and then flattens and that's very common, whereas your training header goes down and down down.
+
+49
+00:05:55,229 --> 00:05:59,899
+And sometimes the simple model fits well to the data already.
+
+50
+00:05:59,979 --> 00:06:06,219
+In that case you may have already good test error for the simple model as well like this.
+
+51
+00:06:06,729 --> 00:06:08,159
+And then it goes up like this.
+
+52
+00:06:10,819 --> 00:06:11,579
+Something like this.
+
+53
+00:06:12,089 --> 00:06:14,459
+And also note that this doesn't have to be squared error.
+
+54
+00:06:15,059 --> 00:06:20,539
+It is very general behavior no matter which loss function or error function you have.
+
+55
+00:06:23,289 --> 00:06:28,489
+Alright so in summary we talked about what happens if we add more complexity to our model.
+
+56
+00:06:28,919 --> 00:06:30,869
+We talked about polynomial regression.
+
+57
+00:06:31,060 --> 00:06:39,649
+and where we stop adding more terms to the model by monitoring train and tester error, and we also talked about the bias-variance trade-off principle.
+

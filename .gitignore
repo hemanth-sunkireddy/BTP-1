@@ -3,7 +3,7 @@
 **/*.vtt
 **/*.zip
 **/*.vtt
-**/*.srt
+# **/*.srt
 **/*.wav
 Data/Audios
 Data/Audio-Chunks

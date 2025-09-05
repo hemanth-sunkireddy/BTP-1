@@ -1,0 +1,572 @@
+1
+00:00:00,530 --> 00:00:10,710
+this error will optimize the parameter values so that this prediction value will be as close as possible to the target value.
+
+2
+00:00:13,710 --> 00:00:17,089
+In non-parametric models, the parameter doesn't exist.
+
+3
+00:00:17,089 --> 00:00:26,949
+Therefore, the question is, well, how do we optimize the model such that this prediction value gets as close as possible to the target value?
+
+4
+00:00:26,949 --> 00:00:29,780
+The model has hyperparameters.
+
+5
+00:00:31,290 --> 00:00:31,700
+usually.
+
+6
+00:00:31,700 --> 00:00:34,789
+They may not have, but usually they should have.
+
+7
+00:00:35,329 --> 00:00:45,160
+And then these non-parametric models sometimes use this error or sometimes they don't, but uses some other quantity to optimize the model.
+
+8
+00:00:45,160 --> 00:00:46,789
+So we'll get to that.
+
+9
+00:00:46,789 --> 00:00:57,480
+So examples of non-parametric models are KNN, K-nearest neighbor, which is the simplest machine learning algorithm, and then decision trees.
+
+10
+00:01:01,500 --> 00:01:03,689
+that uses a tree-like model.
+
+11
+00:01:03,850 --> 00:01:05,540
+We'll get to that later.
+
+12
+00:01:05,540 --> 00:01:13,769
+And support vector machine which uses distance between the points and the decision boundary or hyperplane.
+
+13
+00:01:13,890 --> 00:01:18,640
+So k-nearest neighbor works like this.
+
+14
+00:01:18,640 --> 00:01:21,700
+So imagine I have training data that looks like this.
+
+15
+00:01:21,700 --> 00:01:28,810
+Red dots and blue dots and the task is to classify my data points whether it's red or blue.
+
+16
+00:01:28,810 --> 00:01:34,740
+And let's say I have data points to classify here, and I don't know whether it's red or blue.
+
+17
+00:01:36,280 --> 00:01:43,969
+And k-nearest neighbors says that just take k numbers of nearest neighbors and classify to the majority of them.
+
+18
+00:01:43,969 --> 00:01:56,150
+So let's say if I have k equals 1, I take the closest one, I take one nearest neighbor which is red, so my green point is going to be red in this case.
+
+19
+00:01:56,150 --> 00:02:07,420
+If I said, if I had three neighbors, then I have two blues and one red, therefore my green points will be classified as 2.
+
+20
+00:02:08,219 --> 00:02:10,180
+by the majority rule, a voting rule.
+
+21
+00:02:11,189 --> 00:02:23,349
+If I had 5, if I had a k equals 5, then now I have a 3 red neighbors and 2 blue neighbors, so it's going to be classified as red now.
+
+22
+00:02:24,640 --> 00:02:26,110
+You might have noticed two things.
+
+23
+00:02:26,550 --> 00:02:40,250
+First, this green point kind of flips between red and blue, and second, the choice of k number is odd number, why is that?
+
+24
+00:02:40,250 --> 00:02:40,860
+Because
+
+25
+00:02:41,120 --> 00:02:43,759
+If I have an even number, then I might have tie.
+
+26
+00:02:44,740 --> 00:02:49,719
+I might have just two red and two blues, and I don't know what to choose then.
+
+27
+00:02:50,310 --> 00:02:55,590
+So that's why we usually use odd number for the k values for KNN model.
+
+28
+00:02:57,170 --> 00:03:02,449
+Another thing you might have noticed is that why is this green swing between red and blue?
+
+29
+00:03:03,300 --> 00:03:09,530
+It is just happened to be that this green sits on the decision boundary.
+
+30
+00:03:09,560 --> 00:03:15,780
+For example, let's say this side is red and this side is blue and this green just
+
+31
+00:03:15,990 --> 00:03:18,770
+at the right in between so it can swing.
+
+32
+00:03:19,939 --> 00:03:21,560
+But that's not very important.
+
+33
+00:03:21,700 --> 00:03:23,670
+I just wanted to show it can happen.
+
+34
+00:03:24,450 --> 00:03:33,210
+And another question you might ask is that can KNN do other than classification?
+
+35
+00:03:34,030 --> 00:03:34,569
+Yes, it can.
+
+36
+00:03:34,569 --> 00:03:37,189
+You can also do the regression.
+
+37
+00:03:37,670 --> 00:03:48,120
+The difference would be that instead of taking the majority rule here, if it's a regression, it's going to take the average of these five values for example when the k equals five.
+
+38
+00:03:49,950 --> 00:03:54,520
+Kaelin uses distance metric, for example, Manhattan distance and Euclidean distance.
+
+39
+00:03:54,810 --> 00:04:05,470
+Euclidean distance is a simple distance between these two points, whereas Manhattan distance would be the delta x plus delta y, for example.
+
+40
+00:04:05,900 --> 00:04:09,900
+There are more distance metrics that you can use, but these two are pretty popular.
+
+41
+00:04:13,420 --> 00:04:15,490
+So let's have an example.
+
+42
+00:04:15,840 --> 00:04:18,750
+This is from famous iris dataset.
+
+43
+00:04:20,700 --> 00:04:26,460
+To display more conveniently, I only use two features and then two classes of iris.
+
+44
+00:04:26,460 --> 00:04:35,300
+So you can see some blue points and red points are kind of mixed in some area.
+
+45
+00:04:35,680 --> 00:04:37,020
+So it's hard to separate.
+
+46
+00:04:37,940 --> 00:04:43,320
+So this two graph shows that the decision boundary, I can model.
+
+47
+00:04:43,430 --> 00:04:47,530
+In each case, k values are different.
+
+48
+00:04:47,930 --> 00:04:49,670
+And now I have a question for you.
+
+49
+00:04:49,750 --> 00:04:52,220
+Which of these k's have a smaller k number?
+
+50
+00:04:54,870 --> 00:04:56,470
+Okay, we'll see the answer here.
+
+51
+00:04:56,680 --> 00:05:00,389
+The answer was the left one has a smaller k value.
+
+52
+00:05:00,460 --> 00:05:02,389
+In fact, it was k cos 1.
+
+53
+00:05:03,389 --> 00:05:09,009
+And as you can see here, as the k increases, the decision boundary becomes smoother and smoother.
+
+54
+00:05:10,389 --> 00:05:16,689
+When the k is small, let's say 1, then I only have to consider just one neighbor.
+
+55
+00:05:16,689 --> 00:05:24,220
+So if my data points here, I only consider this one, and the next time my data points here, then I consider this one.
+
+56
+00:05:24,689 --> 00:05:28,080
+Therefore, the decision boundary can be very granular.
+
+57
+00:05:28,670 --> 00:05:31,810
+Therefore, it can fit to the very complex data like this.
+
+58
+00:05:32,830 --> 00:05:47,580
+Whereas if I have to consider many neighbors, when I'm here, I will have to consider 61 neighbors and then count red versus blue and decide which one is more dominant here, in this case red.
+
+59
+00:05:47,580 --> 00:05:57,810
+So the decision boundary can be very smooth in this way because I'm kind of averaging out a lot of data points.
+
+60
+00:05:58,990 --> 00:06:03,600
+All right, so this might remind you the concept of bias and variance.
+
+61
+00:06:03,959 --> 00:06:06,589
+So how's the bias and variance in K and N?
+
+62
+00:06:08,430 --> 00:06:09,500
+So here are some quiz.
+
+63
+00:06:09,850 --> 00:06:11,459
+Which model has a larger bias?
+
+64
+00:06:12,600 --> 00:06:14,930
+When the K is small or when the K is large?
+
+65
+00:06:17,430 --> 00:06:21,160
+The answer is when we have a larger K, we have a larger bias.
+
+66
+00:06:21,730 --> 00:06:22,360
+Why is that?
+
+67
+00:06:22,360 --> 00:06:29,269
+Because a K and N model with the larger K is a simpler model and it's less flexible.
+
+68
+00:06:29,600 --> 00:06:36,470
+you saw in the previous slides that the decision boundaries are much smoother for when K is larger.
+
+69
+00:06:38,009 --> 00:06:50,019
+The simpler model, which is a less flexible model, has a larger bias because it simplifies the real-world data, therefore it introduces more bias and more assumption about data.
+
+70
+00:06:50,019 --> 00:06:53,470
+Alright, another question.
+
+71
+00:06:53,470 --> 00:07:00,840
+Which model has a larger variance when the K is small or when the K is large?
+
+72
+00:07:03,780 --> 00:07:13,710
+So larger variance happens when the model is more flexible, therefore we can guess that the small k, k and n should have a larger variance.
+
+73
+00:07:17,290 --> 00:07:19,850
+So how do we determine the optimal k value?
+
+74
+00:07:20,490 --> 00:07:36,380
+As you saw previously that the training error goes down as the model complexity increases, test error goes down in the beginning but then it has an optimal value and it goes up again as the model complexity increases.
+
+75
+00:07:36,590 --> 00:07:41,430
+because the model is too complex to the data, therefore it's overfitting.
+
+76
+00:07:41,500 --> 00:07:43,110
+It's not generalizing very well.
+
+77
+00:07:43,110 --> 00:07:45,720
+So that point happens here.
+
+78
+00:07:45,780 --> 00:07:59,250
+So around k equals 21, the optimal value happens and the test error is minimized, whereas it can go up if we keep increasing the model complexity.
+
+79
+00:08:00,460 --> 00:08:03,260
+So you can see that this side is more complex model.
+
+80
+00:08:06,690 --> 00:08:07,620
+When the k
+
+81
+00:08:07,920 --> 00:08:26,640
+value gets smaller, the model gets more complex, more flexible, and the other side becomes simpler and has a larger bias, larger variance.
+
+82
+00:08:30,420 --> 00:08:36,020
+So that's the relationship between the k and then, k of the k and n and the bias and variance.
+
+83
+00:08:37,470 --> 00:08:37,810
+All right.
+
+84
+00:08:39,360 --> 00:08:40,830
+So more KNN properties.
+
+85
+00:08:41,549 --> 00:08:44,830
+As we saw, it's a simple and memory-based algorithm.
+
+86
+00:08:44,830 --> 00:08:51,210
+Memory-based means that it just needs all the training data in order to inference.
+
+87
+00:08:51,210 --> 00:08:58,690
+And its time complexity is the order of number of samples times the number of features.
+
+88
+00:08:58,690 --> 00:09:05,190
+There can be K here as well, but if you had to rank K neighbors anyway, then there are some clever algorithms.
+
+89
+00:09:09,060 --> 00:09:33,009
+It's not, when you measure the time actually, it doesn't go very linearly because there are some better sorting algorithms, but anyway Time complexity is roughly n times m where this is number of samples and this is number of features and we can just support that by doing some, a few experiments.
+
+90
+00:09:33,080 --> 00:09:38,860
+So this data comes from OpenML and this has a 90
+
+91
+00:09:39,529 --> 00:09:45,129
+More than 90,000 samples with the 100 features and the task is to classify binary class.
+
+92
+00:09:45,129 --> 00:09:54,919
+So at k equals 9, which was the optimal value, the train time for k and n linearly increases as the number of samples increases.
+
+93
+00:09:54,919 --> 00:09:59,590
+Another data supports that as well.
+
+94
+00:09:59,590 --> 00:10:08,049
+Instead of increasing the number of samples, this time by increasing number of features, the train time also goes linearly.
+
+95
+00:10:08,049 --> 00:10:11,269
+So this data was...
+
+96
+00:10:14,370 --> 00:10:21,929
+classifying three different boundary types of the gene sequences and has 180 binary features.
+
+97
+00:10:26,579 --> 00:10:33,349
+Training the logistic regression on the same data set and measuring the training time can give some comparison.
+
+98
+00:10:33,389 --> 00:10:38,509
+Surprisingly, this KNN model is very efficient.
+
+99
+00:10:40,039 --> 00:10:43,409
+Well, it is usually said that KNN is slow.
+
+100
+00:10:43,649 --> 00:10:48,909
+because it has to measure all the distance between the points in the training data set.
+
+101
+00:10:48,909 --> 00:10:55,409
+So it's said to be slow, but with this number of samples, it's not terribly bad.
+
+102
+00:10:55,509 --> 00:11:01,100
+It has a training time very small compared to the logistic regression.
+
+103
+00:11:01,549 --> 00:11:03,220
+It's surprisingly fast.
+
+104
+00:11:04,049 --> 00:11:12,649
+And logistic regression might be slow just because it uses a fancy second derivative optimization algorithm that can run many times as well.
+
+105
+00:11:13,960 --> 00:11:15,659
+This graph shows that the
+
+106
+00:11:16,189 --> 00:11:20,529
+there is an optimal k-value for the KNN model.
+
+107
+00:11:20,529 --> 00:11:25,529
+The test accuracy has some optimal value at certain k-value, which is 7 in this case.
+
+108
+00:11:25,529 --> 00:11:35,539
+So another property that KNN has is that it suffers severely from curse of dimensionality.
+
+109
+00:11:35,539 --> 00:11:38,339
+What is the curse of dimensionality?
+
+110
+00:11:38,339 --> 00:11:45,139
+Curse of dimensionality is that the model performs very poorly when we have a lot of features.
+
+111
+00:11:46,689 --> 00:11:49,370
+so that there is a curse when the dimension is high.
+
+112
+00:11:50,399 --> 00:11:52,529
+To see that, we're going to do some experiments.
+
+113
+00:11:52,970 --> 00:11:57,230
+I just plotted explained variance ratio from PCA.
+
+114
+00:11:58,679 --> 00:12:11,569
+By transforming our 180 features using principal component analysis, it's going to rank the combination of these 180 features in order of importance.
+
+115
+00:12:12,539 --> 00:12:16,159
+That is called explained variance ratio.
+
+116
+00:12:17,159 --> 00:12:29,539
+And this gradual increase of this explained variance ratio tells that a lot of these features are all important.
+
+117
+00:12:29,759 --> 00:12:38,659
+If only a few of these features were important, then this explained variance ratio graph would look like this.
+
+118
+00:12:39,870 --> 00:12:48,409
+Like very sharply increase up until point, that means more than 90% of variance would be explained by just only few features.
+
+119
+00:12:49,340 --> 00:12:53,549
+However, this graph shows that it gradually increases.
+
+120
+00:12:53,549 --> 00:12:57,740
+That means all features are kind of important.
+
+121
+00:12:58,440 --> 00:13:03,149
+So with that in mind, let's have a look and compare with the logistic regression.
+
+122
+00:13:03,840 --> 00:13:17,320
+So because most of these features are important, in logistic regression you can see that the test accuracy still increases as the number of features increases.
+
+123
+00:13:18,210 --> 00:13:22,710
+However, in KNN, as you can see, with the various values of K,
+
+124
+00:13:23,559 --> 00:13:24,940
+for the various k values.
+
+125
+00:13:25,039 --> 00:13:32,860
+It has some peak value at very small dimension of features and then it sharply decrease the performance.
+
+126
+00:13:33,289 --> 00:13:35,350
+So that's the curse of high dimensionality.
+
+127
+00:13:37,080 --> 00:13:38,049
+So let's fix it.
+
+128
+00:13:38,129 --> 00:13:48,230
+Our optimal value k equals 7 and as you can see the test accuracy dropped very sharply as we increase the number of features that are included in the model.
+
+129
+00:13:52,639 --> 00:13:55,700
+So why does curse of dimensionality happen here?
+
+130
+00:13:56,759 --> 00:14:08,789
+It happens because intuitively the number of data points in the given volume of this height dimension sharply decreases when this dimension becomes high.
+
+131
+00:14:09,740 --> 00:14:14,309
+Therefore, we need more data points in order to have the same level of accuracy.
+
+132
+00:14:15,479 --> 00:14:23,829
+However, with the fixed data size, the concentration of data decreases dramatically.
+
+133
+00:14:23,829 --> 00:14:29,899
+Therefore, we have degradation of performance in accuracy when the dimension is too high.
+
+134
+00:14:31,669 --> 00:14:33,350
+But it's not that simple.
+
+135
+00:14:33,450 --> 00:14:45,399
+Researchers have found that if the features are highly correlated to each other, it may suffer less because the effective dimension is less than the number of features.
+
+136
+00:14:46,190 --> 00:14:49,450
+But anyway, still, K-NN suffers from curse of dimensionality.
+
+137
+00:14:49,450 --> 00:14:58,210
+So when this happens, you want to use smaller number of features and avoid from being high dimension.
+
+138
+00:15:01,169 --> 00:15:02,500
+when you are using KNN.
+
+139
+00:15:05,409 --> 00:15:14,759
+Also, not only the KNN, other machine learning models that use the distance metric in their algorithm can suffer from curse of dimensionality.
+
+140
+00:15:14,759 --> 00:15:24,149
+So you might choose wisely which model to use when your dimension is too high, unless you can or you want to reduce the number of features.
+
+141
+00:15:26,799 --> 00:15:32,039
+Alright, so in this video we talked about KNN as an example of non-parametric model, which is the simplest
+
+142
+00:15:33,000 --> 00:15:49,039
+machine learning model and we talked about its property, its bias variance, its hyperparameter k, and how it behaves when the k increases or k decreases, and its properties such as curse of dimensionality.
+
+143
+00:15:50,750 --> 00:15:55,219
+We'll talk about more sophisticated models, non-parametric models, in the next videos.
+

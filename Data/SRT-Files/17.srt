@@ -1,0 +1,328 @@
+1
+00:00:05,150 --> 00:00:09,679
+Hi everyone, in this video we're going to talk about hyperparameters of decision trees.
+
+2
+00:00:10,529 --> 00:00:13,740
+So as a quick review, here is how decision tree splitting works.
+
+3
+00:00:13,859 --> 00:00:23,190
+So from the root node, it has samples and it's gonna pick a feature and its threshold value to minimize the sum of the MSE of the splitted node.
+
+4
+00:00:24,929 --> 00:00:30,850
+So like this, and then it will further split and pick another feature and threshold value.
+
+5
+00:00:32,740 --> 00:00:33,329
+like this.
+
+6
+00:00:35,170 --> 00:00:38,460
+And we also talked about different metrics for different tasks.
+
+7
+00:00:38,519 --> 00:00:45,039
+So for the regression trees, we use MSC, MAE, or RSS to split the node.
+
+8
+00:00:45,519 --> 00:00:54,030
+And for classification tasks, the tree uses Gini and entropy, or information gain sometimes, to split the node.
+
+9
+00:00:55,799 --> 00:01:01,159
+And in this video, we're going to talk about some usage in SKLang, how to fit the models.
+
+10
+00:01:01,849 --> 00:01:10,109
+some useful functions and we'll talk about hyperparameters of the decision trees that we need to pick values such that we minimize overfitting.
+
+11
+00:01:11,989 --> 00:01:19,079
+So here are some references that you can look at the document and they have useful stuff.
+
+12
+00:01:20,159 --> 00:01:35,909
+So we simply import decision tree regressor and classifier from the sklon tree module and for example if it was classification task we can construct a model by just simply calling this decision tree classifier.
+
+13
+00:01:37,819 --> 00:01:48,379
+and then fit the data, the features and the labels, and here are the snapshots from the document that shows that it has many many other options.
+
+14
+00:01:49,980 --> 00:01:52,329
+Alright, so we'll talk about some of them.
+
+15
+00:01:53,280 --> 00:02:00,840
+Another useful function that is also contained in that escapelontree module is the plot tree.
+
+16
+00:02:01,480 --> 00:02:09,939
+When we pass the fitted object to the plot tree function, it's going to return some list of text objects and then
+
+17
+00:02:10,770 --> 00:02:12,819
+also the visualization of this.
+
+18
+00:02:15,990 --> 00:02:22,879
+We can also use export graphics function from sk1 tree to make a fancier visualization.
+
+19
+00:02:22,990 --> 00:02:29,050
+To do that we're gonna use graphics and some other modules and the usage will look like this.
+
+20
+00:02:29,629 --> 00:02:40,870
+We just pass this object fitted object and then it's going to convert this text object to a graph object and then the image function will create an image
+
+21
+00:02:41,310 --> 00:02:41,949
+out of this.
+
+22
+00:02:42,840 --> 00:02:44,300
+So it will look like this.
+
+23
+00:02:44,379 --> 00:02:54,590
+So if you see more red and more blue it means that the node is more pure and if you see white node that means it's kind of 50-50 or very mixed there.
+
+24
+00:02:55,310 --> 00:02:58,530
+So it's a little bit fancier but essentially kind of the same.
+
+25
+00:02:59,590 --> 00:03:06,039
+Decision trees, while they are easy and useful to understand, they have some drawbacks.
+
+26
+00:03:06,139 --> 00:03:10,860
+They are very easy to overfit so we're gonna talk about some
+
+27
+00:03:11,150 --> 00:03:13,060
+strategies to prevent overfitting.
+
+28
+00:03:13,590 --> 00:03:16,789
+So first strategy is stopping the tree to grow.
+
+29
+00:03:17,509 --> 00:03:18,449
+It's called all-stopping.
+
+30
+00:03:18,449 --> 00:03:21,349
+And second strategy is called pruning.
+
+31
+00:03:21,349 --> 00:03:22,689
+We'll talk about that later.
+
+32
+00:03:22,689 --> 00:03:26,259
+And another good strategy is ensembleing the trees.
+
+33
+00:03:26,259 --> 00:03:31,810
+All right, so how do we stop the tree grow only?
+
+34
+00:03:31,849 --> 00:03:42,120
+We have a bunch of hyper parameters listed here and we can pick some values such that we can stop the tree grow.
+
+35
+00:03:42,750 --> 00:03:51,370
+So for example, maxDepth will limit the tree, the depth of the tree, so that it can stop growing when it reaches certain depths.
+
+36
+00:03:52,439 --> 00:04:01,519
+And meanSampleSplit will make the node stop splitting when it has a less number of samples arrived in that node.
+
+37
+00:04:02,789 --> 00:04:12,719
+And meanSampleSleep also can stop tree grow further or node split further when it has a certain number of samples in the leaf node.
+
+38
+00:04:13,120 --> 00:04:14,479
+So they are kind of similar.
+
+39
+00:04:15,409 --> 00:04:18,189
+mean weight fraction lift are also similar.
+
+40
+00:04:18,359 --> 00:04:26,379
+It is a continuous version of mean samples lift, so instead of number of samples, we'll look for the weight fraction of the node.
+
+41
+00:04:27,659 --> 00:04:41,009
+And mean impurity decrease also stops splitting at that node if the impurity decrease from that node is negligible or less than certain number.
+
+42
+00:04:42,519 --> 00:04:46,079
+And max features also can help with the overfitting because it can
+
+43
+00:04:46,569 --> 00:04:52,469
+make the model less flexible by looking at the less number of features when we have so many features.
+
+44
+00:04:53,729 --> 00:05:02,859
+And there are more design parameters in the sklearn implementation of decision trees, which you can also look at the documentation, but we'll focus on just a few.
+
+45
+00:05:03,099 --> 00:05:07,829
+So the most direct way to prevent overfitting in the decision tree is a max depth.
+
+46
+00:05:08,099 --> 00:05:12,099
+So by just limiting the depth, we can directly make the tree not grow.
+
+47
+00:05:12,099 --> 00:05:16,339
+And the minimum sample width is also very useful.
+
+48
+00:05:17,019 --> 00:05:23,159
+So the smaller the number of the sample of the leaf, that means the model is more flexible.
+
+49
+00:05:23,509 --> 00:05:30,089
+So if you want to make the model less flexible, so less overfit, then increase this number.
+
+50
+00:05:30,899 --> 00:05:33,310
+Another one to try is an impurity decrease.
+
+51
+00:05:33,310 --> 00:05:38,489
+However, you will have to know some values, so you will have to give some trial and error.
+
+52
+00:05:40,859 --> 00:05:44,439
+An impurity decrease is calculated as this one.
+
+53
+00:05:44,439 --> 00:05:49,829
+So when there are n samples in the parent node and it splits to an L and an R.
+
+54
+00:05:50,839 --> 00:06:17,910
+the impurity decrease or information gain is given by the impurity of the original node minus the weighted sum of the impurity of the children node so the weights will be the fraction of the sample numbers times the impurity of the left box and the weight of the right box times impurity of the right box.
+
+55
+00:06:18,209 --> 00:06:19,730
+So that's the impurity decrease.
+
+56
+00:06:20,579 --> 00:06:22,590
+So you will pick some value threshold.
+
+57
+00:06:23,540 --> 00:06:25,050
+and see what happens.
+
+58
+00:06:26,660 --> 00:06:30,629
+Other useful options that you can use when you build a model is the max features.
+
+59
+00:06:30,829 --> 00:06:38,470
+So it's going to limit the feature number and usually square root or log options are popular.
+
+60
+00:06:38,470 --> 00:06:42,519
+Square root is more popular by the way.
+
+61
+00:06:43,160 --> 00:06:53,720
+And class weight by default is none, but if you use a balance, it usually gives a better performance, especially true when you have imbalanced labels.
+
+62
+00:06:55,889 --> 00:06:59,569
+And CCP-alpha is used when you use minimal complexity pruning.
+
+63
+00:06:59,569 --> 00:07:03,230
+So we'll talk about this more in detail in the pruning video.
+
+64
+00:07:03,230 --> 00:07:09,110
+So how do we choose its hyperparameter values?
+
+65
+00:07:09,310 --> 00:07:14,340
+We might have some heuristic values or just try a few values.
+
+66
+00:07:14,340 --> 00:07:18,830
+However, we can also do a pragmatic approach like grid search.
+
+67
+00:07:18,830 --> 00:07:24,220
+Unfortunately, sklearn library also have a very convenient tool.
+
+68
+00:07:25,089 --> 00:07:26,920
+called gridSearchCV.
+
+69
+00:07:27,680 --> 00:07:52,910
+It does grid search as well as cross-validation so that it makes sure it's not just a one-pick value that was out of luck, but it does cross-validation, which will split the data into by default five chunks and then and it's going to fit the model and then get the accuracy from this chunk and this chunk and then it will average the result.
+
+70
+00:07:55,920 --> 00:08:00,770
+And it will give the result that which model hyperparameter gave the best result.
+
+71
+00:08:01,410 --> 00:08:06,500
+So from model selection module, we can call the gridSearchCV.
+
+72
+00:08:06,780 --> 00:08:09,870
+And this is individual decision tree classifier.
+
+73
+00:08:09,900 --> 00:08:12,830
+I just happen to call RF, but you can call whatever.
+
+74
+00:08:13,050 --> 00:08:21,120
+And then these parameters are dictionary that shows that which hyperparameters and which values you want to change to.
+
+75
+00:08:21,490 --> 00:08:23,210
+So I gave some different options.
+
+76
+00:08:23,970 --> 00:08:25,800
+And then...
+
+77
+00:08:27,210 --> 00:08:41,170
+I put these two objects in the grid search CVE and after fitting the grid search object with the data, we get some we can we can call the result by dot best estimator.
+
+78
+00:08:41,170 --> 00:08:55,019
+It will return what was the best estimator and gives the hyper parameter values here and dot best score will give the what was the accuracy value for the classification when we use these hyper parameters.
+
+79
+00:08:56,389 --> 00:08:58,440
+Alright so these are some handy tools.
+
+80
+00:08:58,560 --> 00:09:01,519
+So we showed how to use sklearn
+
+81
+00:09:01,920 --> 00:09:09,639
+library for constructing decision trees and how to use grid search to find the hyperparameter values.
+
+82
+00:09:10,889 --> 00:09:16,850
+In the next video, we're going to talk about pruning the decision trees as a part of strategies of preventing overfitting.
+

@@ -1,0 +1,416 @@
+1
+00:00:06,169 --> 00:00:06,910
+Hi everyone.
+
+2
+00:00:06,910 --> 00:00:09,970
+In this video, we're going to talk about multilinear regression.
+
+3
+00:00:11,320 --> 00:00:21,269
+So last time we talked about multilinear regression with the higher order terms of a single variable, and this time we're going to talk about multilinear regression model when there are multiple variables.
+
+4
+00:00:22,239 --> 00:00:29,300
+So we're going to see how to interpret these coefficients and then how to inspect whether these coefficients are significant.
+
+5
+00:00:30,780 --> 00:00:32,969
+And we're going to talk about how to select features.
+
+6
+00:00:33,179 --> 00:00:35,310
+and what to consider when we select features.
+
+7
+00:00:36,340 --> 00:00:39,770
+And we'll talk about highly correlated features and multicollinearity.
+
+8
+00:00:40,230 --> 00:00:40,770
+What are they?
+
+9
+00:00:40,770 --> 00:00:42,359
+How does it affect the model?
+
+10
+00:00:42,469 --> 00:00:45,109
+And what can we do when we select features?
+
+11
+00:00:47,070 --> 00:00:50,549
+And we're going to talk about what other things to consider when we select features.
+
+12
+00:00:51,600 --> 00:00:55,799
+And lastly, we'll talk about what to do when there are interactions between the features.
+
+13
+00:00:57,740 --> 00:01:01,939
+So, as you know, the multilinear regression model can be formulated by this.
+
+14
+00:01:02,359 --> 00:01:07,450
+So, all the variables are linearly combined to represent the model.
+
+15
+00:01:07,930 --> 00:01:09,700
+to predict the target variable Y.
+
+16
+00:01:11,469 --> 00:01:17,200
+And the coefficient, each coefficient is an average effect of that variable to Y target variable.
+
+17
+00:01:17,799 --> 00:01:21,409
+When we consider all other variables are independent and fixed.
+
+18
+00:01:22,629 --> 00:01:24,670
+This assumption may not be true in general.
+
+19
+00:01:25,280 --> 00:01:29,849
+So variables or the predictors might be correlated in real world scenario.
+
+20
+00:01:30,840 --> 00:01:34,939
+And also, we also assume these coefficients are constant.
+
+21
+00:01:35,079 --> 00:01:37,129
+However, that might not be true in general.
+
+22
+00:01:37,519 --> 00:01:41,370
+So if there is an interaction between two variables or more,
+
+23
+00:01:41,890 --> 00:01:48,109
+This constants or coefficient may not be true constant but is a function of some other variables.
+
+24
+00:01:48,890 --> 00:01:51,450
+So we'll talk about what to do when it happens.
+
+25
+00:01:52,980 --> 00:01:56,040
+Let's take an example that we saw previously.
+
+26
+00:01:56,040 --> 00:01:58,180
+It's a house price prediction.
+
+27
+00:01:58,930 --> 00:02:05,520
+So house price is a Y target variable and all other variables are the features.
+
+28
+00:02:06,430 --> 00:02:12,219
+We're going to inspect the types of variables and see if they are suitable for linear regression model.
+
+29
+00:02:13,380 --> 00:02:15,450
+So what are the types of variables?
+
+30
+00:02:20,810 --> 00:02:27,000
+There can be real value number and there could be categorical variable.
+
+31
+00:02:30,660 --> 00:02:39,000
+And categorical variable can have ordinal and non-ordinal categorical variable.
+
+32
+00:02:39,000 --> 00:02:43,110
+What is ordinal categorical variable?
+
+33
+00:02:43,740 --> 00:02:48,560
+These are categories that have meaning in their order.
+
+34
+00:02:48,560 --> 00:03:02,500
+So something like age group or grade, abc or 1234, those can be ordinary categorical variable because they have a meaning in their order.
+
+35
+00:03:03,670 --> 00:03:12,420
+The examples of non-ordinary categorical variables are male, female, race, ethnicity, and so on.
+
+36
+00:03:12,420 --> 00:03:15,500
+Some classes they don't have any meaning in their order.
+
+37
+00:03:16,250 --> 00:03:22,570
+So we can permute the orders of categories and they don't have an effect.
+
+38
+00:03:23,470 --> 00:03:41,580
+So non-ordinal categories are difficult to use in linear regression model because in linear regression model, a variable value times the coefficient present how much of the value in target variable is contributed by that variable.
+
+39
+00:03:41,610 --> 00:03:45,050
+Therefore, if the variable can be permuted arbitrarily,
+
+40
+00:03:46,900 --> 00:03:49,600
+It's not easy to use in the linear regression.
+
+41
+00:03:50,240 --> 00:03:55,160
+However, there are ways to use these non-ordinary categorical variables in the linear regression.
+
+42
+00:03:55,160 --> 00:04:04,540
+For example, we can code male, female into 0 or 1 or 1 or 0 or sometimes minus 1 to 1.
+
+43
+00:04:04,540 --> 00:04:07,980
+So if we choose one of these, it will work.
+
+44
+00:04:07,980 --> 00:04:10,250
+And then how about race?
+
+45
+00:04:10,250 --> 00:04:15,600
+Let's say race had only three categories, Asian, Black, and Caucasian.
+
+46
+00:04:17,579 --> 00:04:21,210
+So this variable has three categorical values.
+
+47
+00:04:21,710 --> 00:04:26,759
+So we can convert this into individual three binary categorical variables.
+
+48
+00:04:26,829 --> 00:04:29,560
+So is the person Asian or not?
+
+49
+00:04:29,650 --> 00:04:31,720
+Is the person black or not?
+
+50
+00:04:32,189 --> 00:04:33,879
+Is the person Caucasian or not?
+
+51
+00:04:35,720 --> 00:04:42,610
+However, we don't need all three of them because if the two are known, the other one can be known as well.
+
+52
+00:04:42,610 --> 00:04:43,699
+So they are dependent.
+
+53
+00:04:44,150 --> 00:04:46,750
+So if we just get rid of one of them.
+
+54
+00:04:47,970 --> 00:04:52,620
+and use only 2 into the model, then it works better.
+
+55
+00:04:53,780 --> 00:05:02,270
+So in general, if the non- ordinary categorical variable had n categories, we could convert them into binary categorical variables.
+
+56
+00:05:02,460 --> 00:05:10,379
+But you have to also consider whether you want to include n-1 new features into your model.
+
+57
+00:05:10,379 --> 00:05:12,730
+So what if you had a really large n?
+
+58
+00:05:12,759 --> 00:05:17,030
+Do you want to add large n-1 features into your model?
+
+59
+00:05:18,250 --> 00:05:18,990
+Probably not.
+
+60
+00:05:19,590 --> 00:05:21,870
+That is an example of this zip code.
+
+61
+00:05:21,939 --> 00:05:33,180
+So zip code had 70 something categories and I didn't want to add 70 something new binary variables into my model because my model then becomes too big.
+
+62
+00:05:34,090 --> 00:05:39,970
+So hopefully the other variables such as latitude and longitude can capture some information about the location of the house.
+
+63
+00:05:40,360 --> 00:05:44,410
+So I'm gonna just get rid of zip code and then use other variables.
+
+64
+00:05:46,790 --> 00:05:50,560
+Before we build a model, let's have a qualitative inspection.
+
+65
+00:05:51,400 --> 00:06:01,820
+So, in this case, we're gonna see the correlation between the price and all other variables and see if which variables might be useful to predict the price.
+
+66
+00:06:02,430 --> 00:06:13,610
+So, square foot living could be useful, grade could be useful, and some other variables such as square foot above or square foot living 15 could be useful.
+
+67
+00:06:14,200 --> 00:06:20,310
+By the way, this square foot living 15 is a square foot living of similar 15 houses.
+
+68
+00:06:21,910 --> 00:06:22,660
+So therefore,
+
+69
+00:06:22,940 --> 00:06:34,050
+This must have some redundant information as square foot living and also the square foot living is a square foot above plus the square foot basement so they are linearly dependent.
+
+70
+00:06:34,520 --> 00:06:42,940
+So they must have redundant information and this redundant information shows the high correlation between the features.
+
+71
+00:06:43,160 --> 00:06:56,550
+So these two variables have really high correlation because they are linearly dependent and this square foot living and square foot living 15 because they are similar in the definition they are also highly correlated.
+
+72
+00:06:57,660 --> 00:07:06,510
+So we identified a few variables that are correlated to each other and some variables are linearly dependent to each other.
+
+73
+00:07:08,880 --> 00:07:11,440
+This can be also visually inspected in the pair plot.
+
+74
+00:07:11,690 --> 00:07:15,580
+So pair plot is distribution plot between two features.
+
+75
+00:07:16,010 --> 00:07:20,500
+So in the diagonal element, it shows the distribution of itself, the feature itself.
+
+76
+00:07:21,750 --> 00:07:27,640
+And the off-diagonal element shows the distribution between one feature to the another.
+
+77
+00:07:28,590 --> 00:07:36,650
+So for example, square foot above and square foot leaving had a really high correlation and you can see very skinny distribution of the data.
+
+78
+00:07:37,430 --> 00:07:49,580
+Actually, this is a very good indication of a collinearity, which we will talk about later, but essentially that happens because these two features are dependent each other or nearly dependent each other.
+
+79
+00:07:54,500 --> 00:08:04,890
+Okay, so we've qualitatively inspected variables and their correlations and we found that some features may have some redundant information and they may cause some problems.
+
+80
+00:08:05,600 --> 00:08:11,440
+So with that in mind, let's see what happens if we throw all the features into the model and fit to the data.
+
+81
+00:08:13,480 --> 00:08:21,780
+So here are the results summary table and we can see that model fit with the R squared is almost 0.7, which is good value.
+
+82
+00:08:21,780 --> 00:08:29,340
+And previously we didn't explain what this f-statistic value is and what the p-value for the f-static is.
+
+83
+00:08:29,340 --> 00:08:36,230
+And this actually shows whether there is at least one significant variable in the model.
+
+84
+00:08:36,230 --> 00:08:36,700
+So...
+
+85
+00:08:39,460 --> 00:08:43,610
+The null hypothesis for F-test would be all the coefficient values are 0.
+
+86
+00:08:43,610 --> 00:08:47,580
+So the F-value is defined by this formula.
+
+87
+00:08:48,310 --> 00:08:59,900
+So TSS minus RSS divided by number of features and divided by RSS times n minus p minus 1.
+
+88
+00:09:00,130 --> 00:09:02,500
+So this is a formula for F-test.
+
+89
+00:09:02,500 --> 00:09:08,590
+And then the bigger this number, we are more sure about there is at least one.
+
+90
+00:09:09,970 --> 00:09:11,900
+significant variable in the model.
+
+91
+00:09:14,020 --> 00:09:19,590
+So in our case, the F statistic value is a big and the p-value for that is almost a zero.
+
+92
+00:09:19,590 --> 00:09:23,790
+That means it's smaller than certain threshold of error rate.
+
+93
+00:09:23,790 --> 00:09:29,750
+Therefore, we can conclude that our model has at least one significant variable.
+
+94
+00:09:29,750 --> 00:09:38,720
+So let's have a look at the p-values for individual variables and we can see immediately that some variables
+
+95
+00:09:40,420 --> 00:09:42,750
+have insignificant coefficient values.
+
+96
+00:09:42,980 --> 00:09:45,910
+So, square floors have a really high p-value.
+
+97
+00:09:45,910 --> 00:09:49,080
+As well as sales months have high p-value.
+
+98
+00:09:49,080 --> 00:09:54,080
+So, we can reject these features because their coefficient values are essentially zero.
+
+99
+00:09:54,160 --> 00:10:04,270
+Alright, so after removing the features that has a high p-values, we get this result.
+
+100
+00:10:04,270 --> 00:10:05,800
+So, R-squared value is similar.
+
+101
+00:10:05,800 --> 00:10:07,800
+f-statics value is still large.
+
+102
+00:10:10,220 --> 00:10:19,590
+and let's inspect the t-score and the p-values of each individual coefficients and all of them looks statistically significant and that's good.
+
+103
+00:10:19,590 --> 00:10:34,520
+However, this is not the complete story because we still see some features such as these three linearly dependent each other still exist in the model and they still have a high correlation value.
+
+104
+00:10:34,520 --> 00:10:41,120
+So we're going to talk about some better ways to automatically add or remove the features in the next video.
+

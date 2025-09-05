@@ -1,0 +1,308 @@
+1
+00:00:05,719 --> 00:00:06,360
+Hello everyone.
+
+2
+00:00:06,450 --> 00:00:09,130
+In this video, we're going to talk about AdaBoost algorithm.
+
+3
+00:00:10,279 --> 00:00:17,629
+So previously we talked about generic boosting algorithm, which iteratively fit the stump tree to the data to predict the residual.
+
+4
+00:00:18,510 --> 00:00:26,140
+And then this each stump from each iteration is added together with some shrink parameter lambda here.
+
+5
+00:00:26,829 --> 00:00:31,719
+And this lambda helped the model to learn slowly so that we can avoid overfitting.
+
+6
+00:00:36,109 --> 00:00:38,310
+There are many variants of boosting algorithms.
+
+7
+00:00:38,600 --> 00:00:41,339
+However, these two are most used and most popular.
+
+8
+00:00:41,509 --> 00:00:42,729
+So we'll talk about those.
+
+9
+00:00:43,589 --> 00:00:46,479
+So first algorithm we'll talk about is called AdaBoost.
+
+10
+00:00:46,979 --> 00:00:49,989
+AdaBoost is originally developed for classification.
+
+11
+00:00:50,479 --> 00:00:54,079
+However, later it was developed to also do regression as well.
+
+12
+00:00:54,269 --> 00:00:58,640
+What makes AdaBoost interesting is that it uses weights to data samples.
+
+13
+00:00:58,879 --> 00:01:06,640
+That means it will make some more emphasis on the misclassified samples so that you can learn more from these errors.
+
+14
+00:01:09,300 --> 00:01:38,140
+and this dump fits to y instead of residual and then because it's a classification it gives a discrete values but instead of 0 or 1 we're gonna use minus 1 or 1 and then it uses exponential weight to update the data sample weights alright so Adabo's algorithm we want to have a classifier that gives a minus 1 or 1 and this
+
+15
+00:01:38,890 --> 00:01:43,490
+This model is a linear combination of this stump model and B is the iteration.
+
+16
+00:01:45,020 --> 00:01:57,430
+And a little difference from the genetic boosting algorithm, this lambda B now in AdaBoost is not the shrinkage parameter, but it's kind of representing this model importance from each iteration.
+
+17
+00:01:59,250 --> 00:02:07,640
+So this algorithm starts by initializing all the sample weights to 1 over n, which means that all the data points are equally important.
+
+18
+00:02:08,890 --> 00:02:10,700
+And then we're going to repeat for B times.
+
+19
+00:02:11,150 --> 00:02:25,650
+that we fit the stump tree to the training data to predict the label instead of residual with the sample weight w. If you remember, the stump model is actually decision tree.
+
+20
+00:02:26,510 --> 00:02:31,450
+Decision tree can use a sample weight when calculating the split criteria.
+
+21
+00:02:32,180 --> 00:02:42,980
+So after fitting this stump model, using this stump model, and here is that, and then we compare how much accurate it is.
+
+22
+00:02:43,300 --> 00:02:43,890
+So this
+
+23
+00:02:44,670 --> 00:02:53,170
+i is an identity function which will give 0 when it's correctly classified and which will give 1 when it's misclassified.
+
+24
+00:02:53,770 --> 00:02:58,280
+So this means that we calculate the error only using misclassified examples.
+
+25
+00:02:59,550 --> 00:03:02,270
+And the first iteration, these weights are all equal.
+
+26
+00:03:02,650 --> 00:03:05,690
+However, it's going to be updated as we go.
+
+27
+00:03:09,120 --> 00:03:19,520
+And using this error, we're going to calculate the model coefficient, lambda b, which again tells how much we should include this stump model into the total model.
+
+28
+00:03:20,090 --> 00:03:22,130
+and this lambda is given by this formula.
+
+29
+00:03:22,450 --> 00:03:30,620
+And sometimes you're gonna see one half in front of this formula, which is also popular convention, but with or without, it's fine.
+
+30
+00:03:32,000 --> 00:03:45,350
+And using this model coefficient, we're going to update the sample weight, and this sample again, when there was a misclassification, the weight of that sample becomes larger by this exponential factor.
+
+31
+00:03:46,520 --> 00:03:52,320
+And after we do the iteration for b times, we finally get our output model that looks like this.
+
+32
+00:03:52,460 --> 00:03:54,870
+The linear combination of this stump model.
+
+33
+00:03:56,270 --> 00:03:58,370
+And then the final sign is given by that.
+
+34
+00:04:00,719 --> 00:04:03,280
+So here is a brief example with the picture.
+
+35
+00:04:03,380 --> 00:04:13,250
+So initialize sample weights W. So in this data, these are the features and this is the target Y and this is the initial weight.
+
+36
+00:04:14,020 --> 00:04:22,830
+And then for this iteration, we're going to fit the stump model to training data with some sample weights.
+
+37
+00:04:22,920 --> 00:04:26,139
+And it's going to give some kind of output like this.
+
+38
+00:04:27,480 --> 00:04:30,930
+And then we notice that these two samples are misclassified.
+
+39
+00:04:32,180 --> 00:04:38,829
+Therefore, when we calculate the error, it's going to give a 0.2, so 2 misclassifications out of 10 examples.
+
+40
+00:04:38,829 --> 00:04:44,720
+And then we further calculate the model coefficients and it gives this value.
+
+41
+00:04:46,350 --> 00:04:52,230
+By the way, this function can go from minus infinity to infinity.
+
+42
+00:04:52,560 --> 00:04:56,090
+So this parameter doesn't have to be
+
+43
+00:04:56,680 --> 00:05:00,350
+somewhere between 0 and 1, unlike the shrinkage parameter.
+
+44
+00:05:02,050 --> 00:05:09,589
+And then using this model coefficients, we're going to update the weight using this exponential factor that gives this weight.
+
+45
+00:05:10,069 --> 00:05:19,279
+So this misclassified example receives more weight, four times more than the others, and this one as well receives a bigger weight.
+
+46
+00:05:19,279 --> 00:05:27,100
+And then we can normalize this weight so that these all examples, some of these weights becomes one.
+
+47
+00:05:27,669 --> 00:05:31,779
+Alright, so let's have a look at some usage.
+
+48
+00:05:32,009 --> 00:05:37,979
+So AdaBoost is available in sklearn ensemble module.
+
+49
+00:05:37,979 --> 00:05:42,500
+So AdaBoost and sklearn both have a classifier and regressor.
+
+50
+00:05:43,149 --> 00:05:57,079
+So classifier has these kind of options and base estimator is not specified and it's a decision tree classifier with the maximum depth equals one, that means it's a stump.
+
+51
+00:06:00,059 --> 00:06:05,639
+You can also see this learning rate on top of this lambda b which was the weight to the model.
+
+52
+00:06:06,359 --> 00:06:15,039
+There is also learning rate as a hyperparameter so you can reduce the learning rate if you want to make the Adaboost classifier run slowly.
+
+53
+00:06:17,009 --> 00:06:21,059
+And by default, the semi.r algorithm is used, which is a real Adaboost.
+
+54
+00:06:21,059 --> 00:06:24,119
+This r comes from real Adaboost.
+
+55
+00:06:24,119 --> 00:06:28,819
+They make a use of predict probability.
+
+56
+00:06:30,349 --> 00:06:36,889
+the probability of being each class instead of using just a binarized classifier.
+
+57
+00:06:37,389 --> 00:06:41,449
+So SEMI-R is advanced version of original AdaBoost algorithm SEMI.
+
+58
+00:06:41,449 --> 00:06:48,399
+And it is good for multi-class classifier, but it also works better for the binary class classification.
+
+59
+00:06:48,399 --> 00:06:51,599
+So you can just leave it as is and use it.
+
+60
+00:06:51,599 --> 00:07:00,349
+Here are some more resources on how this real AdaBoost algorithm, which is SEMI-R, is a little bit better than real AdaBoost algorithm.
+
+61
+00:07:01,329 --> 00:07:03,669
+the original discrete AdaBoost algorithm.
+
+62
+00:07:04,619 --> 00:07:14,329
+And again, this boosting algorithm gives much better performance than just one stump as well as the fully grown decision tree.
+
+63
+00:07:17,289 --> 00:07:23,579
+So being AdaBoost originally developed for the classification problem, can AdaBoost also do regression?
+
+64
+00:07:23,789 --> 00:07:24,749
+The answer is yes.
+
+65
+00:07:25,259 --> 00:07:29,259
+You just need to call the AdaBoost regressor in sklearn-angsangbul module.
+
+66
+00:07:30,579 --> 00:07:32,359
+And everything is very similar.
+
+67
+00:07:32,619 --> 00:07:34,899
+It also accepts a learning rate.
+
+68
+00:07:35,709 --> 00:07:41,629
+And the only difference in the regressor is that we can specify the loss function, which is by default is a linear loss.
+
+69
+00:07:43,029 --> 00:07:47,969
+Okay, let's talk about how good is the AdaBoost.
+
+70
+00:07:49,049 --> 00:07:55,119
+So I picked two different datasets, each of which have about 5000 samples and then 20 features.
+
+71
+00:07:56,399 --> 00:08:02,409
+And as you can see, depending on the problem difficulty, the absolute accuracy can be different.
+
+72
+00:08:02,509 --> 00:08:10,569
+However, regardless of its difficulty, the boosting algorithm is always better than fully grown decision trees.
+
+73
+00:08:10,569 --> 00:08:14,669
+So this is decision tree fully grown and this is boosting algorithm.
+
+74
+00:08:15,379 --> 00:08:28,509
+So this left graph being more difficult case, so overall accuracy isn't too good, but this right one is a little easier data, so they had a higher accuracy.
+
+75
+00:08:29,409 --> 00:08:36,569
+As you can see here, boosting algorithm can have overfitting as well if the running rate is too big and number of trees are too big as well.
+
+76
+00:08:37,339 --> 00:08:40,439
+So there is a trade-off between the running rate and the number of trees.
+
+77
+00:08:40,439 --> 00:08:46,839
+Alright, so that's it for this Adaboost video, and we're going to talk about gradient boost in the next video.
+

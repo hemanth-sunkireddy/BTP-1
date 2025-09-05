@@ -1,0 +1,416 @@
+1
+00:00:05,429 --> 00:00:06,209
+Hi everyone.
+
+2
+00:00:06,419 --> 00:00:08,929
+In this video, we're going to talk about linear regression.
+
+3
+00:00:09,619 --> 00:00:17,170
+So we'll begin by the definition of linear regression, and we'll talk about how this model can optimize to get the best estimate value.
+
+4
+00:00:17,589 --> 00:00:26,550
+And then we're going to talk about important quantities for linear regression, such as a fitness performance metric, things like that.
+
+5
+00:00:26,620 --> 00:00:30,570
+And we'll talk about how statistically significant these estimate values are.
+
+6
+00:00:31,940 --> 00:00:35,500
+Alright, so let's begin by reviewing how supervised learning works.
+
+7
+00:00:36,079 --> 00:00:40,210
+So supervised learning needs training data that feeds to the model.
+
+8
+00:00:40,400 --> 00:00:42,170
+And this model has internal parameters.
+
+9
+00:00:42,320 --> 00:00:47,280
+And sometimes some models don't have parameters at all.
+
+10
+00:00:47,820 --> 00:00:51,359
+Some models have hyperparameters as well that users need to tweak.
+
+11
+00:00:51,590 --> 00:00:55,290
+But anyway, with that, the model can predict the value.
+
+12
+00:00:56,920 --> 00:01:01,250
+And if the parameters for the parametric model
+
+13
+00:01:01,459 --> 00:01:06,920
+is not optimized, then this prediction value will be far away from the target.
+
+14
+00:01:07,469 --> 00:01:17,030
+And our goal is to tweak this parameter by optimization so that the model makes a prediction that's close to the target as much as possible.
+
+15
+00:01:19,590 --> 00:01:21,189
+So what is a linear regression?
+
+16
+00:01:21,239 --> 00:01:24,949
+It is one of the simplest kind of supervised learning model.
+
+17
+00:01:26,920 --> 00:01:30,569
+And it predicts a real value number which is regression.
+
+18
+00:01:32,269 --> 00:01:33,739
+And then it has the parameters.
+
+19
+00:01:33,959 --> 00:01:37,129
+inside and these parameters are often called coefficients.
+
+20
+00:01:38,590 --> 00:01:40,379
+And it does not have a hyperparameters.
+
+21
+00:01:40,769 --> 00:01:46,879
+That means the user doesn't need to figure out some design parameters in advance or during the training.
+
+22
+00:01:50,079 --> 00:01:56,329
+And importantly, linear regression model assumes a linear relationship between the features and the target variable.
+
+23
+00:01:57,789 --> 00:01:58,969
+Well, what does that mean?
+
+24
+00:01:59,229 --> 00:02:03,310
+It means the feature, let's say we have only one feature for now,
+
+25
+00:02:04,419 --> 00:02:06,859
+has a linear relationship to the target variable.
+
+26
+00:02:08,669 --> 00:02:25,990
+So, let's say it's a house size and this is a house price and there could be some data like this that tells us that when the house size gets larger than the house price gets larger.
+
+27
+00:02:27,219 --> 00:02:37,509
+And another example could be maybe we want to predict the salary of a person as a function of their years of experience.
+
+28
+00:02:39,030 --> 00:02:42,599
+Then we might have some data like that.
+
+29
+00:02:45,259 --> 00:02:52,719
+That shows that in general, when the years of experience goes up, then the seller goes up.
+
+30
+00:02:54,659 --> 00:02:57,689
+It doesn't have to be a positive slope all the time.
+
+31
+00:02:58,459 --> 00:03:01,500
+There could be some other example like this.
+
+32
+00:03:02,509 --> 00:03:08,069
+Maybe the data looks like this and this is age.
+
+33
+00:03:09,030 --> 00:03:22,490
+and this is a survival rate from some disease such as cancer, then maybe there is a trend that looks like this.
+
+34
+00:03:22,979 --> 00:03:25,849
+As the age goes up, maybe survival rates goes down.
+
+35
+00:03:26,849 --> 00:03:33,199
+So these examples show some kind of linear relationship of the feature to the target variable.
+
+36
+00:03:35,109 --> 00:03:40,780
+When we have a multiple features, linear model also have some linear combination.
+
+37
+00:03:41,449 --> 00:03:41,939
+shape.
+
+38
+00:03:42,099 --> 00:03:43,829
+So what that means is this.
+
+39
+00:03:43,969 --> 00:04:01,549
+So if I have a feature 1 all the way to feature p and they are linearly combined to each other so 1x1 there is a coefficient a1 and then I add up with another coefficient times x2 plus etc.
+
+40
+00:04:03,249 --> 00:04:12,449
+Coefficient for feature p and then I can also add some free parameter a0 for the intercept.
+
+41
+00:04:13,289 --> 00:04:17,039
+this becomes my linear model.
+
+42
+00:04:20,089 --> 00:04:22,079
+And this is called linear combination.
+
+43
+00:04:22,079 --> 00:04:34,989
+So this type of model, whether we have many variables or one variable, that shows some linear relationship of the variable to the target and this type of model is called the linear regression.
+
+44
+00:04:38,839 --> 00:04:40,349
+Let's take an example.
+
+45
+00:04:40,449 --> 00:04:42,909
+This data is coming from Kaggle website.
+
+46
+00:04:43,139 --> 00:04:46,870
+Kaggle is a repository for machine learning data.
+
+47
+00:04:47,389 --> 00:04:53,829
+So, if you want to build a machine learning model and train to the data, this is a place to go.
+
+48
+00:04:54,060 --> 00:04:57,500
+And this website also hosts the ML competition.
+
+49
+00:04:57,699 --> 00:05:07,730
+That means a lot of competitors, they build their models that fits the data and then they will compare their model performance on this platform.
+
+50
+00:05:08,339 --> 00:05:10,480
+And this is super fun, so you should try.
+
+51
+00:05:10,899 --> 00:05:21,420
+Anyway, this data comes from there and this data is about predicting the house sales price in Washington state when there are a bunch of features that describes the house.
+
+52
+00:05:22,230 --> 00:05:27,389
+So, price is our target variable Y and all these other columns are features.
+
+53
+00:05:29,029 --> 00:05:43,170
+And because we want to build a simple regression model like this, we want to find out which feature could be a good predictor to predict the house sales price.
+
+54
+00:05:44,350 --> 00:05:51,459
+If you have a domain knowledge, you can think about what feature will be useful to predict the house price.
+
+55
+00:05:52,250 --> 00:05:55,850
+You can think about maybe number of bedrooms are important.
+
+56
+00:05:56,580 --> 00:06:00,530
+The more number of bedrooms, then maybe it's more expensive.
+
+57
+00:06:01,270 --> 00:06:03,790
+Or you can think about the size of the house matters.
+
+58
+00:06:04,720 --> 00:06:07,540
+Or you can think about the location of the house matters most.
+
+59
+00:06:07,670 --> 00:06:08,439
+Things like that.
+
+60
+00:06:09,300 --> 00:06:21,270
+However, to quantify and have some evidence that which features is most important or likely to important to predict the price, we can
+
+61
+00:06:22,910 --> 00:06:24,699
+Have a look at the correlation matrix.
+
+62
+00:06:25,689 --> 00:06:30,110
+So, correlation matrix gives correlation values between the features.
+
+63
+00:06:30,720 --> 00:06:35,360
+So, diagonal elements shows the correlation to the cell.
+
+64
+00:06:36,090 --> 00:06:38,350
+It has the value of 1 all the time.
+
+65
+00:06:38,740 --> 00:06:43,150
+However, the other off-diagonal terms, they show the correlation between different features.
+
+66
+00:06:43,150 --> 00:06:51,259
+Because it's too many, 21 features, I'm going to select the first few and then look at it.
+
+67
+00:06:51,259 --> 00:06:53,660
+And as you can see...
+
+68
+00:06:54,490 --> 00:07:07,770
+from the first row, which is correlation values for all other features to the price, you can figure out the square foot living, which is the house size, is most correlated to the price.
+
+69
+00:07:08,379 --> 00:07:14,530
+And there are other features such as the grade of the house that's comparably good to predict the price.
+
+70
+00:07:14,610 --> 00:07:22,449
+You should be careful when you select multiple features based on correlation metrics because
+
+71
+00:07:25,570 --> 00:07:41,660
+The order of correlation, that means a high correlation or absolute value of a correlation to lower ones, these orders are not directly related to how important the features are.
+
+72
+00:07:42,020 --> 00:07:51,380
+So, for example, this feature may have the same or comparable value, correlation value to the price with the skirt foot living.
+
+73
+00:07:51,710 --> 00:07:55,840
+However, skirt foot living and grades are highly correlated.
+
+74
+00:07:56,330 --> 00:08:06,120
+So, when I add this feature to my model on top of a square foot living, that doesn't add so much value because this is pretty similar to this one.
+
+75
+00:08:06,400 --> 00:08:21,440
+So, in that case, some other variables such as floors or something like that or maybe view would add better value to predict the price than this one that has a high correlation to the price.
+
+76
+00:08:21,730 --> 00:08:23,460
+So, you have to be a little bit careful.
+
+77
+00:08:23,690 --> 00:08:28,550
+We're gonna go through a method that actually helps to select the features.
+
+78
+00:08:28,910 --> 00:08:30,110
+right order.
+
+79
+00:08:32,170 --> 00:08:38,110
+But to select just one feature, correlation matrix gives a good information.
+
+80
+00:08:40,379 --> 00:08:41,980
+So, let's begin by that.
+
+81
+00:08:43,029 --> 00:08:45,639
+So, let's talk about univariate linear regression.
+
+82
+00:08:45,730 --> 00:08:58,570
+Univariate means the variable is only one and also for that same reason, univariate linear regression is called a simple linear regression and often takes this form.
+
+83
+00:08:59,190 --> 00:09:06,490
+that we have a coefficient beta 0 and beta 1, which represent the intercept and slope.
+
+84
+00:09:06,910 --> 00:09:15,710
+And then it has a residuals that measures the difference between the target value and the prediction value by our model.
+
+85
+00:09:16,440 --> 00:09:23,430
+So this residual is important to measure the error and this is for each data point.
+
+86
+00:09:23,930 --> 00:09:29,180
+So for example, if we have some data that looks like this.
+
+87
+00:09:31,880 --> 00:09:48,780
+and maybe this is my regression line, then this is going to be my intercept and the slope, the one, and each discrepancy of the data points to the regression line is called residuals.
+
+88
+00:09:49,590 --> 00:10:01,520
+And our goal is to minimize overall residuals of my model and make my model to produce a predictor value that's as close as possible to the target variable.
+
+89
+00:10:04,610 --> 00:10:09,860
+This can be done using a single line using stat model OLS package.
+
+90
+00:10:10,570 --> 00:10:15,100
+There are other packages such as sklons linear model.
+
+91
+00:10:15,490 --> 00:10:21,980
+However, this is widely used and it is useful because it generates some summary table like this.
+
+92
+00:10:23,730 --> 00:10:29,340
+So this summary table has a lot of information including the most interesting part.
+
+93
+00:10:29,370 --> 00:10:31,980
+What are the my coefficient values?
+
+94
+00:10:35,189 --> 00:10:42,519
+So with this coefficient value, I can determine what my slope and my intercept is for my simple linear regression model.
+
+95
+00:10:44,159 --> 00:10:53,299
+And beside of coefficient values, we can ask some other questions that are important to linear regression.
+
+96
+00:10:55,059 --> 00:11:02,429
+We'll begin by how do we determine the coefficients, in other words, how does the model training works under the hood of this.
+
+97
+00:11:03,569 --> 00:11:04,099
+package.
+
+98
+00:11:04,829 --> 00:11:09,269
+And we'll also discuss how well my model fits.
+
+99
+00:11:10,370 --> 00:11:15,009
+And from the summary table values, what gives an idea of how my model fits.
+
+100
+00:11:17,069 --> 00:11:21,829
+And then we'll also talk about how statistically significant my coefficients are.
+
+101
+00:11:24,389 --> 00:11:27,789
+That means how robust our estimation for the coefficient is.
+
+102
+00:11:30,049 --> 00:11:34,120
+And we're going to also talk about how well my model predicts on unseen data.
+
+103
+00:11:34,149 --> 00:11:34,929
+That means how
+
+104
+00:11:35,250 --> 00:11:38,590
+well does it generalize, which is very important in machine learning.
+

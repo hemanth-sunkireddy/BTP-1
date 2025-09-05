@@ -1,0 +1,536 @@
+1
+00:00:05,830 --> 00:00:10,619
+In this video, we're going to talk about feature selection method and things to consider when we select features.
+
+2
+00:00:11,050 --> 00:00:18,500
+So last time, we tried to fit the model that has all the features inside and found that some of the coefficients were not significant.
+
+3
+00:00:19,019 --> 00:00:27,129
+So after removing those, we tried again and found that the coefficients are significant, but still we had some linearly dependent features in it.
+
+4
+00:00:28,019 --> 00:00:31,480
+So it's a lot of manual process to figure out which features to select.
+
+5
+00:00:31,739 --> 00:00:36,759
+So instead of doing that, we're going to introduce some method that automatically selects the features.
+
+6
+00:00:37,269 --> 00:00:46,140
+So the first method is called the forward selection, which add the feature one by one by looking at the one that maximizes the R-squared value.
+
+7
+00:00:46,140 --> 00:00:54,879
+So the add feature that maximizes the R-squared value, and that's the forward selection.
+
+8
+00:00:54,879 --> 00:01:01,019
+And another method is called the backward selection, which starts from the full model.
+
+9
+00:01:01,019 --> 00:01:06,599
+So by full model, I mean there are all the features inside the model already.
+
+10
+00:01:06,599 --> 00:01:09,560
+And remove the one feature that has maximum p-value.
+
+11
+00:01:11,250 --> 00:01:25,269
+So remove xj that has maximum p-value and we repeat this process until we reach the tolerance of the p-value or stop character.
+
+12
+00:01:25,269 --> 00:01:32,229
+Another good method is called a mixed selection which combines the forward selection and backward selection.
+
+13
+00:01:32,229 --> 00:01:43,169
+Which means that we add some feature that maximize the R-squared first and then fit the new model and inspect the result and see if there are
+
+14
+00:01:44,649 --> 00:01:51,019
+coefficients that are insignificant and if there are insignificant coefficients, just remove the features.
+
+15
+00:01:51,729 --> 00:01:59,629
+And then we add another feature again and then inspect the result and remove all the features that have large p-values and so on.
+
+16
+00:01:59,629 --> 00:02:04,019
+So let's compare the result.
+
+17
+00:02:04,019 --> 00:02:13,269
+So for selection gives this result that it adds a square for living first and then latitude and view and grade and so on.
+
+18
+00:02:13,269 --> 00:02:18,329
+And it doesn't have a stock criteria so we're gonna just fit all of them to the last feature.
+
+19
+00:02:21,159 --> 00:02:24,439
+And then this is result from the backward selection.
+
+20
+00:02:26,119 --> 00:02:30,119
+It starts from the full model and then it removes one by one.
+
+21
+00:02:30,119 --> 00:02:37,679
+So it first removed the floors and then secure-floor lot, second and sales months removed and so on all the way to the top.
+
+22
+00:02:37,679 --> 00:02:41,379
+And the year built was the last one that was removed.
+
+23
+00:02:41,379 --> 00:02:53,939
+But as you can see, the feature importance are the orders are very different from the floor selection because the floor selection cares about the R-squared value whereas the backward selection cares about the .
+
+24
+00:02:54,419 --> 00:03:01,729
+p-value and as you can imagine the mix selection resembles the four selection result.
+
+25
+00:03:01,729 --> 00:03:03,929
+However, it stops at some point.
+
+26
+00:03:03,929 --> 00:03:22,689
+So because it also look at the maximum r squared, the order orders are pretty similar to four selection, but then at some point adding another feature will lead always have a p value that's larger than certain criteria, so it stops there.
+
+27
+00:03:22,689 --> 00:03:26,299
+So actually practically mix selection is a good way to use.
+
+28
+00:03:27,659 --> 00:03:28,769
+as a feature selection.
+
+29
+00:03:33,059 --> 00:03:38,479
+So here is the result of the correlation matrix after we select the features from mixed selection.
+
+30
+00:03:38,989 --> 00:03:46,479
+So good news is that now we don't have the linearly dependent feature such as such as a square foot above.
+
+31
+00:03:46,979 --> 00:03:51,989
+These are gone, but still we see large correlation values between the features.
+
+32
+00:03:53,349 --> 00:03:55,349
+So let's talk about correlated features.
+
+33
+00:03:57,109 --> 00:03:58,139
+Why do they occur?
+
+34
+00:03:58,229 --> 00:04:02,049
+So high correlation among features may occur from different regions.
+
+35
+00:04:02,539 --> 00:04:04,619
+One of them would be redundant information.
+
+36
+00:04:04,939 --> 00:04:10,939
+So when the features are linearly dependent on each other, the information is redundant and they may have a high correlation.
+
+37
+00:04:12,169 --> 00:04:18,129
+And when there is an underlying effect such as confounding or causality, the features may be highly correlated.
+
+38
+00:04:18,829 --> 00:04:24,139
+So for example, ice cream sales and the sharks attack.
+
+39
+00:04:27,169 --> 00:04:28,729
+They have nothing to do with each other.
+
+40
+00:04:28,729 --> 00:04:32,429
+However, they can be caused by hot weather.
+
+41
+00:04:35,579 --> 00:04:45,669
+So, hot weather here is called confounding and then because of this confounding, ice cream sales and then sharks attack, they will have a high correlation in the data.
+
+42
+00:04:47,809 --> 00:05:02,269
+And the example of causality is heart disease can lead to heart attack and diabetes doesn't cause heart attack directly, but it can cause a heart disease, some type of heart disease and then cause a heart attack.
+
+43
+00:05:02,779 --> 00:05:07,239
+So when we look at the diabetes and then heart attack, they may look highly correlated.
+
+44
+00:05:08,969 --> 00:05:12,729
+And in some cases, just the variables are correlated in nature.
+
+45
+00:05:12,929 --> 00:05:17,639
+So for example, number of bedrooms and the size of house, they don't cause each other.
+
+46
+00:05:17,639 --> 00:05:18,939
+They don't have confounding.
+
+47
+00:05:18,999 --> 00:05:20,659
+However, they are just correlated.
+
+48
+00:05:21,229 --> 00:05:23,069
+So they may have high correlation.
+
+49
+00:05:25,509 --> 00:05:29,519
+So we mentioned that it is problematic when there are highly correlated features.
+
+50
+00:05:29,649 --> 00:05:30,439
+And why is that?
+
+51
+00:05:31,489 --> 00:05:36,269
+When the predictors are highly correlated, the coefficient estimate becomes very inaccurate.
+
+52
+00:05:36,719 --> 00:05:39,319
+And also, the interpretation of the coefficient.
+
+53
+00:05:39,589 --> 00:05:42,939
+as a variable contribution to the response becomes inaccurate.
+
+54
+00:05:44,829 --> 00:05:49,839
+So when there is a high correlation between features more than 0.7, we consider it's problematic.
+
+55
+00:05:49,839 --> 00:05:57,899
+And this is especially called collinearity when two features are very similar to each other.
+
+56
+00:05:57,899 --> 00:06:08,079
+Like we saw previously in the pair plot that the distribution of the data was very skinny between feature 1 and feature 2, for example, then they are very collinear.
+
+57
+00:06:08,079 --> 00:06:13,629
+Well, it's not always possible to detect the collinearity using correlation metrics.
+
+58
+00:06:14,610 --> 00:06:22,539
+Because if there are multiple variables that are involved in the collinearity, they may look like okay in the correlation matrix.
+
+59
+00:06:22,659 --> 00:06:25,240
+However, they could be still collinear.
+
+60
+00:06:25,729 --> 00:06:28,430
+And this special case is called the multicollinearity.
+
+61
+00:06:31,560 --> 00:06:37,949
+So beside the correlation matrix, variance inflation factor is a better way to detect this multicollinearity.
+
+62
+00:06:38,750 --> 00:06:42,680
+So VIF is defined by this formula.
+
+63
+00:06:43,079 --> 00:06:45,610
+The VIF of a coefficient beta i.
+
+64
+00:06:46,500 --> 00:07:01,469
+is 1 over 1 minus R squared value of this fitting and this fitting is actually not fitting the target variable Y but fitting that variable Xi using all other variables.
+
+65
+00:07:02,289 --> 00:07:14,919
+So using other variables that are not this one and we are fitting the model and we're gonna get the R squared value and we can get the VIF value.
+
+66
+00:07:17,079 --> 00:07:20,519
+So if the VIF value is larger than 5 in general,
+
+67
+00:07:20,909 --> 00:07:25,919
+or sometimes 10, it means that there is strong multicollinearity.
+
+68
+00:07:26,389 --> 00:07:33,379
+So let's have a look which variables had multicollinearity in the original model that we had all the features in it.
+
+69
+00:07:34,039 --> 00:07:40,419
+So clearly, square foot living, square foot above, square foot basement, they are linearly dependent each other.
+
+70
+00:07:41,339 --> 00:07:43,819
+So they show strong multicollinearity.
+
+71
+00:07:46,119 --> 00:07:51,519
+And then after we have a mixed selection, some of the redundant features are gone.
+
+72
+00:07:51,519 --> 00:07:52,959
+For example, this one is gone.
+
+73
+00:07:53,279 --> 00:07:54,439
+And let's inspect.
+
+74
+00:07:54,479 --> 00:08:02,809
+Square-foot living has still high VIF value, but it's much better than previous one because one of the dependent feature was gone.
+
+75
+00:08:02,809 --> 00:08:09,079
+And I think that was the only one that was bad here.
+
+76
+00:08:09,189 --> 00:08:17,339
+All right, but when we see the correlation matrix, there are still some highly correlated features.
+
+77
+00:08:17,339 --> 00:08:19,799
+Like for example this one.
+
+78
+00:08:19,799 --> 00:08:24,599
+So let's remove these highly correlated features.
+
+79
+00:08:26,089 --> 00:08:27,439
+after the mixed selection.
+
+80
+00:08:27,469 --> 00:08:40,230
+And when we remove those variables with a very high correlation to the square foot living, we end up with a much lower VIF value for square foot living because the collinearity is gone.
+
+81
+00:08:42,629 --> 00:08:45,139
+Here are some things to consider when we select features.
+
+82
+00:08:45,230 --> 00:08:47,039
+So we talked about model fitness.
+
+83
+00:08:47,500 --> 00:08:52,889
+Four selection gives a maximum model fitness by adding one features at a time.
+
+84
+00:08:53,549 --> 00:08:58,500
+And also we talked about removing variables with the insignificant coefficients.
+
+85
+00:08:58,669 --> 00:09:01,279
+So backward selection was good at this.
+
+86
+00:09:02,149 --> 00:09:06,350
+And if we combine this, we can have mixed selection.
+
+87
+00:09:08,429 --> 00:09:11,980
+We also talked about some problems that may occur when you have a multi-core linearity.
+
+88
+00:09:11,980 --> 00:09:17,159
+And we haven't talked about this, so let's have a look.
+
+89
+00:09:17,159 --> 00:09:22,029
+So here is a graph that shows the performance of each model.
+
+90
+00:09:22,419 --> 00:09:24,329
+This is including intercepts.
+
+91
+00:09:24,590 --> 00:09:28,409
+So this is just an intercept and this model is intercept 1.
+
+92
+00:09:32,109 --> 00:09:36,539
+feature and so on all the way to 14 feature plus intercept.
+
+93
+00:09:36,779 --> 00:09:37,989
+So it shows here.
+
+94
+00:09:38,749 --> 00:09:47,129
+And this star represents the model performance after we removing the variables with the high correlation.
+
+95
+00:09:47,419 --> 00:09:55,169
+So when we remove the highly correlated features, they may have a better estimation of the coefficient value and then better interpretation.
+
+96
+00:09:55,169 --> 00:09:57,919
+However, it can have some less performance.
+
+97
+00:09:59,239 --> 00:10:04,169
+And another thing that we can think about is that do we need all these 14 features?
+
+98
+00:10:04,879 --> 00:10:09,759
+It seems that the model complexity 6 or 7 gives a efficient result.
+
+99
+00:10:09,959 --> 00:10:14,189
+This is still a less performance than having 14 features.
+
+100
+00:10:14,189 --> 00:10:16,120
+However, it's good enough.
+
+101
+00:10:16,609 --> 00:10:18,289
+So we can consider that as well.
+
+102
+00:10:18,399 --> 00:10:26,899
+And by looking at the VIF of this six feature model, it has a pretty good VIF as well.
+
+103
+00:10:28,719 --> 00:10:33,370
+So here is all the results from the models that we considered so far.
+
+104
+00:10:33,549 --> 00:10:35,969
+So again, this number of features include the inner set.
+
+105
+00:10:36,099 --> 00:10:38,870
+So it's actually 19 feature model plus one inner set.
+
+106
+00:10:39,509 --> 00:10:45,379
+And mix selection gives a 14 number of features selected and so on.
+
+107
+00:10:45,470 --> 00:10:53,069
+And then if we look at just the feature coefficient for square foot living, the coefficient values are all different.
+
+108
+00:10:53,899 --> 00:10:57,600
+All of them are statistically significant.
+
+109
+00:10:57,709 --> 00:11:02,519
+However, if you can see the coefficient values, they are very different.
+
+110
+00:11:03,959 --> 00:11:10,629
+In particular, this model removed all the features that are highly correlated to the square foot living.
+
+111
+00:11:11,009 --> 00:11:15,899
+Therefore, the coefficient value for square-foot living is more accurate and more interpretable.
+
+112
+00:11:15,899 --> 00:11:23,339
+So this means that when we increase square-foot living by 1, then the house price goes up by $313.
+
+113
+00:11:23,339 --> 00:11:30,079
+On the other hand, the coefficient value for square-foot living is lower in other models.
+
+114
+00:11:31,419 --> 00:11:38,129
+And that's because the other models still had other variables that were highly correlated to the square-foot living.
+
+115
+00:11:38,129 --> 00:11:40,399
+Therefore, the coefficient values are not accurate.
+
+116
+00:11:42,289 --> 00:11:48,149
+and all these correlated features, they kind of share the contribution to the house price.
+
+117
+00:11:52,269 --> 00:11:55,809
+Okay, so lastly, let's talk about what to do when there are interactions.
+
+118
+00:11:55,989 --> 00:11:57,139
+So what is interactions?
+
+119
+00:11:57,679 --> 00:12:05,089
+Interactions can happen when this coefficient is not constant, but is a function of some other variable, say x3.
+
+120
+00:12:05,789 --> 00:12:16,709
+So in that case, what we want to do is that we're going to have interaction term, so x1 times x3, and then assign another coefficient.
+
+121
+00:12:17,089 --> 00:12:20,299
+Let's say beta and then add to the model.
+
+122
+00:12:21,469 --> 00:12:42,479
+And not only this, we can also do all the combinations such as adding x1 times x2, x2 times x3 and all combinations.
+
+123
+00:12:43,099 --> 00:12:46,029
+And we can also have a higher order terms, something like that.
+
+124
+00:12:46,689 --> 00:12:51,189
+In that case, we have infinite menu of features and we don't want to do that.
+
+125
+00:12:51,289 --> 00:12:54,139
+But however, we can just choose the order.
+
+126
+00:12:54,179 --> 00:12:57,849
+Maybe the maximum order is just one feature times another.
+
+127
+00:12:58,299 --> 00:12:59,429
+and then we can add them up.
+
+128
+00:13:00,559 --> 00:13:04,299
+Then we have a problem of how to select all these many combination features.
+
+129
+00:13:04,889 --> 00:13:08,329
+Again, we're going to apply the same method that we talked about before.
+
+130
+00:13:09,259 --> 00:13:12,129
+So, mixed selection method is a good way to do that.
+
+131
+00:13:12,909 --> 00:13:28,240
+One thing that is a little different from the previous case is that when we have this interaction term, then we must include also β1x1 plus β3x3
+
+132
+00:13:29,120 --> 00:13:34,139
+And sometimes you might see these coefficient values may not be significant.
+
+133
+00:13:34,139 --> 00:13:37,409
+However, we should still include these terms in order to have this term.
+
+134
+00:13:37,409 --> 00:13:46,649
+So with that difference, having interaction terms in the model is the same as having multiple features in the model.
+

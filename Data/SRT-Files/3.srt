@@ -1,0 +1,384 @@
+1
+00:00:10,509 --> 00:00:12,640
+Alright, so how do we find the coefficients?
+
+2
+00:00:12,990 --> 00:00:17,760
+So again, this beta zero, beta one are coefficients, and this is my model.
+
+3
+00:00:18,079 --> 00:00:22,620
+And the difference between the target value and the predicted value is called residual.
+
+4
+00:00:23,359 --> 00:00:26,190
+So here's a plot that plots the residuals.
+
+5
+00:00:26,780 --> 00:00:32,049
+So this is a residual that has positive value, and these are the residuals that have negative value.
+
+6
+00:00:32,840 --> 00:00:39,460
+So when we say how good my model is, that means how small is the error overall.
+
+7
+00:00:40,090 --> 00:00:45,980
+So we need to find an error measure that accounts all these residuals from all the points.
+
+8
+00:00:46,520 --> 00:00:47,410
+So how do we do that?
+
+9
+00:00:48,439 --> 00:00:50,200
+One way to do it is just sum them up.
+
+10
+00:00:51,730 --> 00:00:55,909
+However, it's going to be zero all the times if the regression line was fit.
+
+11
+00:00:56,820 --> 00:00:58,850
+So this is not very useful.
+
+12
+00:00:59,460 --> 00:01:02,240
+So we're going to define another error measure that
+
+13
+00:01:02,899 --> 00:01:06,979
+measures the distance instead of just summing all of these residuals.
+
+14
+00:01:08,019 --> 00:01:15,719
+So we're gonna have absolute value and then sum them up to n samples.
+
+15
+00:01:16,450 --> 00:01:29,340
+And in case we have many many samples, this quantity can be very big, so we want to divide by n. Then it becomes mean absolute error, which is a one good way to measure error.
+
+16
+00:01:31,469 --> 00:01:33,829
+Another way we can do it is we can
+
+17
+00:01:34,109 --> 00:01:37,540
+maybe square each residuals and then sum them up.
+
+18
+00:01:38,530 --> 00:01:43,430
+And also we can divide by n and this gives mean squared error.
+
+19
+00:01:44,439 --> 00:01:47,819
+So these two are very popular error measure in regression tasks.
+
+20
+00:01:50,710 --> 00:01:53,900
+There are some other error metrics that can be also useful.
+
+21
+00:01:53,930 --> 00:02:02,569
+So we talked about MAE, but MAE can be arbitrarily large depending on how large y's are.
+
+22
+00:02:02,569 --> 00:02:06,840
+Therefore, we can define percent absolute error instead.
+
+23
+00:02:07,469 --> 00:02:12,020
+So percent absolute error is a mean of absolute value of this.
+
+24
+00:02:12,610 --> 00:02:24,090
+This is a target variable value and this is a prediction value and that's divided by target variable value again and takes the absolute and sum them up and takes an average.
+
+25
+00:02:26,560 --> 00:02:27,889
+So that can be handy.
+
+26
+00:02:28,629 --> 00:02:30,439
+That can be useful metric.
+
+27
+00:02:31,050 --> 00:02:38,069
+We talked about mean squared error but mean squared error unit is different from Y unit.
+
+28
+00:02:38,409 --> 00:03:09,370
+So in case we want to compare in the same unit, we can take a square root Then it becomes root mean square error, which is also good metric in regression Alright, so let's talk about how the optimization in linear regression work there could be various method but this method called least squared method is most popular and almost all Python package that solves a linear regression uses this method so
+
+29
+00:03:09,569 --> 00:03:23,819
+So as a reminder, the model takes the features and it has internal parameters and linear regression does not have hyper parameters and it makes a prediction and we want to find out the values of the parameters that will make this prediction accurate as possible.
+
+30
+00:03:24,370 --> 00:03:26,079
+And this is done by optimization.
+
+31
+00:03:26,770 --> 00:03:35,500
+And for this squared method that linear regression mostly use, takes the feature and target value and find a solution for the parameters.
+
+32
+00:03:37,210 --> 00:03:42,069
+And the name suggests least squares because it uses a squared error.
+
+33
+00:03:42,710 --> 00:03:48,400
+So we're going to use MSA and let's have a look what the error surface of MSA look like.
+
+34
+00:03:49,229 --> 00:04:03,900
+So in MSA, the error in the coefficient space where this axis is one of the coefficients and the other axis is the other coefficient, and this axis represents the error, the size of the error.
+
+35
+00:04:05,120 --> 00:04:08,689
+Then this takes a kind of bowl shape like this.
+
+36
+00:04:09,049 --> 00:04:12,789
+So if you look at from the top, the contour will look like an ellipsoid.
+
+37
+00:04:13,500 --> 00:04:22,069
+So, for example, partial derivative of MSE with respect to coefficient A and set it to 0.
+
+38
+00:04:23,040 --> 00:04:31,750
+And similarly, we can take a partial derivative of MSE with respect to B and set it to 0.
+
+39
+00:04:32,209 --> 00:04:33,000
+Why we do that?
+
+40
+00:04:33,620 --> 00:04:40,769
+If you think about the parabola shape, at the bottom, the slope or the gradient becomes 0.
+
+41
+00:04:40,769 --> 00:04:43,120
+So, we'll use that fact.
+
+42
+00:04:43,899 --> 00:04:53,259
+And if we do the algebra, we're gonna get the solution without derivation, but you can look at the supplemental note that has all the derivation.
+
+43
+00:04:54,120 --> 00:05:04,560
+Important thing to remember is that the slope is proportional to the covariance of the variable x and y and then inversely proportional to the variance of x.
+
+44
+00:05:06,899 --> 00:05:10,990
+And similarly, intercept has this relation.
+
+45
+00:05:12,009 --> 00:05:13,620
+And if you look at carefully,
+
+46
+00:05:13,990 --> 00:05:24,180
+This suggests that actually the regression line passes through the center, which is mean of x and comma mean of y.
+
+47
+00:05:27,060 --> 00:05:31,819
+So regression line is centered around these mean values for the x and y.
+
+48
+00:05:34,779 --> 00:05:38,120
+What happens when we change the scale of the variables?
+
+49
+00:05:38,889 --> 00:05:44,120
+So for example, we have a big value for living space square foot and
+
+50
+00:05:44,539 --> 00:05:46,509
+really big value for a sales price.
+
+51
+00:05:46,819 --> 00:05:48,949
+So we want to change the unit for example.
+
+52
+00:05:49,229 --> 00:05:57,990
+Makes it million dollar as a unit and use a small number and maybe we can divide by thousand for the square-fit living.
+
+53
+00:05:57,990 --> 00:06:13,120
+So in that case, if we change this by one over thousand of original value and this is 10 to the minus 6 of original value, what happens to my value?
+
+54
+00:06:14,610 --> 00:06:16,259
+for beta 1 and beta 0.
+
+55
+00:06:18,269 --> 00:06:19,709
+You can think about it for a while.
+
+56
+00:06:21,529 --> 00:06:22,250
+Alright, we're back.
+
+57
+00:06:23,610 --> 00:06:42,040
+So, we're gonna call it r and we're gonna call this as s. And as you know, covariance is calculated by this formula, x minus x mean times y minus y mean, an expectation of this value.
+
+58
+00:06:42,839 --> 00:06:45,170
+And then similarly, the expectation of
+
+59
+00:06:45,670 --> 00:06:47,110
+x-xmean squared.
+
+60
+00:06:47,519 --> 00:06:59,729
+So this part is scaled by r and this part is scaled by s and this part scaled by r squared.
+
+61
+00:06:59,729 --> 00:07:07,990
+So as a result, we're gonna get s divided by r times original value of beta 1.
+
+62
+00:07:07,990 --> 00:07:17,069
+So if we plug these numbers, we're gonna get 10 to the minus 3 times original value for beta 1.
+
+63
+00:07:17,999 --> 00:07:30,189
+So my slope gets thousand times smaller if I make my X variable thousand times smaller and make my Y variable million times smaller.
+
+64
+00:07:32,489 --> 00:07:34,929
+What happens to beta0, my intercept?
+
+65
+00:07:36,249 --> 00:07:39,639
+So this is going to be S times original value of EY.
+
+66
+00:07:39,639 --> 00:07:44,019
+And this we already calculated.
+
+67
+00:07:44,049 --> 00:07:48,199
+It's going to be S over R times the original value of EY.
+
+68
+00:07:48,539 --> 00:07:58,149
+which I'm gonna just say square and then this quantity becomes r times the ex.
+
+69
+00:07:59,909 --> 00:08:05,610
+So this cancels out and then we're gonna get s times original value beta zero.
+
+70
+00:08:06,709 --> 00:08:09,649
+So my inner set doesn't change when I scale the x.
+
+71
+00:08:10,029 --> 00:08:15,919
+However, it's going to change when I scale the y and it only depends on the scaling of the y.
+
+72
+00:08:20,120 --> 00:08:22,379
+So let's talk about how we generalize
+
+73
+00:08:23,149 --> 00:08:25,759
+the least squares method to multivariate case.
+
+74
+00:08:26,009 --> 00:08:37,720
+So when we have p number of features, this is a feature matrix, and we add a column that has ones so that it can take care of the intercept term.
+
+75
+00:08:38,279 --> 00:08:42,889
+So together with this, this torus matrix is called design matrix.
+
+76
+00:08:47,190 --> 00:08:54,549
+And this index 1 to n is for the sample index, and this 0 to p is
+
+77
+00:08:54,700 --> 00:08:58,639
+for the feature index including the intercept.
+
+78
+00:09:01,040 --> 00:09:07,220
+So MSE in matrix form is going to look like this.
+
+79
+00:09:07,560 --> 00:09:13,889
+Y-Xβ and these are all matrices and then two norm of the matrices.
+
+80
+00:09:14,070 --> 00:09:19,200
+That is actually the Y-Xβ transpose and Y-Xβ.
+
+81
+00:09:20,050 --> 00:09:28,649
+So let me take a derivative with respect to
+
+82
+00:09:30,159 --> 00:09:38,120
+beta, then we're going to get this equation and if we further simplify it will look like this.
+
+83
+00:09:40,309 --> 00:09:42,029
+And this is called a normal equation.
+
+84
+00:09:46,220 --> 00:09:50,539
+And then solving this equation for beta, it gives a solution like this.
+
+85
+00:09:51,320 --> 00:10:01,350
+So, it involves the inverse of this matrix inside and sometimes it can be a problem if the rank of this matrix xt and x
+
+86
+00:10:02,090 --> 00:10:05,189
+are not equal to n. And when does it happen?
+
+87
+00:10:05,389 --> 00:10:12,389
+It happens when there are two or more variables or the features are linearly correlated.
+
+88
+00:10:13,350 --> 00:10:33,059
+So for example, if my x1 values were 1, 2, 3, and some of the other feature, let's say x5 was linearly dependent on x1, so for example, two times of this, something like that, then these two features are redundant.
+
+89
+00:10:33,360 --> 00:10:37,070
+Therefore, these metrics becomes non-invertible.
+
+90
+00:10:37,070 --> 00:10:42,370
+And then there is a problem when we try to get the solution beta.
+
+91
+00:10:42,420 --> 00:10:45,300
+It actually doesn't mean that we don't have solution.
+
+92
+00:10:45,300 --> 00:10:49,870
+It means that we have a solution that are not unique.
+
+93
+00:10:49,870 --> 00:10:52,930
+So we're going to have a hard time to determine unique solution.
+
+94
+00:10:52,930 --> 00:11:04,840
+But anyway, almost all Python packages that solves the ordinary least squares or less has some mechanism to find the inverse metrics of this.
+
+95
+00:11:05,640 --> 00:11:13,230
+called pseudo inverse and sometimes this is called Moore-Penrose inverse.
+
+96
+00:11:13,310 --> 00:11:21,310
+So, with this, we don't have to worry about non-invertible matrices.
+

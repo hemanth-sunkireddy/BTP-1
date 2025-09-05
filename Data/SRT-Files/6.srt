@@ -1,0 +1,404 @@
+1
+00:00:05,259 --> 00:00:05,960
+Hi everyone.
+
+2
+00:00:06,059 --> 00:00:09,169
+In this video, we're going to talk about multilinear regression.
+
+3
+00:00:09,939 --> 00:00:24,129
+So previously, we talked about simple linear regression where we have only one variable, and now we're going to add more variables, whether it's a higher order terms for that single variable or other features into the model.
+
+4
+00:00:24,160 --> 00:00:34,579
+And then the key idea we're going to discuss is that when the model complexity increases by adding more features, it can fit the data better, but it can also introduce some other problems.
+
+5
+00:00:34,579 --> 00:00:37,750
+So we'll introduce a concept of bias-variance trade-off.
+
+6
+00:00:39,039 --> 00:00:45,640
+and then we'll talk about how to select the features that are most contributing to the model.
+
+7
+00:00:45,739 --> 00:00:56,640
+So last time we talked about single variable linear regression which takes the form of y equals a0 plus a1 x1.
+
+8
+00:00:57,299 --> 00:01:03,859
+So x1 is a one feature that we care about and a1 is a slope and a0 is a coefficient for intercept.
+
+9
+00:01:05,530 --> 00:01:08,319
+So the example we had was the
+
+10
+00:01:10,969 --> 00:01:16,060
+You can predict the price of the house sales as a function of size of the house.
+
+11
+00:01:16,900 --> 00:01:22,890
+Size could be x1 and price is the y that we want to predict.
+
+12
+00:01:23,870 --> 00:01:31,099
+And now let's say we want to add another feature, say size of the lot.
+
+13
+00:01:36,150 --> 00:01:41,349
+So when it has a big lot, then maybe it's more expensive than the same.
+
+14
+00:01:41,609 --> 00:01:44,390
+small house that has a smaller lot.
+
+15
+00:01:44,640 --> 00:01:56,640
+So we can think about this and we can add the new term, new feature into our model a2x2.
+
+16
+00:01:59,010 --> 00:02:03,540
+And similarly, we can add more features such as a number of bedrooms and things like that.
+
+17
+00:02:03,770 --> 00:02:07,730
+Then it becomes more complex model and so on.
+
+18
+00:02:09,330 --> 00:02:16,219
+So this is also linear regression especially it's called multi linear regression because it has multiple features.
+
+19
+00:02:19,260 --> 00:02:25,030
+But we can also make some other model that has a higher order terms of the house size.
+
+20
+00:02:26,030 --> 00:02:29,670
+For example, we can have a square term of the house size.
+
+21
+00:02:30,880 --> 00:02:37,510
+So in that case, we'll have a1x1 plus a2x1 squared.
+
+22
+00:02:38,820 --> 00:02:40,830
+And that could be also a good model.
+
+23
+00:02:41,850 --> 00:02:48,950
+And if we want to add more complexity or higher order term to in this model with the same feature,
+
+24
+00:02:49,830 --> 00:02:59,240
+We could add a third term, the cubic term of the house size like this and we can add more.
+
+25
+00:03:00,650 --> 00:03:04,439
+So in this case, it's called the polynomial regression.
+
+26
+00:03:10,889 --> 00:03:14,180
+This is multilinear regression.
+
+27
+00:03:15,969 --> 00:03:21,710
+We can also engineer some features.
+
+28
+00:03:23,010 --> 00:03:31,490
+Instead of having square term and cubic term and so on, we are not restricted to have just higher order terms.
+
+29
+00:03:31,750 --> 00:03:36,370
+But we can create some other variable or features using existing features.
+
+30
+00:03:38,439 --> 00:03:53,670
+So for example, if we are predicting some probability of getting diabetes based on height of a person and weight of the person.
+
+31
+00:03:54,750 --> 00:03:58,000
+and some other features that we measured from the lab and so on.
+
+32
+00:03:58,730 --> 00:04:20,939
+Instead of having this model height plus a2, weight plus and so on, we can construct another variable let's say called x prime and which is BMI which is proportional to weight divided by height squared.
+
+33
+00:04:24,770 --> 00:04:47,340
+So this BMI is a function of x1 and x2 and this becomes a new feature x' and we can have instead a0 plus a1 x' and the things that we wanted to add like lab test and things like that something like this instead of having a height and weight separate features.
+
+34
+00:04:48,490 --> 00:04:58,080
+So there are many different possibilities that we can engineer like relevant features depending on your domain knowledge or your intuition on the problem and so on.
+
+35
+00:04:58,680 --> 00:05:02,789
+So linear model can become really flexible in this case.
+
+36
+00:05:03,610 --> 00:05:14,019
+So we're going to talk about what happens if we start adding more complexity into model and then there are some things that we need to be careful.
+
+37
+00:05:15,250 --> 00:05:16,500
+So we'll talk about those.
+
+38
+00:05:18,819 --> 00:05:20,990
+So let's start by polynomial regression.
+
+39
+00:05:21,689 --> 00:05:24,519
+This M represents the order of the maximum term.
+
+40
+00:05:25,560 --> 00:05:29,839
+So M equals 1 represents the simple linear regression AX plus B.
+
+41
+00:05:30,739 --> 00:05:38,709
+then m equals 2 will be a0 plus a1x plus a2x squared and so on.
+
+42
+00:05:39,599 --> 00:05:42,789
+So these are the complexity of our model.
+
+43
+00:05:44,069 --> 00:05:54,009
+So when you look at the simple linear regression, it looks a straight line which is okay but it's still maybe a little too simple for this data.
+
+44
+00:05:54,329 --> 00:06:01,310
+So let's add another term, square term, and then maybe it fits a little bit better and we can add a cubic term.
+
+45
+00:06:02,279 --> 00:06:13,879
+And then you can see as you add more high-order terms, the line, the fitted line becomes a little more flexible and have different shapes of the curve.
+
+46
+00:06:13,879 --> 00:06:18,389
+At some point, the fitting fails actually.
+
+47
+00:06:18,389 --> 00:06:24,649
+And what happens here is that I wasn't very careful about scaling of the feature x.
+
+48
+00:06:24,689 --> 00:06:35,949
+So in my simple linear regression model, this was on the order of 1000.
+
+49
+00:06:37,560 --> 00:06:51,860
+and my y is going to be on the order of million, then this coefficient could be on the order of thousand or less and so on.
+
+50
+00:06:52,779 --> 00:07:08,069
+And then this square term would be on the order of million and by the time I have the size of the house of six power, this could be 10 to
+
+51
+00:07:08,329 --> 00:07:16,769
+18, which is a really big number and the coefficient to match this number should be very small.
+
+52
+00:07:17,249 --> 00:07:22,039
+That means the computer has a hard time to calculate all these coefficients.
+
+53
+00:07:22,649 --> 00:07:24,359
+Therefore, the fitting may not work very well.
+
+54
+00:07:24,359 --> 00:07:36,009
+In order to prevent this disaster, one way you can do it is just scale the feature to something on the order of 1 instead of 1000.
+
+55
+00:07:37,249 --> 00:07:41,349
+So if you just divide by 1000 of your features, then you could have
+
+56
+00:07:41,979 --> 00:07:45,839
+1 to 6, 7 something like that.
+
+57
+00:07:46,599 --> 00:07:51,689
+And then here you're gonna have 1 to 6 or 10 to 6.
+
+58
+00:07:51,769 --> 00:07:53,099
+So it's more manageable.
+
+59
+00:07:53,759 --> 00:07:56,589
+Therefore you can add more high order terms if you want to.
+
+60
+00:07:57,659 --> 00:08:03,019
+However you will see shortly that we don't want to add high order terms indefinitely.
+
+61
+00:08:04,589 --> 00:08:09,929
+So it leads to a question where do we want to stop adding high order terms.
+
+62
+00:08:10,579 --> 00:08:12,839
+Obviously when you see the model fitness
+
+63
+00:08:13,719 --> 00:08:19,519
+The model fitness will go up and up as you add more model complexity.
+
+64
+00:08:20,069 --> 00:08:23,239
+So you have some data like this.
+
+65
+00:08:25,699 --> 00:08:35,169
+And your model could be a little crazy that it has a really high order and can fit everything like this.
+
+66
+00:08:36,250 --> 00:08:38,209
+This model is not very good.
+
+67
+00:08:38,209 --> 00:08:45,399
+First, it's not very interpretable, but second, it's more vulnerable to new data points, say this one.
+
+68
+00:08:46,379 --> 00:08:53,919
+It will have a huge error, or maybe like something like here, you'll have a huge error with this.
+
+69
+00:08:54,590 --> 00:09:02,090
+However, if you have a simpler model, it will have a smaller error at this new data point and things like that.
+
+70
+00:09:03,679 --> 00:09:05,210
+That's the motivation.
+
+71
+00:09:05,559 --> 00:09:10,970
+How do we determine where to stop when we add model complexity?
+
+72
+00:09:11,600 --> 00:09:16,860
+We want to monitor the error that's introduced when we introduce new data points.
+
+73
+00:09:18,769 --> 00:09:24,860
+So you remember we talked about how to measure the test data error and training data error.
+
+74
+00:09:25,169 --> 00:09:35,429
+So we had a data set that we have both feature and label and then we set aside some portion of this data and called it test data.
+
+75
+00:09:36,730 --> 00:09:41,649
+Another name for test data that's used while we are training is called validation.
+
+76
+00:09:44,169 --> 00:09:46,970
+So we can call them interchangeably.
+
+77
+00:09:47,989 --> 00:09:57,669
+in machine learning community validation error is more used term for the data set that's set aside for the purpose of testing while you're training the model.
+
+78
+00:09:58,419 --> 00:10:04,589
+But anyway, with this we can measure errors for the training and testing.
+
+79
+00:10:06,219 --> 00:10:08,429
+So let's say we picked MSC.
+
+80
+00:10:10,269 --> 00:10:19,709
+Then as we mentioned before, we have a trained model and measure the we can have the prediction from the training data and
+
+81
+00:10:20,309 --> 00:10:28,429
+With the training label, we can calculate the mean squared error or any error metric of your choice.
+
+82
+00:10:29,019 --> 00:10:31,129
+So that becomes the error for the training.
+
+83
+00:10:32,579 --> 00:10:36,149
+And we can do the similar for the test data.
+
+84
+00:10:36,659 --> 00:10:41,719
+XTE prediction value and then YTE.
+
+85
+00:10:42,389 --> 00:10:45,159
+Then we can have the error for the test data.
+
+86
+00:10:46,629 --> 00:10:52,819
+And this F corresponds to each different model with the different...
+
+87
+00:10:53,339 --> 00:10:54,949
+high-order terms or different model complexity.
+
+88
+00:10:54,949 --> 00:11:01,389
+So this is M equals 1 and this is model with M equals 2 etc.
+
+89
+00:11:02,129 --> 00:11:18,109
+Then when you plot, the exact shape of the curve for training error and test error will be different depending on your number of data and data itself that you randomly sample.
+
+90
+00:11:18,109 --> 00:11:21,709
+Also, it will depend on your model.
+
+91
+00:11:21,739 --> 00:11:24,319
+Complexity and so on.
+
+92
+00:11:24,999 --> 00:11:29,289
+However, in general, you're gonna see this type of error curves.
+
+93
+00:11:30,189 --> 00:11:36,069
+So for training error, it will go down as you increase your model complexity.
+
+94
+00:11:38,409 --> 00:11:47,379
+However, the test error will go down in the beginning and then at some point it will start going up again as the model complexity is increased.
+
+95
+00:11:48,939 --> 00:11:54,979
+And we can find the sweet spot here that the test error is minimized.
+
+96
+00:11:55,109 --> 00:11:57,969
+So we can pick our best model.
+
+97
+00:11:58,549 --> 00:11:59,929
+complexity equals 2.
+
+98
+00:12:01,279 --> 00:12:16,749
+You can also see this model complexity M equals 3 model is also comparably good and in some cases depending on your data draw it can show you actually slightly better results than model complexity equals 2.
+
+99
+00:12:17,239 --> 00:12:26,549
+However, if they are similar, then you want to still choose the simpler model and this kind of principle is called Occam's razor.
+
+100
+00:12:29,869 --> 00:12:33,439
+It's essentially telling that if the model performance are similar,
+
+101
+00:12:33,829 --> 00:12:38,749
+For simpler model and complex model, we prefer choosing simpler model.
+

@@ -1,0 +1,512 @@
+1
+00:00:06,120 --> 00:00:07,269
+Hi everyone.
+
+2
+00:00:07,309 --> 00:00:11,119
+We're going to talk about introduction to logistic regression.
+
+3
+00:00:13,339 --> 00:00:16,280
+So brief review of machine learning problems.
+
+4
+00:00:16,280 --> 00:00:25,149
+So in machine learning, we have supervised learning with labels and unsupervised learning, which doesn't have label and reinforcement learning with feedback signals.
+
+5
+00:00:25,679 --> 00:00:28,609
+And we're going to focus on supervised learning.
+
+6
+00:00:29,089 --> 00:00:31,239
+And largely, it has two tasks.
+
+7
+00:00:31,580 --> 00:00:33,200
+regression and classification.
+
+8
+00:00:33,770 --> 00:00:40,030
+And in classification, binary class and multi-class classification we're going to talk about.
+
+9
+00:00:40,030 --> 00:00:44,439
+And previously we talked about linear regression can do the regression task.
+
+10
+00:00:44,439 --> 00:00:48,049
+And logistic regression we're going to talk about in this video.
+
+11
+00:00:48,049 --> 00:00:52,299
+Although its name says regression, it's actually for classification.
+
+12
+00:00:52,299 --> 00:00:55,679
+Especially it's useful for binary class classification.
+
+13
+00:00:55,679 --> 00:01:01,090
+There are some ways to do the multi-class classification with the logistic regression method.
+
+14
+00:01:03,289 --> 00:01:12,340
+But it's going to require some engineering to do that and other models that we're going to talk about it later and some of them will not talk about it in this course.
+
+15
+00:01:12,820 --> 00:01:14,640
+They can do different things.
+
+16
+00:01:14,640 --> 00:01:20,250
+So for example, support vector machine can do both regression and classification.
+
+17
+00:01:20,250 --> 00:01:27,240
+But similar to logistic regression, it's usually good for binary class rather than multi-class.
+
+18
+00:01:27,240 --> 00:01:28,790
+But it can work on multi-class.
+
+19
+00:01:28,790 --> 00:01:31,189
+If you engineer the label and
+
+20
+00:01:33,450 --> 00:01:36,010
+some algorithms inside of the model correctly.
+
+21
+00:01:37,010 --> 00:01:40,540
+And then decision trees can do everything.
+
+22
+00:01:40,540 --> 00:01:46,070
+So you can do regression and binary class, multi-class without any problem.
+
+23
+00:01:46,070 --> 00:01:50,099
+Also, it's nice that you can take categorical variable very efficiently.
+
+24
+00:01:50,189 --> 00:02:01,379
+Neural network, same thing, can do everything and many other models that we may not introduce in this course can do different things.
+
+25
+00:02:01,379 --> 00:02:03,109
+So with this high-level,
+
+26
+00:02:05,270 --> 00:02:10,539
+High-level introduction, let's dive in and let's talk about what is the binary class classification.
+
+27
+00:02:10,539 --> 00:02:14,340
+It is essentially yes or no problem.
+
+28
+00:02:14,340 --> 00:02:17,210
+So the label is binary.
+
+29
+00:02:17,210 --> 00:02:27,849
+So for example, credit card default, whether this customer that uses a credit card will likely to default or not given like some historic data.
+
+30
+00:02:27,849 --> 00:02:33,340
+And maybe there is insurance claims and some insurance claim can be fraudulent.
+
+31
+00:02:33,340 --> 00:02:36,349
+So that can be a binary class classification.
+
+32
+00:02:38,240 --> 00:02:42,180
+Spam filtering, given this email text, is this spam or not?
+
+33
+00:02:43,990 --> 00:02:51,520
+Medical diagnosis, given this patient information and lab tests and data, is this person have a disease or not?
+
+34
+00:02:53,250 --> 00:03:03,159
+Survivor prediction, given this patient's information and history and things like that, whether this patient will survive for next five years or not.
+
+35
+00:03:04,800 --> 00:03:06,090
+How about customer retention?
+
+36
+00:03:06,420 --> 00:03:08,170
+Is this customer behavior?
+
+37
+00:03:08,949 --> 00:03:14,639
+is likely to charm or not, so that marketing action can be taken.
+
+38
+00:03:14,639 --> 00:03:22,609
+Image recognition, various kinds, can also be binary class classification.
+
+39
+00:03:23,469 --> 00:03:26,529
+For example, is this animal dog or cat?
+
+40
+00:03:27,899 --> 00:03:33,939
+And sentiment analysis, given this text or Twitter sentences, what is the sentiment?
+
+41
+00:03:33,939 --> 00:03:36,049
+Is this negative or positive?
+
+42
+00:03:36,049 --> 00:03:37,060
+Things like that.
+
+43
+00:03:38,909 --> 00:03:45,259
+So as you can see, binary class classification can have a variety of different types of data input.
+
+44
+00:03:45,929 --> 00:03:52,689
+It could be tabulated data, it could be image, it could be text, it could be even speeches.
+
+45
+00:03:53,219 --> 00:04:05,129
+So that determines the binary class or not is actually entirely for the label instead of the data itself or the features itself.
+
+46
+00:04:07,079 --> 00:04:09,869
+So a brief example, we can talk about some...
+
+47
+00:04:09,979 --> 00:04:12,089
+breast cancer diagnosis problem.
+
+48
+00:04:12,609 --> 00:04:19,209
+So this is one of the features that can determine whether this tumor is malignant or not.
+
+49
+00:04:19,319 --> 00:04:24,060
+So it can be a binary classification problem.
+
+50
+00:04:25,019 --> 00:04:36,519
+And we want to have some kind of threshold or some decision value that above this value, maybe we are more sure that this is going to be malignant.
+
+51
+00:04:37,219 --> 00:04:41,129
+And maybe below this certain value, maybe it's less likely to be malignant.
+
+52
+00:04:41,759 --> 00:04:49,740
+So building a logistic regression model will help us to find this threshold value, which is called the decision boundary, by the way.
+
+53
+00:04:50,389 --> 00:05:04,250
+And if you have more than one feature, let's say we have two features, it can be shown as a 2D diagram like here, and our decision boundary will be likely to be a line instead of a threshold value.
+
+54
+00:05:04,959 --> 00:05:11,300
+So maybe this side is malignant and this side is likely to be benign.
+
+55
+00:05:12,680 --> 00:05:20,509
+Alright, so logistic function provides some convenient way to construct model like this.
+
+56
+00:05:21,009 --> 00:05:22,720
+So logistic function look like this.
+
+57
+00:05:23,480 --> 00:05:31,050
+It's between 0 and 1 and it smoothly connect the line between 0 and 1.
+
+58
+00:05:31,879 --> 00:05:35,110
+And there is a sharp transition around the certain threshold value.
+
+59
+00:05:35,110 --> 00:05:38,230
+Let's say this is 0, but it could be any other value.
+
+60
+00:05:39,689 --> 00:05:43,509
+And this represent, because it's between 0 and 1.
+
+61
+00:05:44,439 --> 00:05:46,560
+logistic function can be a probability function.
+
+62
+00:05:48,360 --> 00:05:52,230
+And actually the logistic function has another name called the sigmoid.
+
+63
+00:05:52,500 --> 00:05:57,510
+So this is also called a sigmoid function and the form takes this one.
+
+64
+00:05:58,150 --> 00:06:08,010
+So the G is the linear combination of the features with this weight and bias like we did in the linear regression.
+
+65
+00:06:08,430 --> 00:06:14,120
+And then this G goes through a nonlinear function 1 over 1 plus e to the minus G.
+
+66
+00:06:14,629 --> 00:06:24,290
+and then this entire function as a function of z is called a sigmoid and takes the shape of this curve here.
+
+67
+00:06:26,589 --> 00:06:31,110
+By the way, this g is called logit and this is a relative decision boundary.
+
+68
+00:06:31,470 --> 00:06:45,449
+So when it's set to zero, that means this is our threshold value and the probability here is going to be this one and this g is zero then it's
+
+69
+00:06:46,139 --> 00:06:48,569
+1 half, so it's going to meet the 0.5.
+
+70
+00:06:48,680 --> 00:07:00,699
+So with the 0.5 threshold, so above 0.5, we can say this is going to be malignant, and below 0.5 probability, we can say it's going to be benign.
+
+71
+00:07:00,699 --> 00:07:09,610
+Well, some people might ask why don't we use linear regression instead, and maybe we can fit it like here.
+
+72
+00:07:09,730 --> 00:07:15,079
+We can fit this and then maybe find some threshold, and it can also fit the probability of 0.5.
+
+73
+00:07:20,220 --> 00:07:22,410
+We can try to do that.
+
+74
+00:07:22,410 --> 00:07:23,420
+It's not easy.
+
+75
+00:07:23,420 --> 00:07:37,530
+First of all, we will have to find out where this threshold is and maybe we can just fit the line first and then just figure out which value will give 0.5 threshold.
+
+76
+00:07:37,530 --> 00:07:44,570
+But if we do that, it gives a different threshold value to the logistic regression.
+
+77
+00:07:44,980 --> 00:07:50,180
+So the one problem with the linear regression model
+
+78
+00:07:51,220 --> 00:07:58,550
+if it fitted and then find the threshold where the probability value becomes 0.5, is that it's not very interpretable.
+
+79
+00:07:58,580 --> 00:08:02,550
+Where is the logistic regression with the sigmoid function?
+
+80
+00:08:02,550 --> 00:08:14,180
+It is a well-defined probability function, so it's very interpretable that we can find where probability becomes 0.5 and this gives the right threshold for us.
+
+81
+00:08:14,180 --> 00:08:18,360
+So let's talk about decision boundary more.
+
+82
+00:08:18,360 --> 00:08:19,870
+So in univariate case,
+
+83
+00:08:21,530 --> 00:08:24,650
+where we have only one feature.
+
+84
+00:08:26,199 --> 00:08:34,570
+The decision boundary is a point where it meets the probability equals 0.5 so the equation looks like this and you can get the value out of it.
+
+85
+00:08:34,570 --> 00:08:49,840
+If we have two features the data will lie in the two-dimensional space and then the decision boundary becomes a line so we can find the line equation here which will draw this line.
+
+86
+00:08:49,840 --> 00:08:56,820
+If it's a multivariate have a multidimension more than 3, the decision boundary will be a hyperplane.
+
+87
+00:08:59,309 --> 00:09:02,299
+Okay, let's talk about what if we have multiple categories.
+
+88
+00:09:02,409 --> 00:09:13,289
+So instead of having yes or no problem, maybe we can have multiple categories, which is maybe we would like to predict whether this animal is cat or dog or maybe cow.
+
+89
+00:09:13,909 --> 00:09:20,149
+So for the logistic regression, the logit, which is a decision boundary, takes this form.
+
+90
+00:09:20,240 --> 00:09:30,569
+And then for softmax, which is multinomial, this has another name, multinomial logistic regression, has this form.
+
+91
+00:09:32,850 --> 00:09:38,919
+So they are very similar except that there is now an index for K category.
+
+92
+00:09:39,460 --> 00:09:41,450
+So this is index for category.
+
+93
+00:09:43,919 --> 00:09:48,250
+So for example for category number one, we can construct this model.
+
+94
+00:09:48,250 --> 00:09:53,549
+So there will be different weights assigned to each category and for each feature.
+
+95
+00:09:54,360 --> 00:09:55,669
+And now we did this logit.
+
+96
+00:09:55,950 --> 00:10:05,789
+So for logistic regression, we use the sigmoid function as a probability and we show this form but it can be rewritten as this form as well.
+
+97
+00:10:06,220 --> 00:10:09,179
+and this is very similar to softmax.
+
+98
+00:10:10,620 --> 00:10:19,110
+The softmax function takes the same form as this one, except that it now has an index for the category.
+
+99
+00:10:19,949 --> 00:10:29,519
+And then instead of this, now it has all the summation over all the possible exponents of these corresponding categories.
+
+100
+00:10:30,659 --> 00:10:36,009
+Alright, so softmax is called multinomial logistic regression.
+
+101
+00:10:36,079 --> 00:10:41,610
+However, there is another similar way that we can use the original logistic regression for multi-categories.
+
+102
+00:10:43,360 --> 00:11:00,110
+So maybe category A, B, C. We can construct such that it is a binary class classification for A versus not A, which we will have to combine these two cases.
+
+103
+00:11:00,769 --> 00:11:06,610
+So this is maybe logistic regression model 1, and this is logistic regression model 2.
+
+104
+00:11:06,709 --> 00:11:16,740
+We're going to do B versus not B, and then we're going to construct third model that says C versus not C.
+
+105
+00:11:18,019 --> 00:11:29,240
+And this approach is called one versus the rest, an OVR problem.
+
+106
+00:11:29,439 --> 00:11:34,649
+So there are, you know, different ways to get the multi-category classification done.
+
+107
+00:11:34,649 --> 00:11:39,829
+So one is, like we mentioned, we use a multinomial approach which is a softmax.
+
+108
+00:11:39,829 --> 00:11:43,360
+And another way to do is using OVR.
+
+109
+00:11:43,360 --> 00:11:47,919
+So you can find a Sklearn library that uses
+
+110
+00:11:48,669 --> 00:12:10,059
+utilize these two, but I think Softmax or Multinomial is more common and you will see later other classification models such as SVM and decision trees, they have a preferred way of being Multinomial versus logistic or maybe some model is more convenient to use one versus the other, so we'll talk about that later.
+
+111
+00:12:12,269 --> 00:12:21,870
+By the way, both OVR and Softmax, their probabilities for categories they sum to one, so for example probability for A plus probability for B
+
+112
+00:12:22,329 --> 00:12:29,719
+plus probability for being C category for the sample number 1, they sum to 1.
+
+113
+00:12:30,769 --> 00:12:34,509
+So that's the same for logistic and the softmax regression.
+
+114
+00:12:35,199 --> 00:12:48,189
+However, there could be some problem where maybe there are A, B, C category and we don't necessarily need to pick one of them, but maybe the category doesn't exist at all.
+
+115
+00:12:48,189 --> 00:12:54,969
+So neither cat nor dog nor cow but something else, then this should be 0, 0, 0, then
+
+116
+00:12:55,449 --> 00:13:01,209
+In that case, it's called multi-label problem.
+
+117
+00:13:01,209 --> 00:13:11,479
+I know it sounds strange because label and categories, what's the difference?
+
+118
+00:13:11,479 --> 00:13:25,169
+But this type of problem where we don't necessarily have to pick one of them in the categories are called multi-label problem versus if we have to pick one of the
+
+119
+00:13:27,289 --> 00:13:30,620
+the categories, then it's a multi-class problem.
+
+120
+00:13:31,009 --> 00:13:36,649
+And both the logistic and softmax models, they are for multi-class classification.
+
+121
+00:13:36,649 --> 00:13:52,299
+And then there can be some other ways to treat the multi-label problem, but we can still use the same models, but we will have to construct the labels differently and construct the training process a little differently.
+
+122
+00:13:52,299 --> 00:14:01,210
+So that's a little bit of difference, but you will see more often the multi-class classification problems than multi-level problems, but just keep in mind that they exist.
+
+123
+00:14:03,110 --> 00:14:03,470
+Alright?
+
+124
+00:14:05,889 --> 00:14:11,210
+But anyway, Softmax regression can give this kind of visualization.
+
+125
+00:14:11,210 --> 00:14:22,440
+So let's say we had only two features in the dataset and the data will lie in the 2D plane and this is going to be the decision boundary that Softmax will give us.
+
+126
+00:14:23,460 --> 00:14:25,090
+You can see more examples here.
+
+127
+00:14:26,049 --> 00:14:30,019
+Alright, and this ends our video.
+
+128
+00:14:30,139 --> 00:14:36,909
+And then in the next video, we're going to talk about how optimization works in logistic regression and how the coefficients are determined.
+
